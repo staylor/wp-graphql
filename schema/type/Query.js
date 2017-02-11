@@ -7,8 +7,11 @@ import {
 import Post from './Post';
 import User from './User';
 import Category from './Category';
+import Tag from './Tag';
+import Page from './Page';
 import request, {
   posts,
+  pages,
   users,
   categories,
   tags,
@@ -52,6 +55,30 @@ const Query = new GraphQLObjectType({
       },
       // eslint-disable-next-line no-confusing-arrow
       resolve: (root, { id }) => categories.load(id),
+    },
+    tags: {
+      type: new GraphQLList(Tag),
+      resolve: () => request('/tags'),
+    },
+    tag: {
+      type: Tag,
+      args: {
+        id: { type: GraphQLInt },
+      },
+      // eslint-disable-next-line no-confusing-arrow
+      resolve: (root, { id }) => tags.load(id),
+    },
+    pages: {
+      type: new GraphQLList(Page),
+      resolve: () => request('/pages'),
+    },
+    page: {
+      type: Page,
+      args: {
+        id: { type: GraphQLInt },
+      },
+      // eslint-disable-next-line no-confusing-arrow
+      resolve: (root, { id }) => pages.load(id),
     },
   }),
 });

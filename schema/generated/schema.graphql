@@ -52,6 +52,45 @@ type Meta {
 }
 
 # An object.
+type Page {
+  id: Int
+  date: String
+  date_gmt: String
+  guid: Guid
+  modified: String
+  modified_gmt: String
+  slug: String
+  type: String
+  link: String
+  title: Title
+  content: Content
+  excerpt: Excerpt
+  author: User
+  featured_media: Int
+  parent: Page
+  menu_order: Int
+  comment_status: String
+  ping_status: String
+  template: String
+  meta: [Meta]
+  _links: PageLinks
+}
+
+# The links for a page.
+type PageLinks {
+  self: [Link]
+  collection: [Link]
+  about: [Link]
+  author: [EmbeddableLink]
+  replies: [EmbeddableLink]
+  history: [Link]
+  up: [EmbeddableLink]
+  attachment: [Link]
+  term: [TermLink]
+  curies: [TemplatedLink]
+}
+
+# An object.
 type Post {
   id: Int
   date: String
@@ -98,6 +137,10 @@ type Query {
   user(id: Int): User
   categories: [Category]
   category(id: Int): Category
+  tags: [Tag]
+  tag(id: Int): Tag
+  pages: [Page]
+  page(id: Int): Page
 }
 
 # A unique identifier for a post.

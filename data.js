@@ -15,17 +15,20 @@ const rp = (path, opts = {}) => {
 };
 
 const getPost = id => rp(`/posts/${id}`);
+const getPage = id => rp(`/pages/${id}`);
 const getUser = id => rp(`/users/${id}`);
 const getCategory = id => rp(`/categories/${id}`);
 const getTag = id => rp(`/tags/${id}`);
 
 const posts = new Dataloader(ids => Promise.all(ids.map(getPost)));
+const pages = new Dataloader(ids => Promise.all(ids.map(getPage)));
 const users = new Dataloader(ids => Promise.all(ids.map(getUser)));
 const categories = new Dataloader(ids => Promise.all(ids.map(getCategory)));
 const tags = new Dataloader(ids => Promise.all(ids.map(getTag)));
 
 export {
   posts,
+  pages,
   users,
   categories,
   tags,
