@@ -14,24 +14,13 @@ const rp = (path, opts = {}) => {
   return request(params);
 };
 
-const getPost = id => rp(`/posts/${id}`);
-const getPage = id => rp(`/pages/${id}`);
-const getUser = id => rp(`/users/${id}`);
-const getCategory = id => rp(`/categories/${id}`);
-const getTag = id => rp(`/tags/${id}`);
+const loader = resolver => (new Dataloader(ids => Promise.all(ids.map(resolver))));
 
-const posts = new Dataloader(ids => Promise.all(ids.map(getPost)));
-const pages = new Dataloader(ids => Promise.all(ids.map(getPage)));
-const users = new Dataloader(ids => Promise.all(ids.map(getUser)));
-const categories = new Dataloader(ids => Promise.all(ids.map(getCategory)));
-const tags = new Dataloader(ids => Promise.all(ids.map(getTag)));
-
-export {
-  posts,
-  pages,
-  users,
-  categories,
-  tags,
-};
+export const posts = loader(id => rp(`/posts/${id}`));
+export const pages = loader(id => rp(`/pages/${id}`));
+export const users = loader(id => rp(`/users/${id}`));
+export const categories = loader(id => rp(`/categories/${id}`));
+export const tags = loader(id => rp(`/tags/${id}`));
+export const media = loader(id => rp(`/media/${id}`));
 
 export default rp;

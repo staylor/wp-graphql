@@ -8,25 +8,20 @@ import {
 
 import Guid from './Guid';
 import Title from './Title';
-import Content from './Content';
-import Excerpt from './Excerpt';
 import Meta from './Meta';
+import Description from './Description';
+import Caption from './Caption';
 import User from './User';
-import Category from './Category';
-import Tag from './Tag';
-import Media from './Media';
-import PostLinks from './PostLinks';
+import MediaDetails from './MediaDetails';
+import MediaLinks from './MediaLinks';
 
 import {
-  categories,
-  tags,
   users,
-  media,
 } from '../../data';
 import { metaResolver } from '../utils';
 
-const Post = new GraphQLObjectType({
-  name: 'Post',
+const Media = new GraphQLObjectType({
+  name: 'Media',
   description: 'An object.',
   fields: {
     id: { type: GraphQLInt },
@@ -39,37 +34,28 @@ const Post = new GraphQLObjectType({
     type: { type: GraphQLString },
     link: { type: GraphQLString },
     title: { type: Title },
-    content: { type: Content },
-    excerpt: { type: Excerpt },
     author: {
       type: User,
       resolve: post => users.load(post.author),
-    },
-    featured_media: {
-      type: Media,
-      resolve: post => (
-        post.featured_media ? media.load(post.featured_media) : null
-      ),
     },
     comment_status: { type: GraphQLString },
     ping_status: { type: GraphQLString },
     sticky: { type: GraphQLBoolean },
     template: { type: GraphQLString },
-    format: { type: GraphQLString },
     meta: {
       type: new GraphQLList(Meta),
       resolve: metaResolver,
     },
-    categories: {
-      type: new GraphQLList(Category),
-      resolve: post => categories.loadMany(post.categories),
-    },
-    tags: {
-      type: new GraphQLList(Tag),
-      resolve: post => tags.loadMany(post.tags),
-    },
-    _links: { type: PostLinks },
+    description: { type: Description },
+    caption: { type: Caption },
+    alt_text: { type: GraphQLString },
+    media_type: { type: GraphQLString },
+    mime_type: { type: GraphQLString },
+    media_details: { type: MediaDetails },
+    post: { type: GraphQLInt },
+    source_url: { type: GraphQLString },
+    _links: { type: MediaLinks },
   },
 });
 
-export default Post;
+export default Media;

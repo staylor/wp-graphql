@@ -4,6 +4,11 @@ type Avatar {
   url: String
 }
 
+# The caption for the media.
+type Caption {
+  rendered: String
+}
+
 # A unique identifier for a post.
 type Category {
   id: Int
@@ -21,6 +26,11 @@ type Category {
 type Content {
   rendered: String
   protected: Boolean
+}
+
+# The description for the media.
+type Description {
+  rendered: String
 }
 
 # An embeddable link for an entity.
@@ -43,6 +53,62 @@ type Guid {
 # A link for a post.
 type Link {
   href: String
+}
+
+# An object.
+type Media {
+  id: Int
+  date: String
+  date_gmt: String
+  guid: Guid
+  modified: String
+  modified_gmt: String
+  slug: String
+  type: String
+  link: String
+  title: Title
+  author: User
+  comment_status: String
+  ping_status: String
+  sticky: Boolean
+  template: String
+  meta: [Meta]
+  description: Description
+  caption: Caption
+  alt_text: String
+  media_type: String
+  mime_type: String
+  media_details: MediaDetails
+  post: Int
+  source_url: String
+  _links: MediaLinks
+}
+
+# The details for the media.
+type MediaDetails {
+  width: Int
+  height: Int
+  file: String
+  sizes: [MediaSize]
+}
+
+# The links for the media.
+type MediaLinks {
+  self: [Link]
+  collection: [Link]
+  about: [Link]
+  author: [EmbeddableLink]
+  replies: [EmbeddableLink]
+}
+
+# The details for the media size.
+type MediaSize {
+  name: String
+  width: Int
+  height: Int
+  file: String
+  mime_type: String
+  source_url: String
 }
 
 # The metadata for a post.
@@ -105,7 +171,7 @@ type Post {
   content: Content
   excerpt: Excerpt
   author: User
-  featured_media: Int
+  featured_media: Media
   comment_status: String
   ping_status: String
   sticky: Boolean
