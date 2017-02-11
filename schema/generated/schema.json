@@ -1111,7 +1111,7 @@
                 "name": null,
                 "ofType": {
                   "kind": "OBJECT",
-                  "name": "Embeddable",
+                  "name": "EmbeddableLink",
                   "ofType": null
                 }
               },
@@ -1127,7 +1127,7 @@
                 "name": null,
                 "ofType": {
                   "kind": "OBJECT",
-                  "name": "Embeddable",
+                  "name": "EmbeddableLink",
                   "ofType": null
                 }
               },
@@ -1175,7 +1175,7 @@
                 "name": null,
                 "ofType": {
                   "kind": "OBJECT",
-                  "name": "Term",
+                  "name": "TermLink",
                   "ofType": null
                 }
               },
@@ -1191,7 +1191,7 @@
                 "name": null,
                 "ofType": {
                   "kind": "OBJECT",
-                  "name": "Templated",
+                  "name": "TemplatedLink",
                   "ofType": null
                 }
               },
@@ -1206,7 +1206,7 @@
         },
         {
           "kind": "OBJECT",
-          "name": "Embeddable",
+          "name": "EmbeddableLink",
           "description": "An embeddable link for an entity.",
           "fields": [
             {
@@ -1241,7 +1241,7 @@
         },
         {
           "kind": "OBJECT",
-          "name": "Term",
+          "name": "TermLink",
           "description": null,
           "fields": [
             {
@@ -1288,7 +1288,7 @@
         },
         {
           "kind": "OBJECT",
-          "name": "Templated",
+          "name": "TemplatedLink",
           "description": null,
           "fields": [
             {

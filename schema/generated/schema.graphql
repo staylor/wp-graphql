@@ -24,7 +24,7 @@ type Content {
 }
 
 # An embeddable link for an entity.
-type Embeddable {
+type EmbeddableLink {
   href: String
   embeddable: Boolean
 }
@@ -83,12 +83,12 @@ type PostLinks {
   self: [Link]
   collection: [Link]
   about: [Link]
-  author: [Embeddable]
-  replies: [Embeddable]
+  author: [EmbeddableLink]
+  replies: [EmbeddableLink]
   history: [Link]
   attachment: [Link]
-  term: [Term]
-  curies: [Templated]
+  term: [TermLink]
+  curies: [TemplatedLink]
 }
 
 type Query {
@@ -112,13 +112,13 @@ type Tag {
   meta: [Meta]
 }
 
-type Templated {
+type TemplatedLink {
   name: String
   href: String
   templated: Boolean
 }
 
-type Term {
+type TermLink {
   taxonomy: String
   href: String
   embeddable: Boolean
