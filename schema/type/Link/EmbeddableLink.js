@@ -4,8 +4,8 @@ import {
   GraphQLBoolean,
 } from 'graphql';
 
-const Embeddable = new GraphQLObjectType({
-  name: 'Embeddable',
+const EmbeddableLink = new GraphQLObjectType({
+  name: 'EmbeddableLink',
   description: 'An embeddable link for an entity.',
   fields: {
     href: { type: GraphQLString },
@@ -13,4 +13,4 @@ const Embeddable = new GraphQLObjectType({
   },
 });
 
-export default Embeddable;
+export default EmbeddableLink;

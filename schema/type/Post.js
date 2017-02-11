@@ -11,7 +11,17 @@ import Title from './Title';
 import Content from './Content';
 import Excerpt from './Excerpt';
 import Meta from './Meta';
-import Links from './Links';
+import User from './User';
+import Category from './Category';
+import Tag from './Tag';
+import PostLinks from './PostLinks';
+
+import {
+  categories,
+  tags,
+  users,
+} from '../../data';
+import { metaResolver } from '../utils';
 
 const Post = new GraphQLObjectType({
   name: 'Post',
@@ -29,7 +39,10 @@ const Post = new GraphQLObjectType({
     title: { type: Title },
     content: { type: Content },
     excerpt: { type: Excerpt },
-    author: { type: GraphQLInt },
+    author: {
+      type: User,
+      resolve: post => users.load(post.author),
+    },
     featured_media: { type: GraphQLInt },
     comment_status: { type: GraphQLString },
     ping_status: { type: GraphQLString },
@@ -38,19 +51,17 @@ const Post = new GraphQLObjectType({
     format: { type: GraphQLString },
     meta: {
       type: new GraphQLList(Meta),
-      resolve: (post) => {
-        if (!post.meta || !post.meta.length) {
-          return null;
-        }
-        return Object.keys(post.meta).map(key => ({
-          key,
-          value: post.meta[key],
-        }));
-      },
+      resolve: metaResolver,
     },
-    categories: { type: new GraphQLList(GraphQLInt) },
-    tags: { type: new GraphQLList(GraphQLInt) },
-    _links: { type: Links },
+    categories: {
+      type: new GraphQLList(Category),
+      resolve: post => categories.loadMany(post.categories),
+    },
+    tags: {
+      type: new GraphQLList(Tag),
+      resolve: post => tags.loadMany(post.tags),
+    },
+    _links: { type: PostLinks },
   },
 });
 

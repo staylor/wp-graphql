@@ -1,21 +1,34 @@
-import fetch from 'node-fetch';
+import request from 'request-promise';
+import Dataloader from 'dataloader';
 
-const host = 'http://demo.wp-api.org/wp-json/wp/v2';
+const host = 'https://highforthis.com/wp-json/wp/v2';
 
-export default (path, opts) => {
+const rp = (path, opts = {}) => {
   const params = Object.assign({
-    method: 'GET',
-    credentials: 'same-origin',
+    uri: `${host}${path}`,
+    json: true,
+    simple: true,
+    strictSSL: false,
   }, opts);
 
-  return fetch(`${host}${path}`, params)
-    .then((response) => {
-      if (response.status >= 200 && response.status < 300) {
-        return response;
-      }
-      const error = new Error(response.statusText);
-      error.response = response;
-      throw error;
-    })
-    .then(response => response.json());
+  return request(params);
 };
+
+const getPost = id => rp(`/posts/${id}`);
+const getUser = id => rp(`/users/${id}`);
+const getCategory = id => rp(`/categories/${id}`);
+const getTag = id => rp(`/tags/${id}`);
+
+const posts = new Dataloader(ids => Promise.all(ids.map(getPost)));
+const users = new Dataloader(ids => Promise.all(ids.map(getUser)));
+const categories = new Dataloader(ids => Promise.all(ids.map(getCategory)));
+const tags = new Dataloader(ids => Promise.all(ids.map(getTag)));
+
+export {
+  posts,
+  users,
+  categories,
+  tags,
+};
+
+export default rp;

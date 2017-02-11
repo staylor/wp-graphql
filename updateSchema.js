@@ -16,7 +16,7 @@ import Schema from './schema/index';
     );
   } else {
     fs.writeFileSync(
-      path.join(__dirname, 'schema.json'),
+      path.join(__dirname, 'schema/generated/schema.json'),
       JSON.stringify(result, null, 2),
     );
   }
@@ -24,6 +24,6 @@ import Schema from './schema/index';
 
 // Save user readable type system shorthand of schema
 fs.writeFileSync(
-  path.join(__dirname, 'schema.graphql'),
+  path.join(__dirname, 'schema/generated/schema.graphql'),
   printSchema(Schema),
 );

@@ -1,5 +1,3 @@
-import querystring from 'querystring';
-
 import {
   GraphQLObjectType,
   GraphQLList,
@@ -7,46 +5,53 @@ import {
 } from 'graphql';
 
 import Post from './Post';
-import CONTEXT from './Context';
-import request from '../../data';
-
-const getQueryParams = (args) => {
-  const opts = {};
-  let qs = '';
-  if (args.context) {
-    opts.context = args.context;
-    qs = `?${querystring.stringify(opts)}`;
-  }
-  return qs;
-};
+import User from './User';
+import Category from './Category';
+import request, {
+  posts,
+  users,
+  categories,
+  tags,
+} from '../../data';
 
 const Query = new GraphQLObjectType({
   name: 'Query',
   fields: () => ({
     posts: {
-      args: {
-        context: { type: CONTEXT },
-      },
       type: new GraphQLList(Post),
-      // eslint-disable-next-line no-confusing-arrow
-      resolve: (root, args) => {
-        const qs = getQueryParams(args);
-        return request(`/posts${qs}`);
-      },
+      resolve: () => request('/posts'),
     },
     post: {
+      type: Post,
       args: {
         id: { type: GraphQLInt },
-        context: { type: CONTEXT },
       },
       // eslint-disable-next-line no-confusing-arrow
-      resolve: (root, args) => {
-        if (args.id) {
-          const qs = getQueryParams(args);
-          return request(`/posts/${args.id}${qs}`);
-        }
-        return null;
+      resolve: (root, { id }) => posts.load(id),
+    },
+    users: {
+      type: new GraphQLList(User),
+      resolve: () => request('/users'),
+    },
+    user: {
+      type: User,
+      args: {
+        id: { type: GraphQLInt },
       },
+      // eslint-disable-next-line no-confusing-arrow
+      resolve: (root, { id }) => users.load(id),
+    },
+    categories: {
+      type: new GraphQLList(Category),
+      resolve: () => request('/categories'),
+    },
+    category: {
+      type: Category,
+      args: {
+        id: { type: GraphQLInt },
+      },
+      // eslint-disable-next-line no-confusing-arrow
+      resolve: (root, { id }) => categories.load(id),
     },
   }),
 });

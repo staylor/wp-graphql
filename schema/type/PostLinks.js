@@ -4,19 +4,19 @@ import {
 } from 'graphql';
 
 import Link from './Link';
-import Embeddable from './Link/Embeddable';
-import Templated from './Link/Templated';
-import Term from './Link/Term';
+import EmbeddableLink from './Link/EmbeddableLink';
+import TemplatedLink from './Link/TemplatedLink';
+import TermLink from './Link/TermLink';
 
-const Links = new GraphQLObjectType({
-  name: 'Links',
+const PostLinks = new GraphQLObjectType({
+  name: 'PostLinks',
   description: 'The links for a post.',
   fields: {
     self: { type: new GraphQLList(Link) },
     collection: { type: new GraphQLList(Link) },
     about: { type: new GraphQLList(Link) },
-    author: { type: new GraphQLList(Embeddable) },
-    replies: { type: new GraphQLList(Embeddable) },
+    author: { type: new GraphQLList(EmbeddableLink) },
+    replies: { type: new GraphQLList(EmbeddableLink) },
     history: {
       type: new GraphQLList(Link),
       // eslint-disable-next-line no-underscore-dangle
@@ -28,12 +28,12 @@ const Links = new GraphQLObjectType({
       resolve: post => post._links['wp:attachment'],
     },
     term: {
-      type: new GraphQLList(Term),
+      type: new GraphQLList(TermLink),
       // eslint-disable-next-line no-underscore-dangle
       resolve: post => post._links['wp:term'],
     },
-    curies: { type: new GraphQLList(Templated) },
+    curies: { type: new GraphQLList(TemplatedLink) },
   },
 });
 
-export default Links;
+export default PostLinks;

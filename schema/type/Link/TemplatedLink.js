@@ -4,8 +4,8 @@ import {
   GraphQLBoolean,
 } from 'graphql';
 
-const Templated = new GraphQLObjectType({
-  name: 'Templated',
+const TemplatedLink = new GraphQLObjectType({
+  name: 'TemplatedLink',
   fields: {
     name: { type: GraphQLString },
     href: { type: GraphQLString },
@@ -13,4 +13,4 @@ const Templated = new GraphQLObjectType({
   },
 });
 
-export default Templated;
+export default TemplatedLink;

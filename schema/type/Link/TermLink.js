@@ -4,8 +4,8 @@ import {
   GraphQLBoolean,
 } from 'graphql';
 
-const Term = new GraphQLObjectType({
-  name: 'Term',
+const TermLink = new GraphQLObjectType({
+  name: 'TermLink',
   fields: {
     taxonomy: { type: GraphQLString },
     href: { type: GraphQLString },
@@ -13,4 +13,4 @@ const Term = new GraphQLObjectType({
   },
 });
 
-export default Term;
+export default TermLink;

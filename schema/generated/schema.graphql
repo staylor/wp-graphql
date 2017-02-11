@@ -1,0 +1,147 @@
+# Avatar info.
+type Avatar {
+  size: Int
+  url: String
+}
+
+# A unique identifier for a post.
+type Category {
+  id: Int
+  count: Int
+  description: String
+  link: String
+  name: String
+  slug: String
+  taxonomy: String
+  parent: Category
+  meta: [Meta]
+}
+
+# The content for a post.
+type Content {
+  rendered: String
+  protected: Boolean
+}
+
+# An embeddable link for an entity.
+type Embeddable {
+  href: String
+  embeddable: Boolean
+}
+
+# The excerpt for a post.
+type Excerpt {
+  rendered: String
+  protected: Boolean
+}
+
+# A unique identifier for a post.
+type Guid {
+  rendered: String
+}
+
+# A link for a post.
+type Link {
+  href: String
+}
+
+# The metadata for a post.
+type Meta {
+  key: String
+  value: String
+}
+
+# An object.
+type Post {
+  id: Int
+  date: String
+  date_gmt: String
+  guid: Guid
+  modified: String
+  modified_gmt: String
+  slug: String
+  type: String
+  link: String
+  title: Title
+  content: Content
+  excerpt: Excerpt
+  author: User
+  featured_media: Int
+  comment_status: String
+  ping_status: String
+  sticky: Boolean
+  template: String
+  format: String
+  meta: [Meta]
+  categories: [Category]
+  tags: [Tag]
+  _links: PostLinks
+}
+
+# The links for a post.
+type PostLinks {
+  self: [Link]
+  collection: [Link]
+  about: [Link]
+  author: [Embeddable]
+  replies: [Embeddable]
+  history: [Link]
+  attachment: [Link]
+  term: [Term]
+  curies: [Templated]
+}
+
+type Query {
+  posts: [Post]
+  post(id: Int): Post
+  users: [User]
+  user(id: Int): User
+  categories: [Category]
+  category(id: Int): Category
+}
+
+# A unique identifier for a post.
+type Tag {
+  id: Int
+  count: Int
+  description: String
+  link: String
+  name: String
+  slug: String
+  taxonomy: String
+  meta: [Meta]
+}
+
+type Templated {
+  name: String
+  href: String
+  templated: Boolean
+}
+
+type Term {
+  taxonomy: String
+  href: String
+  embeddable: Boolean
+}
+
+# The title for a post.
+type Title {
+  rendered: String
+}
+
+# An object.
+type User {
+  id: Int
+  name: String
+  description: String
+  link: String
+  slug: String
+  avatar_urls: [Avatar]
+  _links: UserLinks
+}
+
+# The links for a user.
+type UserLinks {
+  self: [Link]
+  collection: [Link]
+}
