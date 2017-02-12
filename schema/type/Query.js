@@ -68,7 +68,12 @@ const Query = new GraphQLObjectType({
         type: { type: GraphQLString },
       },
       // eslint-disable-next-line no-confusing-arrow
-      resolve: (root, { type }) => types.load(type),
+      resolve: (root, { type }) => (
+        types.load(type).then(typeData => ({
+          ...typeData,
+          type,
+        }))
+      ),
     },
     statuses: {
       type: new GraphQLList(Status),
@@ -87,7 +92,12 @@ const Query = new GraphQLObjectType({
         type: { type: GraphQLString },
       },
       // eslint-disable-next-line no-confusing-arrow
-      resolve: (root, { type }) => statuses.load(type),
+      resolve: (root, { type }) => (
+        statuses.load(type).then(statusData => ({
+          ...statusData,
+          type,
+        }))
+      ),
     },
   }),
 });
