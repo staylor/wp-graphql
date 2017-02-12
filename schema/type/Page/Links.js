@@ -22,7 +22,6 @@ const PageLinks = new GraphQLObjectType({
       // eslint-disable-next-line no-underscore-dangle
       resolve: post => post._links['version-history'],
     },
-    up: { type: new GraphQLList(EmbeddableLink) },
     attachment: {
       type: new GraphQLList(Link),
       // eslint-disable-next-line no-underscore-dangle
@@ -34,6 +33,8 @@ const PageLinks = new GraphQLObjectType({
       resolve: post => post._links['wp:term'],
     },
     curies: { type: new GraphQLList(TemplatedLink) },
+    // extra page field
+    up: { type: new GraphQLList(EmbeddableLink) },
   },
 });
 

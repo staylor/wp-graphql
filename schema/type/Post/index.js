@@ -6,6 +6,7 @@ import {
   GraphQLBoolean,
 } from 'graphql';
 
+import PostInterface from 'interface/Post';
 import Guid from 'type/Guid';
 import Title from 'type/Title';
 import Content from 'type/Content';
@@ -21,17 +22,16 @@ import COMMENT_STATUS from 'enum/CommentStatus';
 import PING_STATUS from 'enum/PingStatus';
 import FORMAT from 'enum/Format';
 
-import {
-  categories,
-  tags,
-  users,
-  media,
-} from 'data';
+import { categories, tags, users, media } from 'data';
 import { metaResolver } from 'utils';
 
 const Post = new GraphQLObjectType({
   name: 'Post',
   description: 'A read-only post object.',
+  interfaces: [PostInterface],
+  isTypeOf(post) {
+    return post.type === 'post';
+  },
   fields: {
     id: { type: GraphQLInt },
     date: { type: GraphQLString },
@@ -45,6 +45,14 @@ const Post = new GraphQLObjectType({
     title: { type: Title },
     content: { type: Content },
     excerpt: { type: Excerpt },
+    comment_status: { type: COMMENT_STATUS },
+    ping_status: { type: PING_STATUS },
+    template: { type: GraphQLString },
+    format: { type: FORMAT },
+    meta: {
+      type: new GraphQLList(Meta),
+      resolve: metaResolver,
+    },
     author: {
       type: User,
       resolve: post => (
@@ -57,15 +65,9 @@ const Post = new GraphQLObjectType({
         post.featured_media ? media.load(post.featured_media) : null
       ),
     },
-    comment_status: { type: COMMENT_STATUS },
-    ping_status: { type: PING_STATUS },
+    _links: { type: PostLinks },
+    // extra post fields
     sticky: { type: GraphQLBoolean },
-    template: { type: GraphQLString },
-    format: { type: FORMAT },
-    meta: {
-      type: new GraphQLList(Meta),
-      resolve: metaResolver,
-    },
     categories: {
       type: new GraphQLList(Category),
       resolve: post => (
@@ -82,7 +84,6 @@ const Post = new GraphQLObjectType({
           []
       ),
     },
-    _links: { type: PostLinks },
   },
 });
 

@@ -10,7 +10,7 @@ type Caption {
 }
 
 # A unique identifier for a post.
-type Category {
+type Category implements TermInterface {
   id: Int
   count: Int
   description: String
@@ -18,9 +18,9 @@ type Category {
   name: String
   slug: String
   taxonomy: String
-  parent: Category
   meta: [Meta]
   _links: CategoryLinks
+  parent: Category
 }
 
 # The links for a post.
@@ -196,7 +196,7 @@ enum ORDER {
 }
 
 # An object.
-type Page {
+type Page implements PostInterface {
   id: Int
   date: String
   date_gmt: String
@@ -209,15 +209,15 @@ type Page {
   title: Title
   content: Content
   excerpt: Excerpt
-  author: User
-  featured_media: Int
-  parent: Page
-  menu_order: Int
-  comment_status: String
-  ping_status: String
+  comment_status: COMMENT_STATUS
+  ping_status: PING_STATUS
   template: String
   meta: [Meta]
+  author: User
+  featured_media: Media
   _links: PageLinks
+  parent: Page
+  menu_order: Int
 }
 
 enum PAGE_ORDERBY {
@@ -238,10 +238,10 @@ type PageLinks {
   author: [EmbeddableLink]
   replies: [EmbeddableLink]
   history: [Link]
-  up: [EmbeddableLink]
   attachment: [Link]
   term: [TermLink]
   curies: [TemplatedLink]
+  up: [EmbeddableLink]
 }
 
 enum PING_STATUS {
@@ -250,7 +250,7 @@ enum PING_STATUS {
 }
 
 # A read-only post object.
-type Post {
+type Post implements PostInterface {
   id: Int
   date: String
   date_gmt: String
@@ -263,17 +263,17 @@ type Post {
   title: Title
   content: Content
   excerpt: Excerpt
-  author: User
-  featured_media: Media
   comment_status: COMMENT_STATUS
   ping_status: PING_STATUS
-  sticky: Boolean
   template: String
   format: FORMAT
   meta: [Meta]
+  author: User
+  featured_media: Media
+  _links: PostLinks
+  sticky: Boolean
   categories: [Category]
   tags: [Tag]
-  _links: PostLinks
 }
 
 enum POST_ORDERBY {
@@ -283,6 +283,27 @@ enum POST_ORDERBY {
   INCLUDE
   TITLE
   SLUG
+}
+
+interface PostInterface {
+  id: Int
+  date: String
+  date_gmt: String
+  guid: Guid
+  modified: String
+  modified_gmt: String
+  slug: String
+  type: String
+  link: String
+  title: Title
+  content: Content
+  excerpt: Excerpt
+  comment_status: COMMENT_STATUS
+  ping_status: PING_STATUS
+  template: String
+  meta: [Meta]
+  author: User
+  featured_media: Media
 }
 
 # The links for a post.
@@ -344,7 +365,7 @@ type StatusLinks {
 }
 
 # A unique identifier for a post.
-type Tag {
+type Tag implements TermInterface {
   id: Int
   count: Int
   description: String
@@ -398,6 +419,18 @@ type TemplatedLink {
   name: String
   href: String
   templated: Boolean
+}
+
+# Term fields.
+interface TermInterface {
+  id: Int
+  count: Int
+  description: String
+  link: String
+  name: String
+  slug: String
+  taxonomy: String
+  meta: [Meta]
 }
 
 type TermLink {
