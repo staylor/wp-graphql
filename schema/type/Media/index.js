@@ -35,18 +35,25 @@ const Media = new GraphQLObjectType({
     type: { type: GraphQLString },
     link: { type: GraphQLString },
     title: { type: Title },
-    author: {
-      type: User,
-      resolve: post => users.load(post.author),
-    },
+    // content (description instead)
+    // excerpt (caption instead)
     comment_status: { type: COMMENT_STATUS },
     ping_status: { type: PING_STATUS },
-    sticky: { type: GraphQLBoolean },
     template: { type: GraphQLString },
     meta: {
       type: new GraphQLList(Meta),
       resolve: metaResolver,
     },
+    author: {
+      type: User,
+      resolve: post => (
+        post.author > 0 ? users.load(post.author) : null
+      ),
+    },
+    _links: { type: MediaLinks },
+    // featured_media (this field should exist for audio/video)
+    // extra media fields
+    sticky: { type: GraphQLBoolean },
     description: { type: Description },
     caption: { type: Caption },
     alt_text: { type: GraphQLString },
@@ -55,7 +62,6 @@ const Media = new GraphQLObjectType({
     media_details: { type: MediaDetails },
     post: { type: GraphQLInt },
     source_url: { type: GraphQLString },
-    _links: { type: MediaLinks },
   },
 });
 
