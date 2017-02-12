@@ -1,6 +1,7 @@
 import {
   GraphQLObjectType,
   GraphQLList,
+  GraphQLString,
 } from 'graphql';
 
 import Post from 'type/Post';
@@ -8,12 +9,14 @@ import User from 'type/User';
 import Category from 'type/Category';
 import Tag from 'type/Tag';
 import Page from 'type/Page';
+import Status from 'type/Status';
 import request, {
   posts,
   pages,
   users,
   categories,
   tags,
+  statuses,
 } from 'data';
 
 import { itemResolver } from 'utils';
@@ -46,6 +49,25 @@ const Query = new GraphQLObjectType({
       resolve: () => request('/pages'),
     },
     page: itemResolver(Page, pages),
+    statuses: {
+      type: new GraphQLList(Status),
+      resolve: () => (
+        request('/statuses').then(stati => (
+          Object.keys(stati).map(status => ({
+            ...stati[status],
+            type: status,
+          }))
+        ))
+      ),
+    },
+    status: {
+      type: Status,
+      args: {
+        type: { type: GraphQLString },
+      },
+      // eslint-disable-next-line no-confusing-arrow
+      resolve: (root, { type }) => statuses.load(type),
+    },
   }),
 });
 

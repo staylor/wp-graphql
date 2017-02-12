@@ -22,5 +22,6 @@ export const users = loader(id => rp(`/users/${id}`));
 export const categories = loader(id => rp(`/categories/${id}`));
 export const tags = loader(id => rp(`/tags/${id}`));
 export const media = loader(id => rp(`/media/${id}`));
+export const statuses = loader(id => rp(`/statuses/${id}`));
 
 export default rp;

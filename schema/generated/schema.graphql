@@ -218,6 +218,23 @@ type Query {
   tag(id: Int): Tag
   pages: [Page]
   page(id: Int): Page
+  statuses: [Status]
+  status(type: String): Status
+}
+
+# A post status.
+type Status {
+  name: String
+  type: String
+  public: Boolean
+  queryable: Boolean
+  slug: String
+  _links: StatusLinks
+}
+
+# The links for a status.
+type StatusLinks {
+  archives: [Link]
 }
 
 # A unique identifier for a post.
