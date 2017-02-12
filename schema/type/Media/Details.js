@@ -5,7 +5,7 @@ import {
   GraphQLList,
 } from 'graphql';
 
-import MediaSize from './MediaSize';
+import MediaSize from 'type/Media/Size';
 
 const MediaDetails = new GraphQLObjectType({
   name: 'MediaDetails',
@@ -16,9 +16,9 @@ const MediaDetails = new GraphQLObjectType({
     file: { type: GraphQLString },
     sizes: {
       type: new GraphQLList(MediaSize),
-      resolve: sizes => (
-        Object.keys(sizes).map(size => ({
-          ...sizes[size],
+      resolve: media => (
+        Object.keys(media.sizes).map(size => ({
+          ...media.sizes[size],
           name: size,
         }))
       ),

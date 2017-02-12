@@ -3,7 +3,7 @@ import {
   GraphQLList,
 } from 'graphql';
 
-import Link from './Link';
+import Link from 'type/Link';
 
 const UserLinks = new GraphQLObjectType({
   name: 'UserLinks',

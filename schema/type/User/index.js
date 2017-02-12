@@ -5,8 +5,8 @@ import {
   GraphQLList,
 } from 'graphql';
 
-import Avatar from './Avatar';
-import UserLinks from './UserLinks';
+import Avatar from 'type/User/Avatar';
+import UserLinks from 'type/User/Links';
 
 const User = new GraphQLObjectType({
   name: 'User',

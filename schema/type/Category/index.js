@@ -5,12 +5,14 @@ import {
   GraphQLList,
 } from 'graphql';
 
-import Meta from './Meta';
+import Meta from 'type/Meta';
+import CategoryLinks from 'type/Category/Links';
 
-import { metaResolver } from '../utils';
+import { categories } from 'data';
+import { metaResolver } from 'utils';
 
-const Tag = new GraphQLObjectType({
-  name: 'Tag',
+const Category = new GraphQLObjectType({
+  name: 'Category',
   description: 'A unique identifier for a post.',
   fields: () => ({
     id: { type: GraphQLInt },
@@ -20,11 +22,18 @@ const Tag = new GraphQLObjectType({
     name: { type: GraphQLString },
     slug: { type: GraphQLString },
     taxonomy: { type: GraphQLString },
+    parent: {
+      type: Category,
+      resolve: category => (
+        category.parent > 0 ? categories.load(category.parent) : null
+      ),
+    },
     meta: {
       type: new GraphQLList(Meta),
       resolve: metaResolver,
     },
+    _links: { type: CategoryLinks },
   }),
 });
 
-export default Tag;
+export default Category;

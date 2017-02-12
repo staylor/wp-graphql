@@ -3,8 +3,8 @@ import {
   GraphQLList,
 } from 'graphql';
 
-import Link from './Link';
-import EmbeddableLink from './Link/EmbeddableLink';
+import Link from 'type/Link';
+import EmbeddableLink from 'type/Link/EmbeddableLink';
 
 const MediaLinks = new GraphQLObjectType({
   name: 'MediaLinks',

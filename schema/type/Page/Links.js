@@ -3,14 +3,14 @@ import {
   GraphQLList,
 } from 'graphql';
 
-import Link from './Link';
-import EmbeddableLink from './Link/EmbeddableLink';
-import TemplatedLink from './Link/TemplatedLink';
-import TermLink from './Link/TermLink';
+import Link from 'type/Link';
+import EmbeddableLink from 'type/Link/EmbeddableLink';
+import TemplatedLink from 'type/Link/TemplatedLink';
+import TermLink from 'type/Link/TermLink';
 
-const PostLinks = new GraphQLObjectType({
-  name: 'PostLinks',
-  description: 'The links for a post.',
+const PageLinks = new GraphQLObjectType({
+  name: 'PageLinks',
+  description: 'The links for a page.',
   fields: {
     self: { type: new GraphQLList(Link) },
     collection: { type: new GraphQLList(Link) },
@@ -22,6 +22,7 @@ const PostLinks = new GraphQLObjectType({
       // eslint-disable-next-line no-underscore-dangle
       resolve: post => post._links['version-history'],
     },
+    up: { type: new GraphQLList(EmbeddableLink) },
     attachment: {
       type: new GraphQLList(Link),
       // eslint-disable-next-line no-underscore-dangle
@@ -36,4 +37,4 @@ const PostLinks = new GraphQLObjectType({
   },
 });
 
-export default PostLinks;
+export default PageLinks;

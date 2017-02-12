@@ -20,6 +20,17 @@ type Category {
   taxonomy: String
   parent: Category
   meta: [Meta]
+  _links: CategoryLinks
+}
+
+# The links for a post.
+type CategoryLinks {
+  self: [Link]
+  collection: [Link]
+  about: [Link]
+  up: [EmbeddableLink]
+  post_type: [TermLink]
+  curies: [TemplatedLink]
 }
 
 # The content for a post.
@@ -219,6 +230,16 @@ type Tag {
   slug: String
   taxonomy: String
   meta: [Meta]
+  _links: TagLinks
+}
+
+# The links for a post.
+type TagLinks {
+  self: [Link]
+  collection: [Link]
+  about: [Link]
+  post_type: [TermLink]
+  curies: [TemplatedLink]
 }
 
 type TemplatedLink {

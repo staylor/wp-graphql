@@ -6,19 +6,18 @@ import {
   GraphQLBoolean,
 } from 'graphql';
 
-import Guid from './Guid';
-import Title from './Title';
-import Meta from './Meta';
-import Description from './Description';
-import Caption from './Caption';
-import User from './User';
-import MediaDetails from './MediaDetails';
-import MediaLinks from './MediaLinks';
+import Guid from 'type/Guid';
+import Title from 'type/Title';
+import Meta from 'type/Meta';
+import Description from 'type/Description';
+import Caption from 'type/Caption';
+import Post from 'type/Post';
+import User from 'type/User';
+import MediaDetails from 'type/Media/Details';
+import MediaLinks from 'type/Media/Links';
 
-import {
-  users,
-} from '../../data';
-import { metaResolver } from '../utils';
+import { users } from 'data';
+import { metaResolver } from 'utils';
 
 const Media = new GraphQLObjectType({
   name: 'Media',

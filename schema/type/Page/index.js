@@ -5,19 +5,16 @@ import {
   GraphQLString,
 } from 'graphql';
 
-import Guid from './Guid';
-import Title from './Title';
-import Content from './Content';
-import Excerpt from './Excerpt';
-import Meta from './Meta';
-import User from './User';
-import PageLinks from './PageLinks';
+import Guid from 'type/Guid';
+import Title from 'type/Title';
+import Content from 'type/Content';
+import Excerpt from 'type/Excerpt';
+import Meta from 'type/Meta';
+import User from 'type/User';
+import PageLinks from 'type/Page/Links';
 
-import {
-  pages,
-  users,
-} from '../../data';
-import { metaResolver } from '../utils';
+import { pages, users } from 'data';
+import { metaResolver } from 'utils';
 
 const Page = new GraphQLObjectType({
   name: 'Page',

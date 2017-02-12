@@ -3,20 +3,20 @@ import {
   GraphQLList,
 } from 'graphql';
 
-import Post from './Post';
-import User from './User';
-import Category from './Category';
-import Tag from './Tag';
-import Page from './Page';
+import Post from 'type/Post';
+import User from 'type/User';
+import Category from 'type/Category';
+import Tag from 'type/Tag';
+import Page from 'type/Page';
 import request, {
   posts,
   pages,
   users,
   categories,
   tags,
-} from '../../data';
+} from 'data';
 
-import { itemResolver } from '../utils';
+import { itemResolver } from 'utils';
 
 const Query = new GraphQLObjectType({
   name: 'Query',

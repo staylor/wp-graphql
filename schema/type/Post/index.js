@@ -6,24 +6,24 @@ import {
   GraphQLBoolean,
 } from 'graphql';
 
-import Guid from './Guid';
-import Title from './Title';
-import Content from './Content';
-import Excerpt from './Excerpt';
-import Meta from './Meta';
-import User from './User';
-import Category from './Category';
-import Tag from './Tag';
-import Media from './Media';
-import PostLinks from './PostLinks';
+import Guid from 'type/Guid';
+import Title from 'type/Title';
+import Content from 'type/Content';
+import Excerpt from 'type/Excerpt';
+import Meta from 'type/Meta';
+import User from 'type/User';
+import Category from 'type/Category';
+import Tag from 'type/Tag';
+import Media from 'type/Media';
+import PostLinks from 'type/Post/Links';
 
 import {
   categories,
   tags,
   users,
   media,
-} from '../../data';
-import { metaResolver } from '../utils';
+} from 'data';
+import { metaResolver } from 'utils';
 
 const Post = new GraphQLObjectType({
   name: 'Post',

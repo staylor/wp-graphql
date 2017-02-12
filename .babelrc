@@ -2,5 +2,15 @@
   "presets": [
     "es2015",
     "stage-0"
+  ],
+  "plugins": [
+    ["module-resolver", {
+      "root": ["./"],
+      "alias": {
+        "type": "./schema/type",
+        "data": "./data",
+        "utils": "./schema/utils"
+      }
+    }]
   ]
 }
