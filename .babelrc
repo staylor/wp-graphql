@@ -9,6 +9,7 @@
       "alias": {
         "type": "./schema/type",
         "enum": "./schema/enum",
+        "query": "./schema/query",
         "data": "./data",
         "utils": "./schema/utils"
       }
