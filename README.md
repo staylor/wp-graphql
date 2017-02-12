@@ -37,3 +37,6 @@ Facebook has also open-sourced [Relay](https://facebook.github.io/relay/). As th
 
 `wp-graphql` is a step towards making isomorphic apps written in JS use data from a WordPress instance, via read-only data from the REST API, easy and painless. You don't have to worry about fetching data. Relay's data requirements are declarative - the complicated bits are resolved for you.
 
+## Ok, what is next?
+
+There will be changes to this project to support Relay idioms, and there will be a companion project that bootstraps Relay on top of [kyt](https://github.com/nytimes/kyt), React, Relay, React Router, CSS Modules, and Webpack - all tools needed to make awesome isomorphic apps.
