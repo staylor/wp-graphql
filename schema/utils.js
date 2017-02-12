@@ -19,12 +19,16 @@ export const itemResolver = (dataType, loader) => ({
   resolve: (root, { id }) => loader.load(id),
 });
 
+export const mapResolver = data => (
+  Object.keys(data).map(key => ({
+    key,
+    value: data[key],
+  }))
+);
+
 export const metaResolver = (data) => {
-  if (!data.meta || !data.meta.length) {
+  if (!data.meta || !Object.keys(data.meta).length) {
     return null;
   }
-  return Object.keys(data.meta).map(key => ({
-    key,
-    value: data.meta[key],
-  }));
+  return mapResolver(data.meta);
 };

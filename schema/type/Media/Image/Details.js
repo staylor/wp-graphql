@@ -7,8 +7,8 @@ import {
 
 import MediaSize from 'type/Media/Size';
 
-const MediaDetails = new GraphQLObjectType({
-  name: 'MediaDetails',
+const ImageDetails = new GraphQLObjectType({
+  name: 'ImageDetails',
   description: 'The details for the media.',
   fields: {
     width: { type: GraphQLInt },
@@ -26,4 +26,4 @@ const MediaDetails = new GraphQLObjectType({
   },
 });
 
-export default MediaDetails;
+export default ImageDetails;

@@ -1,3 +1,36 @@
+# An object.
+type Audio implements MediaInterface {
+  id: Int
+  date: String
+  date_gmt: String
+  guid: Guid
+  modified: String
+  modified_gmt: String
+  slug: String
+  type: String
+  link: String
+  title: Title
+  comment_status: COMMENT_STATUS
+  ping_status: PING_STATUS
+  template: String
+  meta: [Meta]
+  author: User
+  _links: MediaLinks
+  description: Description
+  caption: Caption
+  alt_text: String
+  media_type: String
+  mime_type: String
+  post: Int
+  source_url: String
+  media_details: AudioDetails
+}
+
+# The details for the media.
+type AudioDetails {
+  title: String
+}
+
 # Avatar info.
 type Avatar {
   size: Int
@@ -116,13 +149,8 @@ type Guid {
   rendered: String
 }
 
-# A link for a post.
-type Link {
-  href: String
-}
-
 # An object.
-type Media {
+type Image implements MediaInterface {
   id: Int
   date: String
   date_gmt: String
@@ -133,22 +161,36 @@ type Media {
   type: String
   link: String
   title: Title
-  author: User
   comment_status: COMMENT_STATUS
   ping_status: PING_STATUS
-  sticky: Boolean
   template: String
   meta: [Meta]
+  author: User
+  _links: MediaLinks
   description: Description
   caption: Caption
   alt_text: String
   media_type: String
   mime_type: String
-  media_details: MediaDetails
   post: Int
   source_url: String
-  _links: MediaLinks
+  media_details: ImageDetails
 }
+
+# The details for the media.
+type ImageDetails {
+  width: Int
+  height: Int
+  file: String
+  sizes: [MediaSize]
+}
+
+# A link for a post.
+type Link {
+  href: String
+}
+
+union Media = Image | Audio | Video
 
 enum MEDIA_TYPE {
   IMAGE
@@ -157,12 +199,30 @@ enum MEDIA_TYPE {
   APPLICATION
 }
 
-# The details for the media.
-type MediaDetails {
-  width: Int
-  height: Int
-  file: String
-  sizes: [MediaSize]
+interface MediaInterface {
+  id: Int
+  date: String
+  date_gmt: String
+  guid: Guid
+  modified: String
+  modified_gmt: String
+  slug: String
+  type: String
+  link: String
+  title: Title
+  comment_status: COMMENT_STATUS
+  ping_status: PING_STATUS
+  template: String
+  meta: [Meta]
+  author: User
+  _links: MediaLinks
+  description: Description
+  caption: Caption
+  alt_text: String
+  media_type: String
+  mime_type: String
+  post: Int
+  source_url: String
 }
 
 # The links for the media.
@@ -488,4 +548,37 @@ enum USER_ORDERBY {
 type UserLinks {
   self: [Link]
   collection: [Link]
+}
+
+# An object.
+type Video implements MediaInterface {
+  id: Int
+  date: String
+  date_gmt: String
+  guid: Guid
+  modified: String
+  modified_gmt: String
+  slug: String
+  type: String
+  link: String
+  title: Title
+  comment_status: COMMENT_STATUS
+  ping_status: PING_STATUS
+  template: String
+  meta: [Meta]
+  author: User
+  _links: MediaLinks
+  description: Description
+  caption: Caption
+  alt_text: String
+  media_type: String
+  mime_type: String
+  post: Int
+  source_url: String
+  media_details: VideoDetails
+}
+
+# The details for the media.
+type VideoDetails {
+  title: String
 }
