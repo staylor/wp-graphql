@@ -52,6 +52,11 @@ type Comment {
   _links: CommentLinks
 }
 
+enum COMMENT_STATUS {
+  OPEN
+  CLOSED
+}
+
 # The links for a comment.
 type CommentLinks {
   self: [Link]
@@ -81,6 +86,19 @@ type EmbeddableLink {
 type Excerpt {
   rendered: String
   protected: Boolean
+}
+
+enum FORMAT {
+  STANDARD
+  ASIDE
+  CHAT
+  GALLERY
+  LINK
+  IMAGE
+  QUOTE
+  STATUS
+  VIDEO
+  AUDIO
 }
 
 # A unique identifier for a post.
@@ -194,7 +212,12 @@ type PageLinks {
   curies: [TemplatedLink]
 }
 
-# An object.
+enum PING_STATUS {
+  OPEN
+  CLOSED
+}
+
+# A read-only post object.
 type Post {
   id: Int
   date: String
@@ -210,11 +233,11 @@ type Post {
   excerpt: Excerpt
   author: User
   featured_media: Media
-  comment_status: String
-  ping_status: String
+  comment_status: COMMENT_STATUS
+  ping_status: PING_STATUS
   sticky: Boolean
   template: String
-  format: String
+  format: FORMAT
   meta: [Meta]
   categories: [Category]
   tags: [Tag]

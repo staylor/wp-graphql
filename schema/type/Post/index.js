@@ -17,6 +17,10 @@ import Tag from 'type/Tag';
 import Media from 'type/Media';
 import PostLinks from 'type/Post/Links';
 
+import COMMENT_STATUS from 'type/CommentStatus';
+import PING_STATUS from 'type/PingStatus';
+import FORMAT from 'type/Format';
+
 import {
   categories,
   tags,
@@ -27,7 +31,7 @@ import { metaResolver } from 'utils';
 
 const Post = new GraphQLObjectType({
   name: 'Post',
-  description: 'An object.',
+  description: 'A read-only post object.',
   fields: {
     id: { type: GraphQLInt },
     date: { type: GraphQLString },
@@ -43,7 +47,9 @@ const Post = new GraphQLObjectType({
     excerpt: { type: Excerpt },
     author: {
       type: User,
-      resolve: post => users.load(post.author),
+      resolve: post => (
+        post.author > 0 ? users.load(post.author) : null
+      ),
     },
     featured_media: {
       type: Media,
@@ -51,22 +57,30 @@ const Post = new GraphQLObjectType({
         post.featured_media ? media.load(post.featured_media) : null
       ),
     },
-    comment_status: { type: GraphQLString },
-    ping_status: { type: GraphQLString },
+    comment_status: { type: COMMENT_STATUS },
+    ping_status: { type: PING_STATUS },
     sticky: { type: GraphQLBoolean },
     template: { type: GraphQLString },
-    format: { type: GraphQLString },
+    format: { type: FORMAT },
     meta: {
       type: new GraphQLList(Meta),
       resolve: metaResolver,
     },
     categories: {
       type: new GraphQLList(Category),
-      resolve: post => categories.loadMany(post.categories),
+      resolve: post => (
+        post.categories.length ?
+          categories.loadMany(post.categories) :
+          []
+      ),
     },
     tags: {
       type: new GraphQLList(Tag),
-      resolve: post => tags.loadMany(post.tags),
+      resolve: post => (
+        post.tags.length ?
+          tags.loadMany(post.tags) :
+          []
+      ),
     },
     _links: { type: PostLinks },
   },
