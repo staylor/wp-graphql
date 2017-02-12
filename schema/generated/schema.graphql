@@ -33,6 +33,33 @@ type CategoryLinks {
   curies: [TemplatedLink]
 }
 
+# An object.
+type Comment {
+  id: Int
+  post: Post
+  parent: Comment
+  author: User
+  author_name: String
+  author_url: String
+  date: String
+  date_gmt: String
+  content: Content
+  link: String
+  status: String
+  type: String
+  author_avatar_urls: [Avatar]
+  meta: [Meta]
+  _links: CommentLinks
+}
+
+# The links for a comment.
+type CommentLinks {
+  self: [Link]
+  collection: [Link]
+  author: [EmbeddableLink]
+  up: [PostTypeLink]
+}
+
 # The content for a post.
 type Content {
   rendered: String
@@ -207,6 +234,13 @@ type PostLinks {
   curies: [TemplatedLink]
 }
 
+# An embeddable link for an entity.
+type PostTypeLink {
+  href: String
+  embeddable: Boolean
+  post_type: String
+}
+
 type Query {
   posts: [Post]
   post(id: Int): Post
@@ -218,6 +252,8 @@ type Query {
   tag(id: Int): Tag
   pages: [Page]
   page(id: Int): Page
+  comments: [Comment]
+  comment(id: Int): Comment
   types: [Type]
   type(type: String): Type
   statuses: [Status]

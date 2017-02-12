@@ -18,6 +18,7 @@ const loader = resolver => (new Dataloader(ids => Promise.all(ids.map(resolver))
 
 export const posts = loader(id => rp(`/posts/${id}`));
 export const pages = loader(id => rp(`/pages/${id}`));
+export const comments = loader(id => rp(`/comments/${id}`));
 export const users = loader(id => rp(`/users/${id}`));
 export const categories = loader(id => rp(`/categories/${id}`));
 export const tags = loader(id => rp(`/tags/${id}`));

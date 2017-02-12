@@ -5,6 +5,7 @@ import {
 } from 'graphql';
 
 import Post from 'type/Post';
+import Comment from 'type/Comment';
 import User from 'type/User';
 import Category from 'type/Category';
 import Tag from 'type/Tag';
@@ -19,6 +20,7 @@ import request, {
   tags,
   statuses,
   types,
+  comments,
 } from 'data';
 
 import { itemResolver } from 'utils';
@@ -51,6 +53,11 @@ const Query = new GraphQLObjectType({
       resolve: () => request('/pages'),
     },
     page: itemResolver(Page, pages),
+    comments: {
+      type: new GraphQLList(Comment),
+      resolve: () => request('/comments'),
+    },
+    comment: itemResolver(Comment, comments),
     types: {
       type: new GraphQLList(Type),
       resolve: () => (
