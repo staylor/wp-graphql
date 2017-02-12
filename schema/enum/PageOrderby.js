@@ -1,7 +1,7 @@
 import { GraphQLEnumType } from 'graphql';
 
-const ORDERBY = new GraphQLEnumType({
-  name: 'ORDERBY',
+const PAGE_ORDERBY = new GraphQLEnumType({
+  name: 'PAGE_ORDERBY',
   values: {
     DATE: { value: 'date' },
     RELEVANCE: { value: 'relevance' },
@@ -9,7 +9,8 @@ const ORDERBY = new GraphQLEnumType({
     INCLUDE: { value: 'include' },
     TITLE: { value: 'title' },
     SLUG: { value: 'slug' },
+    MENU_ORDER: { value: 'menu_order' },
   },
 });
 
-export default ORDERBY;
+export default PAGE_ORDERBY;

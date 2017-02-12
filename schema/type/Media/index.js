@@ -11,10 +11,12 @@ import Title from 'type/Title';
 import Meta from 'type/Meta';
 import Description from 'type/Description';
 import Caption from 'type/Caption';
-import Post from 'type/Post';
 import User from 'type/User';
 import MediaDetails from 'type/Media/Details';
 import MediaLinks from 'type/Media/Links';
+
+import COMMENT_STATUS from 'enum/CommentStatus';
+import PING_STATUS from 'enum/PingStatus';
 
 import { users } from 'data';
 import { metaResolver } from 'utils';
@@ -37,8 +39,8 @@ const Media = new GraphQLObjectType({
       type: User,
       resolve: post => users.load(post.author),
     },
-    comment_status: { type: GraphQLString },
-    ping_status: { type: GraphQLString },
+    comment_status: { type: COMMENT_STATUS },
+    ping_status: { type: PING_STATUS },
     sticky: { type: GraphQLBoolean },
     template: { type: GraphQLString },
     meta: {

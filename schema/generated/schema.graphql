@@ -52,6 +52,16 @@ type Comment {
   _links: CommentLinks
 }
 
+enum COMMENT_ORDERBY {
+  ID
+  INCLUDE
+  DATE
+  DATE_GMT
+  POST
+  PARENT
+  TYPE
+}
+
 enum COMMENT_STATUS {
   OPEN
   CLOSED
@@ -124,8 +134,8 @@ type Media {
   link: String
   title: Title
   author: User
-  comment_status: String
-  ping_status: String
+  comment_status: COMMENT_STATUS
+  ping_status: PING_STATUS
   sticky: Boolean
   template: String
   meta: [Meta]
@@ -138,6 +148,13 @@ type Media {
   post: Int
   source_url: String
   _links: MediaLinks
+}
+
+enum MEDIA_TYPE {
+  IMAGE
+  VIDEO
+  AUDIO
+  APPLICATION
 }
 
 # The details for the media.
@@ -178,15 +195,6 @@ enum ORDER {
   DESC
 }
 
-enum ORDERBY {
-  DATE
-  RELEVANCE
-  ID
-  INCLUDE
-  TITLE
-  SLUG
-}
-
 # An object.
 type Page {
   id: Int
@@ -210,6 +218,16 @@ type Page {
   template: String
   meta: [Meta]
   _links: PageLinks
+}
+
+enum PAGE_ORDERBY {
+  DATE
+  RELEVANCE
+  ID
+  INCLUDE
+  TITLE
+  SLUG
+  MENU_ORDER
 }
 
 # The links for a page.
@@ -258,6 +276,15 @@ type Post {
   _links: PostLinks
 }
 
+enum POST_ORDERBY {
+  DATE
+  RELEVANCE
+  ID
+  INCLUDE
+  TITLE
+  SLUG
+}
+
 # The links for a post.
 type PostLinks {
   self: [Link]
@@ -279,22 +306,24 @@ type PostTypeLink {
 }
 
 type Query {
-  posts(page: Int, per_page: Int, offset: Int, search: String, order: ORDER, orderby: ORDERBY, after: String, before: String, author: String, author_exclude: String, include: String, exclude: String, slug: String, categories: String, categories_exclude: String, tags: String, tags_exclude: String, sticky: Boolean): [Post]
+  posts(page: Int, per_page: Int, offset: Int, search: String, order: ORDER, orderby: POST_ORDERBY, sticky: Boolean, after: String, before: String, author: String, author_exclude: String, include: String, exclude: String, slug: String, categories: String, categories_exclude: String, tags: String, tags_exclude: String): [Post]
   post(id: Int): Post
-  users: [User]
+  users(page: Int, per_page: Int, offset: Int, search: String, order: ORDER, orderby: USER_ORDERBY, include: String, exclude: String, slug: String, roles: String): [User]
   user(id: Int): User
-  categories: [Category]
+  categories(page: Int, per_page: Int, search: String, order: ORDER, orderby: TAXONOMY_ORDERBY, hide_empty: Boolean, parent: Int, post: Int, include: String, exclude: String, slug: String): [Category]
   category(id: Int): Category
-  tags: [Tag]
+  tags(page: Int, per_page: Int, offset: Int, search: String, order: ORDER, orderby: TAXONOMY_ORDERBY, hide_empty: Boolean, post: Int, include: String, exclude: String, slug: String): [Tag]
   tag(id: Int): Tag
-  pages: [Page]
+  pages(page: Int, per_page: Int, offset: Int, menu_order: Int, search: String, order: ORDER, orderby: PAGE_ORDERBY, sticky: Boolean, after: String, before: String, author: String, author_exclude: String, include: String, exclude: String, slug: String, parent: String, parent_exclude: String): [Page]
   page(id: Int): Page
-  comments: [Comment]
+  comments(page: Int, per_page: Int, offset: Int, post: Int, search: String, order: ORDER, orderby: COMMENT_ORDERBY, after: String, before: String, include: String, exclude: String, parent: String, parent_exclude: String): [Comment]
   comment(id: Int): Comment
   types: [Type]
   type(type: String): Type
-  taxonomies: [Taxonomy]
+  taxonomies(type: String): [Taxonomy]
   taxonomy(type: String): Taxonomy
+  media(page: Int, per_page: Int, offset: Int, search: String, order: ORDER, orderby: POST_ORDERBY, media_type: MEDIA_TYPE, mime_type: String, after: String, before: String, author: String, author_exclude: String, parent: String, parent_exclude: String, include: String, exclude: String, slug: String): [Media]
+  medium(id: Int): Media
   statuses: [Status]
   status(type: String): Status
 }
@@ -346,6 +375,16 @@ type Taxonomy {
   hierarchical: Boolean
   rest_base: String
   _links: TaxonomyLinks
+}
+
+enum TAXONOMY_ORDERBY {
+  ID
+  INCLUDE
+  NAME
+  SLUG
+  TERM_GROUP
+  DESCRIPTION
+  COUNT
 }
 
 # The links for a taxonomy.
@@ -400,6 +439,16 @@ type User {
   slug: String
   avatar_urls: [Avatar]
   _links: UserLinks
+}
+
+enum USER_ORDERBY {
+  ID
+  INCLUDE
+  NAME
+  REGISTERED_DATE
+  SLUG
+  EMAIL
+  URL
 }
 
 # The links for a user.

@@ -8,6 +8,7 @@
       "root": ["./"],
       "alias": {
         "type": "./schema/type",
+        "enum": "./schema/enum",
         "data": "./data",
         "utils": "./schema/utils"
       }

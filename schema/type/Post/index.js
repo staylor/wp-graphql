@@ -17,9 +17,9 @@ import Tag from 'type/Tag';
 import Media from 'type/Media';
 import PostLinks from 'type/Post/Links';
 
-import COMMENT_STATUS from 'type/CommentStatus';
-import PING_STATUS from 'type/PingStatus';
-import FORMAT from 'type/Format';
+import COMMENT_STATUS from 'enum/CommentStatus';
+import PING_STATUS from 'enum/PingStatus';
+import FORMAT from 'enum/Format';
 
 import {
   categories,
