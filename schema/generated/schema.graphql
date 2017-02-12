@@ -218,6 +218,8 @@ type Query {
   tag(id: Int): Tag
   pages: [Page]
   page(id: Int): Page
+  types: [Type]
+  type(type: String): Type
   statuses: [Status]
   status(type: String): Status
 }
@@ -274,6 +276,25 @@ type TermLink {
 # The title for a post.
 type Title {
   rendered: String
+}
+
+# A post type.
+type Type {
+  type: String
+  description: String
+  hierarchical: Boolean
+  name: String
+  slug: String
+  taxonomies: [String]
+  rest_base: String
+  _links: TypeLinks
+}
+
+# The links for a type.
+type TypeLinks {
+  collection: [Link]
+  items: [Link]
+  curies: [TemplatedLink]
 }
 
 # An object.

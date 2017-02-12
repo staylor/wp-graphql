@@ -10,6 +10,7 @@ import Category from 'type/Category';
 import Tag from 'type/Tag';
 import Page from 'type/Page';
 import Status from 'type/Status';
+import Type from 'type/Type';
 import request, {
   posts,
   pages,
@@ -17,6 +18,7 @@ import request, {
   categories,
   tags,
   statuses,
+  types,
 } from 'data';
 
 import { itemResolver } from 'utils';
@@ -49,6 +51,25 @@ const Query = new GraphQLObjectType({
       resolve: () => request('/pages'),
     },
     page: itemResolver(Page, pages),
+    types: {
+      type: new GraphQLList(Type),
+      resolve: () => (
+        request('/types').then(typeMap => (
+          Object.keys(typeMap).map(type => ({
+            ...typeMap[type],
+            type,
+          }))
+        ))
+      ),
+    },
+    type: {
+      type: Type,
+      args: {
+        type: { type: GraphQLString },
+      },
+      // eslint-disable-next-line no-confusing-arrow
+      resolve: (root, { type }) => types.load(type),
+    },
     statuses: {
       type: new GraphQLList(Status),
       resolve: () => (
