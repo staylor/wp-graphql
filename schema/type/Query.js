@@ -12,6 +12,7 @@ import Tag from 'type/Tag';
 import Page from 'type/Page';
 import Status from 'type/Status';
 import Type from 'type/Type';
+import Taxonomy from 'type/Taxonomy';
 import request, {
   posts,
   pages,
@@ -20,6 +21,7 @@ import request, {
   tags,
   statuses,
   types,
+  taxonomies,
   comments,
 } from 'data';
 
@@ -78,6 +80,30 @@ const Query = new GraphQLObjectType({
       resolve: (root, { type }) => (
         types.load(type).then(typeData => ({
           ...typeData,
+          type,
+        }))
+      ),
+    },
+    taxonomies: {
+      type: new GraphQLList(Taxonomy),
+      resolve: () => (
+        request('/taxonomies').then(taxMap => (
+          Object.keys(taxMap).map(type => ({
+            ...taxMap[type],
+            type,
+          }))
+        ))
+      ),
+    },
+    taxonomy: {
+      type: Taxonomy,
+      args: {
+        type: { type: GraphQLString },
+      },
+      // eslint-disable-next-line no-confusing-arrow
+      resolve: (root, { type }) => (
+        taxonomies.load(type).then(taxData => ({
+          ...taxData,
           type,
         }))
       ),

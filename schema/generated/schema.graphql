@@ -256,6 +256,8 @@ type Query {
   comment(id: Int): Comment
   types: [Type]
   type(type: String): Type
+  taxonomies: [Taxonomy]
+  taxonomy(type: String): Taxonomy
   statuses: [Status]
   status(type: String): Status
 }
@@ -294,6 +296,25 @@ type TagLinks {
   collection: [Link]
   about: [Link]
   post_type: [TermLink]
+  curies: [TemplatedLink]
+}
+
+# A taxonomy type.
+type Taxonomy {
+  type: String
+  name: String
+  slug: String
+  description: String
+  types: [String]
+  hierarchical: Boolean
+  rest_base: String
+  _links: TaxonomyLinks
+}
+
+# The links for a taxonomy.
+type TaxonomyLinks {
+  collection: [Link]
+  items: [Link]
   curies: [TemplatedLink]
 }
 
