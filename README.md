@@ -5,7 +5,7 @@ WordPress REST API exposed via GraphQL
 
 Take a look: http://graphql.highforthis.com/graphql
 
-This is mega-alpha, but also an RFC. Brose the docs on the right to create query on the left (which also supports autocomplete). Here's a query to start with on the left:
+This is mega-alpha, but also an RFC. Browse the docs on the right to create a query on the left (which also supports autocomplete). Here's a query to try out:
 
 ```
 query {
