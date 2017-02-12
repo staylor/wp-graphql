@@ -2,6 +2,8 @@ import {
   GraphQLObjectType,
   GraphQLList,
   GraphQLString,
+  GraphQLInt,
+  GraphQLBoolean,
 } from 'graphql';
 
 import Post from 'type/Post';
@@ -13,6 +15,10 @@ import Page from 'type/Page';
 import Status from 'type/Status';
 import Type from 'type/Type';
 import Taxonomy from 'type/Taxonomy';
+
+import ORDER from 'type/Order';
+import ORDERBY from 'type/Orderby';
+
 import request, {
   posts,
   pages,
@@ -25,39 +31,61 @@ import request, {
   comments,
 } from 'data';
 
-import { itemResolver } from 'utils';
+import { resolveWithArgs, itemResolver } from 'utils';
 
 const Query = new GraphQLObjectType({
   name: 'Query',
   fields: () => ({
     posts: {
       type: new GraphQLList(Post),
-      resolve: () => request('/posts'),
+      args: {
+        page: { type: GraphQLInt },
+        per_page: { type: GraphQLInt },
+        offset: { type: GraphQLInt },
+        search: { type: GraphQLString },
+        order: { type: ORDER },
+        orderby: { type: ORDERBY },
+        // must be in format: 2017-02-11T00:00:00
+        after: { type: GraphQLString },
+        before: { type: GraphQLString },
+        // value or comma-separated values
+        author: { type: GraphQLString },
+        author_exclude: { type: GraphQLString },
+        include: { type: GraphQLString },
+        exclude: { type: GraphQLString },
+        slug: { type: GraphQLString },
+        categories: { type: GraphQLString },
+        categories_exclude: { type: GraphQLString },
+        tags: { type: GraphQLString },
+        tags_exclude: { type: GraphQLString },
+        sticky: { type: GraphQLBoolean },
+      },
+      resolve: resolveWithArgs('/posts'),
     },
     post: itemResolver(Post, posts),
     users: {
       type: new GraphQLList(User),
-      resolve: () => request('/users'),
+      resolve: resolveWithArgs('/users'),
     },
     user: itemResolver(User, users),
     categories: {
       type: new GraphQLList(Category),
-      resolve: () => request('/categories'),
+      resolve: resolveWithArgs('/categories'),
     },
     category: itemResolver(Category, categories),
     tags: {
       type: new GraphQLList(Tag),
-      resolve: () => request('/tags'),
+      resolve: resolveWithArgs('/tags'),
     },
     tag: itemResolver(Tag, tags),
     pages: {
       type: new GraphQLList(Page),
-      resolve: () => request('/pages'),
+      resolve: resolveWithArgs('/pages'),
     },
     page: itemResolver(Page, pages),
     comments: {
       type: new GraphQLList(Comment),
-      resolve: () => request('/comments'),
+      resolve: resolveWithArgs('/comments'),
     },
     comment: itemResolver(Comment, comments),
     types: {

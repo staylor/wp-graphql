@@ -173,6 +173,20 @@ type Meta {
   value: String
 }
 
+enum ORDER {
+  ASC
+  DESC
+}
+
+enum ORDERBY {
+  DATE
+  RELEVANCE
+  ID
+  INCLUDE
+  TITLE
+  SLUG
+}
+
 # An object.
 type Page {
   id: Int
@@ -265,7 +279,7 @@ type PostTypeLink {
 }
 
 type Query {
-  posts: [Post]
+  posts(page: Int, per_page: Int, offset: Int, search: String, order: ORDER, orderby: ORDERBY, after: String, before: String, author: String, author_exclude: String, include: String, exclude: String, slug: String, categories: String, categories_exclude: String, tags: String, tags_exclude: String, sticky: Boolean): [Post]
   post(id: Int): Post
   users: [User]
   user(id: Int): User
