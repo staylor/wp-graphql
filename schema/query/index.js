@@ -11,6 +11,7 @@ import StatusQueries from 'query/Status';
 
 export default (
   Object.assign(
+    {},
     PostQueries,
     UserQueries,
     CategoryQueries,

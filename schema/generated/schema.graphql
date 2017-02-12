@@ -306,23 +306,23 @@ type PostTypeLink {
 }
 
 type Query {
-  posts(page: Int, per_page: Int, offset: Int, search: String, order: ORDER, orderby: POST_ORDERBY, sticky: Boolean, after: String, before: String, author: String, author_exclude: String, include: String, exclude: String, slug: String, categories: String, categories_exclude: String, tags: String, tags_exclude: String): [Post]
+  posts(page: Int, per_page: Int, offset: Int, order: ORDER, search: String, include: String, exclude: String, after: String, before: String, author: String, author_exclude: String, slug: String, orderby: POST_ORDERBY, sticky: Boolean, categories: String, categories_exclude: String, tags: String, tags_exclude: String): [Post]
   post(id: Int): Post
-  users(page: Int, per_page: Int, offset: Int, search: String, order: ORDER, orderby: USER_ORDERBY, include: String, exclude: String, slug: String, roles: String): [User]
+  users(page: Int, per_page: Int, offset: Int, order: ORDER, search: String, include: String, exclude: String, slug: String, orderby: USER_ORDERBY, roles: String): [User]
   user(id: Int): User
-  categories(page: Int, per_page: Int, search: String, order: ORDER, orderby: TAXONOMY_ORDERBY, hide_empty: Boolean, parent: Int, post: Int, include: String, exclude: String, slug: String): [Category]
+  categories(page: Int, per_page: Int, offset: Int, order: ORDER, search: String, include: String, exclude: String, slug: String, orderby: TAXONOMY_ORDERBY, hide_empty: Boolean, post: Int, parent: Int): [Category]
   category(id: Int): Category
-  tags(page: Int, per_page: Int, offset: Int, search: String, order: ORDER, orderby: TAXONOMY_ORDERBY, hide_empty: Boolean, post: Int, include: String, exclude: String, slug: String): [Tag]
+  tags(page: Int, per_page: Int, offset: Int, order: ORDER, search: String, include: String, exclude: String, slug: String, orderby: TAXONOMY_ORDERBY, hide_empty: Boolean, post: Int): [Tag]
   tag(id: Int): Tag
-  pages(page: Int, per_page: Int, offset: Int, menu_order: Int, search: String, order: ORDER, orderby: PAGE_ORDERBY, sticky: Boolean, after: String, before: String, author: String, author_exclude: String, include: String, exclude: String, slug: String, parent: String, parent_exclude: String): [Page]
+  pages(page: Int, per_page: Int, offset: Int, order: ORDER, search: String, include: String, exclude: String, after: String, before: String, parent: String, parent_exclude: String, author: String, author_exclude: String, slug: String, menu_order: Int, orderby: PAGE_ORDERBY): [Page]
   page(id: Int): Page
-  comments(page: Int, per_page: Int, offset: Int, post: Int, search: String, order: ORDER, orderby: COMMENT_ORDERBY, after: String, before: String, include: String, exclude: String, parent: String, parent_exclude: String): [Comment]
+  comments(page: Int, per_page: Int, offset: Int, order: ORDER, search: String, include: String, exclude: String, after: String, before: String, parent: String, parent_exclude: String, post: Int, orderby: COMMENT_ORDERBY): [Comment]
   comment(id: Int): Comment
   types: [Type]
   type(type: String): Type
   taxonomies(type: String): [Taxonomy]
   taxonomy(type: String): Taxonomy
-  media(page: Int, per_page: Int, offset: Int, search: String, order: ORDER, orderby: POST_ORDERBY, media_type: MEDIA_TYPE, mime_type: String, after: String, before: String, author: String, author_exclude: String, parent: String, parent_exclude: String, include: String, exclude: String, slug: String): [Media]
+  media(page: Int, per_page: Int, offset: Int, order: ORDER, search: String, include: String, exclude: String, after: String, before: String, parent: String, parent_exclude: String, author: String, author_exclude: String, slug: String, orderby: POST_ORDERBY, media_type: MEDIA_TYPE, mime_type: String): [Media]
   medium(id: Int): Media
   statuses: [Status]
   status(type: String): Status
