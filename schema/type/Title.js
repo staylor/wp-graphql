@@ -1,13 +1,11 @@
-import {
-  GraphQLObjectType,
-  GraphQLString,
-} from 'graphql';
+import { GraphQLObjectType } from 'graphql';
+import rendered from 'field/rendered';
 
 const Title = new GraphQLObjectType({
   name: 'Title',
-  description: 'The title for a post.',
+  description: 'The title for an object.',
   fields: {
-    rendered: { type: GraphQLString },
+    rendered,
   },
 });
 

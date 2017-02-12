@@ -2,14 +2,14 @@ import {
   GraphQLObjectType,
   GraphQLInt,
   GraphQLString,
-  GraphQLList,
 } from 'graphql';
 
 import TermInterface from 'interface/Term';
-import Meta from 'type/Meta';
 import CategoryLinks from 'type/Category/Links';
+import description from 'field/description';
+import metaField from 'field/meta';
+import { id, slug, name } from 'field/identifier';
 import { categories } from 'data';
-import { metaResolver } from 'utils';
 
 const Category = new GraphQLObjectType({
   name: 'Category',
@@ -19,17 +19,14 @@ const Category = new GraphQLObjectType({
     return term.taxonomy === 'category';
   },
   fields: () => ({
-    id: { type: GraphQLInt },
+    id,
     count: { type: GraphQLInt },
-    description: { type: GraphQLString },
+    description,
     link: { type: GraphQLString },
-    name: { type: GraphQLString },
-    slug: { type: GraphQLString },
+    name,
+    slug,
     taxonomy: { type: GraphQLString },
-    meta: {
-      type: new GraphQLList(Meta),
-      resolve: metaResolver,
-    },
+    meta: metaField(),
     _links: { type: CategoryLinks },
     // extra category fields
     parent: {

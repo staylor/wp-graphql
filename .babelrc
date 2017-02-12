@@ -11,6 +11,7 @@
         "enum": "./schema/enum",
         "interface": "./schema/interface",
         "query": "./schema/query",
+        "field": "./schema/field",
         "data": "./data",
         "utils": "./schema/utils"
       }

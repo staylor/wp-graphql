@@ -1,18 +1,37 @@
 # An object.
 type Audio implements MediaInterface {
+  # Unique identifier for the object.
   id: Int
+
+  # The date the object was published, in the timezone of the site.
   date: String
+
+  # The date the object was published, as GMT.
   date_gmt: String
+
+  # The globally unique identifier for the object.
   guid: Guid
+
+  # The date the object was modified, in the timezone of the site.
   modified: String
+
+  # The date the object was modified, as GMT.
   modified_gmt: String
+
+  # An alphanumeric identifier for the object unique to its type.
   slug: String
   type: String
   link: String
   title: Title
+
+  # Whether or not comments are open on the object.
   comment_status: COMMENT_STATUS
+
+  # Whether or not the object can be pinged.
   ping_status: PING_STATUS
   template: String
+
+  # Meta fields for the object.
   meta: [Meta]
   author: User
   _links: MediaLinks
@@ -37,20 +56,30 @@ type Avatar {
   url: String
 }
 
-# The caption for the media.
+# The caption for the object.
 type Caption {
+  # HTML content for the object, transformed for display.
   rendered: String
 }
 
 # A unique identifier for a post.
 type Category implements TermInterface {
+  # Unique identifier for the object.
   id: Int
   count: Int
+
+  # A description of the object.
   description: String
   link: String
+
+  # HTML title for the object.
   name: String
+
+  # An alphanumeric identifier for the object unique to its type.
   slug: String
   taxonomy: String
+
+  # Meta fields for the object.
   meta: [Meta]
   _links: CategoryLinks
   parent: Category
@@ -74,13 +103,19 @@ type Comment {
   author: User
   author_name: String
   author_url: String
+
+  # The date the object was published, in the timezone of the site.
   date: String
+
+  # The date the object was published, as GMT.
   date_gmt: String
   content: Content
   link: String
   status: String
   type: String
   author_avatar_urls: [Avatar]
+
+  # Meta fields for the object.
   meta: [Meta]
   _links: CommentLinks
 }
@@ -108,14 +143,18 @@ type CommentLinks {
   up: [PostTypeLink]
 }
 
-# The content for a post.
+# The content for the object.
 type Content {
+  # HTML content for the object, transformed for display.
   rendered: String
+
+  # Whether the field is protected with a password.
   protected: Boolean
 }
 
-# The description for the media.
+# The description for the object.
 type Description {
+  # HTML content for the object, transformed for display.
   rendered: String
 }
 
@@ -125,9 +164,12 @@ type EmbeddableLink {
   embeddable: Boolean
 }
 
-# The excerpt for a post.
+# The excerpt for the object.
 type Excerpt {
+  # HTML content for the object, transformed for display.
   rendered: String
+
+  # Whether the field is protected with a password.
   protected: Boolean
 }
 
@@ -144,26 +186,46 @@ enum FORMAT {
   AUDIO
 }
 
-# A unique identifier for a post.
+# The globally unique identifier for the object.
 type Guid {
+  # HTML content for the object, transformed for display.
   rendered: String
 }
 
 # An object.
 type Image implements MediaInterface {
+  # Unique identifier for the object.
   id: Int
+
+  # The date the object was published, in the timezone of the site.
   date: String
+
+  # The date the object was published, as GMT.
   date_gmt: String
+
+  # The globally unique identifier for the object.
   guid: Guid
+
+  # The date the object was modified, in the timezone of the site.
   modified: String
+
+  # The date the object was modified, as GMT.
   modified_gmt: String
+
+  # An alphanumeric identifier for the object unique to its type.
   slug: String
   type: String
   link: String
   title: Title
+
+  # Whether or not comments are open on the object.
   comment_status: COMMENT_STATUS
+
+  # Whether or not the object can be pinged.
   ping_status: PING_STATUS
   template: String
+
+  # Meta fields for the object.
   meta: [Meta]
   author: User
   _links: MediaLinks
@@ -200,17 +262,34 @@ enum MEDIA_TYPE {
 }
 
 interface MediaInterface {
+  # Unique identifier for the object.
   id: Int
+
+  # The date the object was published, in the timezone of the site.
   date: String
+
+  # The date the object was published, as GMT.
   date_gmt: String
+
+  # The globally unique identifier for the object.
   guid: Guid
+
+  # The date the object was modified, in the timezone of the site.
   modified: String
+
+  # The date the object was modified, as GMT.
   modified_gmt: String
+
+  # An alphanumeric identifier for the object unique to its type.
   slug: String
   type: String
   link: String
   title: Title
+
+  # Whether or not comments are open on the object.
   comment_status: COMMENT_STATUS
+
+  # Whether or not the object can be pinged.
   ping_status: PING_STATUS
   template: String
   meta: [Meta]
@@ -244,9 +323,12 @@ type MediaSize {
   source_url: String
 }
 
-# The metadata for a post.
+# A metadata field for an object.
 type Meta {
-  key: String
+  # Name for the metadata field.
+  name: String
+
+  # Value for the metadata field.
   value: String
 }
 
@@ -257,21 +339,40 @@ enum ORDER {
 
 # An object.
 type Page implements PostInterface {
+  # Unique identifier for the object.
   id: Int
+
+  # The date the object was published, in the timezone of the site.
   date: String
+
+  # The date the object was published, as GMT.
   date_gmt: String
+
+  # The globally unique identifier for the object.
   guid: Guid
+
+  # The date the object was modified, in the timezone of the site.
   modified: String
+
+  # The date the object was modified, as GMT.
   modified_gmt: String
+
+  # An alphanumeric identifier for the object unique to its type.
   slug: String
   type: String
   link: String
   title: Title
   content: Content
   excerpt: Excerpt
+
+  # Whether or not comments are open on the object.
   comment_status: COMMENT_STATUS
+
+  # Whether or not the object can be pinged.
   ping_status: PING_STATUS
   template: String
+
+  # Meta fields for the object.
   meta: [Meta]
   author: User
   featured_media: Media
@@ -311,22 +412,41 @@ enum PING_STATUS {
 
 # A read-only post object.
 type Post implements PostInterface {
+  # Unique identifier for the object.
   id: Int
+
+  # The date the object was published, in the timezone of the site.
   date: String
+
+  # The date the object was published, as GMT.
   date_gmt: String
+
+  # The globally unique identifier for the object.
   guid: Guid
+
+  # The date the object was modified, in the timezone of the site.
   modified: String
+
+  # The date the object was modified, as GMT.
   modified_gmt: String
+
+  # An alphanumeric identifier for the object unique to its type.
   slug: String
   type: String
   link: String
   title: Title
   content: Content
   excerpt: Excerpt
+
+  # Whether or not comments are open on the object.
   comment_status: COMMENT_STATUS
+
+  # Whether or not the object can be pinged.
   ping_status: PING_STATUS
   template: String
   format: FORMAT
+
+  # Meta fields for the object.
   meta: [Meta]
   author: User
   featured_media: Media
@@ -346,19 +466,36 @@ enum POST_ORDERBY {
 }
 
 interface PostInterface {
+  # Unique identifier for the object.
   id: Int
+
+  # The date the object was published, in the timezone of the site.
   date: String
+
+  # The date the object was published, as GMT.
   date_gmt: String
+
+  # The globally unique identifier for the object.
   guid: Guid
+
+  # The date the object was modified, in the timezone of the site.
   modified: String
+
+  # The date the object was modified, as GMT.
   modified_gmt: String
+
+  # An alphanumeric identifier for the object unique to its type.
   slug: String
   type: String
   link: String
   title: Title
   content: Content
   excerpt: Excerpt
+
+  # Whether or not comments are open on the object.
   comment_status: COMMENT_STATUS
+
+  # Whether or not the object can be pinged.
   ping_status: PING_STATUS
   template: String
   meta: [Meta]
@@ -411,10 +548,13 @@ type Query {
 
 # A post status.
 type Status {
+  # HTML title for the object.
   name: String
   type: String
   public: Boolean
   queryable: Boolean
+
+  # An alphanumeric identifier for the object unique to its type.
   slug: String
   _links: StatusLinks
 }
@@ -426,13 +566,22 @@ type StatusLinks {
 
 # A unique identifier for a post.
 type Tag implements TermInterface {
+  # Unique identifier for the object.
   id: Int
   count: Int
+
+  # A description of the object.
   description: String
   link: String
+
+  # HTML title for the object.
   name: String
+
+  # An alphanumeric identifier for the object unique to its type.
   slug: String
   taxonomy: String
+
+  # Meta fields for the object.
   meta: [Meta]
   _links: TagLinks
 }
@@ -449,8 +598,14 @@ type TagLinks {
 # A taxonomy type.
 type Taxonomy {
   type: String
+
+  # HTML title for the object.
   name: String
+
+  # An alphanumeric identifier for the object unique to its type.
   slug: String
+
+  # A description of the object.
   description: String
   types: [String]
   hierarchical: Boolean
@@ -483,11 +638,16 @@ type TemplatedLink {
 
 # Term fields.
 interface TermInterface {
+  # Unique identifier for the object.
   id: Int
   count: Int
   description: String
   link: String
+
+  # HTML title for the object.
   name: String
+
+  # An alphanumeric identifier for the object unique to its type.
   slug: String
   taxonomy: String
   meta: [Meta]
@@ -499,17 +659,24 @@ type TermLink {
   embeddable: Boolean
 }
 
-# The title for a post.
+# The title for an object.
 type Title {
+  # HTML content for the object, transformed for display.
   rendered: String
 }
 
 # A post type.
 type Type {
   type: String
+
+  # A description of the object.
   description: String
   hierarchical: Boolean
+
+  # HTML title for the object.
   name: String
+
+  # An alphanumeric identifier for the object unique to its type.
   slug: String
   taxonomies: [String]
   rest_base: String
@@ -525,10 +692,17 @@ type TypeLinks {
 
 # An object.
 type User {
+  # Unique identifier for the object.
   id: Int
+
+  # HTML title for the object.
   name: String
+
+  # A description of the object.
   description: String
   link: String
+
+  # An alphanumeric identifier for the object unique to its type.
   slug: String
   avatar_urls: [Avatar]
   _links: UserLinks
@@ -552,19 +726,38 @@ type UserLinks {
 
 # An object.
 type Video implements MediaInterface {
+  # Unique identifier for the object.
   id: Int
+
+  # The date the object was published, in the timezone of the site.
   date: String
+
+  # The date the object was published, as GMT.
   date_gmt: String
+
+  # The globally unique identifier for the object.
   guid: Guid
+
+  # The date the object was modified, in the timezone of the site.
   modified: String
+
+  # The date the object was modified, as GMT.
   modified_gmt: String
+
+  # An alphanumeric identifier for the object unique to its type.
   slug: String
   type: String
   link: String
   title: Title
+
+  # Whether or not comments are open on the object.
   comment_status: COMMENT_STATUS
+
+  # Whether or not the object can be pinged.
   ping_status: PING_STATUS
   template: String
+
+  # Meta fields for the object.
   meta: [Meta]
   author: User
   _links: MediaLinks

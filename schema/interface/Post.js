@@ -1,38 +1,38 @@
 import {
   GraphQLInterfaceType,
-  GraphQLInt,
   GraphQLString,
   GraphQLList,
 } from 'graphql';
 
-import Guid from 'type/Guid';
 import Title from 'type/Title';
 import Content from 'type/Content';
 import Excerpt from 'type/Excerpt';
 import User from 'type/User';
 import Media from 'type/Media';
 import Meta from 'type/Meta';
-
-import COMMENT_STATUS from 'enum/CommentStatus';
-import PING_STATUS from 'enum/PingStatus';
+import { id, slug, guid } from 'field/identifier';
+// eslint-disable-next-line camelcase
+import { date, date_gmt, modified, modified_gmt } from 'field/date';
+// eslint-disable-next-line camelcase
+import { comment_status, ping_status } from 'field/status';
 
 const PostInterface = new GraphQLInterfaceType({
   name: 'PostInterface',
   fields: {
-    id: { type: GraphQLInt },
-    date: { type: GraphQLString },
-    date_gmt: { type: GraphQLString },
-    guid: { type: Guid },
-    modified: { type: GraphQLString },
-    modified_gmt: { type: GraphQLString },
-    slug: { type: GraphQLString },
+    id,
+    date,
+    date_gmt,
+    guid,
+    modified,
+    modified_gmt,
+    slug,
     type: { type: GraphQLString },
     link: { type: GraphQLString },
     title: { type: Title },
     content: { type: Content },
     excerpt: { type: Excerpt },
-    comment_status: { type: COMMENT_STATUS },
-    ping_status: { type: PING_STATUS },
+    comment_status,
+    ping_status,
     template: { type: GraphQLString },
     meta: { type: new GraphQLList(Meta) },
     author: { type: User },

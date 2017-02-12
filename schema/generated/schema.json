@@ -1503,7 +1503,7 @@
           "fields": [
             {
               "name": "id",
-              "description": null,
+              "description": "Unique identifier for the object.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -1515,7 +1515,7 @@
             },
             {
               "name": "date",
-              "description": null,
+              "description": "The date the object was published, in the timezone of the site.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -1527,7 +1527,7 @@
             },
             {
               "name": "date_gmt",
-              "description": null,
+              "description": "The date the object was published, as GMT.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -1539,7 +1539,7 @@
             },
             {
               "name": "guid",
-              "description": null,
+              "description": "The globally unique identifier for the object.",
               "args": [],
               "type": {
                 "kind": "OBJECT",
@@ -1551,7 +1551,7 @@
             },
             {
               "name": "modified",
-              "description": null,
+              "description": "The date the object was modified, in the timezone of the site.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -1563,7 +1563,7 @@
             },
             {
               "name": "modified_gmt",
-              "description": null,
+              "description": "The date the object was modified, as GMT.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -1575,7 +1575,7 @@
             },
             {
               "name": "slug",
-              "description": null,
+              "description": "An alphanumeric identifier for the object unique to its type.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -1647,7 +1647,7 @@
             },
             {
               "name": "comment_status",
-              "description": null,
+              "description": "Whether or not comments are open on the object.",
               "args": [],
               "type": {
                 "kind": "ENUM",
@@ -1659,7 +1659,7 @@
             },
             {
               "name": "ping_status",
-              "description": null,
+              "description": "Whether or not the object can be pinged.",
               "args": [],
               "type": {
                 "kind": "ENUM",
@@ -1695,7 +1695,7 @@
             },
             {
               "name": "meta",
-              "description": null,
+              "description": "Meta fields for the object.",
               "args": [],
               "type": {
                 "kind": "LIST",
@@ -1808,7 +1808,7 @@
           "fields": [
             {
               "name": "id",
-              "description": null,
+              "description": "Unique identifier for the object.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -1820,7 +1820,7 @@
             },
             {
               "name": "date",
-              "description": null,
+              "description": "The date the object was published, in the timezone of the site.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -1832,7 +1832,7 @@
             },
             {
               "name": "date_gmt",
-              "description": null,
+              "description": "The date the object was published, as GMT.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -1844,7 +1844,7 @@
             },
             {
               "name": "guid",
-              "description": null,
+              "description": "The globally unique identifier for the object.",
               "args": [],
               "type": {
                 "kind": "OBJECT",
@@ -1856,7 +1856,7 @@
             },
             {
               "name": "modified",
-              "description": null,
+              "description": "The date the object was modified, in the timezone of the site.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -1868,7 +1868,7 @@
             },
             {
               "name": "modified_gmt",
-              "description": null,
+              "description": "The date the object was modified, as GMT.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -1880,7 +1880,7 @@
             },
             {
               "name": "slug",
-              "description": null,
+              "description": "An alphanumeric identifier for the object unique to its type.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -1952,7 +1952,7 @@
             },
             {
               "name": "comment_status",
-              "description": null,
+              "description": "Whether or not comments are open on the object.",
               "args": [],
               "type": {
                 "kind": "ENUM",
@@ -1964,7 +1964,7 @@
             },
             {
               "name": "ping_status",
-              "description": null,
+              "description": "Whether or not the object can be pinged.",
               "args": [],
               "type": {
                 "kind": "ENUM",
@@ -2046,11 +2046,11 @@
         {
           "kind": "OBJECT",
           "name": "Guid",
-          "description": "A unique identifier for a post.",
+          "description": "The globally unique identifier for the object.",
           "fields": [
             {
               "name": "rendered",
-              "description": null,
+              "description": "HTML content for the object, transformed for display.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -2069,11 +2069,11 @@
         {
           "kind": "OBJECT",
           "name": "Title",
-          "description": "The title for a post.",
+          "description": "The title for an object.",
           "fields": [
             {
               "name": "rendered",
-              "description": null,
+              "description": "HTML content for the object, transformed for display.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -2092,11 +2092,11 @@
         {
           "kind": "OBJECT",
           "name": "Content",
-          "description": "The content for a post.",
+          "description": "The content for the object.",
           "fields": [
             {
               "name": "rendered",
-              "description": null,
+              "description": "HTML content for the object, transformed for display.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -2108,7 +2108,7 @@
             },
             {
               "name": "protected",
-              "description": null,
+              "description": "Whether the field is protected with a password.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -2127,11 +2127,11 @@
         {
           "kind": "OBJECT",
           "name": "Excerpt",
-          "description": "The excerpt for a post.",
+          "description": "The excerpt for the object.",
           "fields": [
             {
               "name": "rendered",
-              "description": null,
+              "description": "HTML content for the object, transformed for display.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -2143,7 +2143,7 @@
             },
             {
               "name": "protected",
-              "description": null,
+              "description": "Whether the field is protected with a password.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -2208,11 +2208,11 @@
         {
           "kind": "OBJECT",
           "name": "Meta",
-          "description": "The metadata for a post.",
+          "description": "A metadata field for an object.",
           "fields": [
             {
-              "name": "key",
-              "description": null,
+              "name": "name",
+              "description": "Name for the metadata field.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -2224,7 +2224,7 @@
             },
             {
               "name": "value",
-              "description": null,
+              "description": "Value for the metadata field.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -2247,7 +2247,7 @@
           "fields": [
             {
               "name": "id",
-              "description": null,
+              "description": "Unique identifier for the object.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -2259,7 +2259,7 @@
             },
             {
               "name": "name",
-              "description": null,
+              "description": "HTML title for the object.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -2271,7 +2271,7 @@
             },
             {
               "name": "description",
-              "description": null,
+              "description": "A description of the object.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -2295,7 +2295,7 @@
             },
             {
               "name": "slug",
-              "description": null,
+              "description": "An alphanumeric identifier for the object unique to its type.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -2473,7 +2473,7 @@
           "fields": [
             {
               "name": "id",
-              "description": null,
+              "description": "Unique identifier for the object.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -2485,7 +2485,7 @@
             },
             {
               "name": "date",
-              "description": null,
+              "description": "The date the object was published, in the timezone of the site.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -2497,7 +2497,7 @@
             },
             {
               "name": "date_gmt",
-              "description": null,
+              "description": "The date the object was published, as GMT.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -2509,7 +2509,7 @@
             },
             {
               "name": "guid",
-              "description": null,
+              "description": "The globally unique identifier for the object.",
               "args": [],
               "type": {
                 "kind": "OBJECT",
@@ -2521,7 +2521,7 @@
             },
             {
               "name": "modified",
-              "description": null,
+              "description": "The date the object was modified, in the timezone of the site.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -2533,7 +2533,7 @@
             },
             {
               "name": "modified_gmt",
-              "description": null,
+              "description": "The date the object was modified, as GMT.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -2545,7 +2545,7 @@
             },
             {
               "name": "slug",
-              "description": null,
+              "description": "An alphanumeric identifier for the object unique to its type.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -2593,7 +2593,7 @@
             },
             {
               "name": "comment_status",
-              "description": null,
+              "description": "Whether or not comments are open on the object.",
               "args": [],
               "type": {
                 "kind": "ENUM",
@@ -2605,7 +2605,7 @@
             },
             {
               "name": "ping_status",
-              "description": null,
+              "description": "Whether or not the object can be pinged.",
               "args": [],
               "type": {
                 "kind": "ENUM",
@@ -2629,7 +2629,7 @@
             },
             {
               "name": "meta",
-              "description": null,
+              "description": "Meta fields for the object.",
               "args": [],
               "type": {
                 "kind": "LIST",
@@ -2782,7 +2782,7 @@
           "fields": [
             {
               "name": "id",
-              "description": null,
+              "description": "Unique identifier for the object.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -2794,7 +2794,7 @@
             },
             {
               "name": "date",
-              "description": null,
+              "description": "The date the object was published, in the timezone of the site.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -2806,7 +2806,7 @@
             },
             {
               "name": "date_gmt",
-              "description": null,
+              "description": "The date the object was published, as GMT.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -2818,7 +2818,7 @@
             },
             {
               "name": "guid",
-              "description": null,
+              "description": "The globally unique identifier for the object.",
               "args": [],
               "type": {
                 "kind": "OBJECT",
@@ -2830,7 +2830,7 @@
             },
             {
               "name": "modified",
-              "description": null,
+              "description": "The date the object was modified, in the timezone of the site.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -2842,7 +2842,7 @@
             },
             {
               "name": "modified_gmt",
-              "description": null,
+              "description": "The date the object was modified, as GMT.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -2854,7 +2854,7 @@
             },
             {
               "name": "slug",
-              "description": null,
+              "description": "An alphanumeric identifier for the object unique to its type.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -2902,7 +2902,7 @@
             },
             {
               "name": "comment_status",
-              "description": null,
+              "description": "Whether or not comments are open on the object.",
               "args": [],
               "type": {
                 "kind": "ENUM",
@@ -2914,7 +2914,7 @@
             },
             {
               "name": "ping_status",
-              "description": null,
+              "description": "Whether or not the object can be pinged.",
               "args": [],
               "type": {
                 "kind": "ENUM",
@@ -3211,11 +3211,11 @@
         {
           "kind": "OBJECT",
           "name": "Description",
-          "description": "The description for the media.",
+          "description": "The description for the object.",
           "fields": [
             {
               "name": "rendered",
-              "description": null,
+              "description": "HTML content for the object, transformed for display.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -3234,11 +3234,11 @@
         {
           "kind": "OBJECT",
           "name": "Caption",
-          "description": "The caption for the media.",
+          "description": "The caption for the object.",
           "fields": [
             {
               "name": "rendered",
-              "description": null,
+              "description": "HTML content for the object, transformed for display.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -3407,7 +3407,7 @@
           "fields": [
             {
               "name": "id",
-              "description": null,
+              "description": "Unique identifier for the object.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -3419,7 +3419,7 @@
             },
             {
               "name": "date",
-              "description": null,
+              "description": "The date the object was published, in the timezone of the site.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -3431,7 +3431,7 @@
             },
             {
               "name": "date_gmt",
-              "description": null,
+              "description": "The date the object was published, as GMT.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -3443,7 +3443,7 @@
             },
             {
               "name": "guid",
-              "description": null,
+              "description": "The globally unique identifier for the object.",
               "args": [],
               "type": {
                 "kind": "OBJECT",
@@ -3455,7 +3455,7 @@
             },
             {
               "name": "modified",
-              "description": null,
+              "description": "The date the object was modified, in the timezone of the site.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -3467,7 +3467,7 @@
             },
             {
               "name": "modified_gmt",
-              "description": null,
+              "description": "The date the object was modified, as GMT.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -3479,7 +3479,7 @@
             },
             {
               "name": "slug",
-              "description": null,
+              "description": "An alphanumeric identifier for the object unique to its type.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -3527,7 +3527,7 @@
             },
             {
               "name": "comment_status",
-              "description": null,
+              "description": "Whether or not comments are open on the object.",
               "args": [],
               "type": {
                 "kind": "ENUM",
@@ -3539,7 +3539,7 @@
             },
             {
               "name": "ping_status",
-              "description": null,
+              "description": "Whether or not the object can be pinged.",
               "args": [],
               "type": {
                 "kind": "ENUM",
@@ -3563,7 +3563,7 @@
             },
             {
               "name": "meta",
-              "description": null,
+              "description": "Meta fields for the object.",
               "args": [],
               "type": {
                 "kind": "LIST",
@@ -3739,7 +3739,7 @@
           "fields": [
             {
               "name": "id",
-              "description": null,
+              "description": "Unique identifier for the object.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -3751,7 +3751,7 @@
             },
             {
               "name": "date",
-              "description": null,
+              "description": "The date the object was published, in the timezone of the site.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -3763,7 +3763,7 @@
             },
             {
               "name": "date_gmt",
-              "description": null,
+              "description": "The date the object was published, as GMT.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -3775,7 +3775,7 @@
             },
             {
               "name": "guid",
-              "description": null,
+              "description": "The globally unique identifier for the object.",
               "args": [],
               "type": {
                 "kind": "OBJECT",
@@ -3787,7 +3787,7 @@
             },
             {
               "name": "modified",
-              "description": null,
+              "description": "The date the object was modified, in the timezone of the site.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -3799,7 +3799,7 @@
             },
             {
               "name": "modified_gmt",
-              "description": null,
+              "description": "The date the object was modified, as GMT.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -3811,7 +3811,7 @@
             },
             {
               "name": "slug",
-              "description": null,
+              "description": "An alphanumeric identifier for the object unique to its type.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -3859,7 +3859,7 @@
             },
             {
               "name": "comment_status",
-              "description": null,
+              "description": "Whether or not comments are open on the object.",
               "args": [],
               "type": {
                 "kind": "ENUM",
@@ -3871,7 +3871,7 @@
             },
             {
               "name": "ping_status",
-              "description": null,
+              "description": "Whether or not the object can be pinged.",
               "args": [],
               "type": {
                 "kind": "ENUM",
@@ -3895,7 +3895,7 @@
             },
             {
               "name": "meta",
-              "description": null,
+              "description": "Meta fields for the object.",
               "args": [],
               "type": {
                 "kind": "LIST",
@@ -4391,7 +4391,7 @@
           "fields": [
             {
               "name": "id",
-              "description": null,
+              "description": "Unique identifier for the object.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -4415,7 +4415,7 @@
             },
             {
               "name": "description",
-              "description": null,
+              "description": "A description of the object.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -4439,7 +4439,7 @@
             },
             {
               "name": "name",
-              "description": null,
+              "description": "HTML title for the object.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -4451,7 +4451,7 @@
             },
             {
               "name": "slug",
-              "description": null,
+              "description": "An alphanumeric identifier for the object unique to its type.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -4475,7 +4475,7 @@
             },
             {
               "name": "meta",
-              "description": null,
+              "description": "Meta fields for the object.",
               "args": [],
               "type": {
                 "kind": "LIST",
@@ -4532,7 +4532,7 @@
           "fields": [
             {
               "name": "id",
-              "description": null,
+              "description": "Unique identifier for the object.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -4580,7 +4580,7 @@
             },
             {
               "name": "name",
-              "description": null,
+              "description": "HTML title for the object.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -4592,7 +4592,7 @@
             },
             {
               "name": "slug",
-              "description": null,
+              "description": "An alphanumeric identifier for the object unique to its type.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -4761,7 +4761,7 @@
           "fields": [
             {
               "name": "id",
-              "description": null,
+              "description": "Unique identifier for the object.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -4785,7 +4785,7 @@
             },
             {
               "name": "description",
-              "description": null,
+              "description": "A description of the object.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -4809,7 +4809,7 @@
             },
             {
               "name": "name",
-              "description": null,
+              "description": "HTML title for the object.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -4821,7 +4821,7 @@
             },
             {
               "name": "slug",
-              "description": null,
+              "description": "An alphanumeric identifier for the object unique to its type.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -4845,7 +4845,7 @@
             },
             {
               "name": "meta",
-              "description": null,
+              "description": "Meta fields for the object.",
               "args": [],
               "type": {
                 "kind": "LIST",
@@ -5140,7 +5140,7 @@
           "fields": [
             {
               "name": "id",
-              "description": null,
+              "description": "Unique identifier for the object.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -5152,7 +5152,7 @@
             },
             {
               "name": "date",
-              "description": null,
+              "description": "The date the object was published, in the timezone of the site.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -5164,7 +5164,7 @@
             },
             {
               "name": "date_gmt",
-              "description": null,
+              "description": "The date the object was published, as GMT.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -5176,7 +5176,7 @@
             },
             {
               "name": "guid",
-              "description": null,
+              "description": "The globally unique identifier for the object.",
               "args": [],
               "type": {
                 "kind": "OBJECT",
@@ -5188,7 +5188,7 @@
             },
             {
               "name": "modified",
-              "description": null,
+              "description": "The date the object was modified, in the timezone of the site.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -5200,7 +5200,7 @@
             },
             {
               "name": "modified_gmt",
-              "description": null,
+              "description": "The date the object was modified, as GMT.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -5212,7 +5212,7 @@
             },
             {
               "name": "slug",
-              "description": null,
+              "description": "An alphanumeric identifier for the object unique to its type.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -5284,7 +5284,7 @@
             },
             {
               "name": "comment_status",
-              "description": null,
+              "description": "Whether or not comments are open on the object.",
               "args": [],
               "type": {
                 "kind": "ENUM",
@@ -5296,7 +5296,7 @@
             },
             {
               "name": "ping_status",
-              "description": null,
+              "description": "Whether or not the object can be pinged.",
               "args": [],
               "type": {
                 "kind": "ENUM",
@@ -5320,7 +5320,7 @@
             },
             {
               "name": "meta",
-              "description": null,
+              "description": "Meta fields for the object.",
               "args": [],
               "type": {
                 "kind": "LIST",
@@ -5709,7 +5709,7 @@
             },
             {
               "name": "date",
-              "description": null,
+              "description": "The date the object was published, in the timezone of the site.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -5721,7 +5721,7 @@
             },
             {
               "name": "date_gmt",
-              "description": null,
+              "description": "The date the object was published, as GMT.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -5797,7 +5797,7 @@
             },
             {
               "name": "meta",
-              "description": null,
+              "description": "Meta fields for the object.",
               "args": [],
               "type": {
                 "kind": "LIST",
@@ -5970,7 +5970,7 @@
             },
             {
               "name": "description",
-              "description": null,
+              "description": "A description of the object.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -5994,7 +5994,7 @@
             },
             {
               "name": "name",
-              "description": null,
+              "description": "HTML title for the object.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -6006,7 +6006,7 @@
             },
             {
               "name": "slug",
-              "description": null,
+              "description": "An alphanumeric identifier for the object unique to its type.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -6140,7 +6140,7 @@
             },
             {
               "name": "name",
-              "description": null,
+              "description": "HTML title for the object.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -6152,7 +6152,7 @@
             },
             {
               "name": "slug",
-              "description": null,
+              "description": "An alphanumeric identifier for the object unique to its type.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -6164,7 +6164,7 @@
             },
             {
               "name": "description",
-              "description": null,
+              "description": "A description of the object.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -6333,7 +6333,7 @@
           "fields": [
             {
               "name": "name",
-              "description": null,
+              "description": "HTML title for the object.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -6381,7 +6381,7 @@
             },
             {
               "name": "slug",
-              "description": null,
+              "description": "An alphanumeric identifier for the object unique to its type.",
               "args": [],
               "type": {
                 "kind": "SCALAR",

@@ -1,22 +1,23 @@
 import {
   GraphQLObjectType,
-  GraphQLInt,
   GraphQLString,
   GraphQLList,
 } from 'graphql';
 
 import Avatar from 'type/User/Avatar';
 import UserLinks from 'type/User/Links';
+import { id, slug, name } from 'field/identifier';
+import description from 'field/description';
 
 const User = new GraphQLObjectType({
   name: 'User',
   description: 'An object.',
   fields: {
-    id: { type: GraphQLInt },
-    name: { type: GraphQLString },
-    description: { type: GraphQLString },
+    id,
+    name,
+    description,
     link: { type: GraphQLString },
-    slug: { type: GraphQLString },
+    slug,
     avatar_urls: {
       type: new GraphQLList(Avatar),
       resolve: (user) => {

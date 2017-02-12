@@ -1,29 +1,28 @@
 import {
   GraphQLObjectType,
-  GraphQLInt,
   GraphQLList,
   GraphQLString,
   GraphQLBoolean,
 } from 'graphql';
 
 import PostInterface from 'interface/Post';
-import Guid from 'type/Guid';
 import Title from 'type/Title';
 import Content from 'type/Content';
 import Excerpt from 'type/Excerpt';
-import Meta from 'type/Meta';
 import User from 'type/User';
 import Category from 'type/Category';
 import Tag from 'type/Tag';
 import Media from 'type/Media';
 import PostLinks from 'type/Post/Links';
-
-import COMMENT_STATUS from 'enum/CommentStatus';
-import PING_STATUS from 'enum/PingStatus';
-import FORMAT from 'enum/Format';
-
+import { id, slug, guid } from 'field/identifier';
+// eslint-disable-next-line camelcase
+import { date, date_gmt, modified, modified_gmt } from 'field/date';
+import metaField from 'field/meta';
+// eslint-disable-next-line camelcase
+import { comment_status, ping_status } from 'field/status';
 import { categories, tags, users, media } from 'data';
-import { metaResolver } from 'utils';
+
+import FORMAT from 'enum/Format';
 
 const Post = new GraphQLObjectType({
   name: 'Post',
@@ -33,26 +32,23 @@ const Post = new GraphQLObjectType({
     return post.type === 'post';
   },
   fields: {
-    id: { type: GraphQLInt },
-    date: { type: GraphQLString },
-    date_gmt: { type: GraphQLString },
-    guid: { type: Guid },
-    modified: { type: GraphQLString },
-    modified_gmt: { type: GraphQLString },
-    slug: { type: GraphQLString },
+    id,
+    date,
+    date_gmt,
+    guid,
+    modified,
+    modified_gmt,
+    slug,
     type: { type: GraphQLString },
     link: { type: GraphQLString },
     title: { type: Title },
     content: { type: Content },
     excerpt: { type: Excerpt },
-    comment_status: { type: COMMENT_STATUS },
-    ping_status: { type: PING_STATUS },
+    comment_status,
+    ping_status,
     template: { type: GraphQLString },
     format: { type: FORMAT },
-    meta: {
-      type: new GraphQLList(Meta),
-      resolve: metaResolver,
-    },
+    meta: metaField(),
     author: {
       type: User,
       resolve: post => (

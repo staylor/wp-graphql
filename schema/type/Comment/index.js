@@ -7,13 +7,13 @@ import {
 
 import Post from 'type/Post';
 import Content from 'type/Content';
-import Meta from 'type/Meta';
 import User from 'type/User';
 import Avatar from 'type/User/Avatar';
 import CommentLinks from 'type/Comment/Links';
-
+// eslint-disable-next-line camelcase
+import { date, date_gmt } from 'field/date';
+import metaField from 'field/meta';
 import { posts, users, comments } from 'data';
-import { metaResolver } from 'utils';
 
 const Comment = new GraphQLObjectType({
   name: 'Comment',
@@ -40,8 +40,8 @@ const Comment = new GraphQLObjectType({
     },
     author_name: { type: GraphQLString },
     author_url: { type: GraphQLString },
-    date: { type: GraphQLString },
-    date_gmt: { type: GraphQLString },
+    date,
+    date_gmt,
     content: { type: Content },
     link: { type: GraphQLString },
     status: { type: GraphQLString },
@@ -55,10 +55,7 @@ const Comment = new GraphQLObjectType({
         }));
       },
     },
-    meta: {
-      type: new GraphQLList(Meta),
-      resolve: metaResolver,
-    },
+    meta: metaField(),
     _links: { type: CommentLinks },
   }),
 });

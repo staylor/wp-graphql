@@ -2,13 +2,13 @@ import {
   GraphQLObjectType,
   GraphQLInt,
   GraphQLString,
-  GraphQLList,
 } from 'graphql';
 
 import TermInterface from 'interface/Term';
-import Meta from 'type/Meta';
 import TagLinks from 'type/Tag/Links';
-import { metaResolver } from 'utils';
+import { id, slug, name } from 'field/identifier';
+import description from 'field/description';
+import metaField from 'field/meta';
 
 const Tag = new GraphQLObjectType({
   name: 'Tag',
@@ -18,17 +18,14 @@ const Tag = new GraphQLObjectType({
     return term.taxonomy === 'post_tag';
   },
   fields: {
-    id: { type: GraphQLInt },
+    id,
     count: { type: GraphQLInt },
-    description: { type: GraphQLString },
+    description,
     link: { type: GraphQLString },
-    name: { type: GraphQLString },
-    slug: { type: GraphQLString },
+    name,
+    slug,
     taxonomy: { type: GraphQLString },
-    meta: {
-      type: new GraphQLList(Meta),
-      resolve: metaResolver,
-    },
+    meta: metaField(),
     _links: { type: TagLinks },
   },
 });

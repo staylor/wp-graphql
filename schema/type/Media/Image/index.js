@@ -3,7 +3,7 @@ import {
 } from 'graphql';
 
 import MediaInterface from 'interface/Media';
-import fields from 'type/Media/fields';
+import mediaFields from 'type/Media/fields';
 import ImageDetails from 'type/Media/Image/Details';
 
 const Image = new GraphQLObjectType({
@@ -14,7 +14,7 @@ const Image = new GraphQLObjectType({
     return media.mime_type.indexOf('image') === 0;
   },
   fields: (
-    Object.assign({}, fields, {
+    Object.assign({}, mediaFields, {
       media_details: { type: ImageDetails },
     })
   ),

@@ -1,15 +1,14 @@
-import {
-  GraphQLObjectType,
-  GraphQLString,
-  GraphQLBoolean,
-} from 'graphql';
+import { GraphQLObjectType } from 'graphql';
+import rendered from 'field/rendered';
+// 'protected' is a reserved word in JS
+import protectedField from 'field/protected';
 
 const Excerpt = new GraphQLObjectType({
   name: 'Excerpt',
-  description: 'The excerpt for a post.',
+  description: 'The excerpt for the object.',
   fields: {
-    rendered: { type: GraphQLString },
-    protected: { type: GraphQLBoolean },
+    rendered,
+    protected: protectedField,
   },
 });
 

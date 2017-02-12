@@ -5,10 +5,16 @@ import {
 
 const Meta = new GraphQLObjectType({
   name: 'Meta',
-  description: 'The metadata for a post.',
+  description: 'A metadata field for an object.',
   fields: {
-    key: { type: GraphQLString },
-    value: { type: GraphQLString },
+    name: {
+      type: GraphQLString,
+      description: 'Name for the metadata field.',
+    },
+    value: {
+      type: GraphQLString,
+      description: 'Value for the metadata field.',
+    },
   },
 });
 
