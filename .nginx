@@ -6,19 +6,6 @@ server {
   error_log    /var/www/graphql.highforthis.com/logs/error.log;
 
   location / {
-    rewrite ^ https://graphql.highforthis.com$request_uri permanent;
-  }
-}
-
-server {
-  listen       443;
-  ssl          on;
-  server_name  graphql.highforthis.com;
-  root         /var/www/graphql.highforthis.com/public_html;
-  access_log   /var/www/graphql.highforthis.com/logs/ssl.access.log;
-  error_log    /var/www/graphql.highforthis.com/logs/ssl.error.log;
-
-  location / {
     try_files $uri @proxy;
   }
 
