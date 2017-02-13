@@ -1,25 +1,28 @@
 import {
   GraphQLObjectType,
-  GraphQLInt,
   GraphQLList,
   GraphQLString,
 } from 'graphql';
 
+/* eslint-disable camelcase */
+
 import Post from 'type/Post';
-import Content from 'type/Content';
-import User from 'type/User';
 import Avatar from 'type/User/Avatar';
 import CommentLinks from 'type/Comment/Links';
-// eslint-disable-next-line camelcase
+
+import { id, link } from 'field/identifier';
+import { content } from 'field/content';
 import { date, date_gmt } from 'field/date';
 import metaField from 'field/meta';
-import { posts, users, comments } from 'data';
+import author from 'field/author';
+
+import { posts, comments } from 'data';
 
 const Comment = new GraphQLObjectType({
   name: 'Comment',
   description: 'An object.',
   fields: () => ({
-    id: { type: GraphQLInt },
+    id,
     post: {
       type: Post,
       resolve: comment => (
@@ -32,18 +35,13 @@ const Comment = new GraphQLObjectType({
         comment.parent > 0 ? comments.load(comment.parent) : null
       ),
     },
-    author: {
-      type: User,
-      resolve: comment => (
-        comment.author > 0 ? users.load(comment.author) : null
-      ),
-    },
+    author,
     author_name: { type: GraphQLString },
     author_url: { type: GraphQLString },
     date,
     date_gmt,
-    content: { type: Content },
-    link: { type: GraphQLString },
+    content,
+    link,
     status: { type: GraphQLString },
     type: { type: GraphQLString },
     author_avatar_urls: {

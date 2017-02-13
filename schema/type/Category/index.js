@@ -8,7 +8,7 @@ import TermInterface from 'interface/Term';
 import CategoryLinks from 'type/Category/Links';
 import description from 'field/description';
 import metaField from 'field/meta';
-import { id, slug, name } from 'field/identifier';
+import { id, slug, name, link } from 'field/identifier';
 import { categories } from 'data';
 
 const Category = new GraphQLObjectType({
@@ -22,7 +22,7 @@ const Category = new GraphQLObjectType({
     id,
     count: { type: GraphQLInt },
     description,
-    link: { type: GraphQLString },
+    link,
     name,
     slug,
     taxonomy: { type: GraphQLString },

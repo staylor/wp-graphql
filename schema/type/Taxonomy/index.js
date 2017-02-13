@@ -6,6 +6,7 @@ import {
 } from 'graphql';
 
 import TaxonomyLinks from 'type/Taxonomy/Links';
+
 import { slug, name } from 'field/identifier';
 import description from 'field/description';
 

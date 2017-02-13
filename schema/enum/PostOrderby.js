@@ -2,6 +2,7 @@ import { GraphQLEnumType } from 'graphql';
 
 const POST_ORDERBY = new GraphQLEnumType({
   name: 'POST_ORDERBY',
+  description: 'Sort collection by object attribute.',
   values: {
     DATE: { value: 'date' },
     RELEVANCE: { value: 'relevance' },

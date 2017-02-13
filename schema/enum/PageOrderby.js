@@ -2,6 +2,7 @@ import { GraphQLEnumType } from 'graphql';
 
 const PAGE_ORDERBY = new GraphQLEnumType({
   name: 'PAGE_ORDERBY',
+  description: 'Sort collection by object attribute.',
   values: {
     DATE: { value: 'date' },
     RELEVANCE: { value: 'relevance' },

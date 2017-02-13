@@ -5,6 +5,7 @@ import {
 } from 'graphql';
 
 import StatusLinks from 'type/Status/Links';
+
 import { slug, name } from 'field/identifier';
 
 const Status = new GraphQLObjectType({

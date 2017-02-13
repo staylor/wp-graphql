@@ -1,4 +1,5 @@
 import { GraphQLObjectType } from 'graphql';
+
 import rendered from 'field/rendered';
 
 const Title = new GraphQLObjectType({

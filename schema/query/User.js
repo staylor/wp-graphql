@@ -16,7 +16,10 @@ export default {
     args: (
       Object.assign({}, pagination, filter, slug, {
         orderby: { type: USER_ORDERBY },
-        roles: { type: GraphQLString },
+        roles: {
+          type: GraphQLString,
+          description: 'Limit result set to users matching at least one specific role provided. Accepts csv list or single role (value or comma-separated values).',
+        },
       })
     ),
     resolve: resolveWithArgs('/users'),

@@ -6,7 +6,8 @@ import {
 
 import TermInterface from 'interface/Term';
 import TagLinks from 'type/Tag/Links';
-import { id, slug, name } from 'field/identifier';
+
+import { id, slug, name, link } from 'field/identifier';
 import description from 'field/description';
 import metaField from 'field/meta';
 
@@ -21,7 +22,7 @@ const Tag = new GraphQLObjectType({
     id,
     count: { type: GraphQLInt },
     description,
-    link: { type: GraphQLString },
+    link,
     name,
     slug,
     taxonomy: { type: GraphQLString },

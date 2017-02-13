@@ -6,7 +6,8 @@ import {
 } from 'graphql';
 
 import Meta from 'type/Meta';
-import { id, slug, name } from 'field/identifier';
+import { id, slug, name, link } from 'field/identifier';
+import description from 'field/description';
 
 const TermInterface = new GraphQLInterfaceType({
   name: 'TermInterface',
@@ -14,8 +15,8 @@ const TermInterface = new GraphQLInterfaceType({
   fields: {
     id,
     count: { type: GraphQLInt },
-    description: { type: GraphQLString },
-    link: { type: GraphQLString },
+    description,
+    link,
     name,
     slug,
     taxonomy: { type: GraphQLString },

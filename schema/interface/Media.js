@@ -1,21 +1,22 @@
 import {
   GraphQLInterfaceType,
-  GraphQLInt,
-  GraphQLString,
   GraphQLList,
 } from 'graphql';
 
-import Title from 'type/Title';
 import Description from 'type/Description';
 import Caption from 'type/Caption';
 import User from 'type/User';
 import Meta from 'type/Meta';
 import MediaLinks from 'type/Media/Links';
-import { id, slug, guid } from 'field/identifier';
-// eslint-disable-next-line camelcase
+
+/* eslint-disable camelcase */
+import { id, slug, guid, link } from 'field/identifier';
 import { date, date_gmt, modified, modified_gmt } from 'field/date';
-// eslint-disable-next-line camelcase
 import { comment_status, ping_status } from 'field/status';
+import { title } from 'field/content';
+import { type, template } from 'field/post';
+import { alt_text, media_type, mime_type, post, source_url } from 'field/media';
+/* eslint-enable camelcase */
 
 const MediaInterface = new GraphQLInterfaceType({
   name: 'MediaInterface',
@@ -27,12 +28,12 @@ const MediaInterface = new GraphQLInterfaceType({
     modified,
     modified_gmt,
     slug,
-    type: { type: GraphQLString },
-    link: { type: GraphQLString },
-    title: { type: Title },
+    type,
+    link,
+    title,
     comment_status,
     ping_status,
-    template: { type: GraphQLString },
+    template,
     meta: { type: new GraphQLList(Meta) },
     author: { type: User },
     _links: { type: MediaLinks },
@@ -40,11 +41,11 @@ const MediaInterface = new GraphQLInterfaceType({
     // extra media fields
     description: { type: Description },
     caption: { type: Caption },
-    alt_text: { type: GraphQLString },
-    media_type: { type: GraphQLString },
-    mime_type: { type: GraphQLString },
-    post: { type: GraphQLInt },
-    source_url: { type: GraphQLString },
+    alt_text,
+    media_type,
+    mime_type,
+    post,
+    source_url,
   },
 });
 

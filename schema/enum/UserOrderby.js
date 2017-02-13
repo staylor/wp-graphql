@@ -2,6 +2,7 @@ import { GraphQLEnumType } from 'graphql';
 
 const USER_ORDERBY = new GraphQLEnumType({
   name: 'USER_ORDERBY',
+  description: 'Sort collection by object attribute.',
   values: {
     ID: { value: 'id' },
     INCLUDE: { value: 'include' },

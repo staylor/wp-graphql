@@ -20,7 +20,9 @@ export const slug = {
   description: 'An alphanumeric identifier for the object unique to its type.',
 };
 
-export const guid = {
-  type: Guid,
-  description: 'The globally unique identifier for the object.',
+export const guid = { type: Guid };
+
+export const link = {
+  type: GraphQLString,
+  description: 'URL to the object.',
 };

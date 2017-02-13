@@ -1,20 +1,17 @@
-import {
-  GraphQLInt,
-  GraphQLString,
-} from 'graphql';
+/* eslint-disable camelcase */
 
-import Title from 'type/Title';
 import Description from 'type/Description';
 import Caption from 'type/Caption';
-import User from 'type/User';
 import MediaLinks from 'type/Media/Links';
-// eslint-disable-next-line camelcase
+
 import { date, date_gmt, modified, modified_gmt } from 'field/date';
 import metaField from 'field/meta';
-import { id, slug, guid } from 'field/identifier';
-// eslint-disable-next-line camelcase
+import { id, slug, guid, link } from 'field/identifier';
+import { title } from 'field/content';
+import { type, template } from 'field/post';
 import { comment_status, ping_status } from 'field/status';
-import { users } from 'data';
+import { alt_text, media_type, mime_type, source_url, post } from 'field/media';
+import author from 'field/author';
 
 export default {
   id,
@@ -24,29 +21,24 @@ export default {
   modified,
   modified_gmt,
   slug,
-  type: { type: GraphQLString },
-  link: { type: GraphQLString },
-  title: { type: Title },
+  type,
+  link,
+  title,
   // content (description instead)
   // excerpt (caption instead)
   comment_status,
   ping_status,
-  template: { type: GraphQLString },
+  template,
   meta: metaField(),
-  author: {
-    type: User,
-    resolve: post => (
-      post.author > 0 ? users.load(post.author) : null
-    ),
-  },
+  author,
   _links: { type: MediaLinks },
   // featured_media (this field should exist for audio/video)
   // extra media fields
   description: { type: Description },
   caption: { type: Caption },
-  alt_text: { type: GraphQLString },
-  media_type: { type: GraphQLString },
-  mime_type: { type: GraphQLString },
-  post: { type: GraphQLInt },
-  source_url: { type: GraphQLString },
+  alt_text,
+  media_type,
+  mime_type,
+  post,
+  source_url,
 };

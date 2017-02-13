@@ -6,6 +6,7 @@ import {
 } from 'graphql';
 
 import TypeLinks from 'type/Type/Links';
+
 import { slug, name } from 'field/identifier';
 import description from 'field/description';
 

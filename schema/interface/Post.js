@@ -1,20 +1,18 @@
 import {
   GraphQLInterfaceType,
-  GraphQLString,
   GraphQLList,
 } from 'graphql';
 
-import Title from 'type/Title';
-import Content from 'type/Content';
-import Excerpt from 'type/Excerpt';
+/* eslint-disable camelcase */
+
 import User from 'type/User';
 import Media from 'type/Media';
 import Meta from 'type/Meta';
-import { id, slug, guid } from 'field/identifier';
-// eslint-disable-next-line camelcase
+import { id, slug, guid, link } from 'field/identifier';
 import { date, date_gmt, modified, modified_gmt } from 'field/date';
-// eslint-disable-next-line camelcase
 import { comment_status, ping_status } from 'field/status';
+import { title, content, excerpt } from 'field/content';
+import { type, template } from 'field/post';
 
 const PostInterface = new GraphQLInterfaceType({
   name: 'PostInterface',
@@ -26,14 +24,14 @@ const PostInterface = new GraphQLInterfaceType({
     modified,
     modified_gmt,
     slug,
-    type: { type: GraphQLString },
-    link: { type: GraphQLString },
-    title: { type: Title },
-    content: { type: Content },
-    excerpt: { type: Excerpt },
+    type,
+    link,
+    title,
+    content,
+    excerpt,
     comment_status,
     ping_status,
-    template: { type: GraphQLString },
+    template,
     meta: { type: new GraphQLList(Meta) },
     author: { type: User },
     featured_media: { type: Media },

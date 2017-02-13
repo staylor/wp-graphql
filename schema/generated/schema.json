@@ -18,7 +18,7 @@
               "args": [
                 {
                   "name": "page",
-                  "description": null,
+                  "description": "Current page of the collection.",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Int",
@@ -28,7 +28,7 @@
                 },
                 {
                   "name": "per_page",
-                  "description": null,
+                  "description": "Maximum number of items to be returned in result set.",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Int",
@@ -38,7 +38,7 @@
                 },
                 {
                   "name": "offset",
-                  "description": null,
+                  "description": "Offset the result set by a specific number of items.",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Int",
@@ -58,7 +58,7 @@
                 },
                 {
                   "name": "search",
-                  "description": null,
+                  "description": "Limit results to those matching a string.",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -68,7 +68,7 @@
                 },
                 {
                   "name": "include",
-                  "description": null,
+                  "description": "Limit result set to specific IDs (value or comma-separated values).",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -78,7 +78,7 @@
                 },
                 {
                   "name": "exclude",
-                  "description": null,
+                  "description": "Ensure result set excludes specific IDs (value or comma-separated values).",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -88,7 +88,7 @@
                 },
                 {
                   "name": "after",
-                  "description": null,
+                  "description": "Limit response to items published after a given ISO8601 compliant date.",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -98,7 +98,7 @@
                 },
                 {
                   "name": "before",
-                  "description": null,
+                  "description": "Limit response to items published before a given ISO8601 compliant date.",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -108,7 +108,7 @@
                 },
                 {
                   "name": "author",
-                  "description": null,
+                  "description": "Limit result set to items assigned to specific authors (value or comma-separated values).",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -118,7 +118,7 @@
                 },
                 {
                   "name": "author_exclude",
-                  "description": null,
+                  "description": "Ensure result set excludes items assigned to specific authors (value or comma-separated values).",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -128,7 +128,7 @@
                 },
                 {
                   "name": "slug",
-                  "description": null,
+                  "description": "Limit result set to items with one or more specific slugs (value or comma-separated values).",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -215,7 +215,7 @@
               "args": [
                 {
                   "name": "id",
-                  "description": null,
+                  "description": "Unique identifier for the object.",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Int",
@@ -238,7 +238,7 @@
               "args": [
                 {
                   "name": "page",
-                  "description": null,
+                  "description": "Current page of the collection.",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Int",
@@ -248,7 +248,7 @@
                 },
                 {
                   "name": "per_page",
-                  "description": null,
+                  "description": "Maximum number of items to be returned in result set.",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Int",
@@ -258,7 +258,7 @@
                 },
                 {
                   "name": "offset",
-                  "description": null,
+                  "description": "Offset the result set by a specific number of items.",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Int",
@@ -278,7 +278,7 @@
                 },
                 {
                   "name": "search",
-                  "description": null,
+                  "description": "Limit results to those matching a string.",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -288,7 +288,7 @@
                 },
                 {
                   "name": "include",
-                  "description": null,
+                  "description": "Limit result set to specific IDs (value or comma-separated values).",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -298,7 +298,7 @@
                 },
                 {
                   "name": "exclude",
-                  "description": null,
+                  "description": "Ensure result set excludes specific IDs (value or comma-separated values).",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -308,7 +308,7 @@
                 },
                 {
                   "name": "slug",
-                  "description": null,
+                  "description": "Limit result set to items with one or more specific slugs (value or comma-separated values).",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -328,7 +328,7 @@
                 },
                 {
                   "name": "roles",
-                  "description": null,
+                  "description": "Limit result set to users matching at least one specific role provided. Accepts csv list or single role (value or comma-separated values).",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -355,7 +355,7 @@
               "args": [
                 {
                   "name": "id",
-                  "description": null,
+                  "description": "Unique identifier for the object.",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Int",
@@ -378,7 +378,7 @@
               "args": [
                 {
                   "name": "page",
-                  "description": null,
+                  "description": "Current page of the collection.",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Int",
@@ -388,7 +388,7 @@
                 },
                 {
                   "name": "per_page",
-                  "description": null,
+                  "description": "Maximum number of items to be returned in result set.",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Int",
@@ -398,7 +398,7 @@
                 },
                 {
                   "name": "offset",
-                  "description": null,
+                  "description": "Offset the result set by a specific number of items.",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Int",
@@ -418,7 +418,7 @@
                 },
                 {
                   "name": "search",
-                  "description": null,
+                  "description": "Limit results to those matching a string.",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -428,7 +428,7 @@
                 },
                 {
                   "name": "include",
-                  "description": null,
+                  "description": "Limit result set to specific IDs (value or comma-separated values).",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -438,7 +438,7 @@
                 },
                 {
                   "name": "exclude",
-                  "description": null,
+                  "description": "Ensure result set excludes specific IDs (value or comma-separated values).",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -448,7 +448,7 @@
                 },
                 {
                   "name": "slug",
-                  "description": null,
+                  "description": "Limit result set to items with one or more specific slugs (value or comma-separated values).",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -468,7 +468,7 @@
                 },
                 {
                   "name": "hide_empty",
-                  "description": null,
+                  "description": "Whether to hide terms not assigned to any posts.",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
@@ -478,7 +478,7 @@
                 },
                 {
                   "name": "post",
-                  "description": null,
+                  "description": "Limit result set to terms assigned to a specific post.",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Int",
@@ -488,7 +488,7 @@
                 },
                 {
                   "name": "parent",
-                  "description": null,
+                  "description": "Limit result set to terms assigned to a specific parent.",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Int",
@@ -515,7 +515,7 @@
               "args": [
                 {
                   "name": "id",
-                  "description": null,
+                  "description": "Unique identifier for the object.",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Int",
@@ -538,7 +538,7 @@
               "args": [
                 {
                   "name": "page",
-                  "description": null,
+                  "description": "Current page of the collection.",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Int",
@@ -548,7 +548,7 @@
                 },
                 {
                   "name": "per_page",
-                  "description": null,
+                  "description": "Maximum number of items to be returned in result set.",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Int",
@@ -558,7 +558,7 @@
                 },
                 {
                   "name": "offset",
-                  "description": null,
+                  "description": "Offset the result set by a specific number of items.",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Int",
@@ -578,7 +578,7 @@
                 },
                 {
                   "name": "search",
-                  "description": null,
+                  "description": "Limit results to those matching a string.",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -588,7 +588,7 @@
                 },
                 {
                   "name": "include",
-                  "description": null,
+                  "description": "Limit result set to specific IDs (value or comma-separated values).",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -598,7 +598,7 @@
                 },
                 {
                   "name": "exclude",
-                  "description": null,
+                  "description": "Ensure result set excludes specific IDs (value or comma-separated values).",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -608,7 +608,7 @@
                 },
                 {
                   "name": "slug",
-                  "description": null,
+                  "description": "Limit result set to items with one or more specific slugs (value or comma-separated values).",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -628,7 +628,7 @@
                 },
                 {
                   "name": "hide_empty",
-                  "description": null,
+                  "description": "Whether to hide terms not assigned to any posts.",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
@@ -638,7 +638,7 @@
                 },
                 {
                   "name": "post",
-                  "description": null,
+                  "description": "Limit result set to terms assigned to a specific post.",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Int",
@@ -665,7 +665,7 @@
               "args": [
                 {
                   "name": "id",
-                  "description": null,
+                  "description": "Unique identifier for the object.",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Int",
@@ -688,7 +688,7 @@
               "args": [
                 {
                   "name": "page",
-                  "description": null,
+                  "description": "Current page of the collection.",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Int",
@@ -698,7 +698,7 @@
                 },
                 {
                   "name": "per_page",
-                  "description": null,
+                  "description": "Maximum number of items to be returned in result set.",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Int",
@@ -708,7 +708,7 @@
                 },
                 {
                   "name": "offset",
-                  "description": null,
+                  "description": "Offset the result set by a specific number of items.",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Int",
@@ -728,7 +728,7 @@
                 },
                 {
                   "name": "search",
-                  "description": null,
+                  "description": "Limit results to those matching a string.",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -738,7 +738,7 @@
                 },
                 {
                   "name": "include",
-                  "description": null,
+                  "description": "Limit result set to specific IDs (value or comma-separated values).",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -748,7 +748,7 @@
                 },
                 {
                   "name": "exclude",
-                  "description": null,
+                  "description": "Ensure result set excludes specific IDs (value or comma-separated values).",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -758,7 +758,7 @@
                 },
                 {
                   "name": "after",
-                  "description": null,
+                  "description": "Limit response to items published after a given ISO8601 compliant date.",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -768,7 +768,7 @@
                 },
                 {
                   "name": "before",
-                  "description": null,
+                  "description": "Limit response to items published before a given ISO8601 compliant date.",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -778,7 +778,7 @@
                 },
                 {
                   "name": "parent",
-                  "description": null,
+                  "description": "Limit result set to items of specific parent IDs (value or comma-separated values).",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -788,7 +788,7 @@
                 },
                 {
                   "name": "parent_exclude",
-                  "description": null,
+                  "description": "Ensure result set excludes specific parent IDs (value or comma-separated values).",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -798,7 +798,7 @@
                 },
                 {
                   "name": "author",
-                  "description": null,
+                  "description": "Limit result set to items assigned to specific authors (value or comma-separated values).",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -808,7 +808,7 @@
                 },
                 {
                   "name": "author_exclude",
-                  "description": null,
+                  "description": "Ensure result set excludes items assigned to specific authors (value or comma-separated values).",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -818,7 +818,7 @@
                 },
                 {
                   "name": "slug",
-                  "description": null,
+                  "description": "Limit result set to items with one or more specific slugs (value or comma-separated values).",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -828,7 +828,7 @@
                 },
                 {
                   "name": "menu_order",
-                  "description": null,
+                  "description": "Limit result set to posts with a specific menu_order value.",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Int",
@@ -865,7 +865,7 @@
               "args": [
                 {
                   "name": "id",
-                  "description": null,
+                  "description": "Unique identifier for the object.",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Int",
@@ -888,7 +888,7 @@
               "args": [
                 {
                   "name": "page",
-                  "description": null,
+                  "description": "Current page of the collection.",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Int",
@@ -898,7 +898,7 @@
                 },
                 {
                   "name": "per_page",
-                  "description": null,
+                  "description": "Maximum number of items to be returned in result set.",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Int",
@@ -908,7 +908,7 @@
                 },
                 {
                   "name": "offset",
-                  "description": null,
+                  "description": "Offset the result set by a specific number of items.",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Int",
@@ -928,7 +928,7 @@
                 },
                 {
                   "name": "search",
-                  "description": null,
+                  "description": "Limit results to those matching a string.",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -938,7 +938,7 @@
                 },
                 {
                   "name": "include",
-                  "description": null,
+                  "description": "Limit result set to specific IDs (value or comma-separated values).",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -948,7 +948,7 @@
                 },
                 {
                   "name": "exclude",
-                  "description": null,
+                  "description": "Ensure result set excludes specific IDs (value or comma-separated values).",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -958,7 +958,7 @@
                 },
                 {
                   "name": "after",
-                  "description": null,
+                  "description": "Limit response to items published after a given ISO8601 compliant date.",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -968,7 +968,7 @@
                 },
                 {
                   "name": "before",
-                  "description": null,
+                  "description": "Limit response to items published before a given ISO8601 compliant date.",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -978,7 +978,7 @@
                 },
                 {
                   "name": "parent",
-                  "description": null,
+                  "description": "Limit result set to items of specific parent IDs (value or comma-separated values).",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -988,7 +988,7 @@
                 },
                 {
                   "name": "parent_exclude",
-                  "description": null,
+                  "description": "Ensure result set excludes specific parent IDs (value or comma-separated values).",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -998,7 +998,7 @@
                 },
                 {
                   "name": "post",
-                  "description": null,
+                  "description": "Limit result set to comments assigned to specific post IDs.",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Int",
@@ -1035,7 +1035,7 @@
               "args": [
                 {
                   "name": "id",
-                  "description": null,
+                  "description": "Unique identifier for the object.",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Int",
@@ -1147,7 +1147,7 @@
               "args": [
                 {
                   "name": "page",
-                  "description": null,
+                  "description": "Current page of the collection.",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Int",
@@ -1157,7 +1157,7 @@
                 },
                 {
                   "name": "per_page",
-                  "description": null,
+                  "description": "Maximum number of items to be returned in result set.",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Int",
@@ -1167,7 +1167,7 @@
                 },
                 {
                   "name": "offset",
-                  "description": null,
+                  "description": "Offset the result set by a specific number of items.",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Int",
@@ -1187,7 +1187,7 @@
                 },
                 {
                   "name": "search",
-                  "description": null,
+                  "description": "Limit results to those matching a string.",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -1197,7 +1197,7 @@
                 },
                 {
                   "name": "include",
-                  "description": null,
+                  "description": "Limit result set to specific IDs (value or comma-separated values).",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -1207,7 +1207,7 @@
                 },
                 {
                   "name": "exclude",
-                  "description": null,
+                  "description": "Ensure result set excludes specific IDs (value or comma-separated values).",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -1217,7 +1217,7 @@
                 },
                 {
                   "name": "after",
-                  "description": null,
+                  "description": "Limit response to items published after a given ISO8601 compliant date.",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -1227,7 +1227,7 @@
                 },
                 {
                   "name": "before",
-                  "description": null,
+                  "description": "Limit response to items published before a given ISO8601 compliant date.",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -1237,7 +1237,7 @@
                 },
                 {
                   "name": "parent",
-                  "description": null,
+                  "description": "Limit result set to items of specific parent IDs (value or comma-separated values).",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -1247,7 +1247,7 @@
                 },
                 {
                   "name": "parent_exclude",
-                  "description": null,
+                  "description": "Ensure result set excludes specific parent IDs (value or comma-separated values).",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -1257,7 +1257,7 @@
                 },
                 {
                   "name": "author",
-                  "description": null,
+                  "description": "Limit result set to items assigned to specific authors (value or comma-separated values).",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -1267,7 +1267,7 @@
                 },
                 {
                   "name": "author_exclude",
-                  "description": null,
+                  "description": "Ensure result set excludes items assigned to specific authors (value or comma-separated values).",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -1277,7 +1277,7 @@
                 },
                 {
                   "name": "slug",
-                  "description": null,
+                  "description": "Limit result set to items with one or more specific slugs (value or comma-separated values).",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -1297,7 +1297,7 @@
                 },
                 {
                   "name": "media_type",
-                  "description": null,
+                  "description": "Limit result set to attachments of a particular media type.",
                   "type": {
                     "kind": "ENUM",
                     "name": "MEDIA_TYPE",
@@ -1307,7 +1307,7 @@
                 },
                 {
                   "name": "mime_type",
-                  "description": null,
+                  "description": "Limit result set to attachments of a particular MIME type.",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -1334,7 +1334,7 @@
               "args": [
                 {
                   "name": "id",
-                  "description": null,
+                  "description": "Unique identifier for the object.",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Int",
@@ -1409,7 +1409,7 @@
         {
           "kind": "ENUM",
           "name": "ORDER",
-          "description": null,
+          "description": "Order sort attribute ascending or descending.",
           "fields": null,
           "inputFields": null,
           "interfaces": null,
@@ -1442,7 +1442,7 @@
         {
           "kind": "ENUM",
           "name": "POST_ORDERBY",
-          "description": null,
+          "description": "Sort collection by object attribute.",
           "fields": null,
           "inputFields": null,
           "interfaces": null,
@@ -1539,7 +1539,7 @@
             },
             {
               "name": "guid",
-              "description": "The globally unique identifier for the object.",
+              "description": null,
               "args": [],
               "type": {
                 "kind": "OBJECT",
@@ -1587,7 +1587,7 @@
             },
             {
               "name": "type",
-              "description": null,
+              "description": "Type of Post for the object.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -1599,7 +1599,7 @@
             },
             {
               "name": "link",
-              "description": null,
+              "description": "URL to the object.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -1647,7 +1647,7 @@
             },
             {
               "name": "comment_status",
-              "description": "Whether or not comments are open on the object.",
+              "description": null,
               "args": [],
               "type": {
                 "kind": "ENUM",
@@ -1659,7 +1659,7 @@
             },
             {
               "name": "ping_status",
-              "description": "Whether or not the object can be pinged.",
+              "description": null,
               "args": [],
               "type": {
                 "kind": "ENUM",
@@ -1671,7 +1671,7 @@
             },
             {
               "name": "template",
-              "description": null,
+              "description": "The theme file to use to display the object.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -1695,7 +1695,7 @@
             },
             {
               "name": "meta",
-              "description": "Meta fields for the object.",
+              "description": "Meta fields.",
               "args": [],
               "type": {
                 "kind": "LIST",
@@ -1711,7 +1711,7 @@
             },
             {
               "name": "author",
-              "description": null,
+              "description": "The author object of the item.",
               "args": [],
               "type": {
                 "kind": "OBJECT",
@@ -1723,7 +1723,7 @@
             },
             {
               "name": "featured_media",
-              "description": null,
+              "description": "The featured media for the object.",
               "args": [],
               "type": {
                 "kind": "UNION",
@@ -1747,7 +1747,7 @@
             },
             {
               "name": "sticky",
-              "description": null,
+              "description": "Whether or not the object should be treated as sticky.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -1759,7 +1759,7 @@
             },
             {
               "name": "categories",
-              "description": null,
+              "description": "The terms assigned to the object in the category taxonomy.",
               "args": [],
               "type": {
                 "kind": "LIST",
@@ -1775,7 +1775,7 @@
             },
             {
               "name": "tags",
-              "description": null,
+              "description": "The terms assigned to the object in the post_tag taxonomy.",
               "args": [],
               "type": {
                 "kind": "LIST",
@@ -1844,7 +1844,7 @@
             },
             {
               "name": "guid",
-              "description": "The globally unique identifier for the object.",
+              "description": null,
               "args": [],
               "type": {
                 "kind": "OBJECT",
@@ -1892,7 +1892,7 @@
             },
             {
               "name": "type",
-              "description": null,
+              "description": "Type of Post for the object.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -1904,7 +1904,7 @@
             },
             {
               "name": "link",
-              "description": null,
+              "description": "URL to the object.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -1952,7 +1952,7 @@
             },
             {
               "name": "comment_status",
-              "description": "Whether or not comments are open on the object.",
+              "description": null,
               "args": [],
               "type": {
                 "kind": "ENUM",
@@ -1964,7 +1964,7 @@
             },
             {
               "name": "ping_status",
-              "description": "Whether or not the object can be pinged.",
+              "description": null,
               "args": [],
               "type": {
                 "kind": "ENUM",
@@ -1976,7 +1976,7 @@
             },
             {
               "name": "template",
-              "description": null,
+              "description": "The theme file to use to display the object.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -2050,7 +2050,7 @@
           "fields": [
             {
               "name": "rendered",
-              "description": "HTML content for the object, transformed for display.",
+              "description": "HTML for the object, transformed for display.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -2073,7 +2073,7 @@
           "fields": [
             {
               "name": "rendered",
-              "description": "HTML content for the object, transformed for display.",
+              "description": "HTML for the object, transformed for display.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -2096,7 +2096,7 @@
           "fields": [
             {
               "name": "rendered",
-              "description": "HTML content for the object, transformed for display.",
+              "description": "HTML for the object, transformed for display.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -2131,7 +2131,7 @@
           "fields": [
             {
               "name": "rendered",
-              "description": "HTML content for the object, transformed for display.",
+              "description": "HTML for the object, transformed for display.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -2162,7 +2162,7 @@
         {
           "kind": "ENUM",
           "name": "COMMENT_STATUS",
-          "description": null,
+          "description": "Whether or not comments are open on the object.",
           "fields": null,
           "inputFields": null,
           "interfaces": null,
@@ -2185,7 +2185,7 @@
         {
           "kind": "ENUM",
           "name": "PING_STATUS",
-          "description": null,
+          "description": "Whether or not the object can be pinged.",
           "fields": null,
           "inputFields": null,
           "interfaces": null,
@@ -2271,7 +2271,7 @@
             },
             {
               "name": "description",
-              "description": "A description of the object.",
+              "description": "The object description.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -2283,7 +2283,7 @@
             },
             {
               "name": "link",
-              "description": null,
+              "description": "URL to the object.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -2307,7 +2307,7 @@
             },
             {
               "name": "avatar_urls",
-              "description": null,
+              "description": "Avatar URLs for the user.",
               "args": [],
               "type": {
                 "kind": "LIST",
@@ -2509,7 +2509,7 @@
             },
             {
               "name": "guid",
-              "description": "The globally unique identifier for the object.",
+              "description": null,
               "args": [],
               "type": {
                 "kind": "OBJECT",
@@ -2557,7 +2557,7 @@
             },
             {
               "name": "type",
-              "description": null,
+              "description": "Type of Post for the object.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -2569,7 +2569,7 @@
             },
             {
               "name": "link",
-              "description": null,
+              "description": "URL to the object.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -2593,7 +2593,7 @@
             },
             {
               "name": "comment_status",
-              "description": "Whether or not comments are open on the object.",
+              "description": null,
               "args": [],
               "type": {
                 "kind": "ENUM",
@@ -2605,7 +2605,7 @@
             },
             {
               "name": "ping_status",
-              "description": "Whether or not the object can be pinged.",
+              "description": null,
               "args": [],
               "type": {
                 "kind": "ENUM",
@@ -2617,7 +2617,7 @@
             },
             {
               "name": "template",
-              "description": null,
+              "description": "The theme file to use to display the object.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -2629,7 +2629,7 @@
             },
             {
               "name": "meta",
-              "description": "Meta fields for the object.",
+              "description": "Meta fields.",
               "args": [],
               "type": {
                 "kind": "LIST",
@@ -2645,7 +2645,7 @@
             },
             {
               "name": "author",
-              "description": null,
+              "description": "The author object of the item.",
               "args": [],
               "type": {
                 "kind": "OBJECT",
@@ -2693,7 +2693,7 @@
             },
             {
               "name": "alt_text",
-              "description": null,
+              "description": "Alternative text to display when attachment is not displayed.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -2708,8 +2708,8 @@
               "description": null,
               "args": [],
               "type": {
-                "kind": "SCALAR",
-                "name": "String",
+                "kind": "ENUM",
+                "name": "MEDIA_TYPE",
                 "ofType": null
               },
               "isDeprecated": false,
@@ -2717,7 +2717,7 @@
             },
             {
               "name": "mime_type",
-              "description": null,
+              "description": "The attachment MIME type.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -2729,7 +2729,7 @@
             },
             {
               "name": "post",
-              "description": null,
+              "description": "The ID for the associated post of the attachment.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -2741,7 +2741,7 @@
             },
             {
               "name": "source_url",
-              "description": null,
+              "description": "URL to the original attachment file.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -2818,7 +2818,7 @@
             },
             {
               "name": "guid",
-              "description": "The globally unique identifier for the object.",
+              "description": null,
               "args": [],
               "type": {
                 "kind": "OBJECT",
@@ -2866,7 +2866,7 @@
             },
             {
               "name": "type",
-              "description": null,
+              "description": "Type of Post for the object.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -2878,7 +2878,7 @@
             },
             {
               "name": "link",
-              "description": null,
+              "description": "URL to the object.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -2902,7 +2902,7 @@
             },
             {
               "name": "comment_status",
-              "description": "Whether or not comments are open on the object.",
+              "description": null,
               "args": [],
               "type": {
                 "kind": "ENUM",
@@ -2914,7 +2914,7 @@
             },
             {
               "name": "ping_status",
-              "description": "Whether or not the object can be pinged.",
+              "description": null,
               "args": [],
               "type": {
                 "kind": "ENUM",
@@ -2926,7 +2926,7 @@
             },
             {
               "name": "template",
-              "description": null,
+              "description": "The theme file to use to display the object.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -3002,7 +3002,7 @@
             },
             {
               "name": "alt_text",
-              "description": null,
+              "description": "Alternative text to display when attachment is not displayed.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -3017,8 +3017,8 @@
               "description": null,
               "args": [],
               "type": {
-                "kind": "SCALAR",
-                "name": "String",
+                "kind": "ENUM",
+                "name": "MEDIA_TYPE",
                 "ofType": null
               },
               "isDeprecated": false,
@@ -3026,7 +3026,7 @@
             },
             {
               "name": "mime_type",
-              "description": null,
+              "description": "The attachment MIME type.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -3038,7 +3038,7 @@
             },
             {
               "name": "post",
-              "description": null,
+              "description": "The ID for the associated post of the attachment.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -3050,7 +3050,7 @@
             },
             {
               "name": "source_url",
-              "description": null,
+              "description": "URL to the original attachment file.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -3215,7 +3215,7 @@
           "fields": [
             {
               "name": "rendered",
-              "description": "HTML content for the object, transformed for display.",
+              "description": "HTML for the object, transformed for display.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -3238,7 +3238,7 @@
           "fields": [
             {
               "name": "rendered",
-              "description": "HTML content for the object, transformed for display.",
+              "description": "HTML for the object, transformed for display.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -3252,6 +3252,47 @@
           "inputFields": null,
           "interfaces": [],
           "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "ENUM",
+          "name": "MEDIA_TYPE",
+          "description": "Attachment type.",
+          "fields": null,
+          "inputFields": null,
+          "interfaces": null,
+          "enumValues": [
+            {
+              "name": "IMAGE",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "VIDEO",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "AUDIO",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "APPLICATION",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "FILE",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            }
+          ],
           "possibleTypes": null
         },
         {
@@ -3443,7 +3484,7 @@
             },
             {
               "name": "guid",
-              "description": "The globally unique identifier for the object.",
+              "description": null,
               "args": [],
               "type": {
                 "kind": "OBJECT",
@@ -3491,7 +3532,7 @@
             },
             {
               "name": "type",
-              "description": null,
+              "description": "Type of Post for the object.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -3503,7 +3544,7 @@
             },
             {
               "name": "link",
-              "description": null,
+              "description": "URL to the object.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -3527,7 +3568,7 @@
             },
             {
               "name": "comment_status",
-              "description": "Whether or not comments are open on the object.",
+              "description": null,
               "args": [],
               "type": {
                 "kind": "ENUM",
@@ -3539,7 +3580,7 @@
             },
             {
               "name": "ping_status",
-              "description": "Whether or not the object can be pinged.",
+              "description": null,
               "args": [],
               "type": {
                 "kind": "ENUM",
@@ -3551,7 +3592,7 @@
             },
             {
               "name": "template",
-              "description": null,
+              "description": "The theme file to use to display the object.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -3563,7 +3604,7 @@
             },
             {
               "name": "meta",
-              "description": "Meta fields for the object.",
+              "description": "Meta fields.",
               "args": [],
               "type": {
                 "kind": "LIST",
@@ -3579,7 +3620,7 @@
             },
             {
               "name": "author",
-              "description": null,
+              "description": "The author object of the item.",
               "args": [],
               "type": {
                 "kind": "OBJECT",
@@ -3627,7 +3668,7 @@
             },
             {
               "name": "alt_text",
-              "description": null,
+              "description": "Alternative text to display when attachment is not displayed.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -3642,8 +3683,8 @@
               "description": null,
               "args": [],
               "type": {
-                "kind": "SCALAR",
-                "name": "String",
+                "kind": "ENUM",
+                "name": "MEDIA_TYPE",
                 "ofType": null
               },
               "isDeprecated": false,
@@ -3651,7 +3692,7 @@
             },
             {
               "name": "mime_type",
-              "description": null,
+              "description": "The attachment MIME type.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -3663,7 +3704,7 @@
             },
             {
               "name": "post",
-              "description": null,
+              "description": "The ID for the associated post of the attachment.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -3675,7 +3716,7 @@
             },
             {
               "name": "source_url",
-              "description": null,
+              "description": "URL to the original attachment file.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -3775,7 +3816,7 @@
             },
             {
               "name": "guid",
-              "description": "The globally unique identifier for the object.",
+              "description": null,
               "args": [],
               "type": {
                 "kind": "OBJECT",
@@ -3823,7 +3864,7 @@
             },
             {
               "name": "type",
-              "description": null,
+              "description": "Type of Post for the object.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -3835,7 +3876,7 @@
             },
             {
               "name": "link",
-              "description": null,
+              "description": "URL to the object.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -3859,7 +3900,7 @@
             },
             {
               "name": "comment_status",
-              "description": "Whether or not comments are open on the object.",
+              "description": null,
               "args": [],
               "type": {
                 "kind": "ENUM",
@@ -3871,7 +3912,7 @@
             },
             {
               "name": "ping_status",
-              "description": "Whether or not the object can be pinged.",
+              "description": null,
               "args": [],
               "type": {
                 "kind": "ENUM",
@@ -3883,7 +3924,7 @@
             },
             {
               "name": "template",
-              "description": null,
+              "description": "The theme file to use to display the object.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -3895,7 +3936,7 @@
             },
             {
               "name": "meta",
-              "description": "Meta fields for the object.",
+              "description": "Meta fields.",
               "args": [],
               "type": {
                 "kind": "LIST",
@@ -3911,7 +3952,7 @@
             },
             {
               "name": "author",
-              "description": null,
+              "description": "The author object of the item.",
               "args": [],
               "type": {
                 "kind": "OBJECT",
@@ -3959,7 +4000,7 @@
             },
             {
               "name": "alt_text",
-              "description": null,
+              "description": "Alternative text to display when attachment is not displayed.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -3974,8 +4015,8 @@
               "description": null,
               "args": [],
               "type": {
-                "kind": "SCALAR",
-                "name": "String",
+                "kind": "ENUM",
+                "name": "MEDIA_TYPE",
                 "ofType": null
               },
               "isDeprecated": false,
@@ -3983,7 +4024,7 @@
             },
             {
               "name": "mime_type",
-              "description": null,
+              "description": "The attachment MIME type.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -3995,7 +4036,7 @@
             },
             {
               "name": "post",
-              "description": null,
+              "description": "The ID for the associated post of the attachment.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -4007,7 +4048,7 @@
             },
             {
               "name": "source_url",
-              "description": null,
+              "description": "URL to the original attachment file.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -4067,7 +4108,7 @@
         {
           "kind": "ENUM",
           "name": "FORMAT",
-          "description": null,
+          "description": "The format for the object.",
           "fields": null,
           "inputFields": null,
           "interfaces": null,
@@ -4415,7 +4456,7 @@
             },
             {
               "name": "description",
-              "description": "A description of the object.",
+              "description": "The object description.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -4427,7 +4468,7 @@
             },
             {
               "name": "link",
-              "description": null,
+              "description": "URL to the object.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -4475,7 +4516,7 @@
             },
             {
               "name": "meta",
-              "description": "Meta fields for the object.",
+              "description": "Meta fields.",
               "args": [],
               "type": {
                 "kind": "LIST",
@@ -4556,7 +4597,7 @@
             },
             {
               "name": "description",
-              "description": null,
+              "description": "The object description.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -4568,7 +4609,7 @@
             },
             {
               "name": "link",
-              "description": null,
+              "description": "URL to the object.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -4785,7 +4826,7 @@
             },
             {
               "name": "description",
-              "description": "A description of the object.",
+              "description": "The object description.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -4797,7 +4838,7 @@
             },
             {
               "name": "link",
-              "description": null,
+              "description": "URL to the object.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -4845,7 +4886,7 @@
             },
             {
               "name": "meta",
-              "description": "Meta fields for the object.",
+              "description": "Meta fields.",
               "args": [],
               "type": {
                 "kind": "LIST",
@@ -4977,7 +5018,7 @@
         {
           "kind": "ENUM",
           "name": "USER_ORDERBY",
-          "description": null,
+          "description": "Sort collection by object attribute.",
           "fields": null,
           "inputFields": null,
           "interfaces": null,
@@ -5030,7 +5071,7 @@
         {
           "kind": "ENUM",
           "name": "TAXONOMY_ORDERBY",
-          "description": null,
+          "description": "Sort collection by term attribute.",
           "fields": null,
           "inputFields": null,
           "interfaces": null,
@@ -5083,7 +5124,7 @@
         {
           "kind": "ENUM",
           "name": "PAGE_ORDERBY",
-          "description": null,
+          "description": "Sort collection by object attribute.",
           "fields": null,
           "inputFields": null,
           "interfaces": null,
@@ -5176,7 +5217,7 @@
             },
             {
               "name": "guid",
-              "description": "The globally unique identifier for the object.",
+              "description": null,
               "args": [],
               "type": {
                 "kind": "OBJECT",
@@ -5224,7 +5265,7 @@
             },
             {
               "name": "type",
-              "description": null,
+              "description": "Type of Post for the object.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -5236,7 +5277,7 @@
             },
             {
               "name": "link",
-              "description": null,
+              "description": "URL to the object.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -5284,7 +5325,7 @@
             },
             {
               "name": "comment_status",
-              "description": "Whether or not comments are open on the object.",
+              "description": null,
               "args": [],
               "type": {
                 "kind": "ENUM",
@@ -5296,7 +5337,7 @@
             },
             {
               "name": "ping_status",
-              "description": "Whether or not the object can be pinged.",
+              "description": null,
               "args": [],
               "type": {
                 "kind": "ENUM",
@@ -5308,7 +5349,7 @@
             },
             {
               "name": "template",
-              "description": null,
+              "description": "The theme file to use to display the object.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -5320,7 +5361,7 @@
             },
             {
               "name": "meta",
-              "description": "Meta fields for the object.",
+              "description": "Meta fields.",
               "args": [],
               "type": {
                 "kind": "LIST",
@@ -5336,7 +5377,7 @@
             },
             {
               "name": "author",
-              "description": null,
+              "description": "The author object of the item.",
               "args": [],
               "type": {
                 "kind": "OBJECT",
@@ -5348,7 +5389,7 @@
             },
             {
               "name": "featured_media",
-              "description": null,
+              "description": "The featured media for the object.",
               "args": [],
               "type": {
                 "kind": "UNION",
@@ -5580,7 +5621,7 @@
         {
           "kind": "ENUM",
           "name": "COMMENT_ORDERBY",
-          "description": null,
+          "description": "Sort collection by object attribute.",
           "fields": null,
           "inputFields": null,
           "interfaces": null,
@@ -5637,7 +5678,7 @@
           "fields": [
             {
               "name": "id",
-              "description": null,
+              "description": "Unique identifier for the object.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -5673,7 +5714,7 @@
             },
             {
               "name": "author",
-              "description": null,
+              "description": "The author object of the item.",
               "args": [],
               "type": {
                 "kind": "OBJECT",
@@ -5745,7 +5786,7 @@
             },
             {
               "name": "link",
-              "description": null,
+              "description": "URL to the object.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -5797,7 +5838,7 @@
             },
             {
               "name": "meta",
-              "description": "Meta fields for the object.",
+              "description": "Meta fields.",
               "args": [],
               "type": {
                 "kind": "LIST",
@@ -5970,7 +6011,7 @@
             },
             {
               "name": "description",
-              "description": "A description of the object.",
+              "description": "The object description.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -6164,7 +6205,7 @@
             },
             {
               "name": "description",
-              "description": "A description of the object.",
+              "description": "The object description.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -6289,41 +6330,6 @@
           "inputFields": null,
           "interfaces": [],
           "enumValues": null,
-          "possibleTypes": null
-        },
-        {
-          "kind": "ENUM",
-          "name": "MEDIA_TYPE",
-          "description": null,
-          "fields": null,
-          "inputFields": null,
-          "interfaces": null,
-          "enumValues": [
-            {
-              "name": "IMAGE",
-              "description": null,
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "VIDEO",
-              "description": null,
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "AUDIO",
-              "description": null,
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "APPLICATION",
-              "description": null,
-              "isDeprecated": false,
-              "deprecationReason": null
-            }
-          ],
           "possibleTypes": null
         },
         {

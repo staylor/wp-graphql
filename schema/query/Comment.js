@@ -15,7 +15,10 @@ export default {
     type: new GraphQLList(Comment),
     args: (
       Object.assign({}, pagination, filter, date, hierarchical, {
-        post: { type: GraphQLInt },
+        post: {
+          type: GraphQLInt,
+          description: 'Limit result set to comments assigned to specific post IDs.',
+        },
         orderby: { type: COMMENT_ORDERBY },
       })
     ),

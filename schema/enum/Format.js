@@ -2,6 +2,7 @@ import { GraphQLEnumType } from 'graphql';
 
 const FORMAT = new GraphQLEnumType({
   name: 'FORMAT',
+  description: 'The format for the object.',
   values: {
     STANDARD: { value: 'standard' },
     ASIDE: { value: 'aside' },

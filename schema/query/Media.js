@@ -17,8 +17,14 @@ export default {
     args: (
       Object.assign({}, pagination, filter, date, hierarchical, author, slug, {
         orderby: { type: POST_ORDERBY },
-        media_type: { type: MEDIA_TYPE },
-        mime_type: { type: GraphQLString },
+        media_type: {
+          type: MEDIA_TYPE,
+          description: 'Limit result set to attachments of a particular media type.',
+        },
+        mime_type: {
+          type: GraphQLString,
+          description: 'Limit result set to attachments of a particular MIME type.',
+        },
       })
     ),
     resolve: resolveWithArgs('/media'),

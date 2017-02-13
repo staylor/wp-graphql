@@ -1,28 +1,25 @@
 import {
   GraphQLObjectType,
   GraphQLList,
-  GraphQLString,
-  GraphQLBoolean,
 } from 'graphql';
 
+/* eslint-disable camelcase */
+
 import PostInterface from 'interface/Post';
-import Title from 'type/Title';
-import Content from 'type/Content';
-import Excerpt from 'type/Excerpt';
-import User from 'type/User';
 import Category from 'type/Category';
 import Tag from 'type/Tag';
-import Media from 'type/Media';
 import PostLinks from 'type/Post/Links';
-import { id, slug, guid } from 'field/identifier';
-// eslint-disable-next-line camelcase
-import { date, date_gmt, modified, modified_gmt } from 'field/date';
-import metaField from 'field/meta';
-// eslint-disable-next-line camelcase
-import { comment_status, ping_status } from 'field/status';
-import { categories, tags, users, media } from 'data';
 
-import FORMAT from 'enum/Format';
+import { id, slug, guid, link } from 'field/identifier';
+import { title, content, excerpt } from 'field/content';
+import { date, date_gmt, modified, modified_gmt } from 'field/date';
+import { comment_status, ping_status } from 'field/status';
+import { type, template, format, sticky } from 'field/post';
+import { featuredMedia } from 'field/media';
+import metaField from 'field/meta';
+import author from 'field/author';
+
+import { categories, tags } from 'data';
 
 const Post = new GraphQLObjectType({
   name: 'Post',
@@ -39,33 +36,24 @@ const Post = new GraphQLObjectType({
     modified,
     modified_gmt,
     slug,
-    type: { type: GraphQLString },
-    link: { type: GraphQLString },
-    title: { type: Title },
-    content: { type: Content },
-    excerpt: { type: Excerpt },
+    type,
+    link,
+    title,
+    content,
+    excerpt,
     comment_status,
     ping_status,
-    template: { type: GraphQLString },
-    format: { type: FORMAT },
+    template,
+    format,
     meta: metaField(),
-    author: {
-      type: User,
-      resolve: post => (
-        post.author > 0 ? users.load(post.author) : null
-      ),
-    },
-    featured_media: {
-      type: Media,
-      resolve: post => (
-        post.featured_media ? media.load(post.featured_media) : null
-      ),
-    },
+    author,
+    featured_media: featuredMedia(),
     _links: { type: PostLinks },
     // extra post fields
-    sticky: { type: GraphQLBoolean },
+    sticky,
     categories: {
       type: new GraphQLList(Category),
+      description: 'The terms assigned to the object in the category taxonomy.',
       resolve: post => (
         post.categories.length ?
           categories.loadMany(post.categories) :
@@ -74,6 +62,7 @@ const Post = new GraphQLObjectType({
     },
     tags: {
       type: new GraphQLList(Tag),
+      description: 'The terms assigned to the object in the post_tag taxonomy.',
       resolve: post => (
         post.tags.length ?
           tags.loadMany(post.tags) :

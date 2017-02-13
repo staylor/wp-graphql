@@ -13,6 +13,6 @@ const metaResolver = (data) => {
 
 export default () => ({
   type: new GraphQLList(Meta),
-  description: 'Meta fields for the object.',
+  description: 'Meta fields.',
   resolve: metaResolver,
 });

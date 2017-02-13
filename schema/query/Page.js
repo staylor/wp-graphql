@@ -15,7 +15,10 @@ export default {
     type: new GraphQLList(Page),
     args: (
       Object.assign({}, pagination, filter, date, hierarchical, author, slug, {
-        menu_order: { type: GraphQLInt },
+        menu_order: {
+          type: GraphQLInt,
+          description: 'Limit result set to posts with a specific menu_order value.',
+        },
         orderby: { type: PAGE_ORDERBY },
       })
     ),

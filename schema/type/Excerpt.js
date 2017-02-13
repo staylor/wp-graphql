@@ -1,4 +1,5 @@
 import { GraphQLObjectType } from 'graphql';
+
 import rendered from 'field/rendered';
 // 'protected' is a reserved word in JS
 import protectedField from 'field/protected';

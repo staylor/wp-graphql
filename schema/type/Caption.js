@@ -1,4 +1,5 @@
 import { GraphQLObjectType } from 'graphql';
+
 import rendered from 'field/rendered';
 
 const Caption = new GraphQLObjectType({

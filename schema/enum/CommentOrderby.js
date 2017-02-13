@@ -2,6 +2,7 @@ import { GraphQLEnumType } from 'graphql';
 
 const COMMENT_ORDERBY = new GraphQLEnumType({
   name: 'COMMENT_ORDERBY',
+  description: 'Sort collection by object attribute.',
   values: {
     ID: { value: 'id' },
     INCLUDE: { value: 'include' },

@@ -1,23 +1,23 @@
 import {
   GraphQLObjectType,
   GraphQLInt,
-  GraphQLString,
 } from 'graphql';
 
+/* eslint-disable camelcase */
+
 import PostInterface from 'interface/Post';
-import Title from 'type/Title';
-import Content from 'type/Content';
-import Excerpt from 'type/Excerpt';
-import User from 'type/User';
-import Media from 'type/Media';
 import PageLinks from 'type/Page/Links';
-import { id, slug, guid } from 'field/identifier';
-// eslint-disable-next-line camelcase
+
+import { id, slug, guid, link } from 'field/identifier';
+import { title, content, excerpt } from 'field/content';
 import { date, date_gmt, modified, modified_gmt } from 'field/date';
 import metaField from 'field/meta';
-// eslint-disable-next-line camelcase
+import { type, template } from 'field/post';
 import { comment_status, ping_status } from 'field/status';
-import { pages, users, media } from 'data';
+import { featuredMedia } from 'field/media';
+import author from 'field/author';
+
+import { pages } from 'data';
 
 const Page = new GraphQLObjectType({
   name: 'Page',
@@ -34,27 +34,17 @@ const Page = new GraphQLObjectType({
     modified,
     modified_gmt,
     slug,
-    type: { type: GraphQLString },
-    link: { type: GraphQLString },
-    title: { type: Title },
-    content: { type: Content },
-    excerpt: { type: Excerpt },
+    type,
+    link,
+    title,
+    content,
+    excerpt,
     comment_status,
     ping_status,
-    template: { type: GraphQLString },
+    template,
     meta: metaField(),
-    author: {
-      type: User,
-      resolve: page => (
-        page.author > 0 ? users.load(page.author) : null
-      ),
-    },
-    featured_media: {
-      type: Media,
-      resolve: page => (
-        page.featured_media ? media.load(page.featured_media) : null
-      ),
-    },
+    author,
+    featured_media: featuredMedia(),
     _links: { type: PageLinks },
     // extra page fields
     parent: {

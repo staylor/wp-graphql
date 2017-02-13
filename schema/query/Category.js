@@ -13,7 +13,10 @@ export default {
     type: new GraphQLList(Category),
     args: (
       Object.assign({}, pagination, filter, slug, taxonomy, {
-        parent: { type: GraphQLInt },
+        parent: {
+          type: GraphQLInt,
+          description: 'Limit result set to terms assigned to a specific parent.',
+        },
       })
     ),
     resolve: resolveWithArgs('/categories'),
