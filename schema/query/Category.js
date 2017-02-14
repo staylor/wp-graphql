@@ -3,14 +3,14 @@ import {
   GraphQLInt,
 } from 'graphql';
 
-import Category from 'type/Category';
+import CategoryType from 'type/Category';
+import Category from 'data/Category';
 import { resolveWithArgs, itemResolver } from 'utils';
-import { categories } from 'data';
 import { pagination, filter, slug, taxonomy } from 'query/args';
 
 export default {
   categories: {
-    type: new GraphQLList(Category),
+    type: new GraphQLList(CategoryType),
     args: (
       Object.assign({}, pagination, filter, slug, taxonomy, {
         parent: {
@@ -19,7 +19,7 @@ export default {
         },
       })
     ),
-    resolve: resolveWithArgs('/categories'),
+    resolve: resolveWithArgs('/categories', Category),
   },
-  category: itemResolver(Category, categories),
+  category: itemResolver(CategoryType, Category),
 };

@@ -1,34 +1,39 @@
 import {
+  GraphQLNonNull,
   GraphQLList,
-  GraphQLString,
+  GraphQLID,
 } from 'graphql';
 
-import Status from 'type/Status';
-import request, { statuses } from 'data';
+import StatusType from 'type/Status';
+import Status from 'data/Status';
+import request from 'data';
 
 export default {
   statuses: {
-    type: new GraphQLList(Status),
+    type: new GraphQLList(StatusType),
     resolve: () => (
       request('/statuses').then(stati => (
-        Object.keys(stati).map(status => ({
+        Object.keys(stati).map(status => (Object.assign(new Status(), {
           ...stati[status],
-          type: status,
-        }))
+          id: status,
+        })))
       ))
     ),
   },
   status: {
-    type: Status,
+    type: StatusType,
     args: {
-      type: { type: GraphQLString },
+      id: {
+        type: new GraphQLNonNull(GraphQLID),
+        description: 'Unique identifier for the object.',
+      },
     },
     // eslint-disable-next-line no-confusing-arrow
-    resolve: (root, { type }) => (
-      statuses.load(type).then(statusData => ({
+    resolve: (root, { id }) => (
+      Status.load(id).then(statusData => (Object.assign(new Status(), {
         ...statusData,
-        type,
-      }))
+        id,
+      })))
     ),
   },
 };

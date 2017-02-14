@@ -1,15 +1,15 @@
 import { GraphQLList } from 'graphql';
 
-import Tag from 'type/Tag';
+import TagType from 'type/Tag';
+import Tag from 'data/Tag';
 import { resolveWithArgs, itemResolver } from 'utils';
-import { tags } from 'data';
 import { pagination, filter, slug, taxonomy } from 'query/args';
 
 export default {
   tags: {
-    type: new GraphQLList(Tag),
+    type: new GraphQLList(TagType),
     args: Object.assign({}, pagination, filter, slug, taxonomy),
-    resolve: resolveWithArgs('/tags'),
+    resolve: resolveWithArgs('/tags', Tag),
   },
-  tag: itemResolver(Tag, tags),
+  tag: itemResolver(TagType, Tag),
 };

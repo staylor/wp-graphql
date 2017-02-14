@@ -1,14 +1,16 @@
 import {
   GraphQLInterfaceType,
+  GraphQLNonNull,
+  GraphQLID,
   GraphQLList,
 } from 'graphql';
 
 /* eslint-disable camelcase */
 
-import User from 'type/User';
-import Media from 'type/Media';
+import UserType from 'type/User';
+import MediaType from 'type/Media';
 import Meta from 'type/Meta';
-import { id, slug, guid, link } from 'field/identifier';
+import { slug, guid, link } from 'field/identifier';
 import { date, date_gmt, modified, modified_gmt } from 'field/date';
 import { comment_status, ping_status } from 'field/status';
 import { title, content, excerpt } from 'field/content';
@@ -17,7 +19,10 @@ import { type, template } from 'field/post';
 const PostInterface = new GraphQLInterfaceType({
   name: 'PostInterface',
   fields: {
-    id,
+    id: {
+      type: new GraphQLNonNull(GraphQLID),
+      description: 'Unique identifier for the object.',
+    },
     date,
     date_gmt,
     guid,
@@ -33,8 +38,8 @@ const PostInterface = new GraphQLInterfaceType({
     ping_status,
     template,
     meta: { type: new GraphQLList(Meta) },
-    author: { type: User },
-    featured_media: { type: Media },
+    author: { type: UserType },
+    featured_media: { type: MediaType },
   },
 });
 

@@ -5,14 +5,14 @@ import {
 
 import USER_ORDERBY from 'enum/UserOrderby';
 
-import User from 'type/User';
+import UserType from 'type/User';
+import User from 'data/User';
 import { resolveWithArgs, itemResolver } from 'utils';
-import { users } from 'data';
 import { pagination, filter, slug } from 'query/args';
 
 export default {
   users: {
-    type: new GraphQLList(User),
+    type: new GraphQLList(UserType),
     args: (
       Object.assign({}, pagination, filter, slug, {
         orderby: { type: USER_ORDERBY },
@@ -22,7 +22,7 @@ export default {
         },
       })
     ),
-    resolve: resolveWithArgs('/users'),
+    resolve: resolveWithArgs('/users', User),
   },
-  user: itemResolver(User, users),
+  user: itemResolver(UserType, User),
 };

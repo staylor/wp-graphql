@@ -7,14 +7,14 @@ import {
 
 import TypeLinks from 'type/Type/Links';
 
-import { slug, name } from 'field/identifier';
+import { globalIdField, slug, name } from 'field/identifier';
 import description from 'field/description';
 
-const Type = new GraphQLObjectType({
+const TypeType = new GraphQLObjectType({
   name: 'Type',
   description: 'A post type.',
   fields: {
-    type: { type: GraphQLString },
+    id: globalIdField(),
     description,
     hierarchical: { type: GraphQLBoolean },
     name,
@@ -25,4 +25,4 @@ const Type = new GraphQLObjectType({
   },
 });
 
-export default Type;
+export default TypeType;

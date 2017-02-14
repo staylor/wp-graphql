@@ -6,14 +6,14 @@ import {
 import POST_ORDERBY from 'enum/PostOrderby';
 import MEDIA_TYPE from 'enum/MediaType';
 
-import Media from 'type/Media';
+import MediaType from 'type/Media';
+import Media from 'data/Media';
 import { resolveWithArgs, itemResolver } from 'utils';
-import { media } from 'data';
 import { pagination, filter, date, hierarchical, author, slug } from 'query/args';
 
 export default {
   media: {
-    type: new GraphQLList(Media),
+    type: new GraphQLList(MediaType),
     args: (
       Object.assign({}, pagination, filter, date, hierarchical, author, slug, {
         orderby: { type: POST_ORDERBY },
@@ -27,7 +27,7 @@ export default {
         },
       })
     ),
-    resolve: resolveWithArgs('/media'),
+    resolve: resolveWithArgs('/media', Media),
   },
-  medium: itemResolver(Media, media),
+  medium: itemResolver(MediaType, Media),
 };

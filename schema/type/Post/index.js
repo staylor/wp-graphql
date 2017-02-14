@@ -6,11 +6,11 @@ import {
 /* eslint-disable camelcase */
 
 import PostInterface from 'interface/Post';
-import Category from 'type/Category';
-import Tag from 'type/Tag';
+import CategoryType from 'type/Category';
+import TagType from 'type/Tag';
 import PostLinks from 'type/Post/Links';
 
-import { id, slug, guid, link } from 'field/identifier';
+import { globalIdField, slug, guid, link } from 'field/identifier';
 import { title, content, excerpt } from 'field/content';
 import { date, date_gmt, modified, modified_gmt } from 'field/date';
 import { comment_status, ping_status } from 'field/status';
@@ -19,9 +19,12 @@ import { featuredMedia } from 'field/media';
 import metaField from 'field/meta';
 import author from 'field/author';
 
-import { categories, tags } from 'data';
+import Category from 'data/Category';
+import Tag from 'data/Tag';
 
-const Post = new GraphQLObjectType({
+import { toGlobalId } from 'utils';
+
+const PostType = new GraphQLObjectType({
   name: 'Post',
   description: 'A read-only post object.',
   interfaces: [PostInterface],
@@ -29,7 +32,7 @@ const Post = new GraphQLObjectType({
     return post.type === 'post';
   },
   fields: {
-    id,
+    id: globalIdField(),
     date,
     date_gmt,
     guid,
@@ -52,24 +55,26 @@ const Post = new GraphQLObjectType({
     // extra post fields
     sticky,
     categories: {
-      type: new GraphQLList(Category),
+      type: new GraphQLList(CategoryType),
       description: 'The terms assigned to the object in the category taxonomy.',
-      resolve: post => (
-        post.categories.length ?
-          categories.loadMany(post.categories) :
-          []
-      ),
+      resolve: ({ categories }) => {
+        if (categories.length) {
+          return categories.map(cat => toGlobalId('Category', cat)).map(Category.load);
+        }
+        return null;
+      },
     },
     tags: {
-      type: new GraphQLList(Tag),
+      type: new GraphQLList(TagType),
       description: 'The terms assigned to the object in the post_tag taxonomy.',
-      resolve: post => (
-        post.tags.length ?
-          tags.loadMany(post.tags) :
-          []
-      ),
+      resolve: ({ tags }) => {
+        if (tags.length) {
+          return tags.map(tag => toGlobalId('Tag', tag)).map(Tag.load);
+        }
+        return null;
+      },
     },
   },
 });
 
-export default Post;
+export default PostType;

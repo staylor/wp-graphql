@@ -6,14 +6,14 @@ import {
 import Avatar from 'type/User/Avatar';
 import UserLinks from 'type/User/Links';
 
-import { id, slug, name, link } from 'field/identifier';
+import { globalIdField, slug, name, link } from 'field/identifier';
 import description from 'field/description';
 
-const User = new GraphQLObjectType({
+const UserType = new GraphQLObjectType({
   name: 'User',
   description: 'An object.',
   fields: {
-    id,
+    id: globalIdField(),
     name,
     description,
     link,
@@ -32,4 +32,4 @@ const User = new GraphQLObjectType({
   },
 });
 
-export default User;
+export default UserType;

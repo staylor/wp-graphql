@@ -1,11 +1,13 @@
 import {
   GraphQLInterfaceType,
+  GraphQLNonNull,
+  GraphQLID,
   GraphQLList,
 } from 'graphql';
 
 import Description from 'type/Description';
 import Caption from 'type/Caption';
-import User from 'type/User';
+import UserType from 'type/User';
 import Meta from 'type/Meta';
 import MediaLinks from 'type/Media/Links';
 
@@ -15,13 +17,16 @@ import { date, date_gmt, modified, modified_gmt } from 'field/date';
 import { comment_status, ping_status } from 'field/status';
 import { title } from 'field/content';
 import { type, template } from 'field/post';
-import { alt_text, media_type, mime_type, post, source_url } from 'field/media';
+import { alt_text, media_type, mime_type, source_url } from 'field/media';
 /* eslint-enable camelcase */
 
 const MediaInterface = new GraphQLInterfaceType({
   name: 'MediaInterface',
   fields: {
-    id,
+    id: {
+      type: new GraphQLNonNull(GraphQLID),
+      description: 'Unique identifier for the object.',
+    },
     date,
     date_gmt,
     guid,
@@ -35,7 +40,7 @@ const MediaInterface = new GraphQLInterfaceType({
     ping_status,
     template,
     meta: { type: new GraphQLList(Meta) },
-    author: { type: User },
+    author: { type: UserType },
     _links: { type: MediaLinks },
     // featured_media (this field should exist for audio/video)
     // extra media fields
@@ -44,7 +49,10 @@ const MediaInterface = new GraphQLInterfaceType({
     alt_text,
     media_type,
     mime_type,
-    post,
+    post: {
+      type: new GraphQLNonNull(GraphQLID),
+      description: 'The ID for the associated post of the attachment.',
+    },
     source_url,
   },
 });

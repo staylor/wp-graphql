@@ -7,11 +7,11 @@ import {
 import TermInterface from 'interface/Term';
 import TagLinks from 'type/Tag/Links';
 
-import { id, slug, name, link } from 'field/identifier';
+import { globalIdField, slug, name, link } from 'field/identifier';
 import description from 'field/description';
 import metaField from 'field/meta';
 
-const Tag = new GraphQLObjectType({
+const TagType = new GraphQLObjectType({
   name: 'Tag',
   description: 'A unique identifier for a post.',
   interfaces: [TermInterface],
@@ -19,7 +19,7 @@ const Tag = new GraphQLObjectType({
     return term.taxonomy === 'post_tag';
   },
   fields: {
-    id,
+    id: globalIdField(),
     count: { type: GraphQLInt },
     description,
     link,
@@ -31,4 +31,4 @@ const Tag = new GraphQLObjectType({
   },
 });
 
-export default Tag;
+export default TagType;

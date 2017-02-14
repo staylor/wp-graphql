@@ -1,39 +1,40 @@
 import {
+  GraphQLNonNull,
   GraphQLList,
-  GraphQLString,
+  GraphQLID,
 } from 'graphql';
 
-import Taxonomy from 'type/Taxonomy';
-
-import request, { taxonomies } from 'data';
+import TaxonomyType from 'type/Taxonomy';
+import Taxonomy from 'data/Taxonomy';
+import request from 'data';
 
 export default {
   taxonomies: {
-    type: new GraphQLList(Taxonomy),
-    args: {
-      type: { type: GraphQLString },
-    },
+    type: new GraphQLList(TaxonomyType),
     // eslint-disable-next-line no-confusing-arrow
-    resolve: (root, { type }) => (
-      request('/taxonomies', type ? { qs: { type } } : {}).then(taxMap => (
-        Object.keys(taxMap).map(key => ({
-          ...taxMap[key],
-          type,
-        }))
+    resolve: () => (
+      request('/taxonomies').then(taxMap => (
+        Object.keys(taxMap).map(tax => (Object.assign(new Taxonomy(), {
+          ...taxMap[tax],
+          id: tax,
+        })))
       ))
     ),
   },
   taxonomy: {
-    type: Taxonomy,
+    type: TaxonomyType,
     args: {
-      type: { type: GraphQLString },
+      id: {
+        type: new GraphQLNonNull(GraphQLID),
+        description: 'Unique identifier for the object.',
+      },
     },
     // eslint-disable-next-line no-confusing-arrow
-    resolve: (root, { type }) => (
-      taxonomies.load(type).then(taxData => ({
+    resolve: (root, { id }) => (
+      Taxonomy.load(id).then(taxData => (Object.assign(new Taxonomy(), {
         ...taxData,
-        type,
-      }))
+        id,
+      })))
     ),
   },
 };

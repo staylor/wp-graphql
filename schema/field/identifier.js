@@ -1,14 +1,16 @@
 import {
-  GraphQLInt,
+  GraphQLID,
+  GraphQLNonNull,
   GraphQLString,
 } from 'graphql';
 
 import Guid from 'type/Guid';
 
-export const id = {
-  type: GraphQLInt,
+export const globalIdField = () => ({
+  type: new GraphQLNonNull(GraphQLID),
   description: 'Unique identifier for the object.',
-};
+  resolve: data => data.getID(),
+});
 
 export const name = {
   type: GraphQLString,

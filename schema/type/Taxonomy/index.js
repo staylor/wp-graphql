@@ -7,14 +7,14 @@ import {
 
 import TaxonomyLinks from 'type/Taxonomy/Links';
 
-import { slug, name } from 'field/identifier';
+import { globalIdField, slug, name } from 'field/identifier';
 import description from 'field/description';
 
-const Taxonomy = new GraphQLObjectType({
+const TaxonomyType = new GraphQLObjectType({
   name: 'Taxonomy',
   description: 'A taxonomy type.',
   fields: {
-    type: { type: GraphQLString },
+    id: globalIdField(),
     name,
     slug,
     description,
@@ -25,4 +25,4 @@ const Taxonomy = new GraphQLObjectType({
   },
 });
 
-export default Taxonomy;
+export default TaxonomyType;

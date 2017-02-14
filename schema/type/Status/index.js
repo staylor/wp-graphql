@@ -1,19 +1,18 @@
 import {
   GraphQLObjectType,
-  GraphQLString,
   GraphQLBoolean,
 } from 'graphql';
 
 import StatusLinks from 'type/Status/Links';
 
-import { slug, name } from 'field/identifier';
+import { globalIdField, slug, name } from 'field/identifier';
 
-const Status = new GraphQLObjectType({
+const StatusType = new GraphQLObjectType({
   name: 'Status',
   description: 'A post status.',
   fields: {
+    id: globalIdField(),
     name,
-    type: { type: GraphQLString },
     public: { type: GraphQLBoolean },
     queryable: { type: GraphQLBoolean },
     slug,
@@ -21,4 +20,4 @@ const Status = new GraphQLObjectType({
   },
 });
 
-export default Status;
+export default StatusType;

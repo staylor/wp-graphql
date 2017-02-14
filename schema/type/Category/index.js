@@ -8,10 +8,11 @@ import TermInterface from 'interface/Term';
 import CategoryLinks from 'type/Category/Links';
 import description from 'field/description';
 import metaField from 'field/meta';
-import { id, slug, name, link } from 'field/identifier';
-import { categories } from 'data';
+import { globalIdField, slug, name, link } from 'field/identifier';
+import Category from 'data/Category';
+import { toGlobalId } from 'utils';
 
-const Category = new GraphQLObjectType({
+const CategoryType = new GraphQLObjectType({
   name: 'Category',
   description: 'A unique identifier for a post.',
   interfaces: [TermInterface],
@@ -19,7 +20,7 @@ const Category = new GraphQLObjectType({
     return term.taxonomy === 'category';
   },
   fields: () => ({
-    id,
+    id: globalIdField(),
     count: { type: GraphQLInt },
     description,
     link,
@@ -30,12 +31,14 @@ const Category = new GraphQLObjectType({
     _links: { type: CategoryLinks },
     // extra category fields
     parent: {
-      type: Category,
+      type: CategoryType,
       resolve: category => (
-        category.parent > 0 ? categories.load(category.parent) : null
+        category.parent > 0 ?
+          Category.load(toGlobalId('Category', category.parent)) :
+          null
       ),
     },
   }),
 });
 
-export default Category;
+export default CategoryType;

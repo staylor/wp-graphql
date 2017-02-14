@@ -8,7 +8,7 @@ import {
 import PostInterface from 'interface/Post';
 import PageLinks from 'type/Page/Links';
 
-import { id, slug, guid, link } from 'field/identifier';
+import { globalIdField, slug, guid, link } from 'field/identifier';
 import { title, content, excerpt } from 'field/content';
 import { date, date_gmt, modified, modified_gmt } from 'field/date';
 import metaField from 'field/meta';
@@ -16,10 +16,10 @@ import { type, template } from 'field/post';
 import { comment_status, ping_status } from 'field/status';
 import { featuredMedia } from 'field/media';
 import author from 'field/author';
+import Page from 'data/Page';
+import { toGlobalId } from 'utils';
 
-import { pages } from 'data';
-
-const Page = new GraphQLObjectType({
+const PageType = new GraphQLObjectType({
   name: 'Page',
   description: 'An object.',
   interfaces: [PostInterface],
@@ -27,7 +27,7 @@ const Page = new GraphQLObjectType({
     return page.type === 'page';
   },
   fields: () => ({
-    id,
+    id: globalIdField(),
     date,
     date_gmt,
     guid,
@@ -48,11 +48,11 @@ const Page = new GraphQLObjectType({
     _links: { type: PageLinks },
     // extra page fields
     parent: {
-      type: Page,
-      resolve: page => (page.parent ? pages.load(page.parent) : null),
+      type: PageType,
+      resolve: page => (page.parent ? Page.load(toGlobalId('Page', page.parent)) : null),
     },
     menu_order: { type: GraphQLInt },
   }),
 });
 
-export default Page;
+export default PageType;

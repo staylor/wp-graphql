@@ -1,12 +1,12 @@
 import { GraphQLUnionType } from 'graphql';
 
-import Image from 'type/Media/Image';
-import Audio from 'type/Media/Audio';
-import Video from 'type/Media/Video';
+import ImageType from 'type/Media/Image';
+import AudioType from 'type/Media/Audio';
+import VideoType from 'type/Media/Video';
 
-const Media = new GraphQLUnionType({
+const MediaType = new GraphQLUnionType({
   name: 'Media',
-  types: [Image, Audio, Video],
+  types: [ImageType, AudioType, VideoType],
 });
 
-export default Media;
+export default MediaType;

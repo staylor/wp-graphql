@@ -6,14 +6,14 @@ import {
 
 import POST_ORDERBY from 'enum/PostOrderby';
 
-import Post from 'type/Post';
+import PostType from 'type/Post';
+import Post from 'data/Post';
 import { resolveWithArgs, itemResolver } from 'utils';
-import { posts } from 'data';
 import { pagination, filter, date, author, slug } from 'query/args';
 
 export default {
   posts: {
-    type: new GraphQLList(Post),
+    type: new GraphQLList(PostType),
     args: (
       Object.assign({}, pagination, filter, date, author, slug, {
         orderby: { type: POST_ORDERBY },
@@ -25,7 +25,7 @@ export default {
         tags_exclude: { type: GraphQLString },
       })
     ),
-    resolve: resolveWithArgs('/posts'),
+    resolve: resolveWithArgs('/posts', Post),
   },
-  post: itemResolver(Post, posts),
+  post: itemResolver(PostType, Post),
 };

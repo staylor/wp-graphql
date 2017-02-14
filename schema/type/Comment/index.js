@@ -6,33 +6,36 @@ import {
 
 /* eslint-disable camelcase */
 
-import Post from 'type/Post';
+import PostType from 'type/Post';
 import Avatar from 'type/User/Avatar';
 import CommentLinks from 'type/Comment/Links';
 
-import { id, link } from 'field/identifier';
+import { globalIdField, link } from 'field/identifier';
 import { content } from 'field/content';
 import { date, date_gmt } from 'field/date';
 import metaField from 'field/meta';
 import author from 'field/author';
 
-import { posts, comments } from 'data';
+import Comment from 'data/Comment';
+import Post from 'data/Post';
 
-const Comment = new GraphQLObjectType({
+import { toGlobalId } from 'utils';
+
+const CommentType = new GraphQLObjectType({
   name: 'Comment',
   description: 'An object.',
   fields: () => ({
-    id,
+    id: globalIdField(),
     post: {
-      type: Post,
+      type: PostType,
       resolve: comment => (
-        comment.post > 0 ? posts.load(comment.post) : null
+        comment.post > 0 ? Post.load(toGlobalId('Post', comment.post)) : null
       ),
     },
     parent: {
-      type: Comment,
+      type: CommentType,
       resolve: comment => (
-        comment.parent > 0 ? comments.load(comment.parent) : null
+        comment.parent > 0 ? Comment.load(toGlobalId('Comment', comment.parent)) : null
       ),
     },
     author,
@@ -58,4 +61,4 @@ const Comment = new GraphQLObjectType({
   }),
 });
 
-export default Comment;
+export default CommentType;

@@ -5,14 +5,14 @@ import {
 
 import COMMENT_ORDERBY from 'enum/CommentOrderby';
 
-import Comment from 'type/Comment';
+import CommentType from 'type/Comment';
+import Comment from 'data';
 import { resolveWithArgs, itemResolver } from 'utils';
-import { comments } from 'data';
 import { pagination, filter, date, hierarchical } from 'query/args';
 
 export default {
   comments: {
-    type: new GraphQLList(Comment),
+    type: new GraphQLList(CommentType),
     args: (
       Object.assign({}, pagination, filter, date, hierarchical, {
         post: {
@@ -22,7 +22,7 @@ export default {
         orderby: { type: COMMENT_ORDERBY },
       })
     ),
-    resolve: resolveWithArgs('/comments'),
+    resolve: resolveWithArgs('/comments', Comment),
   },
-  comment: itemResolver(Comment, comments),
+  comment: itemResolver(CommentType, Comment),
 };
