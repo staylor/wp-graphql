@@ -1,9 +1,11 @@
+import dotenv from 'dotenv';
 import express from 'express';
 import graphQLHTTP from 'express-graphql';
 import Schema from './schema/index';
 
-const GRAPHQL_PORT = 8080;
-const port = process.env.PORT || GRAPHQL_PORT;
+dotenv.config();
+
+const port = process.env.GRAPHQL_PORT;
 
 const app = express();
 const graphQLServer = graphQLHTTP(req => ({
