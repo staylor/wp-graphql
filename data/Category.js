@@ -1,11 +1,7 @@
-import Dataloader from 'dataloader';
-import request from 'data';
-import { decodeIDs } from 'utils';
-import Model from './Model';
+import { createLoader } from 'data';
+import Model from 'data/Model';
 
-const categoryLoader = (
-  new Dataloader(ids => request('/categories', { qs: { include: decodeIDs(ids) } }))
-);
+const categoryLoader = createLoader('/categories');
 
 export default class Category extends Model {
   static async load(id) {

@@ -1,11 +1,7 @@
-import Dataloader from 'dataloader';
-import request from 'data';
-import { decodeIDs } from 'utils';
-import Model from './Model';
+import { createLoader } from 'data';
+import Model from 'data/Model';
 
-const postLoader = (
-  new Dataloader(ids => request('/posts', { qs: { include: decodeIDs(ids) } }))
-);
+const postLoader = createLoader('/posts');
 
 export default class Post extends Model {
   static async load(id) {

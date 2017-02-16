@@ -1,11 +1,7 @@
-import Dataloader from 'dataloader';
-import request from 'data';
-import { decodeIDs } from 'utils';
-import Model from './Model';
+import { createLoader } from 'data';
+import Model from 'data/Model';
 
-const mediaLoader = (
-  new Dataloader(ids => request('/media', { qs: { include: decodeIDs(ids) } }))
-);
+const mediaLoader = createLoader('/media');
 
 export default class Media extends Model {
   static async load(id) {

@@ -1,11 +1,7 @@
-import Dataloader from 'dataloader';
-import request from 'data';
-import { decodeIDs } from 'utils';
-import Model from './Model';
+import { createLoader } from 'data';
+import Model from 'data/Model';
 
-const taxonomyLoader = (
-  new Dataloader(ids => request('/taxonomies', { qs: { include: decodeIDs(ids) } }))
-);
+const taxonomyLoader = createLoader('/taxonomies');
 
 export default class Taxonomy extends Model {
   static async load(id) {

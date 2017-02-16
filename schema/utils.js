@@ -4,7 +4,6 @@ import request from 'data';
 export const toBase64 = str => new Buffer(str).toString('base64');
 export const fromBase64 = encoded => Buffer.from(encoded, 'base64').toString('utf8');
 export const decodeIDs = opaque => opaque.map(fromBase64).map(id => id.split(':').pop());
-
 export const toGlobalId = (type, id) => toBase64(`${type.toLowerCase()}:${id}`);
 
 const encodedValues = [
@@ -32,8 +31,9 @@ export const resolveWithArgs = (path, DataType) => (root, args) => {
       }
     });
   }
-  return request(path, opts)
-    .then(data => data.map(item => Object.assign(new DataType(), item)));
+  return request(path, opts).then(data => (
+    data.map(item => Object.assign(new DataType(), item))
+  ));
 };
 
 export const itemResolver = (dataType, loader) => ({

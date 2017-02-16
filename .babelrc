@@ -12,7 +12,7 @@
         "interface": "./schema/interface",
         "query": "./schema/query",
         "field": "./schema/field",
-        "data": "./schema/data",
+        "data": "./data",
         "utils": "./schema/utils"
       }
     }]

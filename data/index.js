@@ -1,4 +1,6 @@
 import request from 'request-promise';
+import Dataloader from 'dataloader';
+import { decodeIDs } from 'utils';
 
 const rp = (path, opts = {}) => {
   const params = Object.assign({
@@ -11,5 +13,9 @@ const rp = (path, opts = {}) => {
 
   return request(params);
 };
+
+export const createLoader = path => (
+  new Dataloader(ids => rp(path, { qs: { include: decodeIDs(ids) } }))
+);
 
 export default rp;

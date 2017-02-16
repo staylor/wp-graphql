@@ -1,11 +1,7 @@
-import Dataloader from 'dataloader';
-import request from 'data';
-import { decodeIDs } from 'utils';
-import Model from './Model';
+import { createLoader } from 'data';
+import Model from 'data/Model';
 
-const pageLoader = (
-  new Dataloader(ids => request('/pages', { qs: { include: decodeIDs(ids) } }))
-);
+const pageLoader = createLoader('/pages');
 
 export default class Page extends Model {
   static async load(id) {

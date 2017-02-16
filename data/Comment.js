@@ -1,11 +1,7 @@
-import Dataloader from 'dataloader';
-import request from 'data';
-import { decodeIDs } from 'utils';
-import Model from './Model';
+import { createLoader } from 'data';
+import Model from 'data/Model';
 
-const commentLoader = (
-  new Dataloader(ids => request('/comments', { qs: { include: decodeIDs(ids) } }))
-);
+const commentLoader = createLoader('/comments');
 
 export default class Comment extends Model {
   static async load(id) {
