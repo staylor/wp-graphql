@@ -100,7 +100,7 @@ export const loadCollection = (DataType, path, opts = {}) => {
           // there is no guarantee that lists return in order
           client.set(key, opaque.join(','), redis.print);
           // low TTL, this is explicitly for performance
-          client.expire(key, 60);
+          client.expire(key, process.env.REQUEST_CACHE_TTL || 60);
           resolve(hydrated);
         });
       }
