@@ -1,8 +1,4 @@
-import {
-  GraphQLID,
-  GraphQLNonNull,
-  GraphQLString,
-} from 'graphql';
+import { GraphQLString } from 'graphql';
 
 import MEDIA_TYPE from 'enum/MediaType';
 
