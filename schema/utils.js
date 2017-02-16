@@ -1,39 +1,33 @@
 import { GraphQLID } from 'graphql';
-import request from 'data';
+import { loadCollection } from 'data';
 
 export const toBase64 = str => new Buffer(str).toString('base64');
 export const fromBase64 = encoded => Buffer.from(encoded, 'base64').toString('utf8');
 export const decodeIDs = opaque => opaque.map(fromBase64).map(id => id.split(':').pop());
 export const toGlobalId = (type, id) => toBase64(`${type.toLowerCase()}:${id}`);
 
-const encodedValues = [
+const listValues = [
   'include',
   'exclude',
   'author',
   'author_exclude',
   'parent',
   'parent_exclude',
+  'slug',
+  'roles',
 ];
 
 export const resolveWithArgs = (path, DataType) => (root, args) => {
   const opts = {};
   if (Object.keys(args).length > 0) {
     opts.qs = args;
-    encodedValues.forEach((key) => {
-      if (opts.qs[key]) {
-        opts.qs[key] = decodeIDs(opts.qs[key].split(','));
-      }
-    });
-
-    ['slug', 'roles'].forEach((key) => {
+    listValues.forEach((key) => {
       if (opts.qs[key]) {
         opts.qs[key] = opts.qs[key].split(',');
       }
     });
   }
-  return request(path, opts).then(data => (
-    data.map(item => Object.assign(new DataType(), item))
-  ));
+  return loadCollection(DataType, path, opts);
 };
 
 export const itemResolver = (dataType, loader) => ({
