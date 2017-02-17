@@ -23,11 +23,12 @@ const listValues = [
 export const loadEdges = (DataType, path) => (root, args) => {
   const params = {
     resolveWithFullResponse: true,
-    qs: {},
+    qs: root.args || {},
   };
 
+  params.qs.sticky = params.qs.sticky || false;
+
   if (Object.keys(root.args).length > 0) {
-    params.qs = root.args;
     listValues.forEach((key) => {
       if (params.qs[key]) {
         params.qs[key] = params.qs[key].split(',');

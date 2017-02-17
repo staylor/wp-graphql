@@ -86,6 +86,7 @@ export const collectionEdges = ({ data, total, offset }) => {
 };
 
 export const loadCollection = (DataType, path, opts = {}) => {
+  console.log(`Loading collection: ${path}`, JSON.stringify(opts));
   if (opts.qs && opts.qs.include) {
     return loadIDs(opts.qs.include, path).then(data => (
       data.map(value => Object.assign(new DataType(), value))),
@@ -132,9 +133,16 @@ export const loadCollection = (DataType, path, opts = {}) => {
             args.push(JSON.stringify(value));
             return obj;
           });
-          console.log('Populating cache...');
-          client.mset(...args, redis.print);
-          // there is no guarantee that lists return in order
+          if (data.length) {
+            console.log('Populating cache...');
+            if (data.length > 1) {
+              client.mset(...args, redis.print);
+            } else {
+              client.set(...args, redis.print);
+            }
+          }
+          // there is no guarantee that redis lists return in order,
+          // so we set an object
           client.hmset(key, 'ids', opaque.join(','), 'total', wpTotal, redis.print);
           // low TTL, this is explicitly for performance
           client.expire(key, process.env.REQUEST_CACHE_TTL || 60);

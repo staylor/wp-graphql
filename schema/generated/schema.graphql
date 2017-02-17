@@ -759,6 +759,46 @@ type Query {
     tags: String
     tags_exclude: String
   ): PostCollection
+  stickies(
+    # Current page of the collection.
+    page: Int
+
+    # Maximum number of items to be returned in result set.
+    per_page: Int
+
+    # Offset the result set by a specific number of items.
+    offset: Int
+    order: ORDER
+
+    # Limit results to those matching a string.
+    search: String
+
+    # Limit result set to specific IDs (value or comma-separated values).
+    include: String
+
+    # Ensure result set excludes specific IDs (value or comma-separated values).
+    exclude: String
+
+    # Limit response to items published after a given ISO8601 compliant date.
+    after: String
+
+    # Limit response to items published before a given ISO8601 compliant date.
+    before: String
+
+    # Limit result set to items assigned to specific authors (value or comma-separated values).
+    author: String
+
+    # Ensure result set excludes items assigned to specific authors (value or comma-separated values).
+    author_exclude: String
+
+    # Limit result set to items with one or more specific slugs (value or comma-separated values).
+    slug: String
+    orderby: POST_ORDERBY
+    categories: String
+    categories_exclude: String
+    tags: String
+    tags_exclude: String
+  ): PostCollection
   post(
     # Unique identifier for the object.
     id: ID
