@@ -1,7 +1,7 @@
 import request from 'request-promise';
 import Dataloader from 'dataloader';
-import { decodeIDs, toBase64, indexToCursor, indexFromCursor } from 'utils';
-import redis, { client } from 'data/store';
+import { decodeIDs, toBase64, indexToCursor } from 'utils';
+import redis, { getClient } from 'data/store';
 
 const rp = (path, opts = {}) => {
   const params = Object.assign({
@@ -19,6 +19,7 @@ const rp = (path, opts = {}) => {
 
 export const loadIDs = (ids, path) => (
   new Promise((resolve, reject) => {
+    const client = getClient();
     const cache = {};
     const pending = [];
 
@@ -94,13 +95,14 @@ export const loadCollection = (DataType, path, opts = {}) => {
   // A short TTL request cache based on path + serialized opts, only stores IDs
   // think pagination...
 
+  const client = getClient();
   const key = toBase64(`${path}${JSON.stringify(opts)}`);
   return new Promise((resolve, reject) => {
-    client.hgetall(key, (err, obj) => {
+    client.hgetall(key, (err, cached) => {
       if (err) {
         reject(err);
-      } else if (obj) {
-        const { ids, total } = obj;
+      } else if (cached) {
+        const { ids, total } = cached;
         const hashes = ids.split(',');
         console.log('Cache Hit: only request these IDs from dataloader.');
         Promise.all(hashes.map(DataType.load)).then((data) => {
@@ -152,31 +154,5 @@ export const loadCollection = (DataType, path, opts = {}) => {
 export const createLoader = path => (
   new Dataloader(ids => loadIDs(ids, path))
 );
-
-export const loadEdges = (DataType, path) => (root, args) => {
-  const params = {
-    resolveWithFullResponse: true,
-    qs: {},
-  };
-  const limit = args.first || args.last || 0;
-
-  if (limit > 0) {
-    params.qs.per_page = limit;
-  }
-
-  let offset = 0;
-  if (args.after) {
-    offset = indexFromCursor(args.after) + 1;
-  } else if (args.before) {
-    offset = indexFromCursor(args.before) - limit;
-  }
-
-  if (offset > 0) {
-    params.qs.offset = offset;
-  }
-
-  return loadCollection(DataType, path, params);
-};
-
 
 export default rp;

@@ -5,7 +5,7 @@ import {
 } from 'graphql-relay';
 
 import PageType from 'type/Page';
-import { loadEdges } from 'data';
+import { loadEdges } from 'utils';
 import Page from 'data/Page';
 
 const { connectionType: PageConnection } =

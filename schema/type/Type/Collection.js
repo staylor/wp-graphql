@@ -5,7 +5,7 @@ import {
 } from 'graphql-relay';
 
 import TypeType from 'type/Type';
-import { loadEdges } from 'data';
+import { loadEdges } from 'utils';
 import Type from 'data/Type';
 
 const { connectionType: TypeConnection } =

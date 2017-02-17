@@ -20,7 +20,7 @@ export default {
         orderby: { type: PAGE_ORDERBY },
       })
     ),
-    resolve: () => ({ results: [] }),
+    resolve: (root, args) => ({ args }),
   },
   page: itemResolver(PageType, Page),
 };

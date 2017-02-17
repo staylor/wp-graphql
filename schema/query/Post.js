@@ -25,7 +25,7 @@ export default {
         tags_exclude: { type: GraphQLString },
       })
     ),
-    resolve: () => ({ results: [] }),
+    resolve: (root, args) => ({ args }),
   },
   post: itemResolver(PostType, Post),
 };

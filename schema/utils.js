@@ -20,17 +20,39 @@ const listValues = [
   'roles',
 ];
 
-export const resolveWithArgs = (path, DataType) => (root, args) => {
-  const opts = {};
-  if (Object.keys(args).length > 0) {
-    opts.qs = args;
+export const loadEdges = (DataType, path) => (root, args) => {
+  const params = {
+    resolveWithFullResponse: true,
+    qs: {},
+  };
+
+  if (Object.keys(root.args).length > 0) {
+    params.qs = root.args;
     listValues.forEach((key) => {
-      if (opts.qs[key]) {
-        opts.qs[key] = opts.qs[key].split(',');
+      if (params.qs[key]) {
+        params.qs[key] = params.qs[key].split(',');
       }
     });
   }
-  return loadCollection(DataType, path, opts);
+
+  const limit = args.first || args.last || 0;
+
+  if (limit > 0) {
+    params.qs.per_page = limit;
+  }
+
+  let offset = 0;
+  if (args.after) {
+    offset = indexFromCursor(args.after) + 1;
+  } else if (args.before) {
+    offset = indexFromCursor(args.before) - limit;
+  }
+
+  if (offset > 0) {
+    params.qs.offset = offset;
+  }
+
+  return loadCollection(DataType, path, params);
 };
 
 export const itemResolver = (dataType, loader) => ({

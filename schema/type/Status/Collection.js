@@ -5,7 +5,7 @@ import {
 } from 'graphql-relay';
 
 import StatusType from 'type/Status';
-import { loadEdges } from 'data';
+import { loadEdges } from 'utils';
 import Status from 'data/Status';
 
 const { connectionType: StatusConnection } =

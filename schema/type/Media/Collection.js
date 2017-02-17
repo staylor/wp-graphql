@@ -5,7 +5,7 @@ import {
 } from 'graphql-relay';
 
 import MediaType from 'type/Media';
-import { loadEdges } from 'data';
+import { loadEdges } from 'utils';
 import Media from 'data/Media';
 
 const { connectionType: MediaConnection } =

@@ -17,7 +17,7 @@ export default {
         },
       })
     ),
-    resolve: () => ({ results: [] }),
+    resolve: (root, args) => ({ args }),
   },
   category: itemResolver(CategoryType, Category),
 };

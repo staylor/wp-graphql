@@ -5,7 +5,7 @@ import {
 } from 'graphql-relay';
 
 import PostType from 'type/Post';
-import { loadEdges } from 'data';
+import { loadEdges } from 'utils';
 import Post from 'data/Post';
 
 const { connectionType: PostConnection } =

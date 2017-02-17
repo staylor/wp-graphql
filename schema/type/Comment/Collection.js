@@ -5,7 +5,7 @@ import {
 } from 'graphql-relay';
 
 import CommentType from 'type/Comment';
-import { loadEdges } from 'data';
+import { loadEdges } from 'utils';
 import Comment from 'data/Comment';
 
 const { connectionType: CommentConnection } =

@@ -20,7 +20,7 @@ export default {
         orderby: { type: COMMENT_ORDERBY },
       })
     ),
-    resolve: () => ({ results: [] }),
+    resolve: (root, args) => ({ args }),
   },
   comment: itemResolver(CommentType, Comment),
 };

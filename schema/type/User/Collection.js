@@ -5,7 +5,7 @@ import {
 } from 'graphql-relay';
 
 import UserType from 'type/User';
-import { loadEdges } from 'data';
+import { loadEdges } from 'utils';
 import User from 'data/User';
 
 const { connectionType: UserConnection } =

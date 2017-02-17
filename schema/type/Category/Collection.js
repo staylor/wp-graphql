@@ -5,7 +5,7 @@ import {
 } from 'graphql-relay';
 
 import CategoryType from 'type/Category';
-import { loadEdges } from 'data';
+import { loadEdges } from 'utils';
 import Category from 'data/Category';
 
 const { connectionType: CategoryConnection } =

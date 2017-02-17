@@ -20,7 +20,7 @@ export default {
         },
       })
     ),
-    resolve: () => ({ results: [] }),
+    resolve: (root, args) => ({ args }),
   },
   user: itemResolver(UserType, User),
 };

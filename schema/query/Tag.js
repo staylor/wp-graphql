@@ -8,7 +8,7 @@ export default {
   tags: {
     type: TagCollectionType,
     args: Object.assign({}, pagination, filter, slug, taxonomy),
-    resolve: () => ({ results: [] }),
+    resolve: (root, args) => ({ args }),
   },
   tag: itemResolver(TagType, Tag),
 };

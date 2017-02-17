@@ -5,7 +5,7 @@ import {
 } from 'graphql-relay';
 
 import TaxonomyType from 'type/Taxonomy';
-import { loadEdges } from 'data';
+import { loadEdges } from 'utils';
 import Taxonomy from 'data/Taxonomy';
 
 const { connectionType: TaxonomyConnection } =

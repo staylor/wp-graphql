@@ -25,7 +25,7 @@ export default {
         },
       })
     ),
-    resolve: () => ({ results: [] }),
+    resolve: (root, args) => ({ args }),
   },
   medium: itemResolver(MediaType, Media),
 };

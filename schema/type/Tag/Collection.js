@@ -5,7 +5,7 @@ import {
 } from 'graphql-relay';
 
 import TagType from 'type/Tag';
-import { loadEdges } from 'data';
+import { loadEdges } from 'utils';
 import Tag from 'data/Tag';
 
 const { connectionType: TagConnection } =
