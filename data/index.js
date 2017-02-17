@@ -116,7 +116,7 @@ export const loadCollection = (DataType, path, opts = {}) => {
         });
       } else {
         console.log('Cache Miss: requesting data...');
-        rp(path, opts).then((response) => {
+        rp(path, opts).catch(error => reject(error)).then((response) => {
           const data = response.body;
           const wpTotal = parseInt(response.headers['x-wp-total'], 10);
           const offset = (opts.qs && opts.qs.offset) || 0;

@@ -9,13 +9,21 @@ const idxPrefix = 'idx---';
 export const indexToCursor = idx => toBase64(`${idxPrefix}${idx}`);
 export const indexFromCursor = cursor => parseInt(fromBase64(cursor).replace(idxPrefix, ''), 10);
 
-const listValues = [
+const encodedArgs = [
   'include',
   'exclude',
   'author',
   'author_exclude',
   'parent',
   'parent_exclude',
+  'categories',
+  'categories_exclude',
+  'tags',
+  'tags_exclude',
+];
+
+const listArgs = [
+  ...encodedArgs,
   'slug',
   'roles',
 ];
@@ -29,9 +37,12 @@ export const loadEdges = (DataType, path) => (root, args) => {
   params.qs.sticky = params.qs.sticky || false;
 
   if (Object.keys(root.args).length > 0) {
-    listValues.forEach((key) => {
+    listArgs.forEach((key) => {
       if (params.qs[key]) {
         params.qs[key] = params.qs[key].split(',');
+        if (encodedArgs.indexOf(key) > -1) {
+          params.qs[key] = decodeIDs(params.qs[key]);
+        }
       }
     });
   }
