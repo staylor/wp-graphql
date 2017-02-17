@@ -1,0 +1,27 @@
+import { GraphQLObjectType } from 'graphql';
+import {
+  connectionArgs,
+  connectionDefinitions,
+} from 'graphql-relay';
+
+import CommentType from 'type/Comment';
+import { loadEdges } from 'data';
+import Comment from 'data/Comment';
+
+const { connectionType: CommentConnection } =
+  connectionDefinitions({ nodeType: CommentType });
+
+const CommentCollectionType = new GraphQLObjectType({
+  name: 'CommentCollection',
+  description: 'Collection of comments based on cursors.',
+  fields: {
+    results: {
+      type: CommentConnection,
+      args: connectionArgs,
+      description: 'A list of results',
+      resolve: loadEdges(Comment, '/comments'),
+    },
+  },
+});
+
+export default CommentCollectionType;

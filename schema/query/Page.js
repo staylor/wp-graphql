@@ -1,18 +1,16 @@
-import {
-  GraphQLList,
-  GraphQLInt,
-} from 'graphql';
+import { GraphQLInt } from 'graphql';
 
 import PAGE_ORDERBY from 'enum/PageOrderby';
 
+import PageCollectionType from 'type/Page/Collection';
 import PageType from 'type/Page';
 import Page from 'data/Page';
-import { resolveWithArgs, itemResolver } from 'utils';
+import { itemResolver } from 'utils';
 import { pagination, filter, date, hierarchical, author, slug } from 'query/args';
 
 export default {
   pages: {
-    type: new GraphQLList(PageType),
+    type: PageCollectionType,
     args: (
       Object.assign({}, pagination, filter, date, hierarchical, author, slug, {
         menu_order: {
@@ -22,7 +20,7 @@ export default {
         orderby: { type: PAGE_ORDERBY },
       })
     ),
-    resolve: resolveWithArgs('/pages', Page),
+    resolve: () => ({ results: [] }),
   },
   page: itemResolver(PageType, Page),
 };

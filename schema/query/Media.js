@@ -1,19 +1,17 @@
-import {
-  GraphQLList,
-  GraphQLString,
-} from 'graphql';
+import { GraphQLString } from 'graphql';
 
 import POST_ORDERBY from 'enum/PostOrderby';
 import MEDIA_TYPE from 'enum/MediaType';
 
+import MediaCollectionType from 'type/Media/Collection';
 import MediaType from 'type/Media';
 import Media from 'data/Media';
-import { resolveWithArgs, itemResolver } from 'utils';
+import { itemResolver } from 'utils';
 import { pagination, filter, date, hierarchical, author, slug } from 'query/args';
 
 export default {
   media: {
-    type: new GraphQLList(MediaType),
+    type: MediaCollectionType,
     args: (
       Object.assign({}, pagination, filter, date, hierarchical, author, slug, {
         orderby: { type: POST_ORDERBY },
@@ -27,7 +25,7 @@ export default {
         },
       })
     ),
-    resolve: resolveWithArgs('/media', Media),
+    resolve: () => ({ results: [] }),
   },
   medium: itemResolver(MediaType, Media),
 };

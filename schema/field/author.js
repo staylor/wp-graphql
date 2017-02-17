@@ -1,6 +1,6 @@
+import { toGlobalId } from 'graphql-relay';
 import UserType from 'type/User';
 import User from 'data/User';
-import { toGlobalId } from 'utils';
 
 export default {
   type: UserType,

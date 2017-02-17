@@ -1,6 +1,6 @@
 import request from 'request-promise';
 import Dataloader from 'dataloader';
-import { decodeIDs, toBase64 } from 'utils';
+import { decodeIDs, toBase64, indexToCursor, indexFromCursor } from 'utils';
 import redis, { client } from 'data/store';
 
 const rp = (path, opts = {}) => {
@@ -61,6 +61,29 @@ export const loadIDs = (ids, path) => (
   })
 );
 
+const toEdges = (data, offset) => {
+  let i = offset;
+  return data.map(item => ({
+    node: item,
+    cursor: indexToCursor(i += 1),
+  }));
+};
+
+export const collectionEdges = ({ data, total, offset }) => {
+  const startIndex = offset;
+  const endIndex = startIndex + (data.length - 1);
+
+  return {
+    edges: toEdges(data, startIndex),
+    pageInfo: {
+      hasNextPage: endIndex < total,
+      hasPreviousPage: startIndex > 0,
+      startCursor: total > 0 ? indexToCursor(startIndex) : null,
+      endCursor: total > 0 ? indexToCursor(endIndex) : null,
+    },
+  };
+};
+
 export const loadCollection = (DataType, path, opts = {}) => {
   if (opts.qs && opts.qs.include) {
     return loadIDs(opts.qs.include, path).then(data => (
@@ -73,16 +96,28 @@ export const loadCollection = (DataType, path, opts = {}) => {
 
   const key = toBase64(`${path}${JSON.stringify(opts)}`);
   return new Promise((resolve, reject) => {
-    client.get(key, (err, res) => {
+    client.hgetall(key, (err, obj) => {
       if (err) {
         reject(err);
-      } else if (res) {
-        const ids = res.split(',');
+      } else if (obj) {
+        const { ids, total } = obj;
+        const hashes = ids.split(',');
         console.log('Cache Hit: only request these IDs from dataloader.');
-        resolve(ids.map(DataType.load));
+        Promise.all(hashes.map(DataType.load)).then((data) => {
+          const connection = collectionEdges({
+            data,
+            total,
+            offset: (opts.qs && opts.qs.offset) || 0,
+          });
+          resolve(connection);
+        });
       } else {
         console.log('Cache Miss: requesting data...');
-        rp(path, opts).then((data) => {
+        rp(path, opts).then((response) => {
+          const data = response.body;
+          const wpTotal = parseInt(response.headers['x-wp-total'], 10);
+          const offset = (opts.qs && opts.qs.offset) || 0;
+
           const opaque = [];
           const args = [];
           const hydrated = data.map((value) => {
@@ -98,10 +133,16 @@ export const loadCollection = (DataType, path, opts = {}) => {
           console.log('Populating cache...');
           client.mset(...args, redis.print);
           // there is no guarantee that lists return in order
-          client.set(key, opaque.join(','), redis.print);
+          client.hmset(key, 'ids', opaque.join(','), 'total', wpTotal, redis.print);
           // low TTL, this is explicitly for performance
           client.expire(key, process.env.REQUEST_CACHE_TTL || 60);
-          resolve(hydrated);
+
+          const connection = collectionEdges({
+            data: hydrated,
+            total: wpTotal,
+            offset,
+          });
+          resolve(connection);
         });
       }
     });
@@ -111,5 +152,31 @@ export const loadCollection = (DataType, path, opts = {}) => {
 export const createLoader = path => (
   new Dataloader(ids => loadIDs(ids, path))
 );
+
+export const loadEdges = (DataType, path) => (root, args) => {
+  const params = {
+    resolveWithFullResponse: true,
+    qs: {},
+  };
+  const limit = args.first || args.last || 0;
+
+  if (limit > 0) {
+    params.qs.per_page = limit;
+  }
+
+  let offset = 0;
+  if (args.after) {
+    offset = indexFromCursor(args.after) + 1;
+  } else if (args.before) {
+    offset = indexFromCursor(args.before) - limit;
+  }
+
+  if (offset > 0) {
+    params.qs.offset = offset;
+  }
+
+  return loadCollection(DataType, path, params);
+};
+
 
 export default rp;

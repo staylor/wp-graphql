@@ -1,18 +1,16 @@
-import {
-  GraphQLList,
-  GraphQLString,
-} from 'graphql';
+import { GraphQLString } from 'graphql';
 
 import USER_ORDERBY from 'enum/UserOrderby';
 
+import UserCollectionType from 'type/User/Collection';
 import UserType from 'type/User';
 import User from 'data/User';
-import { resolveWithArgs, itemResolver } from 'utils';
+import { itemResolver } from 'utils';
 import { pagination, filter, slug } from 'query/args';
 
 export default {
   users: {
-    type: new GraphQLList(UserType),
+    type: UserCollectionType,
     args: (
       Object.assign({}, pagination, filter, slug, {
         orderby: { type: USER_ORDERBY },
@@ -22,7 +20,7 @@ export default {
         },
       })
     ),
-    resolve: resolveWithArgs('/users', User),
+    resolve: () => ({ results: [] }),
   },
   user: itemResolver(UserType, User),
 };

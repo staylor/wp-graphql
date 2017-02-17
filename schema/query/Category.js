@@ -1,16 +1,14 @@
-import {
-  GraphQLList,
-  GraphQLInt,
-} from 'graphql';
+import { GraphQLInt } from 'graphql';
 
+import CategoryCollectionType from 'type/Category/Collection';
 import CategoryType from 'type/Category';
 import Category from 'data/Category';
-import { resolveWithArgs, itemResolver } from 'utils';
+import { itemResolver } from 'utils';
 import { pagination, filter, slug, taxonomy } from 'query/args';
 
 export default {
   categories: {
-    type: new GraphQLList(CategoryType),
+    type: CategoryCollectionType,
     args: (
       Object.assign({}, pagination, filter, slug, taxonomy, {
         parent: {
@@ -19,7 +17,7 @@ export default {
         },
       })
     ),
-    resolve: resolveWithArgs('/categories', Category),
+    resolve: () => ({ results: [] }),
   },
   category: itemResolver(CategoryType, Category),
 };

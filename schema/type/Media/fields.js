@@ -2,6 +2,7 @@ import {
   GraphQLNonNull,
   GraphQLID,
 } from 'graphql';
+import { toGlobalId } from 'graphql-relay';
 
 /* eslint-disable camelcase */
 
@@ -17,8 +18,6 @@ import { type, template } from 'field/post';
 import { comment_status, ping_status } from 'field/status';
 import { alt_text, media_type, mime_type, source_url } from 'field/media';
 import author from 'field/author';
-
-import { toGlobalId } from 'utils';
 
 export default {
   id: globalIdField(),

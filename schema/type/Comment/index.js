@@ -3,6 +3,7 @@ import {
   GraphQLList,
   GraphQLString,
 } from 'graphql';
+import { toGlobalId } from 'graphql-relay';
 
 /* eslint-disable camelcase */
 
@@ -18,8 +19,6 @@ import author from 'field/author';
 
 import Comment from 'data/Comment';
 import Post from 'data/Post';
-
-import { toGlobalId } from 'utils';
 
 const CommentType = new GraphQLObjectType({
   name: 'Comment',

@@ -97,6 +97,30 @@ type Category implements TermInterface {
   parent: Category
 }
 
+# Collection of categories based on cursors.
+type CategoryCollection {
+  # A list of results
+  results(after: String, first: Int, before: String, last: Int): CategoryConnection
+}
+
+# A connection to a list of items.
+type CategoryConnection {
+  # Information to aid in pagination.
+  pageInfo: PageInfo!
+
+  # A list of edges.
+  edges: [CategoryEdge]
+}
+
+# An edge in a connection.
+type CategoryEdge {
+  # The item at the end of the edge
+  node: Category
+
+  # A cursor for use in pagination
+  cursor: String!
+}
+
 # The links for a post.
 type CategoryLinks {
   self: [Link]
@@ -152,6 +176,30 @@ enum COMMENT_ORDERBY {
 enum COMMENT_STATUS {
   OPEN
   CLOSED
+}
+
+# Collection of comments based on cursors.
+type CommentCollection {
+  # A list of results
+  results(after: String, first: Int, before: String, last: Int): CommentConnection
+}
+
+# A connection to a list of items.
+type CommentConnection {
+  # Information to aid in pagination.
+  pageInfo: PageInfo!
+
+  # A list of edges.
+  edges: [CommentEdge]
+}
+
+# An edge in a connection.
+type CommentEdge {
+  # The item at the end of the edge
+  node: Comment
+
+  # A cursor for use in pagination
+  cursor: String!
 }
 
 # The links for a comment.
@@ -291,6 +339,30 @@ enum MEDIA_TYPE {
   AUDIO
   APPLICATION
   FILE
+}
+
+# Collection of media based on cursors.
+type MediaCollection {
+  # A list of results
+  results(after: String, first: Int, before: String, last: Int): MediaConnection
+}
+
+# A connection to a list of items.
+type MediaConnection {
+  # Information to aid in pagination.
+  pageInfo: PageInfo!
+
+  # A list of edges.
+  edges: [MediaEdge]
+}
+
+# An edge in a connection.
+type MediaEdge {
+  # The item at the end of the edge
+  node: Media
+
+  # A cursor for use in pagination
+  cursor: String!
 }
 
 interface MediaInterface {
@@ -437,6 +509,45 @@ enum PAGE_ORDERBY {
   MENU_ORDER
 }
 
+# Collection of pages based on cursors.
+type PageCollection {
+  # A list of results
+  results(after: String, first: Int, before: String, last: Int): PageConnection
+}
+
+# A connection to a list of items.
+type PageConnection {
+  # Information to aid in pagination.
+  pageInfo: PageInfo!
+
+  # A list of edges.
+  edges: [PageEdge]
+}
+
+# An edge in a connection.
+type PageEdge {
+  # The item at the end of the edge
+  node: Page
+
+  # A cursor for use in pagination
+  cursor: String!
+}
+
+# Information about pagination in a connection.
+type PageInfo {
+  # When paginating forwards, are there more items?
+  hasNextPage: Boolean!
+
+  # When paginating backwards, are there more items?
+  hasPreviousPage: Boolean!
+
+  # When paginating backwards, the cursor to continue.
+  startCursor: String
+
+  # When paginating forwards, the cursor to continue.
+  endCursor: String
+}
+
 # The links for a page.
 type PageLinks {
   self: [Link]
@@ -523,6 +634,30 @@ enum POST_ORDERBY {
   SLUG
 }
 
+# Collection of posts based on cursors.
+type PostCollection {
+  # A list of results
+  results(after: String, first: Int, before: String, last: Int): PostConnection
+}
+
+# A connection to a list of items.
+type PostConnection {
+  # Information to aid in pagination.
+  pageInfo: PageInfo!
+
+  # A list of edges.
+  edges: [PostEdge]
+}
+
+# An edge in a connection.
+type PostEdge {
+  # The item at the end of the edge
+  node: Post
+
+  # A cursor for use in pagination
+  cursor: String!
+}
+
 interface PostInterface {
   # Unique identifier for the object.
   id: ID!
@@ -581,6 +716,7 @@ type PostTypeLink {
   post_type: String
 }
 
+# WordPress REST API read-only data
 type Query {
   posts(
     # Current page of the collection.
@@ -622,7 +758,7 @@ type Query {
     categories_exclude: String
     tags: String
     tags_exclude: String
-  ): [Post]
+  ): PostCollection
   post(
     # Unique identifier for the object.
     id: ID
@@ -654,7 +790,7 @@ type Query {
     # Limit result set to users matching at least one specific role provided.
     # Accepts csv list or single role (value or comma-separated values).
     roles: String
-  ): [User]
+  ): UserCollection
   user(
     # Unique identifier for the object.
     id: ID
@@ -691,7 +827,7 @@ type Query {
 
     # Limit result set to terms assigned to a specific parent.
     parent: Int
-  ): [Category]
+  ): CategoryCollection
   category(
     # Unique identifier for the object.
     id: ID
@@ -725,7 +861,7 @@ type Query {
 
     # Limit result set to terms assigned to a specific post.
     post: Int
-  ): [Tag]
+  ): TagCollection
   tag(
     # Unique identifier for the object.
     id: ID
@@ -774,7 +910,7 @@ type Query {
     # Limit result set to posts with a specific menu_order value.
     menu_order: Int
     orderby: PAGE_ORDERBY
-  ): [Page]
+  ): PageCollection
   page(
     # Unique identifier for the object.
     id: ID
@@ -814,7 +950,7 @@ type Query {
     # Limit result set to comments assigned to specific post IDs.
     post: Int
     orderby: COMMENT_ORDERBY
-  ): [Comment]
+  ): CommentCollection
   comment(
     # Unique identifier for the object.
     id: ID
@@ -876,7 +1012,7 @@ type Query {
 
     # Limit result set to attachments of a particular MIME type.
     mime_type: String
-  ): [Media]
+  ): MediaCollection
   medium(
     # Unique identifier for the object.
     id: ID
@@ -930,6 +1066,30 @@ type Tag implements TermInterface {
   # Meta fields.
   meta: [Meta]
   _links: TagLinks
+}
+
+# Collection of tags based on cursors.
+type TagCollection {
+  # A list of results
+  results(after: String, first: Int, before: String, last: Int): TagConnection
+}
+
+# A connection to a list of items.
+type TagConnection {
+  # Information to aid in pagination.
+  pageInfo: PageInfo!
+
+  # A list of edges.
+  edges: [TagEdge]
+}
+
+# An edge in a connection.
+type TagEdge {
+  # The item at the end of the edge
+  node: Tag
+
+  # A cursor for use in pagination
+  cursor: String!
 }
 
 # The links for a post.
@@ -1074,6 +1234,30 @@ enum USER_ORDERBY {
   SLUG
   EMAIL
   URL
+}
+
+# Collection of users based on cursors.
+type UserCollection {
+  # A list of results
+  results(after: String, first: Int, before: String, last: Int): UserConnection
+}
+
+# A connection to a list of items.
+type UserConnection {
+  # Information to aid in pagination.
+  pageInfo: PageInfo!
+
+  # A list of edges.
+  edges: [UserEdge]
+}
+
+# An edge in a connection.
+type UserEdge {
+  # The item at the end of the edge
+  node: User
+
+  # A cursor for use in pagination
+  cursor: String!
 }
 
 # The links for a user.

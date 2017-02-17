@@ -1,18 +1,16 @@
-import {
-  GraphQLList,
-  GraphQLInt,
-} from 'graphql';
+import { GraphQLInt } from 'graphql';
 
 import COMMENT_ORDERBY from 'enum/CommentOrderby';
 
+import CommentCollectionType from 'type/Comment/Collection';
 import CommentType from 'type/Comment';
 import Comment from 'data';
-import { resolveWithArgs, itemResolver } from 'utils';
+import { itemResolver } from 'utils';
 import { pagination, filter, date, hierarchical } from 'query/args';
 
 export default {
   comments: {
-    type: new GraphQLList(CommentType),
+    type: CommentCollectionType,
     args: (
       Object.assign({}, pagination, filter, date, hierarchical, {
         post: {
@@ -22,7 +20,7 @@ export default {
         orderby: { type: COMMENT_ORDERBY },
       })
     ),
-    resolve: resolveWithArgs('/comments', Comment),
+    resolve: () => ({ results: [] }),
   },
   comment: itemResolver(CommentType, Comment),
 };

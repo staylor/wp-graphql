@@ -2,6 +2,7 @@ import {
   GraphQLObjectType,
   GraphQLInt,
 } from 'graphql';
+import { toGlobalId } from 'graphql-relay';
 
 /* eslint-disable camelcase */
 
@@ -17,7 +18,6 @@ import { comment_status, ping_status } from 'field/status';
 import { featuredMedia } from 'field/media';
 import author from 'field/author';
 import Page from 'data/Page';
-import { toGlobalId } from 'utils';
 
 const PageType = new GraphQLObjectType({
   name: 'Page',

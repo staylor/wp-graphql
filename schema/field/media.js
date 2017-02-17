@@ -1,4 +1,5 @@
 import { GraphQLString } from 'graphql';
+import { toGlobalId } from 'graphql-relay';
 
 import MEDIA_TYPE from 'enum/MediaType';
 
@@ -6,8 +7,6 @@ import Description from 'type/Description';
 import Caption from 'type/Caption';
 import MediaType from 'type/Media';
 import Media from 'data/Media';
-
-import { toGlobalId } from 'utils';
 
 /* eslint-disable camelcase */
 

@@ -2,6 +2,7 @@ import {
   GraphQLObjectType,
   GraphQLList,
 } from 'graphql';
+import { toGlobalId } from 'graphql-relay';
 
 /* eslint-disable camelcase */
 
@@ -21,8 +22,6 @@ import author from 'field/author';
 
 import Category from 'data/Category';
 import Tag from 'data/Tag';
-
-import { toGlobalId } from 'utils';
 
 const PostType = new GraphQLObjectType({
   name: 'Post',

@@ -3,6 +3,7 @@ import {
   GraphQLInt,
   GraphQLString,
 } from 'graphql';
+import { toGlobalId } from 'graphql-relay';
 
 import TermInterface from 'interface/Term';
 import CategoryLinks from 'type/Category/Links';
@@ -10,7 +11,6 @@ import description from 'field/description';
 import metaField from 'field/meta';
 import { globalIdField, slug, name, link } from 'field/identifier';
 import Category from 'data/Category';
-import { toGlobalId } from 'utils';
 
 const CategoryType = new GraphQLObjectType({
   name: 'Category',

@@ -1,5 +1,4 @@
 import {
-  GraphQLList,
   GraphQLString,
   GraphQLBoolean,
 } from 'graphql';
@@ -7,13 +6,14 @@ import {
 import POST_ORDERBY from 'enum/PostOrderby';
 
 import PostType from 'type/Post';
+import PostCollectonType from 'type/Post/Collection';
 import Post from 'data/Post';
-import { resolveWithArgs, itemResolver } from 'utils';
+import { itemResolver } from 'utils';
 import { pagination, filter, date, author, slug } from 'query/args';
 
 export default {
   posts: {
-    type: new GraphQLList(PostType),
+    type: PostCollectonType,
     args: (
       Object.assign({}, pagination, filter, date, author, slug, {
         orderby: { type: POST_ORDERBY },
@@ -25,7 +25,7 @@ export default {
         tags_exclude: { type: GraphQLString },
       })
     ),
-    resolve: resolveWithArgs('/posts', Post),
+    resolve: () => ({ results: [] }),
   },
   post: itemResolver(PostType, Post),
 };
