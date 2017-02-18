@@ -39,6 +39,10 @@ export const loadIDs = (ids, path) => (
         if (pending.length) {
           console.log(`Missing from redis: ${pending.join(',')}`);
           rp(path, { qs: { include: decodeIDs(pending) } })
+            .catch((error) => {
+              console.log(`Pending IDs: ${JSON.stringify(pending)}`);
+              console.log(error);
+            })
             .then((results) => {
               const args = [];
               pending.forEach((id, index) => {
