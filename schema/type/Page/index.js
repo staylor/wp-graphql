@@ -11,7 +11,7 @@ import PageLinks from 'type/Page/Links';
 
 import { globalIdField, slug, guid, link } from 'field/identifier';
 import { title, content, excerpt } from 'field/content';
-import { date, date_gmt, modified, modified_gmt } from 'field/date';
+import { date, modified } from 'field/date';
 import metaField from 'field/meta';
 import { type, template } from 'field/post';
 import { comment_status, ping_status } from 'field/status';
@@ -28,30 +28,32 @@ const PageType = new GraphQLObjectType({
   },
   fields: () => ({
     id: globalIdField(),
-    date,
-    date_gmt,
-    guid,
-    modified,
-    modified_gmt,
-    slug,
-    type,
-    link,
-    title,
-    content,
-    excerpt,
-    comment_status,
-    ping_status,
-    template,
-    meta: metaField(),
-    author,
+    ...date,
+    ...guid,
+    ...modified,
+    ...slug,
+    ...type,
+    ...link,
+    ...title,
+    ...content,
+    ...excerpt,
+    ...comment_status,
+    ...ping_status,
+    ...template,
+    ...author,
     featured_media: featuredMedia(),
+    meta: metaField(),
     _links: { type: PageLinks },
     // extra page fields
     parent: {
       type: PageType,
+      description: 'The ID for the parent of the object.',
       resolve: page => (page.parent ? Page.load(toGlobalId('Page', page.parent)) : null),
     },
-    menu_order: { type: GraphQLInt },
+    menu_order: {
+      type: GraphQLInt,
+      description: 'The order of the object in relation to other object of its type.',
+    },
   }),
 });
 

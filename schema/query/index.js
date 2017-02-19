@@ -1,26 +1,23 @@
-import PostQueries from 'query/Post';
-import UserQueries from 'query/User';
-import CategoryQueries from 'query/Category';
-import TagQueries from 'query/Tag';
-import PageQueries from 'query/Page';
-import CommentQueries from 'query/Comment';
-import TypeQueries from 'query/Type';
-import TaxonomyQueries from 'query/Taxonomy';
-import MediaQueries from 'query/Media';
-import StatusQueries from 'query/Status';
+import postQueries from 'query/Post';
+import userQueries from 'query/User';
+import categoryQueries from 'query/Category';
+import tagQueries from 'query/Tag';
+import pageQueries from 'query/Page';
+import commentQueries from 'query/Comment';
+import typeQueries from 'query/Type';
+import taxonomyQueries from 'query/Taxonomy';
+import mediaQueries from 'query/Media';
+import statusQueries from 'query/Status';
 
-export default (
-  Object.assign(
-    {},
-    PostQueries,
-    UserQueries,
-    CategoryQueries,
-    TagQueries,
-    PageQueries,
-    CommentQueries,
-    TypeQueries,
-    TaxonomyQueries,
-    MediaQueries,
-    StatusQueries,
-  )
-);
+export default {
+  ...postQueries,
+  ...userQueries,
+  ...categoryQueries,
+  ...tagQueries,
+  ...pageQueries,
+  ...commentQueries,
+  ...typeQueries,
+  ...taxonomyQueries,
+  ...mediaQueries,
+  ...statusQueries,
+};

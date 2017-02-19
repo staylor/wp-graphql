@@ -6,7 +6,7 @@ const Description = new GraphQLObjectType({
   name: 'Description',
   description: 'The description for the object.',
   fields: {
-    rendered,
+    ...rendered,
   },
 });
 

@@ -6,7 +6,7 @@ const Guid = new GraphQLObjectType({
   name: 'Guid',
   description: 'The globally unique identifier for the object.',
   fields: {
-    rendered,
+    ...rendered,
   },
 });
 

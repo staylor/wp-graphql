@@ -1,13 +1,10 @@
-import {
-  GraphQLObjectType,
-  GraphQLInt,
-  GraphQLString,
-} from 'graphql';
+import { GraphQLObjectType } from 'graphql';
 
 import TermInterface from 'interface/Term';
 import TagLinks from 'type/Tag/Links';
 
 import { globalIdField, slug, name, link } from 'field/identifier';
+import taxonomy from 'field/taxonomy';
 import description from 'field/description';
 import metaField from 'field/meta';
 
@@ -20,12 +17,11 @@ const TagType = new GraphQLObjectType({
   },
   fields: {
     id: globalIdField(),
-    count: { type: GraphQLInt },
-    description,
-    link,
-    name,
-    slug,
-    taxonomy: { type: GraphQLString },
+    ...description,
+    ...link,
+    ...name,
+    ...slug,
+    ...taxonomy,
     meta: metaField(),
     _links: { type: TagLinks },
   },

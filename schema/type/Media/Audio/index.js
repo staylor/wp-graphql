@@ -13,11 +13,10 @@ const AudioType = new GraphQLObjectType({
   isTypeOf(media) {
     return media.mime_type.indexOf('audio') === 0;
   },
-  fields: () => (
-    Object.assign({}, mediaFields, {
-      media_details: { type: AudioDetails },
-    })
-  ),
+  fields: {
+    ...mediaFields,
+    media_details: { type: AudioDetails },
+  },
 });
 
 export default AudioType;

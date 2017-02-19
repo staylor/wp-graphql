@@ -15,12 +15,21 @@ const TypeType = new GraphQLObjectType({
   description: 'A post type.',
   fields: {
     id: globalIdField(),
-    description,
-    hierarchical: { type: GraphQLBoolean },
-    name,
-    slug,
-    taxonomies: { type: new GraphQLList(GraphQLString) },
-    rest_base: { type: GraphQLString },
+    ...description,
+    ...name,
+    ...slug,
+    hierarchical: {
+      type: GraphQLBoolean,
+      description: 'Whether or not the post type should have children.',
+    },
+    taxonomies: {
+      type: new GraphQLList(GraphQLString),
+      description: 'Taxonomies associated with post type.',
+    },
+    rest_base: {
+      type: GraphQLString,
+      description: 'REST base route for the post type.',
+    },
     _links: { type: TypeLinks },
   },
 });

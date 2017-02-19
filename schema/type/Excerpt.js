@@ -8,8 +8,8 @@ const Excerpt = new GraphQLObjectType({
   name: 'Excerpt',
   description: 'The excerpt for the object.',
   fields: {
-    rendered,
-    protected: protectedField,
+    ...rendered,
+    ...protectedField,
   },
 });
 

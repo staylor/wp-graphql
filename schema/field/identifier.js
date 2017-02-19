@@ -13,18 +13,28 @@ export const globalIdField = () => ({
 });
 
 export const name = {
-  type: GraphQLString,
-  description: 'HTML title for the object.',
+  name: {
+    type: GraphQLString,
+    description: 'HTML title for the object.',
+  },
 };
 
 export const slug = {
-  type: GraphQLString,
-  description: 'An alphanumeric identifier for the object unique to its type.',
+  slug: {
+    type: GraphQLString,
+    description: 'An alphanumeric identifier for the object unique to its type.',
+  },
 };
 
-export const guid = { type: Guid };
+export const guid = {
+  guid: {
+    type: Guid,
+  },
+};
 
 export const link = {
-  type: GraphQLString,
-  description: 'URL to the object.',
+  link: {
+    type: GraphQLString,
+    description: 'URL to the object.',
+  },
 };

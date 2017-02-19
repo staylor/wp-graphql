@@ -15,12 +15,21 @@ const TaxonomyType = new GraphQLObjectType({
   description: 'A taxonomy type.',
   fields: {
     id: globalIdField(),
-    name,
-    slug,
-    description,
-    types: { type: new GraphQLList(GraphQLString) },
-    hierarchical: { type: GraphQLBoolean },
-    rest_base: { type: GraphQLString },
+    ...name,
+    ...slug,
+    ...description,
+    types: {
+      type: new GraphQLList(GraphQLString),
+      description: 'Types associated with the taxonomy.',
+    },
+    hierarchical: {
+      type: GraphQLBoolean,
+      description: 'Whether or not the taxonomy should have children.',
+    },
+    rest_base: {
+      type: GraphQLString,
+      description: 'REST base route for the taxonomy.',
+    },
     _links: { type: TaxonomyLinks },
   },
 });

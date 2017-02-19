@@ -147,16 +147,6 @@
                   "defaultValue": null
                 },
                 {
-                  "name": "sticky",
-                  "description": null,
-                  "type": {
-                    "kind": "SCALAR",
-                    "name": "Boolean",
-                    "ofType": null
-                  },
-                  "defaultValue": null
-                },
-                {
                   "name": "categories",
                   "description": null,
                   "type": {
@@ -1643,16 +1633,6 @@
           "possibleTypes": null
         },
         {
-          "kind": "SCALAR",
-          "name": "Boolean",
-          "description": "The `Boolean` scalar type represents `true` or `false`.",
-          "fields": null,
-          "inputFields": null,
-          "interfaces": null,
-          "enumValues": null,
-          "possibleTypes": null
-        },
-        {
           "kind": "OBJECT",
           "name": "PostCollection",
           "description": "Collection of posts based on cursors.",
@@ -1823,6 +1803,16 @@
           ],
           "inputFields": null,
           "interfaces": [],
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "SCALAR",
+          "name": "Boolean",
+          "description": "The `Boolean` scalar type represents `true` or `false`.",
+          "fields": null,
+          "inputFields": null,
+          "interfaces": null,
           "enumValues": null,
           "possibleTypes": null
         },
@@ -2067,22 +2057,6 @@
               "deprecationReason": null
             },
             {
-              "name": "meta",
-              "description": "Meta fields.",
-              "args": [],
-              "type": {
-                "kind": "LIST",
-                "name": null,
-                "ofType": {
-                  "kind": "OBJECT",
-                  "name": "Meta",
-                  "ofType": null
-                }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
               "name": "author",
               "description": "The author object of the item.",
               "args": [],
@@ -2107,13 +2081,17 @@
               "deprecationReason": null
             },
             {
-              "name": "_links",
-              "description": null,
+              "name": "meta",
+              "description": "Meta fields.",
               "args": [],
               "type": {
-                "kind": "OBJECT",
-                "name": "PostLinks",
-                "ofType": null
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "OBJECT",
+                  "name": "Meta",
+                  "ofType": null
+                }
               },
               "isDeprecated": false,
               "deprecationReason": null
@@ -2125,6 +2103,18 @@
               "type": {
                 "kind": "SCALAR",
                 "name": "Boolean",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "_links",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "OBJECT",
+                "name": "PostLinks",
                 "ofType": null
               },
               "isDeprecated": false,
@@ -3023,6 +3013,18 @@
               "deprecationReason": null
             },
             {
+              "name": "author",
+              "description": "The author object of the item.",
+              "args": [],
+              "type": {
+                "kind": "OBJECT",
+                "name": "User",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
               "name": "meta",
               "description": "Meta fields.",
               "args": [],
@@ -3034,18 +3036,6 @@
                   "name": "Meta",
                   "ofType": null
                 }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "author",
-              "description": "The author object of the item.",
-              "args": [],
-              "type": {
-                "kind": "OBJECT",
-                "name": "User",
-                "ofType": null
               },
               "isDeprecated": false,
               "deprecationReason": null
@@ -3123,6 +3113,18 @@
               "deprecationReason": null
             },
             {
+              "name": "source_url",
+              "description": "URL to the original attachment file.",
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
               "name": "post",
               "description": "The ID for the associated post of the attachment.",
               "args": [],
@@ -3134,18 +3136,6 @@
                   "name": "ID",
                   "ofType": null
                 }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "source_url",
-              "description": "URL to the original attachment file.",
-              "args": [],
-              "type": {
-                "kind": "SCALAR",
-                "name": "String",
-                "ofType": null
               },
               "isDeprecated": false,
               "deprecationReason": null
@@ -3440,6 +3430,18 @@
               "deprecationReason": null
             },
             {
+              "name": "source_url",
+              "description": "URL to the original attachment file.",
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
               "name": "post",
               "description": "The ID for the associated post of the attachment.",
               "args": [],
@@ -3451,18 +3453,6 @@
                   "name": "ID",
                   "ofType": null
                 }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "source_url",
-              "description": "URL to the original attachment file.",
-              "args": [],
-              "type": {
-                "kind": "SCALAR",
-                "name": "String",
-                "ofType": null
               },
               "isDeprecated": false,
               "deprecationReason": null
@@ -4014,6 +4004,18 @@
               "deprecationReason": null
             },
             {
+              "name": "author",
+              "description": "The author object of the item.",
+              "args": [],
+              "type": {
+                "kind": "OBJECT",
+                "name": "User",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
               "name": "meta",
               "description": "Meta fields.",
               "args": [],
@@ -4025,18 +4027,6 @@
                   "name": "Meta",
                   "ofType": null
                 }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "author",
-              "description": "The author object of the item.",
-              "args": [],
-              "type": {
-                "kind": "OBJECT",
-                "name": "User",
-                "ofType": null
               },
               "isDeprecated": false,
               "deprecationReason": null
@@ -4114,6 +4104,18 @@
               "deprecationReason": null
             },
             {
+              "name": "source_url",
+              "description": "URL to the original attachment file.",
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
               "name": "post",
               "description": "The ID for the associated post of the attachment.",
               "args": [],
@@ -4125,18 +4127,6 @@
                   "name": "ID",
                   "ofType": null
                 }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "source_url",
-              "description": "URL to the original attachment file.",
-              "args": [],
-              "type": {
-                "kind": "SCALAR",
-                "name": "String",
-                "ofType": null
               },
               "isDeprecated": false,
               "deprecationReason": null
@@ -4354,6 +4344,18 @@
               "deprecationReason": null
             },
             {
+              "name": "author",
+              "description": "The author object of the item.",
+              "args": [],
+              "type": {
+                "kind": "OBJECT",
+                "name": "User",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
               "name": "meta",
               "description": "Meta fields.",
               "args": [],
@@ -4365,18 +4367,6 @@
                   "name": "Meta",
                   "ofType": null
                 }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "author",
-              "description": "The author object of the item.",
-              "args": [],
-              "type": {
-                "kind": "OBJECT",
-                "name": "User",
-                "ofType": null
               },
               "isDeprecated": false,
               "deprecationReason": null
@@ -4454,6 +4444,18 @@
               "deprecationReason": null
             },
             {
+              "name": "source_url",
+              "description": "URL to the original attachment file.",
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
               "name": "post",
               "description": "The ID for the associated post of the attachment.",
               "args": [],
@@ -4465,18 +4467,6 @@
                   "name": "ID",
                   "ofType": null
                 }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "source_url",
-              "description": "URL to the original attachment file.",
-              "args": [],
-              "type": {
-                "kind": "SCALAR",
-                "name": "String",
-                "ofType": null
               },
               "isDeprecated": false,
               "deprecationReason": null
@@ -4870,18 +4860,6 @@
               "deprecationReason": null
             },
             {
-              "name": "count",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "SCALAR",
-                "name": "Int",
-                "ofType": null
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
               "name": "description",
               "description": "The object description.",
               "args": [],
@@ -4931,11 +4909,23 @@
             },
             {
               "name": "taxonomy",
-              "description": null,
+              "description": "Type attribution for the term.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
                 "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "count",
+              "description": "Number of published posts for the term.",
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "Int",
                 "ofType": null
               },
               "isDeprecated": false,
@@ -4971,7 +4961,7 @@
             },
             {
               "name": "parent",
-              "description": null,
+              "description": "The parent term ID.",
               "args": [],
               "type": {
                 "kind": "OBJECT",
@@ -5010,18 +5000,6 @@
                   "name": "ID",
                   "ofType": null
                 }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "count",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "SCALAR",
-                "name": "Int",
-                "ofType": null
               },
               "isDeprecated": false,
               "deprecationReason": null
@@ -5069,6 +5047,18 @@
               "type": {
                 "kind": "SCALAR",
                 "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "count",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "Int",
                 "ofType": null
               },
               "isDeprecated": false,
@@ -5248,18 +5238,6 @@
               "deprecationReason": null
             },
             {
-              "name": "count",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "SCALAR",
-                "name": "Int",
-                "ofType": null
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
               "name": "description",
               "description": "The object description.",
               "args": [],
@@ -5309,11 +5287,23 @@
             },
             {
               "name": "taxonomy",
-              "description": null,
+              "description": "Type attribution for the term.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
                 "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "count",
+              "description": "Number of published posts for the term.",
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "Int",
                 "ofType": null
               },
               "isDeprecated": false,
@@ -6383,22 +6373,6 @@
               "deprecationReason": null
             },
             {
-              "name": "meta",
-              "description": "Meta fields.",
-              "args": [],
-              "type": {
-                "kind": "LIST",
-                "name": null,
-                "ofType": {
-                  "kind": "OBJECT",
-                  "name": "Meta",
-                  "ofType": null
-                }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
               "name": "author",
               "description": "The author object of the item.",
               "args": [],
@@ -6423,6 +6397,22 @@
               "deprecationReason": null
             },
             {
+              "name": "meta",
+              "description": "Meta fields.",
+              "args": [],
+              "type": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "OBJECT",
+                  "name": "Meta",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
               "name": "_links",
               "description": null,
               "args": [],
@@ -6436,7 +6426,7 @@
             },
             {
               "name": "parent",
-              "description": null,
+              "description": "The ID for the parent of the object.",
               "args": [],
               "type": {
                 "kind": "OBJECT",
@@ -6448,7 +6438,7 @@
             },
             {
               "name": "menu_order",
-              "description": null,
+              "description": "The order of the object in relation to other object of its type.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -6862,60 +6852,12 @@
               "deprecationReason": null
             },
             {
-              "name": "post",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "OBJECT",
-                "name": "Post",
-                "ofType": null
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "parent",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "OBJECT",
-                "name": "Comment",
-                "ofType": null
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
               "name": "author",
               "description": "The author object of the item.",
               "args": [],
               "type": {
                 "kind": "OBJECT",
                 "name": "User",
-                "ofType": null
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "author_name",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "SCALAR",
-                "name": "String",
-                "ofType": null
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "author_url",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "SCALAR",
-                "name": "String",
                 "ofType": null
               },
               "isDeprecated": false,
@@ -6970,8 +6912,56 @@
               "deprecationReason": null
             },
             {
+              "name": "post",
+              "description": "The ID of the associated post object.",
+              "args": [],
+              "type": {
+                "kind": "OBJECT",
+                "name": "Post",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "parent",
+              "description": "The ID for the parent of the object.",
+              "args": [],
+              "type": {
+                "kind": "OBJECT",
+                "name": "Comment",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "author_name",
+              "description": "Display name for the object author.",
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "author_url",
+              "description": "URL for the object author.",
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
               "name": "status",
-              "description": null,
+              "description": "State of the object.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -6983,7 +6973,7 @@
             },
             {
               "name": "type",
-              "description": null,
+              "description": "Type of Comment for the object.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -6995,7 +6985,7 @@
             },
             {
               "name": "author_avatar_urls",
-              "description": null,
+              "description": "Avatar URLs for the object author.",
               "args": [],
               "type": {
                 "kind": "LIST",
@@ -7199,18 +7189,6 @@
               "deprecationReason": null
             },
             {
-              "name": "hierarchical",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "SCALAR",
-                "name": "Boolean",
-                "ofType": null
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
               "name": "name",
               "description": "HTML title for the object.",
               "args": [],
@@ -7235,8 +7213,20 @@
               "deprecationReason": null
             },
             {
+              "name": "hierarchical",
+              "description": "Whether or not the post type should have children.",
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "Boolean",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
               "name": "taxonomies",
-              "description": null,
+              "description": "Taxonomies associated with post type.",
               "args": [],
               "type": {
                 "kind": "LIST",
@@ -7252,7 +7242,7 @@
             },
             {
               "name": "rest_base",
-              "description": null,
+              "description": "REST base route for the post type.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -7398,7 +7388,7 @@
             },
             {
               "name": "types",
-              "description": null,
+              "description": "Types associated with the taxonomy.",
               "args": [],
               "type": {
                 "kind": "LIST",
@@ -7414,7 +7404,7 @@
             },
             {
               "name": "hierarchical",
-              "description": null,
+              "description": "Whether or not the taxonomy should have children.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -7426,7 +7416,7 @@
             },
             {
               "name": "rest_base",
-              "description": null,
+              "description": "REST base route for the taxonomy.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -7693,8 +7683,20 @@
               "deprecationReason": null
             },
             {
+              "name": "slug",
+              "description": "An alphanumeric identifier for the object unique to its type.",
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
               "name": "public",
-              "description": null,
+              "description": "Whether posts of this status should be shown in the front end of the site.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -7706,23 +7708,11 @@
             },
             {
               "name": "queryable",
-              "description": null,
+              "description": "Whether posts with this status should be publicly-queryable.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
                 "name": "Boolean",
-                "ofType": null
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "slug",
-              "description": "An alphanumeric identifier for the object unique to its type.",
-              "args": [],
-              "type": {
-                "kind": "SCALAR",
-                "name": "String",
                 "ofType": null
               },
               "isDeprecated": false,

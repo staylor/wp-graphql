@@ -21,23 +21,41 @@ export const featuredMedia = () => ({
   },
 });
 
-export const description = { type: Description };
-
-export const caption = { type: Caption };
-
-export const alt_text = {
-  type: GraphQLString,
-  description: 'Alternative text to display when attachment is not displayed.',
+export const description = {
+  description: {
+    type: Description,
+  },
 };
 
-export const media_type = { type: MEDIA_TYPE };
+export const caption = {
+  caption: {
+    type: Caption,
+  },
+};
+
+export const alt_text = {
+  alt_text: {
+    type: GraphQLString,
+    description: 'Alternative text to display when attachment is not displayed.',
+  },
+};
+
+export const media_type = {
+  media_type: {
+    type: MEDIA_TYPE,
+  },
+};
 
 export const mime_type = {
-  type: GraphQLString,
-  description: 'The attachment MIME type.',
+  mime_type: {
+    type: GraphQLString,
+    description: 'The attachment MIME type.',
+  },
 };
 
 export const source_url = {
-  type: GraphQLString,
-  description: 'URL to the original attachment file.',
+  source_url: {
+    type: GraphQLString,
+    description: 'URL to the original attachment file.',
+  },
 };

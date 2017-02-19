@@ -1,8 +1,4 @@
-import {
-  GraphQLObjectType,
-  GraphQLInt,
-  GraphQLString,
-} from 'graphql';
+import { GraphQLObjectType } from 'graphql';
 import { toGlobalId } from 'graphql-relay';
 
 import TermInterface from 'interface/Term';
@@ -10,6 +6,7 @@ import CategoryLinks from 'type/Category/Links';
 import description from 'field/description';
 import metaField from 'field/meta';
 import { globalIdField, slug, name, link } from 'field/identifier';
+import taxonomy from 'field/taxonomy';
 import Category from 'data/Category';
 
 const CategoryType = new GraphQLObjectType({
@@ -21,17 +18,17 @@ const CategoryType = new GraphQLObjectType({
   },
   fields: () => ({
     id: globalIdField(),
-    count: { type: GraphQLInt },
-    description,
-    link,
-    name,
-    slug,
-    taxonomy: { type: GraphQLString },
+    ...description,
+    ...link,
+    ...name,
+    ...slug,
+    ...taxonomy,
     meta: metaField(),
     _links: { type: CategoryLinks },
     // extra category fields
     parent: {
       type: CategoryType,
+      description: 'The parent term ID.',
       resolve: category => (
         category.parent > 0 ?
           Category.load(toGlobalId('Category', category.parent)) :

@@ -13,11 +13,10 @@ const VideoType = new GraphQLObjectType({
   isTypeOf(media) {
     return media.mime_type.indexOf('video') === 0;
   },
-  fields: () => (
-    Object.assign({}, mediaFields, {
-      media_details: { type: VideoDetails },
-    })
-  ),
+  fields: {
+    ...mediaFields,
+    media_details: { type: VideoDetails },
+  },
 });
 
 export default VideoType;

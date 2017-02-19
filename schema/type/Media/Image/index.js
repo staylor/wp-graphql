@@ -13,11 +13,10 @@ const ImageType = new GraphQLObjectType({
   isTypeOf(media) {
     return media.mime_type.indexOf('image') === 0;
   },
-  fields: () => (
-    Object.assign({}, mediaFields, {
-      media_details: { type: ImageDetails },
-    })
-  ),
+  fields: {
+    ...mediaFields,
+    media_details: { type: ImageDetails },
+  },
 });
 
 export default ImageType;

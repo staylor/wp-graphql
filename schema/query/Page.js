@@ -11,15 +11,19 @@ import { pagination, filter, date, hierarchical, author, slug } from 'query/args
 export default {
   pages: {
     type: PageCollectionType,
-    args: (
-      Object.assign({}, pagination, filter, date, hierarchical, author, slug, {
-        menu_order: {
-          type: GraphQLInt,
-          description: 'Limit result set to posts with a specific menu_order value.',
-        },
-        orderby: { type: PAGE_ORDERBY },
-      })
-    ),
+    args: {
+      ...pagination,
+      ...filter,
+      ...date,
+      ...hierarchical,
+      ...author,
+      ...slug,
+      menu_order: {
+        type: GraphQLInt,
+        description: 'Limit result set to posts with a specific menu_order value.',
+      },
+      orderby: { type: PAGE_ORDERBY },
+    },
     resolve: (root, args) => ({ args }),
   },
   page: itemResolver(PageType, Page),

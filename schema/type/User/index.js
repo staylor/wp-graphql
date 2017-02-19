@@ -14,10 +14,10 @@ const UserType = new GraphQLObjectType({
   description: 'An object.',
   fields: {
     id: globalIdField(),
-    name,
-    description,
-    link,
-    slug,
+    ...name,
+    ...description,
+    ...link,
+    ...slug,
     avatar_urls: {
       type: new GraphQLList(Avatar),
       description: 'Avatar URLs for the user.',

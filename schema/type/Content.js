@@ -8,8 +8,8 @@ const Content = new GraphQLObjectType({
   name: 'Content',
   description: 'The content for the object.',
   fields: {
-    rendered,
-    protected: protectedField,
+    ...rendered,
+    ...protectedField,
   },
 });
 

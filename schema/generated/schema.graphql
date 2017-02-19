@@ -31,11 +31,11 @@ type Audio implements MediaInterface {
   # The theme file to use to display the object.
   template: String
 
-  # Meta fields.
-  meta: [Meta]
-
   # The author object of the item.
   author: User
+
+  # Meta fields.
+  meta: [Meta]
   _links: MediaLinks
   description: Description
   caption: Caption
@@ -47,11 +47,11 @@ type Audio implements MediaInterface {
   # The attachment MIME type.
   mime_type: String
 
-  # The ID for the associated post of the attachment.
-  post: ID!
-
   # URL to the original attachment file.
   source_url: String
+
+  # The ID for the associated post of the attachment.
+  post: ID!
   media_details: AudioDetails
 }
 
@@ -76,7 +76,6 @@ type Caption {
 type Category implements TermInterface {
   # Unique identifier for the object.
   id: ID!
-  count: Int
 
   # The object description.
   description: String
@@ -89,11 +88,18 @@ type Category implements TermInterface {
 
   # An alphanumeric identifier for the object unique to its type.
   slug: String
+
+  # Type attribution for the term.
   taxonomy: String
+
+  # Number of published posts for the term.
+  count: Int
 
   # Meta fields.
   meta: [Meta]
   _links: CategoryLinks
+
+  # The parent term ID.
   parent: Category
 }
 
@@ -135,13 +141,9 @@ type CategoryLinks {
 type Comment {
   # Unique identifier for the object.
   id: ID!
-  post: Post
-  parent: Comment
 
   # The author object of the item.
   author: User
-  author_name: String
-  author_url: String
 
   # The date the object was published, in the timezone of the site.
   date: String
@@ -152,8 +154,26 @@ type Comment {
 
   # URL to the object.
   link: String
+
+  # The ID of the associated post object.
+  post: Post
+
+  # The ID for the parent of the object.
+  parent: Comment
+
+  # Display name for the object author.
+  author_name: String
+
+  # URL for the object author.
+  author_url: String
+
+  # State of the object.
   status: String
+
+  # Type of Comment for the object.
   type: String
+
+  # Avatar URLs for the object author.
   author_avatar_urls: [Avatar]
 
   # Meta fields.
@@ -293,11 +313,11 @@ type Image implements MediaInterface {
   # The theme file to use to display the object.
   template: String
 
-  # Meta fields.
-  meta: [Meta]
-
   # The author object of the item.
   author: User
+
+  # Meta fields.
+  meta: [Meta]
   _links: MediaLinks
   description: Description
   caption: Caption
@@ -309,11 +329,11 @@ type Image implements MediaInterface {
   # The attachment MIME type.
   mime_type: String
 
-  # The ID for the associated post of the attachment.
-  post: ID!
-
   # URL to the original attachment file.
   source_url: String
+
+  # The ID for the associated post of the attachment.
+  post: ID!
   media_details: ImageDetails
 }
 
@@ -409,11 +429,11 @@ interface MediaInterface {
   # The attachment MIME type.
   mime_type: String
 
-  # The ID for the associated post of the attachment.
-  post: ID!
-
   # URL to the original attachment file.
   source_url: String
+
+  # The ID for the associated post of the attachment.
+  post: ID!
 }
 
 # The links for the media.
@@ -485,16 +505,20 @@ type Page implements PostInterface {
   # The theme file to use to display the object.
   template: String
 
-  # Meta fields.
-  meta: [Meta]
-
   # The author object of the item.
   author: User
 
   # The featured media for the object.
   featured_media: Media
+
+  # Meta fields.
+  meta: [Meta]
   _links: PageLinks
+
+  # The ID for the parent of the object.
   parent: Page
+
+  # The order of the object in relation to other object of its type.
   menu_order: Int
 }
 
@@ -604,18 +628,18 @@ type Post implements PostInterface {
   template: String
   format: FORMAT
 
-  # Meta fields.
-  meta: [Meta]
-
   # The author object of the item.
   author: User
 
   # The featured media for the object.
   featured_media: Media
-  _links: PostLinks
+
+  # Meta fields.
+  meta: [Meta]
 
   # Whether or not the object should be treated as sticky.
   sticky: Boolean
+  _links: PostLinks
 
   # The terms assigned to the object in the category taxonomy.
   categories: [Category]
@@ -753,7 +777,6 @@ type Query {
     # Limit result set to items with one or more specific slugs (value or comma-separated values).
     slug: String
     orderby: POST_ORDERBY
-    sticky: Boolean
     categories: String
     categories_exclude: String
     tags: String
@@ -1071,11 +1094,15 @@ type Status {
 
   # HTML title for the object.
   name: String
-  public: Boolean
-  queryable: Boolean
 
   # An alphanumeric identifier for the object unique to its type.
   slug: String
+
+  # Whether posts of this status should be shown in the front end of the site.
+  public: Boolean
+
+  # Whether posts with this status should be publicly-queryable.
+  queryable: Boolean
   _links: StatusLinks
 }
 
@@ -1088,7 +1115,6 @@ type StatusLinks {
 type Tag implements TermInterface {
   # Unique identifier for the object.
   id: ID!
-  count: Int
 
   # The object description.
   description: String
@@ -1101,7 +1127,12 @@ type Tag implements TermInterface {
 
   # An alphanumeric identifier for the object unique to its type.
   slug: String
+
+  # Type attribution for the term.
   taxonomy: String
+
+  # Number of published posts for the term.
+  count: Int
 
   # Meta fields.
   meta: [Meta]
@@ -1154,8 +1185,14 @@ type Taxonomy {
 
   # The object description.
   description: String
+
+  # Types associated with the taxonomy.
   types: [String]
+
+  # Whether or not the taxonomy should have children.
   hierarchical: Boolean
+
+  # REST base route for the taxonomy.
   rest_base: String
   _links: TaxonomyLinks
 }
@@ -1188,7 +1225,6 @@ type TemplatedLink {
 interface TermInterface {
   # Unique identifier for the object.
   id: ID!
-  count: Int
 
   # The object description.
   description: String
@@ -1201,6 +1237,7 @@ interface TermInterface {
 
   # An alphanumeric identifier for the object unique to its type.
   slug: String
+  count: Int
   taxonomy: String
   meta: [Meta]
 }
@@ -1224,14 +1261,20 @@ type Type {
 
   # The object description.
   description: String
-  hierarchical: Boolean
 
   # HTML title for the object.
   name: String
 
   # An alphanumeric identifier for the object unique to its type.
   slug: String
+
+  # Whether or not the post type should have children.
+  hierarchical: Boolean
+
+  # Taxonomies associated with post type.
   taxonomies: [String]
+
+  # REST base route for the post type.
   rest_base: String
   _links: TypeLinks
 }
@@ -1339,11 +1382,11 @@ type Video implements MediaInterface {
   # The theme file to use to display the object.
   template: String
 
-  # Meta fields.
-  meta: [Meta]
-
   # The author object of the item.
   author: User
+
+  # Meta fields.
+  meta: [Meta]
   _links: MediaLinks
   description: Description
   caption: Caption
@@ -1355,11 +1398,11 @@ type Video implements MediaInterface {
   # The attachment MIME type.
   mime_type: String
 
-  # The ID for the associated post of the attachment.
-  post: ID!
-
   # URL to the original attachment file.
   source_url: String
+
+  # The ID for the associated post of the attachment.
+  post: ID!
   media_details: VideoDetails
 }
 

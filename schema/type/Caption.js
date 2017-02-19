@@ -6,7 +6,7 @@ const Caption = new GraphQLObjectType({
   name: 'Caption',
   description: 'The caption for the object.',
   fields: {
-    rendered,
+    ...rendered,
   },
 });
 

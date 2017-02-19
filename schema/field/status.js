@@ -3,6 +3,14 @@ import PING_STATUS from 'enum/PingStatus';
 
 /* eslint-disable camelcase */
 
-export const comment_status = { type: COMMENT_STATUS };
+export const comment_status = {
+  comment_status: {
+    type: COMMENT_STATUS,
+  },
+};
 
-export const ping_status = { type: PING_STATUS };
+export const ping_status = {
+  ping_status: {
+    type: PING_STATUS,
+  },
+};

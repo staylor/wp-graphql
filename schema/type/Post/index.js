@@ -13,7 +13,7 @@ import PostLinks from 'type/Post/Links';
 
 import { globalIdField, slug, guid, link } from 'field/identifier';
 import { title, content, excerpt } from 'field/content';
-import { date, date_gmt, modified, modified_gmt } from 'field/date';
+import { date, modified } from 'field/date';
 import { comment_status, ping_status } from 'field/status';
 import { type, template, format, sticky } from 'field/post';
 import { featuredMedia } from 'field/media';
@@ -32,27 +32,25 @@ const PostType = new GraphQLObjectType({
   },
   fields: {
     id: globalIdField(),
-    date,
-    date_gmt,
-    guid,
-    modified,
-    modified_gmt,
-    slug,
-    type,
-    link,
-    title,
-    content,
-    excerpt,
-    comment_status,
-    ping_status,
-    template,
-    format,
-    meta: metaField(),
-    author,
+    ...date,
+    ...guid,
+    ...modified,
+    ...slug,
+    ...type,
+    ...link,
+    ...title,
+    ...content,
+    ...excerpt,
+    ...comment_status,
+    ...ping_status,
+    ...template,
+    ...format,
+    ...author,
     featured_media: featuredMedia(),
-    _links: { type: PostLinks },
+    meta: metaField(),
     // extra post fields
-    sticky,
+    ...sticky,
+    _links: { type: PostLinks },
     categories: {
       type: new GraphQLList(CategoryType),
       description: 'The terms assigned to the object in the category taxonomy.',
