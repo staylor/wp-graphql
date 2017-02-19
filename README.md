@@ -7,6 +7,29 @@ Take a look: http://graphql.highforthis.com/graphql
 
 This is mega-alpha, but also an RFC. Browse the docs on the right to create a query on the left (which also supports autocomplete). Here's a query to try out:
 
+A single item:
+```
+query {
+  post(id:"UG9zdDoyNjk2") {
+   id
+    title {
+      rendered
+    }
+    content {
+      rendered
+    }
+    date
+    author {
+      name
+    }
+    categories {
+      name
+    }         
+  }
+}
+```
+
+Collections:
 ```
 query {
   posts {
