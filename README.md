@@ -10,16 +10,29 @@ This is mega-alpha, but also an RFC. Browse the docs on the right to create a qu
 ```
 query {
   posts {
-    id
-    title {
-      rendered
-    }
-    date
-    author {
-      name
-    }
-    tags {
-      name
+    results {
+      edges {
+        node {
+         id
+          title {
+            rendered
+          }
+          date
+          author {
+            name
+          }
+          tags {
+            name
+          }         
+        }
+        cursor
+      }
+      pageInfo {
+        startCursor
+        endCursor
+        hasNextPage
+        hasPreviousPage
+      }
     }
   }
 }
