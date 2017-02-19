@@ -4,6 +4,7 @@
     "stage-0"
   ],
   "plugins": [
+    "transform-regenerator",
     ["module-resolver", {
       "root": ["./"],
       "alias": {
