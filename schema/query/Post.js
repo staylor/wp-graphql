@@ -2,8 +2,8 @@ import { GraphQLString } from 'graphql';
 
 import POST_ORDERBY from 'enum/PostOrderby';
 
-import PostType from 'type/Post';
 import PostCollectonType from 'type/Post/Collection';
+import PostType from 'type/Post';
 import Post from 'data/Post';
 import { itemResolver } from 'utils';
 import { pagination, filter, date, author, slug } from 'query/args';

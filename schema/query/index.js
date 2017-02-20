@@ -8,8 +8,10 @@ import typeQueries from 'query/Type';
 import taxonomyQueries from 'query/Taxonomy';
 import mediaQueries from 'query/Media';
 import statusQueries from 'query/Status';
+import { nodeField } from 'type/relayNode';
 
 export default {
+  node: nodeField,
   ...postQueries,
   ...userQueries,
   ...categoryQueries,

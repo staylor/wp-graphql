@@ -464,6 +464,12 @@ type Meta {
   value: String
 }
 
+# An object with an ID
+interface Node {
+  # The id of the object.
+  id: ID!
+}
+
 # Order sort attribute ascending or descending.
 enum ORDER {
   ASC
@@ -742,6 +748,11 @@ type PostTypeLink {
 
 # WordPress REST API read-only data
 type Query {
+  # Fetches an object given its ID
+  node(
+    # The ID of an object
+    id: ID!
+  ): Node
   posts(
     # Current page of the collection.
     page: Int
