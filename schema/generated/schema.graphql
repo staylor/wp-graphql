@@ -1091,11 +1091,78 @@ type Query {
     # Unique identifier for the object.
     id: ID
   ): Media
+  sidebars: SidebarCollection
+  sidebar(
+    # Unique identifier for the object.
+    id: ID
+  ): Sidebar
   statuses: [Status]
   status(
     # Unique identifier for the object.
     id: ID!
   ): Status
+}
+
+# A widget area.
+type Sidebar {
+  # Unique identifier for the object.
+  id: ID!
+
+  # HTML title for the object.
+  name: String
+
+  # The object description.
+  description: String
+
+  # Extra CSS class to assign to the sidebar in the Widgets interface.
+  className: String
+
+  # HTML content to prepend to each widget's HTML output when assigned to this sidebar.
+  before_widget: String
+
+  # HTML content to append to each widget's HTML output when assigned to this sidebar.
+  after_widget: String
+
+  # HTML content to prepend to the sidebar title when displayed.
+  before_title: String
+
+  # HTML content to append to the sidebar title when displayed.
+  after_title: String
+
+  # HTML widgets associated with the sidebar.
+  widgets: [String]
+  _links: SidebarLinks
+}
+
+# Collection of sidebars based on cursors.
+type SidebarCollection {
+  # A list of results
+  results(after: String, first: Int, before: String, last: Int): SidebarConnection
+}
+
+# A connection to a list of items.
+type SidebarConnection {
+  # Information to aid in pagination.
+  pageInfo: PageInfo!
+
+  # A list of edges.
+  edges: [SidebarEdge]
+}
+
+# An edge in a connection.
+type SidebarEdge {
+  # The item at the end of the edge
+  node: Sidebar
+
+  # A cursor for use in pagination
+  cursor: String!
+}
+
+# The links for a sidebar.
+type SidebarLinks {
+  collection: [Link]
+  items: [Link]
+  curies: [TemplatedLink]
 }
 
 # A post status.

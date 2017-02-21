@@ -64,7 +64,8 @@ export const loadEdges = (DataType, path) => (root, args) => {
     params.qs.offset = offset;
   }
 
-  return loadCollection(DataType, path, params);
+  return loadCollection(DataType, path, params)
+    .catch(e => Promise.reject(e));
 };
 
 export const itemResolver = (dataType, loader) => ({
