@@ -56,7 +56,7 @@ const PostType = new GraphQLObjectType({
       description: 'The terms assigned to the object in the category taxonomy.',
       resolve: ({ categories }) => {
         if (categories.length) {
-          return categories.map(cat => toGlobalId('Category', cat)).map(Category.load);
+          return Promise.all(categories.map(cat => toGlobalId('Category', cat)).map(Category.load));
         }
         return null;
       },
@@ -66,7 +66,7 @@ const PostType = new GraphQLObjectType({
       description: 'The terms assigned to the object in the post_tag taxonomy.',
       resolve: ({ tags }) => {
         if (tags.length) {
-          return tags.map(tag => toGlobalId('Tag', tag)).map(Tag.load);
+          return Promise.all(tags.map(tag => toGlobalId('Tag', tag)).map(Tag.load));
         }
         return null;
       },

@@ -81,7 +81,7 @@ export const collectionEdges = ({ data, total, offset }) => {
   return {
     edges: toEdges(data, startIndex),
     pageInfo: {
-      hasNextPage: endIndex < total,
+      hasNextPage: endIndex < (total - 1),
       hasPreviousPage: startIndex > 0,
       startCursor: total > 0 ? indexToCursor(startIndex) : null,
       endCursor: total > 0 ? indexToCursor(endIndex) : null,
