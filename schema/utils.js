@@ -20,6 +20,7 @@ const encodedArgs = [
   'categories_exclude',
   'tags',
   'tags_exclude',
+  'post',
 ];
 
 const listArgs = [

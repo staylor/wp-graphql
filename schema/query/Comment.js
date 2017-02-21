@@ -1,4 +1,4 @@
-import { GraphQLInt } from 'graphql';
+import { GraphQLID } from 'graphql';
 
 import COMMENT_ORDERBY from 'enum/CommentOrderby';
 
@@ -17,7 +17,7 @@ export default {
       ...date,
       ...hierarchical,
       post: {
-        type: GraphQLInt,
+        type: GraphQLID,
         description: 'Limit result set to comments assigned to specific post IDs.',
       },
       orderby: { type: COMMENT_ORDERBY },

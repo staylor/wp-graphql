@@ -897,7 +897,7 @@ type Query {
     hide_empty: Boolean
 
     # Limit result set to terms assigned to a specific post.
-    post: Int
+    post: ID
 
     # Limit result set to terms assigned to a specific parent.
     parent: Int
@@ -934,7 +934,7 @@ type Query {
     hide_empty: Boolean
 
     # Limit result set to terms assigned to a specific post.
-    post: Int
+    post: ID
   ): TagCollection
   tag(
     # Unique identifier for the object.
@@ -1022,7 +1022,7 @@ type Query {
     parent_exclude: String
 
     # Limit result set to comments assigned to specific post IDs.
-    post: Int
+    post: ID
     orderby: COMMENT_ORDERBY
   ): CommentCollection
   comment(

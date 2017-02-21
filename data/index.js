@@ -91,12 +91,6 @@ export const collectionEdges = ({ data, total, offset }) => {
 
 export const loadCollection = (DataType, path, opts = {}) => {
   console.log(`Loading collection: ${path}`, JSON.stringify(opts));
-  if (opts.qs && opts.qs.include) {
-    return loadIDs(opts.qs.include, path).then(data => (
-      data.map(value => Object.assign(new DataType(), value))),
-    );
-  }
-
   // A short TTL request cache based on path + serialized opts, only stores IDs
   // think pagination...
 

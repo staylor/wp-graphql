@@ -2,6 +2,7 @@ import {
   GraphQLInt,
   GraphQLString,
   GraphQLBoolean,
+  GraphQLID,
 } from 'graphql';
 
 import ORDER from 'enum/Order';
@@ -87,7 +88,7 @@ export const taxonomy = {
     description: 'Whether to hide terms not assigned to any posts.',
   },
   post: {
-    type: GraphQLInt,
+    type: GraphQLID,
     description: 'Limit result set to terms assigned to a specific post.',
   },
 };

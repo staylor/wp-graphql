@@ -673,7 +673,7 @@
                   "description": "Limit result set to terms assigned to a specific post.",
                   "type": {
                     "kind": "SCALAR",
-                    "name": "Int",
+                    "name": "ID",
                     "ofType": null
                   },
                   "defaultValue": null
@@ -829,7 +829,7 @@
                   "description": "Limit result set to terms assigned to a specific post.",
                   "type": {
                     "kind": "SCALAR",
-                    "name": "Int",
+                    "name": "ID",
                     "ofType": null
                   },
                   "defaultValue": null
@@ -1181,7 +1181,7 @@
                   "description": "Limit result set to comments assigned to specific post IDs.",
                   "type": {
                     "kind": "SCALAR",
-                    "name": "Int",
+                    "name": "ID",
                     "ofType": null
                   },
                   "defaultValue": null
