@@ -1115,7 +1115,7 @@ type Sidebar {
   description: String
 
   # Extra CSS class to assign to the sidebar in the Widgets interface.
-  className: String
+  classname: String
 
   # HTML content to prepend to each widget's HTML output when assigned to this sidebar.
   before_widget: String
@@ -1130,7 +1130,7 @@ type Sidebar {
   after_title: String
 
   # HTML widgets associated with the sidebar.
-  widgets: [String]
+  widgets: [Widget]
   _links: SidebarLinks
 }
 
@@ -1487,4 +1487,20 @@ type Video implements MediaInterface {
 # The details for the media.
 type VideoDetails {
   title: String
+}
+
+# A widget.
+type Widget {
+  # Identifier for widget.
+  id: String
+
+  # HTML title for the object.
+  name: String
+
+  # The object description.
+  description: String
+
+  # CSS class for the widget.
+  classname: String
+  content: Content
 }

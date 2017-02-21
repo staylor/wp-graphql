@@ -5,18 +5,18 @@ import {
 } from 'graphql';
 
 import SidebarLinks from 'type/Sidebar/Links';
-
+import WidgetType from 'type/Widget';
 import { globalIdField, name } from 'field/identifier';
 import description from 'field/description';
 
-const TypeType = new GraphQLObjectType({
+const SidebarType = new GraphQLObjectType({
   name: 'Sidebar',
   description: 'A widget area.',
   fields: {
     id: globalIdField(),
     ...name,
     ...description,
-    className: {
+    classname: {
       type: GraphQLString,
       description: 'Extra CSS class to assign to the sidebar in the Widgets interface.',
       resolve: sidebar => sidebar.class,
@@ -38,11 +38,11 @@ const TypeType = new GraphQLObjectType({
       description: 'HTML content to append to the sidebar title when displayed.',
     },
     widgets: {
-      type: new GraphQLList(GraphQLString),
+      type: new GraphQLList(WidgetType),
       description: 'HTML widgets associated with the sidebar.',
     },
     _links: { type: SidebarLinks },
   },
 });
 
-export default TypeType;
+export default SidebarType;

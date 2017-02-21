@@ -7930,7 +7930,7 @@
               "deprecationReason": null
             },
             {
-              "name": "className",
+              "name": "classname",
               "description": "Extra CSS class to assign to the sidebar in the Widgets interface.",
               "args": [],
               "type": {
@@ -7997,8 +7997,8 @@
                 "kind": "LIST",
                 "name": null,
                 "ofType": {
-                  "kind": "SCALAR",
-                  "name": "String",
+                  "kind": "OBJECT",
+                  "name": "Widget",
                   "ofType": null
                 }
               },
@@ -8012,6 +8012,77 @@
               "type": {
                 "kind": "OBJECT",
                 "name": "SidebarLinks",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            }
+          ],
+          "inputFields": null,
+          "interfaces": [],
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "OBJECT",
+          "name": "Widget",
+          "description": "A widget.",
+          "fields": [
+            {
+              "name": "id",
+              "description": "Identifier for widget.",
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "name",
+              "description": "HTML title for the object.",
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "description",
+              "description": "The object description.",
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "classname",
+              "description": "CSS class for the widget.",
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "content",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "OBJECT",
+                "name": "Content",
                 "ofType": null
               },
               "isDeprecated": false,
