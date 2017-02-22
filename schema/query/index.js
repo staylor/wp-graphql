@@ -9,6 +9,7 @@ import taxonomyQueries from 'query/Taxonomy';
 import mediaQueries from 'query/Media';
 import sidebarQueries from 'query/Sidebar';
 import statusQueries from 'query/Status';
+import navMenuQueries from 'query/NavMenu';
 import { nodeField } from 'type/relayNode';
 
 export default {
@@ -24,4 +25,5 @@ export default {
   ...mediaQueries,
   ...sidebarQueries,
   ...statusQueries,
+  ...navMenuQueries,
 };

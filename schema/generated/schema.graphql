@@ -464,6 +464,95 @@ type Meta {
   value: String
 }
 
+# A nav menu.
+type NavMenu {
+  # Unique identifier for the object.
+  id: ID!
+
+  # HTML title for the object.
+  name: String
+
+  # The object description.
+  description: String
+
+  # Items associated with the menu.
+  items: [NavMenuItem]
+  _links: NavMenuLinks
+}
+
+# Collection of nav menus based on cursors.
+type NavMenuCollection {
+  # A list of results
+  results(after: String, first: Int, before: String, last: Int): NavMenuConnection
+}
+
+# A connection to a list of items.
+type NavMenuConnection {
+  # Information to aid in pagination.
+  pageInfo: PageInfo!
+
+  # A list of edges.
+  edges: [NavMenuEdge]
+}
+
+# An edge in a connection.
+type NavMenuEdge {
+  # The item at the end of the edge
+  node: NavMenu
+
+  # A cursor for use in pagination
+  cursor: String!
+}
+
+# A nav menu item.
+type NavMenuItem {
+  # Unique identifier for the object.
+  id: ID!
+
+  # Menu item that this item is a child of.
+  parent: Int
+
+  # The order that this item appears in the menu.
+  order: Int
+
+  # The classification of object.
+  type: String
+
+  # The type of object.
+  object: String
+
+  # The object type label.
+  label: String
+
+  # The item url.
+  url: String
+
+  # The display name for the item.
+  title: String
+
+  # The target for the item.
+  target: String
+
+  # The attribute title for the item.
+  attr_title: String
+
+  # A description of the item.
+  description: String
+
+  # CSS classes to use with the item.
+  classes: [String]
+
+  # Associated XFN value(s).
+  xfn: String
+}
+
+# The links for a nav menu.
+type NavMenuLinks {
+  collection: [Link]
+  items: [Link]
+  curies: [TemplatedLink]
+}
+
 # An object with an ID
 interface Node {
   # The id of the object.
@@ -1101,6 +1190,11 @@ type Query {
     # Unique identifier for the object.
     id: ID!
   ): Status
+  navMenus: NavMenuCollection
+  navMenu(
+    # Unique identifier for the object.
+    id: ID
+  ): NavMenu
 }
 
 # A widget area.
