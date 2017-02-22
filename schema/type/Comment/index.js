@@ -62,12 +62,12 @@ const CommentType = new GraphQLObjectType({
     author_avatar_urls: {
       type: new GraphQLList(Avatar),
       description: 'Avatar URLs for the object author.',
-      resolve: (comment) => {
+      resolve: comment => (
         Object.keys(comment.author_avatar_urls).map(key => ({
           size: key,
           url: comment.author_avatar_urls[key],
-        }));
-      },
+        }))
+      ),
     },
     meta: metaField(),
     _links: { type: CommentLinks },
