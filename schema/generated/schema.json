@@ -7017,8 +7017,8 @@
               "description": "The ID for the parent of the object.",
               "args": [],
               "type": {
-                "kind": "OBJECT",
-                "name": "Comment",
+                "kind": "SCALAR",
+                "name": "ID",
                 "ofType": null
               },
               "isDeprecated": false,

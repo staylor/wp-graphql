@@ -159,7 +159,7 @@ type Comment {
   post: Post
 
   # The ID for the parent of the object.
-  parent: Comment
+  parent: ID
 
   # Display name for the object author.
   author_name: String

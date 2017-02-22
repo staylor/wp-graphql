@@ -2,6 +2,7 @@ import {
   GraphQLObjectType,
   GraphQLList,
   GraphQLString,
+  GraphQLID,
 } from 'graphql';
 import { toGlobalId } from 'graphql-relay';
 
@@ -17,7 +18,6 @@ import { date } from 'field/date';
 import metaField from 'field/meta';
 import author from 'field/author';
 
-import Comment from 'data/Comment';
 import Post from 'data/Post';
 
 const CommentType = new GraphQLObjectType({
@@ -37,10 +37,10 @@ const CommentType = new GraphQLObjectType({
       ),
     },
     parent: {
-      type: CommentType,
+      type: GraphQLID,
       description: 'The ID for the parent of the object.',
       resolve: comment => (
-        comment.parent > 0 ? Comment.load(toGlobalId('Comment', comment.parent)) : null
+        comment.parent > 0 ? toGlobalId('Comment', comment.parent) : null
       ),
     },
     author_name: {
