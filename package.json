@@ -38,10 +38,11 @@
     "eslint-import-resolver-babel-module": "^3.0.0",
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^4.0.0",
-    "eslint-plugin-react": "^6.9.0"
+    "eslint-plugin-react": "^6.9.0",
+    "nodemon": "^1.11.0"
   },
   "scripts": {
-    "dev": "babel-node server.js",
+    "dev": "nodemon --exec babel-node server.js",
     "updateSchema": "babel-node updateSchema.js"
   }
 }
