@@ -19,7 +19,7 @@ const SidebarCollectionType = new GraphQLObjectType({
       type: SidebarConnection,
       args: connectionArgs,
       description: 'A list of results',
-      resolve: loadEdges(Sidebar, '/sidebars'),
+      resolve: loadEdges(Sidebar),
     },
   },
 });

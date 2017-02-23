@@ -1,4 +1,4 @@
-import dotenv from 'dotenv';
+import 'dotenv/config';
 import express from 'express';
 import graphQLHTTP from 'express-graphql';
 import { graphqlBatchHTTPWrapper } from 'react-relay-network-layer';
@@ -6,8 +6,6 @@ import bodyParser from 'body-parser';
 import responseTime from 'response-time';
 import queryLogger from './middleware/queryLogger';
 import Schema from './schema/index';
-
-dotenv.config();
 
 const app = express();
 const graphQLServer = graphQLHTTP(req => ({

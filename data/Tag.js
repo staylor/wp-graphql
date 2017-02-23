@@ -1,9 +1,14 @@
 import { createLoader } from 'data';
 import Model from 'data/Model';
 
-const tagLoader = createLoader('/tags');
+const path = process.env.WP_TAGS_ENDPOINT || 'wp/v2/tags';
+const tagLoader = createLoader(path);
 
 export default class Tag extends Model {
+  static getEndpoint() {
+    return path;
+  }
+
   static async load(id) {
     const data = await tagLoader.load(id);
     return data ? Object.assign(new Tag(), data) : null;

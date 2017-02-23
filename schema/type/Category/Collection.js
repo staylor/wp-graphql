@@ -19,7 +19,7 @@ const CategoryCollectionType = new GraphQLObjectType({
       type: CategoryConnection,
       args: connectionArgs,
       description: 'A list of results',
-      resolve: loadEdges(Category, '/categories'),
+      resolve: loadEdges(Category),
     },
   },
 });

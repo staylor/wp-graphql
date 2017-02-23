@@ -12,7 +12,7 @@ export default {
   types: {
     type: new GraphQLList(TypeType),
     resolve: () => (
-      request('/types').then(typeMap => (
+      request(Type.getEndpoint()).then(typeMap => (
         Object.keys(typeMap).map(type => (Object.assign(new Type(), {
           ...typeMap[type],
           id: type,

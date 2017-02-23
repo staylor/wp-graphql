@@ -19,7 +19,7 @@ const TagCollectionType = new GraphQLObjectType({
       type: TagConnection,
       args: connectionArgs,
       description: 'A list of results',
-      resolve: loadEdges(Tag, '/tags'),
+      resolve: loadEdges(Tag),
     },
   },
 });

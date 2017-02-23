@@ -19,7 +19,7 @@ const StatusCollectionType = new GraphQLObjectType({
       type: StatusConnection,
       args: connectionArgs,
       description: 'A list of results',
-      resolve: loadEdges(Status, '/statuses'),
+      resolve: loadEdges(Status),
     },
   },
 });

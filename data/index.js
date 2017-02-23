@@ -1,11 +1,18 @@
+import url from 'url';
 import request from 'request-promise';
 import Dataloader from 'dataloader';
 import { decodeIDs, toBase64, indexToCursor } from 'utils';
 import redis, { getClient } from 'data/store';
 
 const rp = (path, opts = {}) => {
+  let uri = path;
+  const urlObj = url.parse(path);
+  if (!urlObj.host) {
+    uri = `${process.env.WP_API_HOST}${path}`;
+  }
+
   const params = Object.assign({
-    uri: `${process.env.WP_API_HOST}${path}`,
+    uri,
     jar: true,
     json: true,
     simple: true,
@@ -89,7 +96,8 @@ export const collectionEdges = ({ data, total, offset }) => {
   };
 };
 
-export const loadCollection = (DataType, path, opts = {}) => {
+export const loadCollection = (DataType, opts = {}) => {
+  const path = DataType.getEndpoint();
   console.log(`Loading collection: ${path}`, JSON.stringify(opts));
   // A short TTL request cache based on path + serialized opts, only stores IDs
   // think pagination...

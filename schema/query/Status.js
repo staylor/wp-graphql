@@ -12,7 +12,7 @@ export default {
   statuses: {
     type: new GraphQLList(StatusType),
     resolve: () => (
-      request('/statuses').then(stati => (
+      request(Status.getEndpoint()).then(stati => (
         Object.keys(stati).map(status => (Object.assign(new Status(), {
           ...stati[status],
           id: status,

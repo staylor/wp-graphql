@@ -29,13 +29,11 @@ const listArgs = [
   'roles',
 ];
 
-export const loadEdges = (DataType, path) => (root, args) => {
+export const loadEdges = DataType => (root, args) => {
   const params = {
     resolveWithFullResponse: true,
     qs: root.args || {},
   };
-
-  params.qs.sticky = params.qs.sticky || false;
 
   if (Object.keys(root.args).length > 0) {
     listArgs.forEach((key) => {
@@ -65,8 +63,7 @@ export const loadEdges = (DataType, path) => (root, args) => {
     params.qs.offset = offset;
   }
 
-  return loadCollection(DataType, path, params)
-    .catch(e => Promise.reject(e));
+  return loadCollection(DataType, params).catch(e => Promise.reject(e));
 };
 
 export const itemResolver = (dataType, loader) => ({

@@ -19,7 +19,7 @@ const UserCollectionType = new GraphQLObjectType({
       type: UserConnection,
       args: connectionArgs,
       description: 'A list of results',
-      resolve: loadEdges(User, '/users'),
+      resolve: loadEdges(User),
     },
   },
 });

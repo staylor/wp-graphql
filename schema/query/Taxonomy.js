@@ -13,7 +13,7 @@ export default {
     type: new GraphQLList(TaxonomyType),
     // eslint-disable-next-line no-confusing-arrow
     resolve: () => (
-      request('/taxonomies').then(taxMap => (
+      request(Taxonomy.getEndpoint()).then(taxMap => (
         Object.keys(taxMap).map(tax => (Object.assign(new Taxonomy(), {
           ...taxMap[tax],
           id: tax,

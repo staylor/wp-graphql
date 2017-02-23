@@ -19,7 +19,7 @@ const TypeCollectionType = new GraphQLObjectType({
       type: TypeConnection,
       args: connectionArgs,
       description: 'A list of results',
-      resolve: loadEdges(Type, '/types'),
+      resolve: loadEdges(Type),
     },
   },
 });

@@ -19,7 +19,7 @@ const CommentCollectionType = new GraphQLObjectType({
       type: CommentConnection,
       args: connectionArgs,
       description: 'A list of results',
-      resolve: loadEdges(Comment, '/comments'),
+      resolve: loadEdges(Comment),
     },
   },
 });

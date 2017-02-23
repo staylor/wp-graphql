@@ -19,7 +19,7 @@ const TaxonomyCollectionType = new GraphQLObjectType({
       type: TaxonomyConnection,
       args: connectionArgs,
       description: 'A list of results',
-      resolve: loadEdges(Taxonomy, '/taxonomies'),
+      resolve: loadEdges(Taxonomy),
     },
   },
 });

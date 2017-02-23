@@ -19,7 +19,7 @@ const MediaCollectionType = new GraphQLObjectType({
       type: MediaConnection,
       args: connectionArgs,
       description: 'A list of results',
-      resolve: loadEdges(Media, '/media'),
+      resolve: loadEdges(Media),
     },
   },
 });

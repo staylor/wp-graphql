@@ -19,7 +19,7 @@ const PageCollectionType = new GraphQLObjectType({
       type: PageConnection,
       args: connectionArgs,
       description: 'A list of results',
-      resolve: loadEdges(Page, '/pages'),
+      resolve: loadEdges(Page),
     },
   },
 });

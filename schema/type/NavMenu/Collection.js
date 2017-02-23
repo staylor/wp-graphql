@@ -19,7 +19,7 @@ const NavMenuCollectionType = new GraphQLObjectType({
       type: NavMenuConnection,
       args: connectionArgs,
       description: 'A list of results',
-      resolve: loadEdges(NavMenu, '/nav-menus'),
+      resolve: loadEdges(NavMenu),
     },
   },
 });

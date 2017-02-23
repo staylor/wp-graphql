@@ -19,7 +19,7 @@ const PostCollectionType = new GraphQLObjectType({
       type: PostConnection,
       args: connectionArgs,
       description: 'A list of results',
-      resolve: loadEdges(Post, '/posts'),
+      resolve: loadEdges(Post),
     },
   },
 });

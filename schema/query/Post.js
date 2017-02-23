@@ -24,7 +24,12 @@ export default {
       tags: { type: GraphQLString },
       tags_exclude: { type: GraphQLString },
     },
-    resolve: (root, args) => ({ args }),
+    resolve: (root, args) => ({
+      args: {
+        ...args,
+        sticky: false,
+      },
+    }),
   },
   stickies: {
     type: PostCollectonType,
