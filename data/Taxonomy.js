@@ -1,12 +1,21 @@
-import { createLoader } from 'data';
-import Model from 'data/Model';
+import { toGlobalId } from 'graphql-relay';
+import Dataloader from 'dataloader';
+import { decodeIDs, loadEdges } from 'utils';
 
+let taxonomyLoader;
 const path = process.env.WP_TAXONOMIES_ENDPOINT || 'wp/v2/taxonomies';
-const taxonomyLoader = createLoader(path);
 
-export default class Taxonomy extends Model {
+class Taxonomy {
+  getID() {
+    return toGlobalId(this.constructor.name, this.slug);
+  }
+
   static getEndpoint() {
     return path;
+  }
+
+  static getBatchKey() {
+    return 'taxonomy';
   }
 
   static async load(id) {
@@ -14,3 +23,17 @@ export default class Taxonomy extends Model {
     return data ? Object.assign(new Taxonomy(), data) : null;
   }
 }
+
+const edgeLoader = loadEdges(Taxonomy);
+taxonomyLoader = new Dataloader((opaque) => {
+  const args = {};
+  const root = { args };
+  return edgeLoader(root, args)
+    .then(({ edges }) => {
+      const nodes = edges.map(({ node }) => node);
+      const ids = decodeIDs(opaque);
+      return ids.map(id => nodes.find(node => id === node.slug));
+    });
+});
+
+export default Taxonomy;

@@ -1,10 +1,10 @@
 import { createLoader } from 'data';
 import Model from 'data/Model';
 
+let statusLoader;
 const path = process.env.WP_STATUSES_ENDPOINT || 'wp/v2/statuses';
-const statusLoader = createLoader(path);
 
-export default class Status extends Model {
+class Status extends Model {
   static getEndpoint() {
     return path;
   }
@@ -14,3 +14,7 @@ export default class Status extends Model {
     return data ? Object.assign(new Status(), data) : null;
   }
 }
+
+statusLoader = createLoader(Status);
+
+export default Status;

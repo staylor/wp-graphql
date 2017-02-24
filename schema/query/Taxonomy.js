@@ -1,40 +1,12 @@
-import {
-  GraphQLNonNull,
-  GraphQLList,
-  GraphQLID,
-} from 'graphql';
-
+import TaxonomyCollectionType from 'type/Taxonomy/Collection';
 import TaxonomyType from 'type/Taxonomy';
 import Taxonomy from 'data/Taxonomy';
-import request from 'data';
+import { itemResolver } from 'utils';
 
 export default {
   taxonomies: {
-    type: new GraphQLList(TaxonomyType),
-    // eslint-disable-next-line no-confusing-arrow
-    resolve: () => (
-      request(Taxonomy.getEndpoint()).then(taxMap => (
-        Object.keys(taxMap).map(tax => (Object.assign(new Taxonomy(), {
-          ...taxMap[tax],
-          id: tax,
-        })))
-      ))
-    ),
+    type: TaxonomyCollectionType,
+    resolve: (root, args) => ({ args }),
   },
-  taxonomy: {
-    type: TaxonomyType,
-    args: {
-      id: {
-        type: new GraphQLNonNull(GraphQLID),
-        description: 'Unique identifier for the object.',
-      },
-    },
-    // eslint-disable-next-line no-confusing-arrow
-    resolve: (root, { id }) => (
-      Taxonomy.load(id).then(taxData => (Object.assign(new Taxonomy(), {
-        ...taxData,
-        id,
-      })))
-    ),
-  },
+  taxonomy: itemResolver(TaxonomyType, Taxonomy),
 };

@@ -1,10 +1,10 @@
 import { createLoader } from 'data';
 import Model from 'data/Model';
 
+let userLoader;
 const path = process.env.WP_USERS_ENDPOINT || 'wp/v2/users';
-const userLoader = createLoader(path);
 
-export default class User extends Model {
+class User extends Model {
   static getEndpoint() {
     return path;
   }
@@ -14,3 +14,7 @@ export default class User extends Model {
     return data ? Object.assign(new User(), data) : null;
   }
 }
+
+userLoader = createLoader(User);
+
+export default User;

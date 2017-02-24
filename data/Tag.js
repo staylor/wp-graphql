@@ -1,10 +1,10 @@
 import { createLoader } from 'data';
 import Model from 'data/Model';
 
+let tagLoader;
 const path = process.env.WP_TAGS_ENDPOINT || 'wp/v2/tags';
-const tagLoader = createLoader(path);
 
-export default class Tag extends Model {
+class Tag extends Model {
   static getEndpoint() {
     return path;
   }
@@ -14,3 +14,7 @@ export default class Tag extends Model {
     return data ? Object.assign(new Tag(), data) : null;
   }
 }
+
+tagLoader = createLoader(Tag);
+
+export default Tag;

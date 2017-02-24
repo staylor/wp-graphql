@@ -1,13 +1,13 @@
 import { createLoader } from 'data';
 import Model from 'data/Model';
 
+let navMenuLoader;
 const path = process.env.WP_NAV_MENUS_ENDPOINT || null;
 if (!path) {
   throw Error('This endpoint does not exist in WordPress yet.');
 }
-const navMenuLoader = createLoader(path);
 
-export default class NavMenu extends Model {
+class NavMenu extends Model {
   static getEndpoint() {
     return path;
   }
@@ -17,3 +17,7 @@ export default class NavMenu extends Model {
     return data ? Object.assign(new NavMenu(), data) : null;
   }
 }
+
+navMenuLoader = createLoader(NavMenu);
+
+export default NavMenu;

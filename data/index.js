@@ -24,7 +24,7 @@ const rp = (path, opts = {}) => {
 
 /* eslint-disable no-console */
 
-export const loadIDs = (ids, path) => (
+export const loadIDs = (DataType, ids) => (
   new Promise((resolve, reject) => {
     const client = getClient();
     const cache = {};
@@ -37,7 +37,11 @@ export const loadIDs = (ids, path) => (
       } else {
         ids.forEach((id, index) => {
           if (res[index]) {
-            cache[id] = JSON.parse(res[index]);
+            try {
+              cache[id] = JSON.parse(res[index]);
+            } catch (e) {
+              console.log(`JSON parsing failed: ${res[index]}`);
+            }
           } else {
             pending.push(id);
           }
@@ -45,7 +49,7 @@ export const loadIDs = (ids, path) => (
 
         if (pending.length) {
           console.log(`Missing from redis: ${pending.join(',')}`);
-          rp(path, { qs: { include: decodeIDs(pending) } })
+          rp(DataType.getEndpoint(), { qs: { [DataType.getBatchKey()]: decodeIDs(pending) } })
             .catch((error) => {
               console.log(`Pending IDs: ${JSON.stringify(pending)}`);
               console.log(error);
@@ -123,9 +127,13 @@ export const loadCollection = (DataType, opts = {}) => {
       } else {
         console.log('Cache Miss: requesting data...');
         rp(path, opts).catch(error => reject(error)).then((response) => {
-          const data = response.body;
+          let data = response.body;
           const wpTotal = parseInt(response.headers['x-wp-total'], 10);
           const offset = (opts.qs && opts.qs.offset) || 0;
+
+          if (!Array.isArray(data)) {
+            data = Object.keys(data).map(itemKey => data[itemKey]);
+          }
 
           const opaque = [];
           const args = [];
@@ -165,8 +173,8 @@ export const loadCollection = (DataType, opts = {}) => {
   });
 };
 
-export const createLoader = path => (
-  new Dataloader(ids => loadIDs(ids, path))
+export const createLoader = DataType => (
+  new Dataloader(ids => loadIDs(DataType, ids))
 );
 
 export default rp;

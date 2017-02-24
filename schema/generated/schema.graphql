@@ -1118,15 +1118,15 @@ type Query {
     # Unique identifier for the object.
     id: ID
   ): Comment
-  types: [Type]
+  types: TypeCollection
   type(
     # Unique identifier for the object.
-    id: ID!
+    id: ID
   ): Type
-  taxonomies: [Taxonomy]
+  taxonomies: TaxonomyCollection
   taxonomy(
     # Unique identifier for the object.
-    id: ID!
+    id: ID
   ): Taxonomy
   media(
     # Current page of the collection.
@@ -1380,6 +1380,30 @@ enum TAXONOMY_ORDERBY {
   COUNT
 }
 
+# Collection of taxonomies based on cursors.
+type TaxonomyCollection {
+  # A list of results
+  results(after: String, first: Int, before: String, last: Int): TaxonomyConnection
+}
+
+# A connection to a list of items.
+type TaxonomyConnection {
+  # Information to aid in pagination.
+  pageInfo: PageInfo!
+
+  # A list of edges.
+  edges: [TaxonomyEdge]
+}
+
+# An edge in a connection.
+type TaxonomyEdge {
+  # The item at the end of the edge
+  node: Taxonomy
+
+  # A cursor for use in pagination
+  cursor: String!
+}
+
 # The links for a taxonomy.
 type TaxonomyLinks {
   collection: [Link]
@@ -1449,6 +1473,30 @@ type Type {
   # REST base route for the post type.
   rest_base: String
   _links: TypeLinks
+}
+
+# Collection of taxonomies based on cursors.
+type TypeCollection {
+  # A list of results
+  results(after: String, first: Int, before: String, last: Int): TypeConnection
+}
+
+# A connection to a list of items.
+type TypeConnection {
+  # Information to aid in pagination.
+  pageInfo: PageInfo!
+
+  # A list of edges.
+  edges: [TypeEdge]
+}
+
+# An edge in a connection.
+type TypeEdge {
+  # The item at the end of the edge
+  node: Type
+
+  # A cursor for use in pagination
+  cursor: String!
 }
 
 # The links for a type.

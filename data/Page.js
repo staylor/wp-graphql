@@ -1,10 +1,10 @@
 import { createLoader } from 'data';
 import Model from 'data/Model';
 
+let pageLoader;
 const path = process.env.WP_PAGES_ENDPOINT || 'wp/v2/pages';
-const pageLoader = createLoader(path);
 
-export default class Page extends Model {
+class Page extends Model {
   static getEndpoint() {
     return path;
   }
@@ -14,3 +14,7 @@ export default class Page extends Model {
     return data ? Object.assign(new Page(), data) : null;
   }
 }
+
+pageLoader = createLoader(Page);
+
+export default Page;
