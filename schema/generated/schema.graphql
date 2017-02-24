@@ -90,7 +90,7 @@ type Category implements TermInterface {
   slug: String
 
   # Type attribution for the term.
-  taxonomy: String
+  taxonomy: Taxonomy
 
   # Number of published posts for the term.
   count: Int
@@ -506,8 +506,8 @@ type NavMenuEdge {
 
 # A nav menu item.
 type NavMenuItem {
-  # Unique identifier for the object.
-  id: ID!
+  # Menu item ID.
+  id: ID
 
   # Menu item that this item is a child of.
   parent: Int
@@ -1301,7 +1301,7 @@ type Tag implements TermInterface {
   slug: String
 
   # Type attribution for the term.
-  taxonomy: String
+  taxonomy: Taxonomy
 
   # Number of published posts for the term.
   count: Int
@@ -1410,7 +1410,7 @@ interface TermInterface {
   # An alphanumeric identifier for the object unique to its type.
   slug: String
   count: Int
-  taxonomy: String
+  taxonomy: Taxonomy
   meta: [Meta]
 }
 

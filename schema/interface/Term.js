@@ -3,11 +3,11 @@ import {
   GraphQLNonNull,
   GraphQLID,
   GraphQLInt,
-  GraphQLString,
   GraphQLList,
 } from 'graphql';
 
 import Meta from 'type/Meta';
+import TaxonomyType from 'type/Taxonomy';
 import { slug, name, link } from 'field/identifier';
 import description from 'field/description';
 
@@ -24,7 +24,7 @@ const TermInterface = new GraphQLInterfaceType({
     ...name,
     ...slug,
     count: { type: GraphQLInt },
-    taxonomy: { type: GraphQLString },
+    taxonomy: { type: TaxonomyType },
     meta: { type: new GraphQLList(Meta) },
   },
 });
