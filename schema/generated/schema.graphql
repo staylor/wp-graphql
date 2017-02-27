@@ -510,7 +510,7 @@ type NavMenuItem {
   id: ID
 
   # Menu item that this item is a child of.
-  parent: Int
+  parent: ID
 
   # The order that this item appears in the menu.
   order: Int
