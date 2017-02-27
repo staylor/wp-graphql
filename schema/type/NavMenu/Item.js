@@ -20,7 +20,9 @@ const NavMenuItemType = new GraphQLObjectType({
     parent: {
       type: GraphQLID,
       description: 'Menu item that this item is a child of.',
-      resolve: item => toGlobalId('NavMenuItem', item.parent),
+      resolve: item => (
+        item.parent > 0 ? toGlobalId('NavMenuItem', item.parent) : null
+      ),
     },
     order: {
       type: GraphQLInt,
