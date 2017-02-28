@@ -37,8 +37,24 @@ const NavMenuItemType = new GraphQLObjectType({
       description: 'The type of object.',
     },
     object_id: {
-      type: GraphQLString,
+      type: GraphQLID,
       description: 'The id of the object.',
+      resolve: (item) => {
+        if (!item.object_id) {
+          return null;
+        }
+
+        switch (item.object) {
+          case 'category':
+            return toGlobalId('Category', item.object_id);
+
+          case 'post':
+            return toGlobalId('Post', item.object_id);
+
+          default:
+            return null;
+        }
+      },
     },
     label: {
       type: GraphQLString,

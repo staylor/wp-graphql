@@ -522,7 +522,7 @@ type NavMenuItem {
   object: String
 
   # The id of the object.
-  object_id: String
+  object_id: ID
 
   # The object type label.
   label: String
