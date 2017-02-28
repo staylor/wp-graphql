@@ -521,6 +521,9 @@ type NavMenuItem {
   # The type of object.
   object: String
 
+  # The id of the object.
+  object_id: String
+
   # The object type label.
   label: String
 

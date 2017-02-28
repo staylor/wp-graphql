@@ -8869,6 +8869,18 @@
               "deprecationReason": null
             },
             {
+              "name": "object_id",
+              "description": "The id of the object.",
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
               "name": "label",
               "description": "The object type label.",
               "args": [],

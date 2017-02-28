@@ -36,6 +36,10 @@ const NavMenuItemType = new GraphQLObjectType({
       type: GraphQLString,
       description: 'The type of object.',
     },
+    object_id: {
+      type: GraphQLString,
+      description: 'The id of the object.',
+    },
     label: {
       type: GraphQLString,
       description: 'The object type label.',
