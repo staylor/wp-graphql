@@ -18,6 +18,12 @@ class Type {
     return 'type';
   }
 
+  static resolveBatchParams(key, ids) {
+    return {
+      [this.constructor.getBatchKey()]: decodeIDs(ids),
+    };
+  }
+
   static async load(id) {
     const data = await typeLoader.load(id);
     return data ? Object.assign(new Type(), data) : null;

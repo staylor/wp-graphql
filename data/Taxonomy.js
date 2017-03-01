@@ -18,6 +18,12 @@ class Taxonomy {
     return 'taxonomy';
   }
 
+  static resolveBatchParams(key, ids) {
+    return {
+      [this.constructor.getBatchKey()]: decodeIDs(ids),
+    };
+  }
+
   static async load(id) {
     const data = await taxonomyLoader.load(id);
     return data ? Object.assign(new Taxonomy(), data) : null;
