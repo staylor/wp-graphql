@@ -43,7 +43,7 @@ export default {
     },
     // eslint-disable-next-line no-confusing-arrow
     resolve: (root, { id, slug: name }) => (
-      slug ? Page.loadBySlug(name) : Page.load(id)
+      name ? Page.loadBySlug(name) : Page.load(id)
     ),
   },
 };
