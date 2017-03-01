@@ -1,4 +1,4 @@
-import { GraphQLString } from 'graphql';
+import { GraphQLString, GraphQLInt } from 'graphql';
 
 import POST_ORDERBY from 'enum/PostOrderby';
 
@@ -23,6 +23,7 @@ export default {
       categories_exclude: { type: GraphQLString },
       tags: { type: GraphQLString },
       tags_exclude: { type: GraphQLString },
+      year: { type: GraphQLInt },
     },
     resolve: (root, args) => ({
       args: {

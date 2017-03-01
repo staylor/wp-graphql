@@ -1,7 +1,7 @@
 import url from 'url';
 import request from 'request-promise';
 import Dataloader from 'dataloader';
-import { decodeIDs, toBase64, indexToCursor } from 'utils';
+import { toBase64, indexToCursor } from 'utils';
 import redis, { getClient } from 'data/store';
 
 const rp = (path, opts = {}) => {
@@ -24,7 +24,7 @@ const rp = (path, opts = {}) => {
 
 /* eslint-disable no-console */
 
-export const loadIDs = (DataType, ids) => (
+export const loadIDs = (DataType, ids, key = 'id') => (
   new Promise((resolve, reject) => {
     const client = getClient();
     const cache = {};
@@ -49,7 +49,7 @@ export const loadIDs = (DataType, ids) => (
 
         if (pending.length) {
           console.log(`Missing from redis: ${pending.join(',')}`);
-          rp(DataType.getEndpoint(), { qs: { [DataType.getBatchKey()]: decodeIDs(pending) } })
+          rp(DataType.getEndpoint(), { qs: DataType.resolveBatchParams(key, pending) })
             .catch((error) => {
               console.log(`Pending IDs: ${JSON.stringify(pending)}`);
               console.log(error);
@@ -173,8 +173,8 @@ export const loadCollection = (DataType, opts = {}) => {
   });
 };
 
-export const createLoader = DataType => (
-  new Dataloader(ids => loadIDs(DataType, ids))
+export const createLoader = (DataType, key = 'id') => (
+  new Dataloader(ids => loadIDs(DataType, ids, key))
 );
 
 export default rp;

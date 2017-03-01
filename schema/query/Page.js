@@ -1,11 +1,14 @@
-import { GraphQLInt } from 'graphql';
+import {
+  GraphQLID,
+  GraphQLInt,
+  GraphQLString,
+} from 'graphql';
 
 import PAGE_ORDERBY from 'enum/PageOrderby';
 
 import PageCollectionType from 'type/Page/Collection';
 import PageType from 'type/Page';
 import Page from 'data/Page';
-import { itemResolver } from 'utils';
 import { pagination, filter, date, hierarchical, author, slug } from 'query/args';
 
 export default {
@@ -26,5 +29,21 @@ export default {
     },
     resolve: (root, args) => ({ args }),
   },
-  page: itemResolver(PageType, Page),
+  page: {
+    type: PageType,
+    args: {
+      id: {
+        type: GraphQLID,
+        description: 'Unique identifier for the object.',
+      },
+      slug: {
+        type: GraphQLString,
+        description: 'Human-readable identifier for the object.',
+      },
+    },
+    // eslint-disable-next-line no-confusing-arrow
+    resolve: (root, { id, slug: name }) => (
+      slug ? Page.loadBySlug(name) : Page.load(id)
+    ),
+  },
 };

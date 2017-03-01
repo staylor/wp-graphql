@@ -884,6 +884,7 @@ type Query {
     categories_exclude: String
     tags: String
     tags_exclude: String
+    year: Int
   ): PostCollection
   stickies(
     # Current page of the collection.
@@ -1080,6 +1081,9 @@ type Query {
   page(
     # Unique identifier for the object.
     id: ID
+
+    # Human-readable identifier for the object.
+    slug: String
   ): Page
   comments(
     # Current page of the collection.

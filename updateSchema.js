@@ -16,9 +16,16 @@ import Schema from './schema/index';
       JSON.stringify(result.errors, null, 2),
     );
   } else {
+    const data = JSON.stringify(result.data, null, 2);
+
     fs.writeFileSync(
       path.join(__dirname, 'schema/generated/schema.json'),
-      JSON.stringify(result, null, 2),
+      data,
+    );
+
+    fs.writeFileSync(
+      path.join(__dirname, '../wp-relay-app/tools/schema.json'),
+      data,
     );
   }
 })();

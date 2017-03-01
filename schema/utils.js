@@ -29,13 +29,29 @@ const listArgs = [
   'roles',
 ];
 
+const filterArgs = [
+  'year',
+];
+
 export const loadEdges = DataType => (root, args) => {
+  const filters = {};
   const params = {
     resolveWithFullResponse: true,
     qs: root.args || {},
   };
 
   if (Object.keys(root.args).length > 0) {
+    filterArgs.forEach((key) => {
+      if (params.qs[key]) {
+        filters[key] = params.qs[key];
+        delete params.qs[key];
+      }
+    });
+
+    if (Object.keys(filters).length) {
+      params.qs.filter = filters;
+    }
+
     listArgs.forEach((key) => {
       if (params.qs[key]) {
         params.qs[key] = params.qs[key].split(',');
