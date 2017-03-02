@@ -3,11 +3,16 @@
   "plugins": [
       "react",
       "jsx-a11y",
-      "import"
+      "import",
+      "jest"
   ],
   "settings": {
     "import/resolver": {
       "babel-module": {}
     }
+  },
+  "env": {
+    "jasmine": true,
+    "jest": true
   }
 }

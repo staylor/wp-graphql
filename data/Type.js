@@ -20,7 +20,7 @@ class Type {
 
   static resolveBatchParams(key, ids) {
     return {
-      [this.constructor.getBatchKey()]: decodeIDs(ids),
+      [Type.getBatchKey()]: ids,
     };
   }
 
@@ -38,6 +38,7 @@ typeLoader = new Dataloader((opaque) => {
     .then(({ edges }) => {
       const nodes = edges.map(({ node }) => node);
       const ids = decodeIDs(opaque);
+      console.log('IDS', ids);
       return ids.map(id => nodes.find(node => id === node.slug));
     });
 });

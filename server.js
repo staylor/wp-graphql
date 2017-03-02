@@ -5,7 +5,7 @@ import { graphqlBatchHTTPWrapper } from 'react-relay-network-layer';
 import bodyParser from 'body-parser';
 import responseTime from 'response-time';
 import queryLogger from './middleware/queryLogger';
-import Schema from './schema/index';
+import Schema from './schema';
 
 const app = express();
 const graphQLServer = graphQLHTTP(req => ({

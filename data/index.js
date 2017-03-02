@@ -22,6 +22,15 @@ const rp = (path, opts = {}) => {
   return request(params);
 };
 
+export const fetchIDs = (DataType, ids, key = 'id') => {
+  console.log(DataType.getEndpoint());
+  return rp(DataType.getEndpoint(), { qs: DataType.resolveBatchParams(key, pending) })
+    .catch((error) => {
+      console.log(`Pending IDs: ${JSON.stringify(ids)}`);
+      return error;
+    })
+};
+
 /* eslint-disable no-console */
 
 export const loadIDs = (DataType, ids, key = 'id') => (
@@ -53,6 +62,7 @@ export const loadIDs = (DataType, ids, key = 'id') => (
             .catch((error) => {
               console.log(`Pending IDs: ${JSON.stringify(pending)}`);
               console.log(error);
+              reject(error);
             })
             .then((results) => {
               const args = [];
@@ -100,6 +110,28 @@ export const collectionEdges = ({ data, total, offset }) => {
   };
 };
 
+export const fetchCollection = (DataType, opts = {}) => {
+  const path = DataType.getEndpoint();
+  return rp(path, opts).then((response) => {
+    let data = response.body;
+    const wpTotal = parseInt(response.headers['x-wp-total'], 10);
+    const offset = (opts.qs && opts.qs.offset) || 0;
+
+    if (!Array.isArray(data)) {
+      data = Object.keys(data).map(itemKey => data[itemKey]);
+    }
+
+    const hydrated = data.map(value => Object.assign(new DataType(), value));
+
+    const connection = collectionEdges({
+      data: hydrated,
+      total: wpTotal,
+      offset,
+    });
+    return connection;
+  });
+};
+
 export const loadCollection = (DataType, opts = {}) => {
   const path = DataType.getEndpoint();
   console.log(`Loading collection: ${path}`, JSON.stringify(opts));
@@ -116,14 +148,16 @@ export const loadCollection = (DataType, opts = {}) => {
         const { ids, total } = cached;
         const hashes = ids.split(',');
         console.log('Cache Hit: only request these IDs from dataloader.');
-        Promise.all(hashes.map(DataType.load)).then((data) => {
-          const connection = collectionEdges({
-            data,
-            total,
-            offset: (opts.qs && opts.qs.offset) || 0,
+        Promise.all(hashes.map(DataType.load))
+          .catch(error => reject(error))
+          .then((data) => {
+            const connection = collectionEdges({
+              data,
+              total,
+              offset: (opts.qs && opts.qs.offset) || 0,
+            });
+            resolve(connection);
           });
-          resolve(connection);
-        });
       } else {
         console.log('Cache Miss: requesting data...');
         rp(path, opts).catch(error => reject(error)).then((response) => {
@@ -174,7 +208,7 @@ export const loadCollection = (DataType, opts = {}) => {
 };
 
 export const createLoader = (DataType, key = 'id') => (
-  new Dataloader(ids => loadIDs(DataType, ids, key))
+  new Dataloader(ids => fetchIDs(DataType, ids, key))
 );
 
 export default rp;

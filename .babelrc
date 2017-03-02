@@ -8,6 +8,7 @@
     ["module-resolver", {
       "root": ["./"],
       "alias": {
+        "schema": "./schema",
         "type": "./schema/type",
         "enum": "./schema/enum",
         "interface": "./schema/interface",

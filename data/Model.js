@@ -11,11 +11,8 @@ export default class Model {
   }
 
   static resolveBatchParams(key, ids) {
-    const method = this.constructor.getBatchKey ?
-      this.constructor.getBatchKey :
-      Model.getBatchKey;
     return {
-      [method()]: decodeIDs(ids),
+      [Model.getBatchKey()]: decodeIDs(ids),
     };
   }
 }

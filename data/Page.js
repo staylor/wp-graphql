@@ -16,6 +16,7 @@ class Page extends Model {
       return { slug: ids };
     }
 
+    console.log(this.constructor.name);
     return {
       [this.constructor.getBatchKey()]: decodeIDs(ids),
     };

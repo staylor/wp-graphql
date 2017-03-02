@@ -1,10 +1,12 @@
 import { GraphQLID } from 'graphql';
 import { fromGlobalId } from 'graphql-relay';
-import { loadCollection } from 'data';
+import { loadCollection, fetchCollection } from 'data';
 
 export const toBase64 = str => new Buffer(str).toString('base64');
 export const fromBase64 = encoded => Buffer.from(encoded, 'base64').toString('utf8');
-export const decodeIDs = opaque => opaque.map(hash => fromGlobalId(hash).id);
+export const decodeIDs = opaque => (
+  opaque.map(hash => fromGlobalId(hash).id)
+);
 const idxPrefix = 'idx---';
 export const indexToCursor = idx => toBase64(`${idxPrefix}${idx}`);
 export const indexFromCursor = cursor => parseInt(fromBase64(cursor).replace(idxPrefix, ''), 10);
@@ -56,6 +58,7 @@ export const loadEdges = DataType => (root, args) => {
       if (params.qs[key]) {
         params.qs[key] = params.qs[key].split(',');
         if (encodedArgs.indexOf(key) > -1) {
+          console.log('CALLING FOR: ', key);
           params.qs[key] = decodeIDs(params.qs[key]);
         }
       }
@@ -79,7 +82,7 @@ export const loadEdges = DataType => (root, args) => {
     params.qs.offset = offset;
   }
 
-  return loadCollection(DataType, params).catch(e => Promise.reject(e));
+  return fetchCollection(DataType, params).catch(e => Promise.reject(e));
 };
 
 export const itemResolver = (dataType, loader) => ({
