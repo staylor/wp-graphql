@@ -1,15 +1,21 @@
-import { createLoader } from 'data';
-import Model from 'data/Model';
+import { toGlobalId } from 'graphql-relay';
+import Dataloader from 'dataloader';
+import { fetchData } from 'data';
+import { decodeIDs } from 'utils';
 
-let navMenuLoader;
 const path = process.env.WP_NAV_MENUS_ENDPOINT || null;
 if (!path) {
-  throw Error('This endpoint does not exist in WordPress yet.');
+  throw Error('This endpoint does not exist in WordPress yet. ' +
+    'You must install the WordPres GraphQL Middleware plugin.');
 }
+const navMenuLoader = new Dataloader(opaque => (
+  fetchData(path, { qs: { include: decodeIDs(opaque) } })
+    .then(({ data: { body } }) => body)
+));
 
-class NavMenu extends Model {
-  static getEndpoint() {
-    return path;
+class NavMenu {
+  getID() {
+    return toGlobalId(this.constructor.name, this.id);
   }
 
   static async load(id) {
@@ -17,7 +23,5 @@ class NavMenu extends Model {
     return data ? Object.assign(new NavMenu(), data) : null;
   }
 }
-
-navMenuLoader = createLoader(NavMenu);
 
 export default NavMenu;

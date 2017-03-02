@@ -1,12 +1,17 @@
-import { createLoader } from 'data';
-import Model from 'data/Model';
+import { toGlobalId } from 'graphql-relay';
+import Dataloader from 'dataloader';
+import { fetchData } from 'data';
+import { decodeIDs } from 'utils';
 
-let postLoader;
 const path = process.env.WP_POSTS_ENDPOINT || 'wp/v2/posts';
+const postLoader = new Dataloader(opaque => (
+  fetchData(path, { qs: { include: decodeIDs(opaque) } })
+    .then(({ data: { body } }) => body)
+));
 
-class Post extends Model {
-  static getEndpoint() {
-    return path;
+class Post {
+  getID() {
+    return toGlobalId(this.constructor.name, this.id);
   }
 
   static async load(id) {
@@ -14,7 +19,5 @@ class Post extends Model {
     return data ? Object.assign(new Post(), data) : null;
   }
 }
-
-postLoader = createLoader(Post);
 
 export default Post;

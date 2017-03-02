@@ -1,12 +1,17 @@
-import { createLoader } from 'data';
-import Model from 'data/Model';
+import { toGlobalId } from 'graphql-relay';
+import Dataloader from 'dataloader';
+import { fetchData } from 'data';
+import { decodeIDs } from 'utils';
 
-let mediaLoader;
 const path = process.env.WP_MEDIA_ENDPOINT || 'wp/v2/media';
+const mediaLoader = new Dataloader(opaque => (
+  fetchData(path, { qs: { include: decodeIDs(opaque) } })
+    .then(({ data: { body } }) => body)
+));
 
-class Media extends Model {
-  static getEndpoint() {
-    return path;
+class Media {
+  getID() {
+    return toGlobalId(this.constructor.name, this.id);
   }
 
   static async load(id) {
@@ -14,7 +19,5 @@ class Media extends Model {
     return data ? Object.assign(new Media(), data) : null;
   }
 }
-
-mediaLoader = createLoader(Media);
 
 export default Media;

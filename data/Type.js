@@ -1,27 +1,18 @@
 import { toGlobalId } from 'graphql-relay';
 import Dataloader from 'dataloader';
-import { decodeIDs, loadEdges } from 'utils';
+import { fetchData } from 'data';
+import { decodeIDs } from 'utils';
 
-let typeLoader;
+// there is no batch mechanism on this endpoint
 const path = process.env.WP_TYPES_ENDPOINT || 'wp/v2/types';
+const typeLoader = new Dataloader(opaque => (
+  fetchData(path, {}, 1000 * 60 * 10)
+    .then(({ data: { body } }) => decodeIDs(opaque).map(id => body[id]))
+));
 
 class Type {
   getID() {
     return toGlobalId(this.constructor.name, this.slug);
-  }
-
-  static getEndpoint() {
-    return path;
-  }
-
-  static getBatchKey() {
-    return 'type';
-  }
-
-  static resolveBatchParams(key, ids) {
-    return {
-      [Type.getBatchKey()]: ids,
-    };
   }
 
   static async load(id) {
@@ -29,18 +20,5 @@ class Type {
     return data ? Object.assign(new Type(), data) : null;
   }
 }
-
-const edgeLoader = loadEdges(Type);
-typeLoader = new Dataloader((opaque) => {
-  const args = {};
-  const root = { args };
-  return edgeLoader(root, args)
-    .then(({ edges }) => {
-      const nodes = edges.map(({ node }) => node);
-      const ids = decodeIDs(opaque);
-      console.log('IDS', ids);
-      return ids.map(id => nodes.find(node => id === node.slug));
-    });
-});
 
 export default Type;

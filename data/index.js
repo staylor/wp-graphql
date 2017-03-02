@@ -1,6 +1,5 @@
 import url from 'url';
 import request from 'request-promise';
-import Dataloader from 'dataloader';
 import { toBase64, indexToCursor } from 'utils';
 import redis, { getClient } from 'data/store';
 
@@ -22,70 +21,41 @@ const rp = (path, opts = {}) => {
   return request(params);
 };
 
-export const fetchIDs = (DataType, ids, key = 'id') => {
-  console.log(DataType.getEndpoint());
-  return rp(DataType.getEndpoint(), { qs: DataType.resolveBatchParams(key, pending) })
-    .catch((error) => {
-      console.log(`Pending IDs: ${JSON.stringify(ids)}`);
-      return error;
-    })
+export const fetchData = (path, opts = {}, expire = null) => {
+  const client = getClient();
+  const key = toBase64(`${path}${JSON.stringify(opts)}`);
+
+  const params = {
+    ...opts,
+    resolveWithFullResponse: true,
+  };
+
+  return new Promise((resolve, reject) => {
+    client.get(key, (err, cached) => {
+      if (err) {
+        reject(err);
+      } else if (cached) {
+        resolve({
+          cache: 'hit',
+          data: JSON.parse(cached),
+        });
+      } else {
+        rp(path, params)
+          .catch(error => reject(error))
+          .then((response) => {
+            client.set(key, JSON.stringify(response));
+            client.expire(key, expire || process.env.REQUEST_CACHE_TTL || 60);
+            resolve({
+              cache: 'miss',
+              data: response,
+            });
+          });
+      }
+    });
+  });
 };
 
 /* eslint-disable no-console */
-
-export const loadIDs = (DataType, ids, key = 'id') => (
-  new Promise((resolve, reject) => {
-    const client = getClient();
-    const cache = {};
-    const pending = [];
-
-    client.mget(ids, (err, res) => {
-      if (err) {
-        console.log(`Error loading from cache:${err}`);
-        reject(err);
-      } else {
-        ids.forEach((id, index) => {
-          if (res[index]) {
-            try {
-              cache[id] = JSON.parse(res[index]);
-            } catch (e) {
-              console.log(`JSON parsing failed: ${res[index]}`);
-            }
-          } else {
-            pending.push(id);
-          }
-        });
-
-        if (pending.length) {
-          console.log(`Missing from redis: ${pending.join(',')}`);
-          rp(DataType.getEndpoint(), { qs: DataType.resolveBatchParams(key, pending) })
-            .catch((error) => {
-              console.log(`Pending IDs: ${JSON.stringify(pending)}`);
-              console.log(error);
-              reject(error);
-            })
-            .then((results) => {
-              const args = [];
-              pending.forEach((id, index) => {
-                cache[id] = results[index];
-                // collect args for multi-set splat
-                args.push(id);
-                args.push(JSON.stringify(results[index]));
-              });
-              console.log('Saving items to the cache...');
-              client.mset(...args, redis.print);
-
-              ids.map(id => cache[id]);
-              resolve(ids.map(id => cache[id]));
-            });
-        } else {
-          console.log('All results read from cache!');
-          resolve(ids.map(id => cache[id]));
-        }
-      }
-    });
-  })
-);
 
 const toEdges = (data, offset) => {
   let i = offset;
@@ -206,9 +176,5 @@ export const loadCollection = (DataType, opts = {}) => {
     });
   });
 };
-
-export const createLoader = (DataType, key = 'id') => (
-  new Dataloader(ids => fetchIDs(DataType, ids, key))
-);
 
 export default rp;

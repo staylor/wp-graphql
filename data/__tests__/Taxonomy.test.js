@@ -14,4 +14,4 @@ it('Dataloader should return a Taxonomy', async () => {
   const expected = ['post'];
   expect(result.types).toEqual(expect.arrayContaining(expected));
   expect(result.rest_base).toBe('categories');
-}, 30000);
+});

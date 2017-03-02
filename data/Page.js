@@ -1,25 +1,21 @@
-import { createLoader } from 'data';
-import Model from 'data/Model';
+import { toGlobalId } from 'graphql-relay';
+import Dataloader from 'dataloader';
+import { fetchData } from 'data';
 import { decodeIDs } from 'utils';
 
-let pageLoader;
-let slugLoader;
 const path = process.env.WP_PAGES_ENDPOINT || 'wp/v2/pages';
+const pageLoader = new Dataloader(opaque => (
+  fetchData(path, { qs: { include: decodeIDs(opaque) } })
+    .then(response => response.body)
+));
+const slugLoader = new Dataloader(slugs => (
+  fetchData(path, { qs: { slug: slugs } })
+    .then(({ data: { body } }) => body)
+));
 
-class Page extends Model {
-  static getEndpoint() {
-    return path;
-  }
-
-  static resolveBatchParams(key, ids) {
-    if (key === 'slug') {
-      return { slug: ids };
-    }
-
-    console.log(this.constructor.name);
-    return {
-      [this.constructor.getBatchKey()]: decodeIDs(ids),
-    };
+class Page {
+  getID() {
+    return toGlobalId(this.constructor.name, this.id);
   }
 
   static async load(id) {
@@ -32,8 +28,5 @@ class Page extends Model {
     return data ? Object.assign(new Page(), data) : null;
   }
 }
-
-pageLoader = createLoader(Page, 'id');
-slugLoader = createLoader(Page, 'slug');
 
 export default Page;

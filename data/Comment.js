@@ -1,12 +1,17 @@
-import { createLoader } from 'data';
-import Model from 'data/Model';
+import { toGlobalId } from 'graphql-relay';
+import Dataloader from 'dataloader';
+import { fetchData } from 'data';
+import { decodeIDs } from 'utils';
 
-let commentLoader;
 const path = process.env.WP_COMMENTS_ENDPOINT || 'wp/v2/comments';
+const commentLoader = new Dataloader(opaque => (
+  fetchData(path, { qs: { include: decodeIDs(opaque) } })
+    .then(({ data: { body } }) => body)
+));
 
-class Comment extends Model {
-  static getEndpoint() {
-    return path;
+class Comment {
+  getID() {
+    return toGlobalId(this.constructor.name, this.id);
   }
 
   static async load(id) {
@@ -14,7 +19,5 @@ class Comment extends Model {
     return data ? Object.assign(new Comment(), data) : null;
   }
 }
-
-commentLoader = createLoader(Comment);
 
 export default Comment;
