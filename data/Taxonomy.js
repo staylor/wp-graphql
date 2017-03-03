@@ -15,6 +15,10 @@ class Taxonomy {
     return toGlobalId(this.constructor.name, this.slug);
   }
 
+  static getEndpoint() {
+    return path;
+  }
+
   static async load(id) {
     const data = await taxonomyLoader.load(id);
     return data ? Object.assign(new Taxonomy(), data) : null;

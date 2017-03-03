@@ -1,7 +1,7 @@
 import { toGlobalId } from 'graphql-relay';
 import Taxonomy from 'data/Taxonomy';
 
-// https://highforthis.com/wp-json/wp/v2/types/post
+// https://highforthis.com/wp-json/wp/v2/taxonomies/category
 
 it('Dataloader should return a Taxonomy', async () => {
   const result = await Taxonomy.load(toGlobalId('Taxonomy', 'category'));

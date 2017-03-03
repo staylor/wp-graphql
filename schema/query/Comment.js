@@ -4,7 +4,7 @@ import COMMENT_ORDERBY from 'enum/CommentOrderby';
 
 import CommentCollectionType from 'type/Comment/Collection';
 import CommentType from 'type/Comment';
-import Comment from 'data';
+import Comment from 'data/Comment';
 import { itemResolver } from 'utils';
 import { pagination, filter, date, hierarchical } from 'query/args';
 

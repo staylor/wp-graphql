@@ -14,6 +14,10 @@ class Comment {
     return toGlobalId(this.constructor.name, this.id);
   }
 
+  static getEndpoint() {
+    return path;
+  }
+
   static async load(id) {
     const data = await commentLoader.load(id);
     return data ? Object.assign(new Comment(), data) : null;

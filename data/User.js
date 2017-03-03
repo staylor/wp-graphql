@@ -14,6 +14,10 @@ class User {
     return toGlobalId(this.constructor.name, this.id);
   }
 
+  static getEndpoint() {
+    return path;
+  }
+
   static async load(id) {
     const data = await userLoader.load(id);
     return data ? Object.assign(new User(), data) : null;

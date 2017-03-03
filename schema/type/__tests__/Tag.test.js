@@ -2,23 +2,19 @@ import { graphql } from 'graphql';
 import { toGlobalId } from 'graphql-relay';
 import schema from 'schema';
 
-// https://highforthis.com/wp-json/wp/v2/categories/4
+// https://highforthis.com/wp-json/wp/v2/tags/282
 
-it('GraphQL should return a known category', async () => {
-  const globalId = toGlobalId('Category', 4);
+it('GraphQL should return a known tag', async () => {
+  const globalId = toGlobalId('Tag', 282);
   const query = `
      query Q {
-       category(id: "${globalId}") {
+       tag(id: "${globalId}") {
          name
          count
          description
          slug
          taxonomy {
            slug
-         }
-         parent {
-           id
-           name
          }
          meta {
            name
@@ -32,21 +28,19 @@ it('GraphQL should return a known category', async () => {
   const context = {};
 
   const result = await graphql(schema, query, rootValue, context);
-  const { data: { category: {
+  const { data: { tag: {
     name,
     count,
     description,
     slug,
     taxonomy,
-    parent,
     meta,
   } } } = result;
 
   expect(count).toBeGreaterThan(0);
   expect(description).toBeDefined();
-  expect(name).toBe('Watch This');
-  expect(slug).toBe('watch-this');
-  expect(taxonomy.slug).toBe('category');
-  expect(parent).toBeNull();
+  expect(name).toBe('285 Kent');
+  expect(slug).toBe('285-kent');
+  expect(taxonomy.slug).toBe('post_tag');
   expect(meta).toBeNull();
 });

@@ -14,6 +14,10 @@ class Status {
     return toGlobalId(this.constructor.name, this.slug);
   }
 
+  static getEndpoint() {
+    return path;
+  }
+
   static async load(id) {
     const data = await statusLoader.load(id);
     return data ? Object.assign(new Status(), data) : null;

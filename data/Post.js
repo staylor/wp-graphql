@@ -14,6 +14,10 @@ class Post {
     return toGlobalId(this.constructor.name, this.id);
   }
 
+  static getEndpoint() {
+    return path;
+  }
+
   static async load(id) {
     const data = await postLoader.load(id);
     return data ? Object.assign(new Post(), data) : null;

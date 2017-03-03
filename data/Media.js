@@ -14,6 +14,10 @@ class Media {
     return toGlobalId(this.constructor.name, this.id);
   }
 
+  static getEndpoint() {
+    return path;
+  }
+
   static async load(id) {
     const data = await mediaLoader.load(id);
     return data ? Object.assign(new Media(), data) : null;

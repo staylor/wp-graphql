@@ -46,7 +46,7 @@
   },
   "scripts": {
     "dev": "nodemon --exec babel-node server.js",
-    "test": "jest --no-cache",
+    "test": "jest",
     "updateSchema": "babel-node updateSchema.js"
   },
   "jest": {

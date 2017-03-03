@@ -15,6 +15,10 @@ class Type {
     return toGlobalId(this.constructor.name, this.slug);
   }
 
+  static getEndpoint() {
+    return path;
+  }
+
   static async load(id) {
     const data = await typeLoader.load(id);
     return data ? Object.assign(new Type(), data) : null;

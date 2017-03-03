@@ -1,6 +1,6 @@
 import { GraphQLID } from 'graphql';
 import { fromGlobalId } from 'graphql-relay';
-import { loadCollection, fetchCollection } from 'data';
+import { fetchData } from 'data';
 
 export const toBase64 = str => new Buffer(str).toString('base64');
 export const fromBase64 = encoded => Buffer.from(encoded, 'base64').toString('utf8');
@@ -35,10 +35,32 @@ const filterArgs = [
   'year',
 ];
 
+const toEdges = (data, offset) => {
+  let i = offset;
+  return data.map(item => ({
+    node: item,
+    cursor: indexToCursor(i += 1),
+  }));
+};
+
+export const collectionEdges = ({ data, total, offset }) => {
+  const startIndex = offset;
+  const endIndex = startIndex + (data.length - 1);
+
+  return {
+    edges: toEdges(data, startIndex),
+    pageInfo: {
+      hasNextPage: endIndex < (total - 1),
+      hasPreviousPage: startIndex > 0,
+      startCursor: total > 0 ? indexToCursor(startIndex) : null,
+      endCursor: total > 0 ? indexToCursor(endIndex) : null,
+    },
+  };
+};
+
 export const loadEdges = DataType => (root, args) => {
   const filters = {};
   const params = {
-    resolveWithFullResponse: true,
     qs: root.args || {},
   };
 
@@ -58,7 +80,6 @@ export const loadEdges = DataType => (root, args) => {
       if (params.qs[key]) {
         params.qs[key] = params.qs[key].split(',');
         if (encodedArgs.indexOf(key) > -1) {
-          console.log('CALLING FOR: ', key);
           params.qs[key] = decodeIDs(params.qs[key]);
         }
       }
@@ -82,7 +103,24 @@ export const loadEdges = DataType => (root, args) => {
     params.qs.offset = offset;
   }
 
-  return fetchCollection(DataType, params).catch(e => Promise.reject(e));
+  return fetchData(DataType.getEndpoint(), params)
+    .then(({ data: { body, headers } }) => {
+      let data = body;
+      const wpTotal = parseInt(headers['x-wp-total'], 10);
+
+      if (!Array.isArray(data)) {
+        data = Object.keys(data).map(itemKey => data[itemKey]);
+      }
+
+      const hydrated = data.map(value => Object.assign(new DataType(), value));
+
+      const connection = collectionEdges({
+        data: hydrated,
+        total: wpTotal,
+        offset,
+      });
+      return connection;
+    });
 };
 
 export const itemResolver = (dataType, loader) => ({

@@ -14,6 +14,10 @@ class Tag {
     return toGlobalId(this.constructor.name, this.id);
   }
 
+  static getEndpoint() {
+    return path;
+  }
+
   static async load(id) {
     const data = await tagLoader.load(id);
     return data ? Object.assign(new Tag(), data) : null;

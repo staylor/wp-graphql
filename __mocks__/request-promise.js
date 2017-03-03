@@ -39,6 +39,14 @@ const rp = (opts) => {
           'x-wp-total': data.length,
         },
       });
+    } else if (params.slug) {
+      const results = params.slug.map(slug => data.find(item => item.slug === slug));
+      return Promise.resolve({
+        body: results,
+        headers: {
+          'x-wp-total': data.length,
+        },
+      });
     }
   }
 

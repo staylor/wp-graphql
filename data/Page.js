@@ -6,7 +6,7 @@ import { decodeIDs } from 'utils';
 const path = process.env.WP_PAGES_ENDPOINT || 'wp/v2/pages';
 const pageLoader = new Dataloader(opaque => (
   fetchData(path, { qs: { include: decodeIDs(opaque) } })
-    .then(response => response.body)
+    .then(({ data: { body } }) => body)
 ));
 const slugLoader = new Dataloader(slugs => (
   fetchData(path, { qs: { slug: slugs } })
@@ -16,6 +16,10 @@ const slugLoader = new Dataloader(slugs => (
 class Page {
   getID() {
     return toGlobalId(this.constructor.name, this.id);
+  }
+
+  static getEndpoint() {
+    return path;
   }
 
   static async load(id) {

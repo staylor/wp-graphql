@@ -14,6 +14,10 @@ class Category {
     return toGlobalId(this.constructor.name, this.id);
   }
 
+  static getEndpoint() {
+    return path;
+  }
+
   static async load(id) {
     const data = await categoryLoader.load(id);
     return data ? Object.assign(new Category(), data) : null;
