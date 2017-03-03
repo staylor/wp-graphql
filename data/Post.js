@@ -22,6 +22,14 @@ class Post {
     const data = await postLoader.load(id);
     return data ? Object.assign(new Post(), data) : null;
   }
+
+  static async collection(args = {}) {
+    const { data: { body, headers } } = await fetchData(path, args);
+    return {
+      total: headers['x-wp-total'],
+      items: body.map(item => Object.assign(new Post(), item)),
+    };
+  }
 }
 
 export default Post;

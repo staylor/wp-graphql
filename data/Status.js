@@ -22,6 +22,14 @@ class Status {
     const data = await statusLoader.load(id);
     return data ? Object.assign(new Status(), data) : null;
   }
+
+  static async collection(args = {}) {
+    const { data: { body, headers } } = await fetchData(path, args);
+    return {
+      total: headers['x-wp-total'],
+      items: Object.keys(body).map(key => Object.assign(new Status(), body[key])),
+    };
+  }
 }
 
 export default Status;

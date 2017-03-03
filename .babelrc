@@ -8,6 +8,7 @@
     ["module-resolver", {
       "root": ["./"],
       "alias": {
+        "jest": "./jest",
         "schema": "./schema",
         "type": "./schema/type",
         "enum": "./schema/enum",

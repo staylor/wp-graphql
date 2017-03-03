@@ -1,6 +1,5 @@
 import { GraphQLID } from 'graphql';
 import { fromGlobalId } from 'graphql-relay';
-import { fetchData } from 'data';
 
 export const toBase64 = str => new Buffer(str).toString('base64');
 export const fromBase64 = encoded => Buffer.from(encoded, 'base64').toString('utf8');
@@ -103,19 +102,11 @@ export const loadEdges = DataType => (root, args) => {
     params.qs.offset = offset;
   }
 
-  return fetchData(DataType.getEndpoint(), params)
-    .then(({ data: { body, headers } }) => {
-      let data = body;
-      const wpTotal = parseInt(headers['x-wp-total'], 10);
-
-      if (!Array.isArray(data)) {
-        data = Object.keys(data).map(itemKey => data[itemKey]);
-      }
-
-      const hydrated = data.map(value => Object.assign(new DataType(), value));
-
+  return DataType.collection(params)
+    .then(({ items, total }) => {
+      const wpTotal = parseInt(total, 10);
       const connection = collectionEdges({
-        data: hydrated,
+        data: items,
         total: wpTotal,
         offset,
       });

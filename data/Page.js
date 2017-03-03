@@ -31,6 +31,14 @@ class Page {
     const data = await slugLoader.load(slug);
     return data ? Object.assign(new Page(), data) : null;
   }
+
+  static async collection(args = {}) {
+    const { data: { body, headers } } = await fetchData(path, args);
+    return {
+      total: headers['x-wp-total'],
+      items: body.map(item => Object.assign(new Page(), item)),
+    };
+  }
 }
 
 export default Page;

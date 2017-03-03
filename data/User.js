@@ -22,6 +22,14 @@ class User {
     const data = await userLoader.load(id);
     return data ? Object.assign(new User(), data) : null;
   }
+
+  static async collection(args = {}) {
+    const { data: { body, headers } } = await fetchData(path, args);
+    return {
+      total: headers['x-wp-total'],
+      items: body.map(item => Object.assign(new User(), item)),
+    };
+  }
 }
 
 export default User;

@@ -23,6 +23,14 @@ class Taxonomy {
     const data = await taxonomyLoader.load(id);
     return data ? Object.assign(new Taxonomy(), data) : null;
   }
+
+  static async collection(args = {}) {
+    const { data: { body, headers } } = await fetchData(path, args);
+    return {
+      total: headers['x-wp-total'],
+      items: Object.keys(body).map(key => Object.assign(new Taxonomy(), body[key])),
+    };
+  }
 }
 
 export default Taxonomy;

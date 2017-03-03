@@ -22,6 +22,14 @@ class Comment {
     const data = await commentLoader.load(id);
     return data ? Object.assign(new Comment(), data) : null;
   }
+
+  static async collection(args = {}) {
+    const { data: { body, headers } } = await fetchData(path, args);
+    return {
+      total: headers['x-wp-total'],
+      items: body.map(item => Object.assign(new Comment(), item)),
+    };
+  }
 }
 
 export default Comment;
