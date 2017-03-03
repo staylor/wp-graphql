@@ -1,6 +1,7 @@
 import { graphql } from 'graphql';
 import { toGlobalId } from 'graphql-relay';
 import schema from 'schema';
+import { dateRegex } from 'jest/utils';
 
 // https://highforthis.com/wp-json/wp/v2/posts/2696
 
@@ -40,7 +41,7 @@ it('GraphQL should return a known Post', async () => {
   } } } = result;
 
   expect(id).toBe(globalId);
-  expect(date).toBeDefined();
+  expect(date).toMatch(dateRegex);
   expect(title).toBeDefined();
   expect(slug).toBe('dirty-projectors-little-bubble');
   expect(content).toBeDefined();

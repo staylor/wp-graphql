@@ -103,15 +103,13 @@ export const loadEdges = DataType => (root, args) => {
   }
 
   return DataType.collection(params)
-    .then(({ items, total }) => {
-      const wpTotal = parseInt(total, 10);
-      const connection = collectionEdges({
+    .then(({ items, total }) => (
+      collectionEdges({
         data: items,
-        total: wpTotal,
+        total: parseInt(total, 10),
         offset,
-      });
-      return connection;
-    });
+      })
+    ));
 };
 
 export const itemResolver = (dataType, loader) => ({

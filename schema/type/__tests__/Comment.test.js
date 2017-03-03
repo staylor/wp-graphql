@@ -1,6 +1,7 @@
 import { graphql } from 'graphql';
 import { toGlobalId } from 'graphql-relay';
 import schema from 'schema';
+import { dateRegex } from 'jest/utils';
 
 // https://highforthis.com/wp-json/wp/v2/comments/17
 
@@ -43,7 +44,7 @@ it('GraphQL should return a known comment', async () => {
   expect(id).toBe(globalId);
   expect(author_name).toBe('Scott Taylor');
   expect(author_url).toBeDefined();
-  expect(date).toBe('2017-02-21T17:40:19');
+  expect(date).toMatch(dateRegex);
   expect(content).toBeDefined();
   expect(author_avatar_urls).toBeDefined();
   expect(parent).toBe(parentId);

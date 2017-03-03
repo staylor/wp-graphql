@@ -4,7 +4,7 @@ import schema from 'schema';
 
 // https://highforthis.com/wp-json/wp/v2/categories/4
 
-it('GraphQL should return a known category', async () => {
+test('GraphQL should return a known category', async () => {
   const globalId = toGlobalId('Category', 4);
   const query = `
      query Q {
