@@ -3,19 +3,27 @@ import path from 'path';
 import url from 'url';
 
 const stubsDir = path.resolve('./data/stubs');
+const stubCache = {};
+const getStub = (slug) => {
+  if (stubCache[slug]) {
+    return stubCache[slug];
+  }
+  stubCache[slug] = fs.readFileSync(`${stubsDir}/${slug}.json`, 'utf8');
+  return stubCache[slug];
+};
 const stubs = {
-  'wp/v2/categories': () => fs.readFileSync(`${stubsDir}/categories.json`, 'utf8'),
-  'wp/v2/comments': () => fs.readFileSync(`${stubsDir}/comments.json`, 'utf8'),
-  'wp/v2/media': () => fs.readFileSync(`${stubsDir}/media.json`, 'utf8'),
-  'graphql/v1/nav-menus': () => fs.readFileSync(`${stubsDir}/nav-menus.json`, 'utf8'),
-  'wp/v2/pages': () => fs.readFileSync(`${stubsDir}/pages.json`, 'utf8'),
-  'wp/v2/posts': () => fs.readFileSync(`${stubsDir}/posts.json`, 'utf8'),
-  'graphql/v1/sidebars': () => fs.readFileSync(`${stubsDir}/sidebars.json`, 'utf8'),
-  'wp/v2/statuses': () => fs.readFileSync(`${stubsDir}/statuses.json`, 'utf8'),
-  'wp/v2/tags': () => fs.readFileSync(`${stubsDir}/tags.json`, 'utf8'),
-  'wp/v2/taxonomies': () => fs.readFileSync(`${stubsDir}/taxonomies.json`, 'utf8'),
-  'wp/v2/types': () => fs.readFileSync(`${stubsDir}/types.json`, 'utf8'),
-  'wp/v2/users': () => fs.readFileSync(`${stubsDir}/users.json`, 'utf8'),
+  'wp/v2/categories': () => getStub('categories'),
+  'wp/v2/comments': () => getStub('comments'),
+  'wp/v2/media': () => getStub('media'),
+  'graphql/v1/nav-menus': () => getStub('nav-menus'),
+  'wp/v2/pages': () => getStub('pages'),
+  'wp/v2/posts': () => getStub('posts'),
+  'graphql/v1/sidebars': () => getStub('sidebars'),
+  'wp/v2/statuses': () => getStub('statuses'),
+  'wp/v2/tags': () => getStub('tags'),
+  'wp/v2/taxonomies': () => getStub('taxonomies'),
+  'wp/v2/types': () => getStub('types'),
+  'wp/v2/users': () => getStub('users'),
 };
 
 const rp = (opts) => {
