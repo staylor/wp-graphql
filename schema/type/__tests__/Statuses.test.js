@@ -7,17 +7,11 @@ test('GraphQL should return a collection of statuses', async () => {
   const query = `
      query Q {
        statuses {
-         results {
-           edges {
-             node {
-               id
-               name
-               public
-               queryable
-               slug
-             }
-           }
-         }
+         id
+         name
+         public
+         queryable
+         slug
        }
      }
   `;
@@ -26,9 +20,9 @@ test('GraphQL should return a collection of statuses', async () => {
   const context = {};
 
   const result = await graphql(schema, query, rootValue, context);
-  const { edges } = result.data.statuses.results;
+  const { data: { statuses } } = result;
 
-  edges.forEach(({ node }) => {
+  statuses.forEach((node) => {
     expect(node.id).toBeDefined();
     expect(node.name).toBeDefined();
     expect(node.public).toBe(true);

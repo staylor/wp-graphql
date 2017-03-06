@@ -34,8 +34,6 @@ test('GraphQL should return a collection of images', async () => {
   const result = await graphql(schema, query, rootValue, context);
   const { edges } = result.data.media.results;
 
-  console.log(edges);
-
   edges.forEach(({ node }) => {
     expect(node.id).toBeDefined();
     expect(node.post).toBeDefined();

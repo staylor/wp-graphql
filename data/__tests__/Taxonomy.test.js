@@ -5,7 +5,7 @@ import Taxonomy from 'data/Taxonomy';
 
 describe('Test the fetching of Taxonomy data', () => {
   test('Collection should return a list of Taxonomy objects', async () => {
-    const { items: taxonomies } = await Taxonomy.collection();
+    const taxonomies = await Taxonomy.collection();
     taxonomies.forEach(taxonomy => expect(taxonomy).toBeInstanceOf(Taxonomy));
     expect(taxonomies.length).toBeGreaterThan(0);
   });

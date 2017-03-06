@@ -24,11 +24,8 @@ class Status {
   }
 
   static async collection(args = {}) {
-    const { data: { body, headers } } = await fetchData(path, args);
-    return {
-      total: headers['x-wp-total'],
-      items: Object.keys(body).map(key => Object.assign(new Status(), body[key])),
-    };
+    const { data: { body } } = await fetchData(path, args);
+    return Object.keys(body).map(key => Object.assign(new Status(), body[key]));
   }
 }
 

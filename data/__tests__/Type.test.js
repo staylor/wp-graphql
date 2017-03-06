@@ -5,7 +5,7 @@ import Type from 'data/Type';
 
 describe('Test the fetching of Type data', () => {
   test('Collection should return a list of Type objects', async () => {
-    const { items: types } = await Type.collection();
+    const types = await Type.collection();
     types.forEach(type => expect(type).toBeInstanceOf(Type));
     expect(types.length).toBeGreaterThan(0);
   });

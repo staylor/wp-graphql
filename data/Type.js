@@ -25,11 +25,8 @@ class Type {
   }
 
   static async collection(args = {}) {
-    const { data: { body, headers } } = await fetchData(path, args);
-    return {
-      total: headers['x-wp-total'],
-      items: Object.keys(body).map(key => Object.assign(new Type(), body[key])),
-    };
+    const { data: { body } } = await fetchData(path, args);
+    return Object.keys(body).map(key => Object.assign(new Type(), body[key]));
   }
 }
 

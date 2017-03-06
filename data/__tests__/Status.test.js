@@ -5,7 +5,7 @@ import Status from 'data/Status';
 
 describe('Test the fetching of Status data', () => {
   test('Collection should return a list of Status objects', async () => {
-    const { items: statuses } = await Status.collection();
+    const statuses = await Status.collection();
     statuses.forEach(status => expect(status).toBeInstanceOf(Status));
     expect(statuses.length).toBeGreaterThan(0);
   });

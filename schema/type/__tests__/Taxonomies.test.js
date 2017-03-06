@@ -7,19 +7,13 @@ test('GraphQL should return a collection of taxonomies', async () => {
   const query = `
      query Q {
        taxonomies {
-         results {
-           edges {
-             node {
-               id
-               name
-               description
-               hierarchical
-               slug
-               types
-               rest_base
-             }
-           }
-         }
+         id
+         name
+         description
+         hierarchical
+         slug
+         types
+         rest_base
        }
      }
   `;
@@ -28,9 +22,9 @@ test('GraphQL should return a collection of taxonomies', async () => {
   const context = {};
 
   const result = await graphql(schema, query, rootValue, context);
-  const { edges } = result.data.taxonomies.results;
+  const { data: { taxonomies } } = result;
 
-  edges.forEach(({ node }) => {
+  taxonomies.forEach((node) => {
     expect(node.id).toBeDefined();
     expect(node.name).toBeDefined();
     expect(node.description).toBeDefined();

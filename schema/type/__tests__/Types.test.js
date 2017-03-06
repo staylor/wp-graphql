@@ -7,19 +7,13 @@ test('GraphQL should return a collection of types', async () => {
   const query = `
      query Q {
        types {
-         results {
-           edges {
-             node {
-               id
-               name
-               description
-               hierarchical
-               slug
-               taxonomies
-               rest_base
-             }
-           }
-         }
+         id
+         name
+         description
+         hierarchical
+         slug
+         taxonomies
+         rest_base
        }
      }
   `;
@@ -28,9 +22,9 @@ test('GraphQL should return a collection of types', async () => {
   const context = {};
 
   const result = await graphql(schema, query, rootValue, context);
-  const { edges } = result.data.types.results;
+  const { data: { types } } = result;
 
-  edges.forEach(({ node }) => {
+  types.forEach((node) => {
     expect(node.id).toBeDefined();
     expect(node.name).toBeDefined();
     expect(node.description).toBeDefined();
