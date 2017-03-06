@@ -1,10 +1,19 @@
-import { createLoader } from 'data';
-import Model from 'data/Model';
+import { toGlobalId } from 'graphql-relay';
+import Dataloader from 'dataloader';
+import { fetchData } from 'data';
+import { decodeIDs } from 'utils';
 
-let statusLoader;
 const path = process.env.WP_STATUSES_ENDPOINT || 'wp/v2/statuses';
+const statusLoader = new Dataloader(opaque => (
+  fetchData(path, {}, 1000 * 60 * 10)
+    .then(({ data: { body } }) => decodeIDs(opaque).map(slug => body[slug]))
+));
 
-class Status extends Model {
+class Status {
+  getID() {
+    return toGlobalId(this.constructor.name, this.slug);
+  }
+
   static getEndpoint() {
     return path;
   }
@@ -13,8 +22,11 @@ class Status extends Model {
     const data = await statusLoader.load(id);
     return data ? Object.assign(new Status(), data) : null;
   }
-}
 
-statusLoader = createLoader(Status);
+  static async collection(args = {}) {
+    const { data: { body } } = await fetchData(path, args);
+    return Object.keys(body).map(key => Object.assign(new Status(), body[key]));
+  }
+}
 
 export default Status;

@@ -1,10 +1,11 @@
 import { GraphQLID } from 'graphql';
 import { fromGlobalId } from 'graphql-relay';
-import { loadCollection } from 'data';
 
 export const toBase64 = str => new Buffer(str).toString('base64');
 export const fromBase64 = encoded => Buffer.from(encoded, 'base64').toString('utf8');
-export const decodeIDs = opaque => opaque.map(hash => fromGlobalId(hash).id);
+export const decodeIDs = opaque => (
+  opaque.map(hash => fromGlobalId(hash).id)
+);
 const idxPrefix = 'idx---';
 export const indexToCursor = idx => toBase64(`${idxPrefix}${idx}`);
 export const indexFromCursor = cursor => parseInt(fromBase64(cursor).replace(idxPrefix, ''), 10);
@@ -33,10 +34,32 @@ const filterArgs = [
   'year',
 ];
 
+const toEdges = (data, offset) => {
+  let i = offset;
+  return data.map(item => ({
+    node: item,
+    cursor: indexToCursor(i += 1),
+  }));
+};
+
+export const collectionEdges = ({ data, total, offset }) => {
+  const startIndex = offset;
+  const endIndex = startIndex + (data.length - 1);
+
+  return {
+    edges: toEdges(data, startIndex),
+    pageInfo: {
+      hasNextPage: endIndex < (total - 1),
+      hasPreviousPage: startIndex > 0,
+      startCursor: total > 0 ? indexToCursor(startIndex) : null,
+      endCursor: total > 0 ? indexToCursor(endIndex) : null,
+    },
+  };
+};
+
 export const loadEdges = DataType => (root, args) => {
   const filters = {};
   const params = {
-    resolveWithFullResponse: true,
     qs: root.args || {},
   };
 
@@ -79,7 +102,14 @@ export const loadEdges = DataType => (root, args) => {
     params.qs.offset = offset;
   }
 
-  return loadCollection(DataType, params).catch(e => Promise.reject(e));
+  return DataType.collection(params)
+    .then(({ items, total }) => (
+      collectionEdges({
+        data: items,
+        total: parseInt(total, 10),
+        offset,
+      })
+    ));
 };
 
 export const itemResolver = (dataType, loader) => ({
