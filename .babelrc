@@ -4,19 +4,19 @@
     "stage-0"
   ],
   "plugins": [
-    "transform-regenerator",
+    "transform-runtime",
     ["module-resolver", {
       "root": ["./"],
       "alias": {
         "jest": "./jest",
-        "schema": "./schema",
-        "type": "./schema/type",
-        "enum": "./schema/enum",
-        "interface": "./schema/interface",
-        "query": "./schema/query",
-        "field": "./schema/field",
-        "data": "./data",
-        "utils": "./schema/utils"
+        "schema": "./src/schema",
+        "type": "./src/schema/type",
+        "enum": "./src/schema/enum",
+        "interface": "./src/schema/interface",
+        "query": "./src/schema/query",
+        "field": "./src/schema/field",
+        "data": "./src/data",
+        "utils": "./src/schema/utils"
       }
     }]
   ]

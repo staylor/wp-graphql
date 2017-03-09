@@ -3,7 +3,7 @@ import fs from 'fs';
 import path from 'path';
 import { graphql } from 'graphql';
 import { introspectionQuery, printSchema } from 'graphql/utilities';
-import Schema from './schema/index';
+import Schema from 'schema';
 
 /* eslint-disable no-console */
 
@@ -19,7 +19,7 @@ import Schema from './schema/index';
     const data = JSON.stringify(result.data, null, 2);
 
     fs.writeFileSync(
-      path.join(__dirname, 'schema/generated/schema.json'),
+      path.join(__dirname, 'generated/schema.json'),
       data,
     );
 
@@ -32,6 +32,6 @@ import Schema from './schema/index';
 
 // Save user readable type system shorthand of schema
 fs.writeFileSync(
-  path.join(__dirname, 'schema/generated/schema.graphql'),
+  path.join(__dirname, 'generated/schema.graphql'),
   printSchema(Schema),
 );
