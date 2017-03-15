@@ -2,7 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import url from 'url';
 
-const stubsDir = path.resolve('./data/stubs');
+const stubsDir = path.resolve('./src/data/stubs');
 const stubCache = {};
 const getStub = (slug) => {
   if (stubCache[slug]) {
