@@ -8,6 +8,11 @@ const tagLoader = new Dataloader(opaque => (
   fetchData(path, { qs: { include: decodeIDs(opaque), orderby: 'include' } })
     .then(({ data: { body } }) => body)
 ));
+const slugLoader = new Dataloader(slugs => (
+  Promise.all(slugs.map(slug =>
+    fetchData(path, { qs: { slug } })
+      .then(({ data: { body } }) => body[0])))
+));
 
 class Tag {
   getID() {
@@ -20,6 +25,11 @@ class Tag {
 
   static async load(id) {
     const data = await tagLoader.load(id);
+    return data ? Object.assign(new Tag(), data) : null;
+  }
+
+  static async loadBySlug(slug) {
+    const data = await slugLoader.load(slug);
     return data ? Object.assign(new Tag(), data) : null;
   }
 

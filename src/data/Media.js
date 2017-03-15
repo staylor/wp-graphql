@@ -8,6 +8,10 @@ const mediaLoader = new Dataloader(opaque => (
   fetchData(path, { qs: { include: decodeIDs(opaque), orderby: 'include' } })
     .then(({ data: { body } }) => body)
 ));
+const slugLoader = new Dataloader(slugs => (
+  fetchData(path, { qs: { slug: slugs, orderby: 'slug' } })
+    .then(({ data: { body } }) => body)
+));
 
 class Media {
   getID() {
@@ -20,6 +24,11 @@ class Media {
 
   static async load(id) {
     const data = await mediaLoader.load(id);
+    return data ? Object.assign(new Media(), data) : null;
+  }
+
+  static async loadBySlug(slug) {
+    const data = await slugLoader.load(slug);
     return data ? Object.assign(new Media(), data) : null;
   }
 

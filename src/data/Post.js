@@ -8,6 +8,10 @@ const postLoader = new Dataloader(opaque => (
   fetchData(path, { qs: { include: decodeIDs(opaque), orderby: 'include' } })
     .then(({ data: { body } }) => body)
 ));
+const slugLoader = new Dataloader(slugs => (
+  fetchData(path, { qs: { slug: slugs, orderby: 'slug' } })
+    .then(({ data: { body } }) => body)
+));
 
 class Post {
   getID() {
@@ -20,6 +24,11 @@ class Post {
 
   static async load(id) {
     const data = await postLoader.load(id);
+    return data ? Object.assign(new Post(), data) : null;
+  }
+
+  static async loadBySlug(slug) {
+    const data = await slugLoader.load(slug);
     return data ? Object.assign(new Post(), data) : null;
   }
 

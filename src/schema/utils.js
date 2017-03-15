@@ -1,4 +1,4 @@
-import { GraphQLID } from 'graphql';
+import { GraphQLID, GraphQLString } from 'graphql';
 import { fromGlobalId } from 'graphql-relay';
 
 export const toBase64 = str => new Buffer(str).toString('base64');
@@ -119,7 +119,16 @@ export const itemResolver = (dataType, loader) => ({
       type: GraphQLID,
       description: 'Unique identifier for the object.',
     },
+    slug: {
+      type: GraphQLString,
+      description: 'An alphanumeric identifier for the object unique to its type.',
+    },
   },
   // eslint-disable-next-line no-confusing-arrow
-  resolve: (root, { id }) => loader.load(id),
+  resolve: (root, { id, slug }) => {
+    if (slug && loader.loadBySlug) {
+      return loader.loadBySlug(slug);
+    }
+    return loader.load(id);
+  },
 });
