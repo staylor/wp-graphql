@@ -5,7 +5,7 @@ import { decodeIDs } from 'utils';
 
 const path = process.env.WP_PAGES_ENDPOINT || 'wp/v2/pages';
 const pageLoader = new Dataloader(opaque => (
-  fetchData(path, { qs: { include: decodeIDs(opaque) } })
+  fetchData(path, { qs: { include: decodeIDs(opaque), orderby: 'include' } })
     .then(({ data: { body } }) => body)
 ));
 const slugLoader = new Dataloader(slugs => (

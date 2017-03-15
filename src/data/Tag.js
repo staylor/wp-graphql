@@ -5,7 +5,7 @@ import { decodeIDs } from 'utils';
 
 const path = process.env.WP_TAGS_ENDPOINT || 'wp/v2/tags';
 const tagLoader = new Dataloader(opaque => (
-  fetchData(path, { qs: { include: decodeIDs(opaque) } })
+  fetchData(path, { qs: { include: decodeIDs(opaque), orderby: 'include' } })
     .then(({ data: { body } }) => body)
 ));
 

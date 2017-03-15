@@ -5,7 +5,7 @@ import { decodeIDs } from 'utils';
 
 const path = process.env.WP_POSTS_ENDPOINT || 'wp/v2/posts';
 const postLoader = new Dataloader(opaque => (
-  fetchData(path, { qs: { include: decodeIDs(opaque) } })
+  fetchData(path, { qs: { include: decodeIDs(opaque), orderby: 'include' } })
     .then(({ data: { body } }) => body)
 ));
 

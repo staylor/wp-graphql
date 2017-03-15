@@ -5,7 +5,7 @@ import { decodeIDs } from 'utils';
 
 const path = process.env.WP_CATEGORIES_ENDPOINT || 'wp/v2/categories';
 const categoryLoader = new Dataloader(opaque => (
-  fetchData(path, { qs: { include: decodeIDs(opaque) } })
+  fetchData(path, { qs: { include: decodeIDs(opaque), orderby: 'include' } })
     .then(({ data: { body } }) => body)
 ));
 
