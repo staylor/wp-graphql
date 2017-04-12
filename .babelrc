@@ -19,5 +19,10 @@
         "utils": "./src/schema/utils"
       }
     }]
-  ]
+  ],
+  "env": {
+    "test": {
+      "plugins": ["istanbul"]
+    }
+  }
 }
