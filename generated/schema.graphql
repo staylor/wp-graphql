@@ -929,6 +929,9 @@ type Query {
   post(
     # Unique identifier for the object.
     id: ID
+
+    # An alphanumeric identifier for the object unique to its type.
+    slug: String
   ): Post
   users(
     # Current page of the collection.
@@ -961,6 +964,9 @@ type Query {
   user(
     # Unique identifier for the object.
     id: ID
+
+    # An alphanumeric identifier for the object unique to its type.
+    slug: String
   ): User
   categories(
     # Current page of the collection.
@@ -998,6 +1004,9 @@ type Query {
   category(
     # Unique identifier for the object.
     id: ID
+
+    # An alphanumeric identifier for the object unique to its type.
+    slug: String
   ): Category
   tags(
     # Current page of the collection.
@@ -1032,6 +1041,9 @@ type Query {
   tag(
     # Unique identifier for the object.
     id: ID
+
+    # An alphanumeric identifier for the object unique to its type.
+    slug: String
   ): Tag
   pages(
     # Current page of the collection.
@@ -1124,6 +1136,9 @@ type Query {
   comment(
     # Unique identifier for the object.
     id: ID
+
+    # An alphanumeric identifier for the object unique to its type.
+    slug: String
   ): Comment
 
   # List of types.
@@ -1131,6 +1146,9 @@ type Query {
   type(
     # Unique identifier for the object.
     id: ID
+
+    # An alphanumeric identifier for the object unique to its type.
+    slug: String
   ): Type
 
   # List of taxonomies.
@@ -1138,6 +1156,9 @@ type Query {
   taxonomy(
     # Unique identifier for the object.
     id: ID
+
+    # An alphanumeric identifier for the object unique to its type.
+    slug: String
   ): Taxonomy
   media(
     # Current page of the collection.
@@ -1190,11 +1211,17 @@ type Query {
   medium(
     # Unique identifier for the object.
     id: ID
+
+    # An alphanumeric identifier for the object unique to its type.
+    slug: String
   ): Media
   sidebars: SidebarCollection
   sidebar(
     # Unique identifier for the object.
     id: ID
+
+    # An alphanumeric identifier for the object unique to its type.
+    slug: String
   ): Sidebar
 
   # List of statuses.
@@ -1202,11 +1229,17 @@ type Query {
   status(
     # Unique identifier for the object.
     id: ID
+
+    # An alphanumeric identifier for the object unique to its type.
+    slug: String
   ): Status
   navMenus: NavMenuCollection
   navMenu(
     # Unique identifier for the object.
     id: ID
+
+    # An alphanumeric identifier for the object unique to its type.
+    slug: String
   ): NavMenu
 }
 
