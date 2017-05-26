@@ -1,4 +1,5 @@
 import {
+  GraphQLID,
   GraphQLInt,
   GraphQLNonNull,
   GraphQLString,
@@ -59,7 +60,7 @@ export default {
     name: 'UpdateComment',
     inputFields: {
       id: {
-        type: new GraphQLNonNull(GraphQLInt),
+        type: new GraphQLNonNull(GraphQLID),
       },
       ...inputs,
     },

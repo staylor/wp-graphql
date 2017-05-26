@@ -1,5 +1,5 @@
 import path from 'path';
-import { toGlobalId } from 'graphql-relay';
+import { toGlobalId, fromGlobalId } from 'graphql-relay';
 import Dataloader from 'dataloader';
 import { fetchData } from 'data';
 import { decodeIDs } from 'utils';
@@ -65,7 +65,11 @@ class Comment {
     if (!input.id) {
       return Promise.reject('You must specify a comment ID to update.');
     }
-    const updateEndpoint = path.join(commentsEndpoint, input.id);
+    const { id } = fromGlobalId(input.id);
+    const updateEndpoint = path.join(commentsEndpoint, id);
+    // eslint-disable-next-line no-param-reassign
+    delete input.id;
+
     try {
       const { data: { body: comment } } = await fetchData(updateEndpoint, {
         method: 'POST',
