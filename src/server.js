@@ -2,12 +2,15 @@ import 'dotenv/config';
 import express from 'express';
 import graphQLHTTP from 'express-graphql';
 import { graphqlBatchHTTPWrapper } from 'react-relay-network-layer';
+import cookieParser from 'cookie-parser';
 import bodyParser from 'body-parser';
 import responseTime from 'response-time';
 import Schema from 'schema';
 import queryLogger from './middleware/queryLogger';
 
 const app = express();
+app.use(cookieParser());
+
 const graphQLServer = graphQLHTTP(req => ({
   graphiql: true,
   schema: Schema,

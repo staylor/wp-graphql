@@ -14,6 +14,7 @@
         "enum": "./src/schema/enum",
         "interface": "./src/schema/interface",
         "query": "./src/schema/query",
+        "mutation": "./src/schema/mutation",
         "field": "./src/schema/field",
         "data": "./src/data",
         "utils": "./src/schema/utils"

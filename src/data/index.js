@@ -30,28 +30,42 @@ export const fetchData = (path, opts = {}, expire = null) => {
     resolveWithFullResponse: true,
   };
 
+  const cacheTTL = expire || process.env.REQUEST_CACHE_TTL || 60;
+
   return new Promise((resolve, reject) => {
-    client.get(key, (err, cached) => {
-      if (err) {
-        reject(err);
-      } else if (cached) {
-        resolve({
-          cache: 'hit',
-          data: JSON.parse(cached),
-        });
-      } else {
-        rp(path, params)
-          .catch(error => reject(error))
-          .then((response) => {
+    const makeRequest = () => (
+      rp(path, params)
+        .catch(error => reject(error))
+        .then((response) => {
+          if (response) {
             client.set(key, JSON.stringify(response));
-            client.expire(key, expire || process.env.REQUEST_CACHE_TTL || 60);
+            client.expire(key, cacheTTL);
             resolve({
               cache: 'miss',
               data: response,
             });
+          } else {
+            reject();
+          }
+        })
+    );
+
+    if (params.method && params.method !== 'GET') {
+      makeRequest();
+    } else {
+      client.get(key, (err, cached) => {
+        if (err) {
+          reject(err);
+        } else if (cached) {
+          resolve({
+            cache: 'hit',
+            data: JSON.parse(cached),
           });
-      }
-    });
+        } else {
+          makeRequest();
+        }
+      });
+    }
   });
 };
 
