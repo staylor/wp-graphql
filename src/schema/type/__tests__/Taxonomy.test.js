@@ -24,15 +24,9 @@ it('GraphQL should return a known Taxonomy', async () => {
   const context = {};
 
   const result = await graphql(schema, query, rootValue, context);
-  const { data: { taxonomy: {
-    id,
-    name,
-    description,
-    hierarchical,
-    slug,
-    types,
-    rest_base,
-  } } } = result;
+  const {
+    data: { taxonomy: { id, name, description, hierarchical, slug, types, rest_base } },
+  } = result;
 
   expect(id).toBe(globalId);
   expect(name).toBe('Categories');

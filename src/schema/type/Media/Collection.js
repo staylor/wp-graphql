@@ -1,15 +1,11 @@
 import { GraphQLObjectType } from 'graphql';
-import {
-  connectionArgs,
-  connectionDefinitions,
-} from 'graphql-relay';
+import { connectionArgs, connectionDefinitions } from 'graphql-relay';
 
 import MediaType from 'type/Media';
 import { loadEdges } from 'utils';
 import Media from 'data/Media';
 
-const { connectionType: MediaConnection } =
-  connectionDefinitions({ nodeType: MediaType });
+const { connectionType: MediaConnection } = connectionDefinitions({ nodeType: MediaType });
 
 const MediaCollectionType = new GraphQLObjectType({
   name: 'MediaCollection',

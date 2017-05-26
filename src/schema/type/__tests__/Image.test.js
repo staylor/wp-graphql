@@ -29,12 +29,7 @@ it('GraphQL should return a known attachment', async () => {
   const context = {};
 
   const result = await graphql(schema, query, rootValue, context);
-  const { data: { medium: {
-    id,
-    post,
-    source_url,
-    media_details,
-  } } } = result;
+  const { data: { medium: { id, post, source_url, media_details } } } = result;
 
   expect(id).toBe(globalId);
   expect(post).toBe(postId);

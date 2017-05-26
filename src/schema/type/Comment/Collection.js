@@ -1,15 +1,11 @@
 import { GraphQLObjectType } from 'graphql';
-import {
-  connectionArgs,
-  connectionDefinitions,
-} from 'graphql-relay';
+import { connectionArgs, connectionDefinitions } from 'graphql-relay';
 
 import CommentType from 'type/Comment';
 import { loadEdges } from 'utils';
 import Comment from 'data/Comment';
 
-const { connectionType: CommentConnection } =
-  connectionDefinitions({ nodeType: CommentType });
+const { connectionType: CommentConnection } = connectionDefinitions({ nodeType: CommentType });
 
 const CommentCollectionType = new GraphQLObjectType({
   name: 'CommentCollection',

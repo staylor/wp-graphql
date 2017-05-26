@@ -1,15 +1,11 @@
 import { GraphQLObjectType } from 'graphql';
-import {
-  connectionArgs,
-  connectionDefinitions,
-} from 'graphql-relay';
+import { connectionArgs, connectionDefinitions } from 'graphql-relay';
 
 import PageType from 'type/Page';
 import { loadEdges } from 'utils';
 import Page from 'data/Page';
 
-const { connectionType: PageConnection } =
-  connectionDefinitions({ nodeType: PageType });
+const { connectionType: PageConnection } = connectionDefinitions({ nodeType: PageType });
 
 const PageCollectionType = new GraphQLObjectType({
   name: 'PageCollection',

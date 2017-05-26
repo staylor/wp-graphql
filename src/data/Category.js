@@ -4,15 +4,16 @@ import { fetchData } from 'data';
 import { decodeIDs } from 'utils';
 
 const path = process.env.WP_CATEGORIES_ENDPOINT || 'wp/v2/categories';
-const categoryLoader = new Dataloader(opaque => (
-  fetchData(path, { qs: { include: decodeIDs(opaque), orderby: 'include' } })
-    .then(({ data: { body } }) => body)
-));
-const slugLoader = new Dataloader(slugs => (
-  Promise.all(slugs.map(slug =>
-    fetchData(path, { qs: { slug } })
-      .then(({ data: { body } }) => body[0])))
-));
+const categoryLoader = new Dataloader(opaque =>
+  fetchData(path, { qs: { include: decodeIDs(opaque), orderby: 'include' } }).then(
+    ({ data: { body } }) => body,
+  ),
+);
+const slugLoader = new Dataloader(slugs =>
+  Promise.all(
+    slugs.map(slug => fetchData(path, { qs: { slug } }).then(({ data: { body } }) => body[0])),
+  ),
+);
 
 class Category {
   getID() {

@@ -28,11 +28,7 @@ it('GraphQL should return a known NavMenu', async () => {
   const context = {};
 
   const result = await graphql(schema, query, rootValue, context);
-  const { data: { navMenu: {
-    id,
-    name,
-    items,
-  } } } = result;
+  const { data: { navMenu: { id, name, items } } } = result;
 
   expect(id).toBe(globalId);
   expect(name).toBe('Main Nav');

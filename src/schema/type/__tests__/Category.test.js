@@ -32,15 +32,7 @@ test('GraphQL should return a known category', async () => {
   const context = {};
 
   const result = await graphql(schema, query, rootValue, context);
-  const { data: { category: {
-    name,
-    count,
-    description,
-    slug,
-    taxonomy,
-    parent,
-    meta,
-  } } } = result;
+  const { data: { category: { name, count, description, slug, taxonomy, parent, meta } } } = result;
 
   expect(count).toBeGreaterThan(0);
   expect(description).toBeDefined();

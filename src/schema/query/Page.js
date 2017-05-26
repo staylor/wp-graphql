@@ -1,8 +1,4 @@
-import {
-  GraphQLID,
-  GraphQLInt,
-  GraphQLString,
-} from 'graphql';
+import { GraphQLID, GraphQLInt, GraphQLString } from 'graphql';
 
 import PAGE_ORDERBY from 'enum/PageOrderby';
 
@@ -42,8 +38,6 @@ export default {
       },
     },
     // eslint-disable-next-line no-confusing-arrow
-    resolve: (root, { id, slug: name }) => (
-      name ? Page.loadBySlug(name) : Page.load(id)
-    ),
+    resolve: (root, { id, slug: name }) => (name ? Page.loadBySlug(name) : Page.load(id)),
   },
 };

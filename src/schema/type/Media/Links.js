@@ -1,7 +1,4 @@
-import {
-  GraphQLObjectType,
-  GraphQLList,
-} from 'graphql';
+import { GraphQLObjectType, GraphQLList } from 'graphql';
 
 import Link from 'type/Link';
 import EmbeddableLink from 'type/Link/EmbeddableLink';

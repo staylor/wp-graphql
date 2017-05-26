@@ -24,15 +24,9 @@ it('GraphQL should return a known Type', async () => {
   const context = {};
 
   const result = await graphql(schema, query, rootValue, context);
-  const { data: { type: {
-    id,
-    name,
-    description,
-    hierarchical,
-    slug,
-    taxonomies,
-    rest_base,
-  } } } = result;
+  const {
+    data: { type: { id, name, description, hierarchical, slug, taxonomies, rest_base } },
+  } = result;
 
   expect(id).toBe(globalId);
   expect(name).toBe('Posts');

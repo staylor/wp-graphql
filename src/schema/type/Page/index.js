@@ -1,7 +1,4 @@
-import {
-  GraphQLObjectType,
-  GraphQLInt,
-} from 'graphql';
+import { GraphQLObjectType, GraphQLInt } from 'graphql';
 import { toGlobalId } from 'graphql-relay';
 
 /* eslint-disable camelcase */

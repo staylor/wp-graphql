@@ -4,14 +4,14 @@ import { fetchData } from 'data';
 import { decodeIDs } from 'utils';
 
 const path = process.env.WP_MEDIA_ENDPOINT || 'wp/v2/media';
-const mediaLoader = new Dataloader(opaque => (
-  fetchData(path, { qs: { include: decodeIDs(opaque), orderby: 'include' } })
-    .then(({ data: { body } }) => body)
-));
-const slugLoader = new Dataloader(slugs => (
-  fetchData(path, { qs: { slug: slugs, orderby: 'slug' } })
-    .then(({ data: { body } }) => body)
-));
+const mediaLoader = new Dataloader(opaque =>
+  fetchData(path, { qs: { include: decodeIDs(opaque), orderby: 'include' } }).then(
+    ({ data: { body } }) => body,
+  ),
+);
+const slugLoader = new Dataloader(slugs =>
+  fetchData(path, { qs: { slug: slugs, orderby: 'slug' } }).then(({ data: { body } }) => body),
+);
 
 class Media {
   getID() {

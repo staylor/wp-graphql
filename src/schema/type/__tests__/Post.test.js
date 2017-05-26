@@ -31,14 +31,11 @@ it('GraphQL should return a known Post', async () => {
   const context = {};
 
   const result = await graphql(schema, query, rootValue, context);
-  const { data: { post: {
-    id,
-    slug,
-    date,
-    title: { rendered: title },
-    content: { rendered: content },
-    tags,
-  } } } = result;
+  const {
+    data: {
+      post: { id, slug, date, title: { rendered: title }, content: { rendered: content }, tags },
+    },
+  } = result;
 
   expect(id).toBe(globalId);
   expect(date).toMatch(dateRegex);

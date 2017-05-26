@@ -24,10 +24,7 @@ it('GraphQL should return a known Sidebar', async () => {
   const context = {};
 
   const result = await graphql(schema, query, rootValue, context);
-  const { data: { sidebar: {
-    id,
-    widgets,
-  } } } = result;
+  const { data: { sidebar: { id, widgets } } } = result;
 
   expect(id).toBe(globalId);
   expect(widgets.length).toBeGreaterThan(0);

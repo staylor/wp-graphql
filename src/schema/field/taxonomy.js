@@ -1,6 +1,4 @@
-import {
-  GraphQLInt,
-} from 'graphql';
+import { GraphQLInt } from 'graphql';
 import { toGlobalId } from 'graphql-relay';
 
 import TaxonomyType from 'type/Taxonomy';

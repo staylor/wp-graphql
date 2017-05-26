@@ -10,13 +10,16 @@ const rp = (path, opts = {}) => {
     uri = `${process.env.WP_API_HOST}${path}`;
   }
 
-  const params = Object.assign({
-    uri,
-    jar: true,
-    json: true,
-    simple: true,
-    strictSSL: false,
-  }, opts);
+  const params = Object.assign(
+    {
+      uri,
+      jar: true,
+      json: true,
+      simple: true,
+      strictSSL: false,
+    },
+    opts,
+  );
 
   return request(params);
 };
@@ -33,22 +36,19 @@ export const fetchData = (path, opts = {}, expire = null) => {
   const cacheTTL = expire || process.env.REQUEST_CACHE_TTL || 60;
 
   return new Promise((resolve, reject) => {
-    const makeRequest = () => (
-      rp(path, params)
-        .catch(error => reject(error))
-        .then((response) => {
-          if (response) {
-            client.set(key, JSON.stringify(response));
-            client.expire(key, cacheTTL);
-            resolve({
-              cache: 'miss',
-              data: response,
-            });
-          } else {
-            reject();
-          }
-        })
-    );
+    const makeRequest = () =>
+      rp(path, params).catch(error => reject(error)).then((response) => {
+        if (response) {
+          client.set(key, JSON.stringify(response));
+          client.expire(key, cacheTTL);
+          resolve({
+            cache: 'miss',
+            data: response,
+          });
+        } else {
+          reject();
+        }
+      });
 
     if (params.method && params.method !== 'GET') {
       makeRequest();

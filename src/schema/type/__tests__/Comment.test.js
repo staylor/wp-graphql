@@ -31,15 +31,19 @@ it('GraphQL should return a known comment', async () => {
   const context = {};
 
   const result = await graphql(schema, query, rootValue, context);
-  const { data: { comment: {
-    id,
-    author_name,
-    author_url,
-    date,
-    content: { rendered: content },
-    author_avatar_urls,
-    parent,
-  } } } = result;
+  const {
+    data: {
+      comment: {
+        id,
+        author_name,
+        author_url,
+        date,
+        content: { rendered: content },
+        author_avatar_urls,
+        parent,
+      },
+    },
+  } = result;
 
   expect(id).toBe(globalId);
   expect(author_name).toBe('Scott Taylor');

@@ -1,9 +1,4 @@
-import {
-  GraphQLInterfaceType,
-  GraphQLNonNull,
-  GraphQLID,
-  GraphQLList,
-} from 'graphql';
+import { GraphQLInterfaceType, GraphQLNonNull, GraphQLID, GraphQLList } from 'graphql';
 
 /* eslint-disable camelcase */
 

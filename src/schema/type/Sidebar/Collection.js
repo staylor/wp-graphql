@@ -1,15 +1,11 @@
 import { GraphQLObjectType } from 'graphql';
-import {
-  connectionArgs,
-  connectionDefinitions,
-} from 'graphql-relay';
+import { connectionArgs, connectionDefinitions } from 'graphql-relay';
 
 import SidebarType from 'type/Sidebar';
 import { loadEdges } from 'utils';
 import Sidebar from 'data/Sidebar';
 
-const { connectionType: SidebarConnection } =
-  connectionDefinitions({ nodeType: SidebarType });
+const { connectionType: SidebarConnection } = connectionDefinitions({ nodeType: SidebarType });
 
 const SidebarCollectionType = new GraphQLObjectType({
   name: 'SidebarCollection',

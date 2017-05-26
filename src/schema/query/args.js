@@ -1,9 +1,4 @@
-import {
-  GraphQLInt,
-  GraphQLString,
-  GraphQLBoolean,
-  GraphQLID,
-} from 'graphql';
+import { GraphQLInt, GraphQLString, GraphQLBoolean, GraphQLID } from 'graphql';
 
 import ORDER from 'enum/Order';
 import TAXONOMY_ORDERBY from 'enum/TaxonomyOrderby';

@@ -28,14 +28,7 @@ it('GraphQL should return a known tag', async () => {
   const context = {};
 
   const result = await graphql(schema, query, rootValue, context);
-  const { data: { tag: {
-    name,
-    count,
-    description,
-    slug,
-    taxonomy,
-    meta,
-  } } } = result;
+  const { data: { tag: { name, count, description, slug, taxonomy, meta } } } = result;
 
   expect(count).toBeGreaterThan(0);
   expect(description).toBeDefined();

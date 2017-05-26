@@ -22,13 +22,7 @@ it('GraphQL should return a known Status', async () => {
   const context = {};
 
   const result = await graphql(schema, query, rootValue, context);
-  const { data: { status: {
-    id,
-    name,
-    public: publicVar,
-    queryable,
-    slug,
-  } } } = result;
+  const { data: { status: { id, name, public: publicVar, queryable, slug } } } = result;
 
   expect(id).toBe(globalId);
   expect(name).toBe('Published');

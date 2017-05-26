@@ -5,10 +5,11 @@ import { decodeIDs } from 'utils';
 
 // there is no batch mechanism on this endpoint
 const path = process.env.WP_TYPES_ENDPOINT || 'wp/v2/types';
-const typeLoader = new Dataloader(opaque => (
-  fetchData(path, {}, 1000 * 60 * 10)
-    .then(({ data: { body } }) => decodeIDs(opaque).map(id => body[id]))
-));
+const typeLoader = new Dataloader(opaque =>
+  fetchData(path, {}, 1000 * 60 * 10).then(({ data: { body } }) =>
+    decodeIDs(opaque).map(id => body[id]),
+  ),
+);
 
 class Type {
   getID() {

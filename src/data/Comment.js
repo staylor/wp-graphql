@@ -5,10 +5,11 @@ import { fetchData } from 'data';
 import { decodeIDs } from 'utils';
 
 const commentsEndpoint = process.env.WP_COMMENTS_ENDPOINT || 'wp/v2/comments';
-const commentLoader = new Dataloader(opaque => (
-  fetchData(commentsEndpoint, { qs: { include: decodeIDs(opaque), orderby: 'include' } })
-    .then(({ data: { body } }) => body)
-));
+const commentLoader = new Dataloader(opaque =>
+  fetchData(commentsEndpoint, { qs: { include: decodeIDs(opaque), orderby: 'include' } }).then(
+    ({ data: { body } }) => body,
+  ),
+);
 
 class Comment {
   getID() {

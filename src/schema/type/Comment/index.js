@@ -1,9 +1,4 @@
-import {
-  GraphQLObjectType,
-  GraphQLList,
-  GraphQLString,
-  GraphQLID,
-} from 'graphql';
+import { GraphQLObjectType, GraphQLList, GraphQLString, GraphQLID } from 'graphql';
 import { toGlobalId } from 'graphql-relay';
 
 /* eslint-disable camelcase */
@@ -32,16 +27,12 @@ const CommentType = new GraphQLObjectType({
     post: {
       type: PostType,
       description: 'The ID of the associated post object.',
-      resolve: comment => (
-        comment.post > 0 ? Post.load(toGlobalId('Post', comment.post)) : null
-      ),
+      resolve: comment => (comment.post > 0 ? Post.load(toGlobalId('Post', comment.post)) : null),
     },
     parent: {
       type: GraphQLID,
       description: 'The ID for the parent of the object.',
-      resolve: comment => (
-        comment.parent > 0 ? toGlobalId('Comment', comment.parent) : null
-      ),
+      resolve: comment => (comment.parent > 0 ? toGlobalId('Comment', comment.parent) : null),
     },
     author_name: {
       type: GraphQLString,
@@ -62,12 +53,11 @@ const CommentType = new GraphQLObjectType({
     author_avatar_urls: {
       type: new GraphQLList(Avatar),
       description: 'Avatar URLs for the object author.',
-      resolve: comment => (
+      resolve: comment =>
         Object.keys(comment.author_avatar_urls).map(key => ({
           size: key,
           url: comment.author_avatar_urls[key],
-        }))
-      ),
+        })),
     },
     meta: metaField(),
     _links: { type: CommentLinks },

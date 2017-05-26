@@ -1,7 +1,4 @@
-import {
-  nodeDefinitions,
-  fromGlobalId,
-} from 'graphql-relay';
+import { nodeDefinitions, fromGlobalId } from 'graphql-relay';
 
 import CategoryType from 'type/Category';
 import CommentType from 'type/Comment';

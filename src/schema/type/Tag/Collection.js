@@ -1,15 +1,11 @@
 import { GraphQLObjectType } from 'graphql';
-import {
-  connectionArgs,
-  connectionDefinitions,
-} from 'graphql-relay';
+import { connectionArgs, connectionDefinitions } from 'graphql-relay';
 
 import TagType from 'type/Tag';
 import { loadEdges } from 'utils';
 import Tag from 'data/Tag';
 
-const { connectionType: TagConnection } =
-  connectionDefinitions({ nodeType: TagType });
+const { connectionType: TagConnection } = connectionDefinitions({ nodeType: TagType });
 
 const TagCollectionType = new GraphQLObjectType({
   name: 'TagCollection',

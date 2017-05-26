@@ -1,8 +1,4 @@
-import {
-  GraphQLObjectType,
-  GraphQLInt,
-  GraphQLString,
-} from 'graphql';
+import { GraphQLObjectType, GraphQLInt, GraphQLString } from 'graphql';
 
 const Avatar = new GraphQLObjectType({
   name: 'Avatar',

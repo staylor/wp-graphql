@@ -4,15 +4,16 @@ import { fetchData } from 'data';
 import { decodeIDs } from 'utils';
 
 const path = process.env.WP_USERS_ENDPOINT || 'wp/v2/users';
-const userLoader = new Dataloader(opaque => (
-  fetchData(path, { qs: { include: decodeIDs(opaque), orderby: 'include' } })
-    .then(({ data: { body } }) => body)
-));
-const slugLoader = new Dataloader(slugs => (
-  Promise.all(slugs.map(slug =>
-    fetchData(path, { qs: { slug } })
-      .then(({ data: { body } }) => body[0])))
-));
+const userLoader = new Dataloader(opaque =>
+  fetchData(path, { qs: { include: decodeIDs(opaque), orderby: 'include' } }).then(
+    ({ data: { body } }) => body,
+  ),
+);
+const slugLoader = new Dataloader(slugs =>
+  Promise.all(
+    slugs.map(slug => fetchData(path, { qs: { slug } }).then(({ data: { body } }) => body[0])),
+  ),
+);
 
 class User {
   getID() {

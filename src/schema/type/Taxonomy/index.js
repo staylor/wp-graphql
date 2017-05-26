@@ -1,9 +1,4 @@
-import {
-  GraphQLObjectType,
-  GraphQLList,
-  GraphQLString,
-  GraphQLBoolean,
-} from 'graphql';
+import { GraphQLObjectType, GraphQLList, GraphQLString, GraphQLBoolean } from 'graphql';
 
 import TaxonomyLinks from 'type/Taxonomy/Links';
 

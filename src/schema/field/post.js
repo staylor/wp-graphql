@@ -1,7 +1,4 @@
-import {
-  GraphQLString,
-  GraphQLBoolean,
-} from 'graphql';
+import { GraphQLString, GraphQLBoolean } from 'graphql';
 
 import FORMAT from 'enum/Format';
 

@@ -25,12 +25,9 @@ it('GraphQL should return a known Page', async () => {
   const context = {};
 
   const result = await graphql(schema, query, rootValue, context);
-  const { data: { page: {
-    id,
-    slug,
-    title: { rendered: title },
-    content: { rendered: content },
-  } } } = result;
+  const {
+    data: { page: { id, slug, title: { rendered: title }, content: { rendered: content } } },
+  } = result;
 
   expect(id).toBe(globalId);
   expect(title).toBe('Go To This');

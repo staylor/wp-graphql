@@ -1,7 +1,4 @@
-import {
-  GraphQLObjectType,
-  GraphQLBoolean,
-} from 'graphql';
+import { GraphQLObjectType, GraphQLBoolean } from 'graphql';
 
 import StatusLinks from 'type/Status/Links';
 

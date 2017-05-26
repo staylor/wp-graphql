@@ -29,11 +29,9 @@ const CategoryType = new GraphQLObjectType({
     parent: {
       type: CategoryType,
       description: 'The parent term ID.',
-      resolve: category => (
-        category.parent > 0 ?
-          Category.load(toGlobalId('Category', category.parent)) :
-          null
-      ),
+      // eslint-disable-next-line no-confusing-arrow
+      resolve: category =>
+        category.parent > 0 ? Category.load(toGlobalId('Category', category.parent)) : null,
     },
   }),
 });

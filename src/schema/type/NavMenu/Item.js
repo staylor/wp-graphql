@@ -1,10 +1,4 @@
-import {
-  GraphQLObjectType,
-  GraphQLList,
-  GraphQLInt,
-  GraphQLString,
-  GraphQLID,
-} from 'graphql';
+import { GraphQLObjectType, GraphQLList, GraphQLInt, GraphQLString, GraphQLID } from 'graphql';
 
 import { toGlobalId } from 'graphql-relay';
 
@@ -20,9 +14,7 @@ const NavMenuItemType = new GraphQLObjectType({
     parent: {
       type: GraphQLID,
       description: 'Menu item that this item is a child of.',
-      resolve: item => (
-        item.parent > 0 ? toGlobalId('NavMenuItem', item.parent) : null
-      ),
+      resolve: item => (item.parent > 0 ? toGlobalId('NavMenuItem', item.parent) : null),
     },
     order: {
       type: GraphQLInt,

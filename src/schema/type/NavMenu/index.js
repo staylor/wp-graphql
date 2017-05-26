@@ -1,7 +1,4 @@
-import {
-  GraphQLObjectType,
-  GraphQLList,
-} from 'graphql';
+import { GraphQLObjectType, GraphQLList } from 'graphql';
 
 import NavMenuLinks from 'type/NavMenu/Links';
 import NavMenuItemType from 'type/NavMenu/Item';

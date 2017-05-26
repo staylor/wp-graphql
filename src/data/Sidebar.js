@@ -5,14 +5,16 @@ import { decodeIDs } from 'utils';
 
 const path = process.env.WP_SIDEBARS_ENDPOINT || null;
 if (!path) {
-  throw Error('This endpoint does not exist in WordPress yet. ' +
-    'You must install the WordPres GraphQL Middleware plugin.');
+  throw Error(
+    'This endpoint does not exist in WordPress yet. ' +
+      'You must install the WordPres GraphQL Middleware plugin.',
+  );
 }
-const sidebarLoader = new Dataloader(opaque => (
-  fetchData(path).then(({ data: { body } }) => (
-    decodeIDs(opaque).map(id => body.find(item => item.id === id))
-  ))
-));
+const sidebarLoader = new Dataloader(opaque =>
+  fetchData(path).then(({ data: { body } }) =>
+    decodeIDs(opaque).map(id => body.find(item => item.id === id)),
+  ),
+);
 
 class Sidebar {
   getID() {

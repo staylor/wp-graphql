@@ -26,14 +26,7 @@ it('GraphQL should return a known User', async () => {
   const context = {};
 
   const result = await graphql(schema, query, rootValue, context);
-  const { data: { user: {
-    id,
-    name,
-    description,
-    link,
-    slug,
-    avatar_urls,
-  } } } = result;
+  const { data: { user: { id, name, description, link, slug, avatar_urls } } } = result;
 
   expect(id).toBe(globalId);
   expect(name).toBe('Scott Taylor');

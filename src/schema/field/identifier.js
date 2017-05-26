@@ -1,8 +1,4 @@
-import {
-  GraphQLID,
-  GraphQLNonNull,
-  GraphQLString,
-} from 'graphql';
+import { GraphQLID, GraphQLNonNull, GraphQLString } from 'graphql';
 
 import Guid from 'type/Guid';
 

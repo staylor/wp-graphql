@@ -1,9 +1,4 @@
-import {
-  GraphQLInputObjectType,
-  GraphQLNonNull,
-  GraphQLObjectType,
-  GraphQLString,
-} from 'graphql';
+import { GraphQLInputObjectType, GraphQLNonNull, GraphQLObjectType, GraphQLString } from 'graphql';
 
 function resolveMaybeThunk(thingOrThunk) {
   return typeof thingOrThunk === 'function' ? thingOrThunk() : thingOrThunk;
@@ -50,13 +45,11 @@ export function mutationWithClientMutationId(config) {
         type: new GraphQLNonNull(inputType),
       },
     },
-    resolve: (_, { input }, context, info) => (
-      Promise.resolve(mutateAndGetPayload(input, context, info))
-        .then((payload) => {
-          // eslint-disable-next-line no-param-reassign
-          payload.clientMutationId = input.clientMutationId;
-          return payload;
-        })
-    ),
+    resolve: (_, { input }, context, info) =>
+      Promise.resolve(mutateAndGetPayload(input, context, info)).then((payload) => {
+        // eslint-disable-next-line no-param-reassign
+        payload.clientMutationId = input.clientMutationId;
+        return payload;
+      }),
   };
 }

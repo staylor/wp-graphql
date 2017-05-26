@@ -1,6 +1,4 @@
-import {
-  GraphQLObjectType,
-} from 'graphql';
+import { GraphQLObjectType } from 'graphql';
 
 import MediaInterface from 'interface/Media';
 import mediaFields from 'type/Media/fields';

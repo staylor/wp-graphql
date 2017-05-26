@@ -5,10 +5,11 @@ import { decodeIDs } from 'utils';
 
 // there is no batch mechanism on this endpoint
 const path = process.env.WP_TAXONOMIES_ENDPOINT || 'wp/v2/taxonomies';
-const taxonomyLoader = new Dataloader(opaque => (
-  fetchData(path, {}, 1000 * 60 * 10)
-    .then(({ data: { body } }) => decodeIDs(opaque).map(id => body[id]))
-));
+const taxonomyLoader = new Dataloader(opaque =>
+  fetchData(path, {}, 1000 * 60 * 10).then(({ data: { body } }) =>
+    decodeIDs(opaque).map(id => body[id]),
+  ),
+);
 
 class Taxonomy {
   getID() {

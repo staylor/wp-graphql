@@ -1,7 +1,4 @@
-import {
-  GraphQLObjectType,
-  GraphQLList,
-} from 'graphql';
+import { GraphQLObjectType, GraphQLList } from 'graphql';
 
 import Avatar from 'type/User/Avatar';
 import UserLinks from 'type/User/Links';
@@ -21,12 +18,11 @@ const UserType = new GraphQLObjectType({
     avatar_urls: {
       type: new GraphQLList(Avatar),
       description: 'Avatar URLs for the user.',
-      resolve: user => (
+      resolve: user =>
         Object.keys(user.avatar_urls).map(key => ({
           size: key,
           url: user.avatar_urls[key],
-        }))
-      ),
+        })),
     },
     _links: { type: UserLinks },
   },

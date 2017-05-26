@@ -1,9 +1,4 @@
-import {
-  GraphQLID,
-  GraphQLInt,
-  GraphQLNonNull,
-  GraphQLString,
-} from 'graphql';
+import { GraphQLID, GraphQLInt, GraphQLNonNull, GraphQLString } from 'graphql';
 import CommentType from 'type/Comment';
 import Comment from 'data/Comment';
 import { mutationWithClientMutationId } from './utils';
@@ -29,27 +24,32 @@ const inputs = {
   },
 };
 
-const createCommentMutation = (opts = {}) => (
-  mutationWithClientMutationId(Object.assign({}, {
-    name: '<FixMe>',
-    inputFields: {
-      ...inputs,
-    },
-    outputFields: {
-      status: {
-        type: GraphQLString,
+const createCommentMutation = (opts = {}) =>
+  mutationWithClientMutationId(
+    Object.assign(
+      {},
+      {
+        name: '<FixMe>',
+        inputFields: {
+          ...inputs,
+        },
+        outputFields: {
+          status: {
+            type: GraphQLString,
+          },
+          comment: {
+            type: CommentType,
+            resolve: payload => payload.comment,
+          },
+        },
+        mutateAndGetPayload: payload => ({
+          comment: payload,
+          status: '<FixMe>',
+        }),
       },
-      comment: {
-        type: CommentType,
-        resolve: payload => payload.comment,
-      },
-    },
-    mutateAndGetPayload: payload => ({
-      comment: payload,
-      status: '<FixMe>',
-    }),
-  }, opts))
-);
+      opts,
+    ),
+  );
 
 export default {
   addComment: createCommentMutation({
