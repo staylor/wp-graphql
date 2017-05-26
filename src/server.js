@@ -22,18 +22,16 @@ const graphQLServer = graphQLHTTP(req => ({
 // uncomment this to output incoming query and request headers
 app.use(queryLogger());
 
-app.use(responseTime((req, res, time) => {
-  // eslint-disable-next-line no-console
-  console.log(`Response time: ${Math.floor(time)}ms`);
-}));
+app.use(
+  responseTime((req, res, time) => {
+    // eslint-disable-next-line no-console
+    console.log(`Response time: ${Math.floor(time)}ms`);
+  }),
+);
 
 app.use(express.static('public'));
 
-app.use(
-  '/graphql/batch',
-  bodyParser.json(),
-  graphqlBatchHTTPWrapper(graphQLServer),
-);
+app.use('/graphql/batch', bodyParser.json(), graphqlBatchHTTPWrapper(graphQLServer));
 
 app.use('/graphql', graphQLServer);
 
