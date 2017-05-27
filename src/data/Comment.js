@@ -37,8 +37,20 @@ class Comment {
     if (!input.author && !(input.author_email && input.author_name)) {
       return Promise.reject('You must provide author data to create a comment.');
     }
+
+    if (!input.post) {
+      return Promise.reject('You must provide a post to assign the comment to.');
+    }
+
+    // eslint-disable-next-line no-param-reassign
+    input.post = fromGlobalId(input.post).id;
+    if (input.parent) {
+      // eslint-disable-next-line no-param-reassign
+      input.parent = fromGlobalId(input.parent).id;
+    }
+
     try {
-      const { data: { body: comment } } = await fetchData(commentsEndpoint, {
+      const { data: { body: comment, headers } } = await fetchData(commentsEndpoint, {
         method: 'POST',
         form: input,
       });
@@ -47,17 +59,20 @@ class Comment {
         return {
           status: 'new',
           comment: Object.assign(new Comment(), comment),
+          cookies: headers['set-cookie'],
         };
       }
 
       return {
         comment: null,
         status: 'new',
+        cookies: null,
       };
     } catch (e) {
       return {
         comment: null,
-        status: e,
+        status: e.message || 'There were errors.',
+        cookies: null,
       };
     }
   }
@@ -66,13 +81,14 @@ class Comment {
     if (!input.id) {
       return Promise.reject('You must specify a comment ID to update.');
     }
+
     const { id } = fromGlobalId(input.id);
     const updateEndpoint = path.join(commentsEndpoint, id);
     // eslint-disable-next-line no-param-reassign
     delete input.id;
 
     try {
-      const { data: { body: comment } } = await fetchData(updateEndpoint, {
+      const { data: { body: comment, headers } } = await fetchData(updateEndpoint, {
         method: 'POST',
         form: input,
       });
@@ -81,17 +97,20 @@ class Comment {
         return {
           status: 'update',
           comment: Object.assign(new Comment(), comment),
+          cookies: headers['set-cookie'],
         };
       }
 
       return {
         comment: null,
         status: 'update',
+        cookies: null,
       };
     } catch (e) {
       return {
         comment: null,
-        status: e,
+        status: e.message,
+        cookies: null,
       };
     }
   }

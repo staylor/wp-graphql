@@ -1,26 +1,20 @@
-import { GraphQLID, GraphQLInt, GraphQLNonNull, GraphQLString } from 'graphql';
+import { GraphQLID, GraphQLNonNull, GraphQLString } from 'graphql';
 import CommentType from 'type/Comment';
 import Comment from 'data/Comment';
 import { mutationWithClientMutationId } from './utils';
 
-const inputs = {
-  author: {
-    type: GraphQLInt,
-  },
+const requiredFields = {
   author_email: {
-    type: GraphQLString,
+    type: new GraphQLNonNull(GraphQLString),
   },
   author_name: {
-    type: GraphQLString,
+    type: new GraphQLNonNull(GraphQLString),
   },
   content: {
     type: new GraphQLNonNull(GraphQLString),
   },
-  parent: {
-    type: GraphQLInt,
-  },
   post: {
-    type: new GraphQLNonNull(GraphQLInt),
+    type: new GraphQLNonNull(GraphQLID),
   },
 };
 
@@ -31,7 +25,7 @@ const createCommentMutation = (opts = {}) =>
       {
         name: '<FixMe>',
         inputFields: {
-          ...inputs,
+          ...requiredFields,
         },
         outputFields: {
           status: {
@@ -39,12 +33,15 @@ const createCommentMutation = (opts = {}) =>
           },
           comment: {
             type: CommentType,
-            resolve: payload => payload.comment,
+          },
+          cookies: {
+            type: GraphQLString,
           },
         },
         mutateAndGetPayload: payload => ({
           comment: payload,
           status: '<FixMe>',
+          cookies: '<FixMe>',
         }),
       },
       opts,
@@ -54,7 +51,19 @@ const createCommentMutation = (opts = {}) =>
 export default {
   addComment: createCommentMutation({
     name: 'AddComment',
-    mutateAndGetPayload: async input => Comment.create(input),
+    inputFields: {
+      ...requiredFields,
+      author: {
+        type: GraphQLID,
+      },
+      author_url: {
+        type: GraphQLString,
+      },
+      parent: {
+        type: GraphQLID,
+      },
+    },
+    mutateAndGetPayload: input => Comment.create(input),
   }),
   updateComment: createCommentMutation({
     name: 'UpdateComment',
@@ -62,8 +71,13 @@ export default {
       id: {
         type: new GraphQLNonNull(GraphQLID),
       },
-      ...inputs,
+      author: {
+        type: GraphQLID,
+      },
+      content: {
+        type: new GraphQLNonNull(GraphQLString),
+      },
     },
-    mutateAndGetPayload: async input => Comment.update(input),
+    mutateAndGetPayload: input => Comment.update(input),
   }),
 };
