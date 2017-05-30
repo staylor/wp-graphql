@@ -16,10 +16,10 @@ import Schema from 'schema';
     const data = JSON.stringify(result.data, null, 2);
 
     fs.writeFileSync(path.join(__dirname, 'generated/schema.json'), data);
-
     fs.writeFileSync(path.join(__dirname, '../wp-relay-app/tools/schema.json'), data);
   }
 })();
 
 // Save user readable type system shorthand of schema
 fs.writeFileSync(path.join(__dirname, 'generated/schema.graphql'), printSchema(Schema));
+fs.writeFileSync(path.join(__dirname, '../wp-relay-app/tools/schema.graphql'), printSchema(Schema));

@@ -5,7 +5,9 @@ import CommentType from 'type/Comment';
 import { loadEdges } from 'utils';
 import Comment from 'data/Comment';
 
-const { connectionType: CommentConnection } = connectionDefinitions({ nodeType: CommentType });
+const { connectionType: CommentConnection, edgeType: CommentEdge } = connectionDefinitions({
+  nodeType: CommentType,
+});
 
 const CommentCollectionType = new GraphQLObjectType({
   name: 'CommentCollection',
@@ -19,5 +21,8 @@ const CommentCollectionType = new GraphQLObjectType({
     },
   },
 });
+
+export { CommentConnection };
+export { CommentEdge };
 
 export default CommentCollectionType;

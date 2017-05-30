@@ -26,21 +26,18 @@ const rp = (path, opts = {}) => {
 
 export const fetchData = (path, opts = {}, expire = null) => {
   const client = getClient();
-  const key = toBase64(`${path}${JSON.stringify(opts)}`);
+  const key = toBase64(`${JSON.stringify(opts)}`);
 
   const params = {
     ...opts,
     resolveWithFullResponse: true,
   };
 
-  const cacheTTL = expire || process.env.REQUEST_CACHE_TTL || 60;
-
   return new Promise((resolve, reject) => {
     const makeRequest = () =>
       rp(path, params).catch(error => reject(error)).then((response) => {
         if (response) {
-          client.set(key, JSON.stringify(response));
-          client.expire(key, cacheTTL);
+          client.hset(path, key, JSON.stringify(response));
           resolve({
             cache: 'miss',
             data: response,
@@ -51,9 +48,12 @@ export const fetchData = (path, opts = {}, expire = null) => {
       });
 
     if (params.method && params.method !== 'GET') {
+      client.hkeys(path, (err, keys) => {
+        keys.map(hashKey => client.hdel(path, hashKey));
+      });
       makeRequest();
     } else {
-      client.get(key, (err, cached) => {
+      client.hget(path, key, (err, cached) => {
         if (err) {
           reject(err);
         } else if (cached) {

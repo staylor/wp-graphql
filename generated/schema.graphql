@@ -1,3 +1,21 @@
+input AddCommentInput {
+  author_email: String!
+  author_name: String!
+  content: String!
+  post: ID!
+  author: ID
+  author_url: String
+  parent: ID
+  clientMutationId: String
+}
+
+type AddCommentPayload {
+  status: String
+  comment: Comment
+  cookies: String
+  clientMutationId: String
+}
+
 # An object.
 type Audio implements MediaInterface {
   # Unique identifier for the object.
@@ -462,6 +480,11 @@ type Meta {
 
   # Value for the metadata field.
   value: String
+}
+
+type Mutation {
+  addComment(input: AddCommentInput!): AddCommentPayload
+  updateComment(input: UpdateCommentInput!): UpdateCommentPayload
 }
 
 # A nav menu.
@@ -1502,6 +1525,20 @@ type TypeLinks {
   collection: [Link]
   items: [Link]
   curies: [TemplatedLink]
+}
+
+input UpdateCommentInput {
+  id: ID!
+  author: ID
+  content: String!
+  clientMutationId: String
+}
+
+type UpdateCommentPayload {
+  status: String
+  comment: Comment
+  cookies: String
+  clientMutationId: String
 }
 
 # An object.
