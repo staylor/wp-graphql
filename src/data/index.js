@@ -1,7 +1,8 @@
 import url from 'url';
 import request from 'request-promise';
-import { toBase64 } from 'utils';
 import { getClient } from 'data/store';
+
+export const toBase64 = str => new Buffer(str).toString('base64');
 
 const rp = (path, opts = {}) => {
   let uri = path;

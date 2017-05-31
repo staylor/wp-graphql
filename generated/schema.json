@@ -9078,12 +9078,12 @@
             "deprecationReason": null
           },
           {
-            "name": "comment",
+            "name": "commentEdge",
             "description": null,
             "args": [],
             "type": {
               "kind": "OBJECT",
-              "name": "Comment",
+              "name": "CommentEdge",
               "ofType": null
             },
             "isDeprecated": false,
@@ -9196,12 +9196,12 @@
             "deprecationReason": null
           },
           {
-            "name": "comment",
+            "name": "commentEdge",
             "description": null,
             "args": [],
             "type": {
               "kind": "OBJECT",
-              "name": "Comment",
+              "name": "CommentEdge",
               "ofType": null
             },
             "isDeprecated": false,

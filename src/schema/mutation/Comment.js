@@ -1,6 +1,6 @@
 import { GraphQLID, GraphQLNonNull, GraphQLString } from 'graphql';
-import CommentType from 'type/Comment';
 import Comment from 'data/Comment';
+import { CommentEdge } from 'type/Comment/Collection';
 import { mutationWithClientMutationId } from './utils';
 
 const requiredFields = {
@@ -31,8 +31,12 @@ const createCommentMutation = (opts = {}) =>
           status: {
             type: GraphQLString,
           },
-          comment: {
-            type: CommentType,
+          commentEdge: {
+            type: CommentEdge,
+            resolve: ({ comment }) => ({
+              cursor: null,
+              node: comment,
+            }),
           },
           cookies: {
             type: GraphQLString,

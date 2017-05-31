@@ -11,7 +11,7 @@ input AddCommentInput {
 
 type AddCommentPayload {
   status: String
-  comment: Comment
+  commentEdge: CommentEdge
   cookies: String
   clientMutationId: String
 }
@@ -1536,7 +1536,7 @@ input UpdateCommentInput {
 
 type UpdateCommentPayload {
   status: String
-  comment: Comment
+  commentEdge: CommentEdge
   cookies: String
   clientMutationId: String
 }
