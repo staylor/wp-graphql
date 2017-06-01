@@ -1,7 +1,7 @@
 import { GraphQLID, GraphQLNonNull, GraphQLString } from 'graphql';
+import { mutationWithClientMutationId } from 'graphql-relay';
 import Comment from 'data/Comment';
 import CommentType from 'type/Comment';
-import { mutationWithClientMutationId } from './utils';
 
 const requiredFields = {
   author_email: {
