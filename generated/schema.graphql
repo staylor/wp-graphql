@@ -11,7 +11,7 @@ input AddCommentInput {
 
 type AddCommentPayload {
   status: String
-  commentEdge: CommentEdge
+  comment: Comment
   cookies: String
   clientMutationId: String
 }
@@ -767,6 +767,9 @@ type Post implements PostInterface {
 
   # The terms assigned to the object in the post_tag taxonomy.
   tags: [Tag]
+
+  # The comments connected to this post.
+  comments(after: String, first: Int, before: String, last: Int): CommentConnection
 }
 
 # Sort collection by object attribute.
@@ -1536,7 +1539,7 @@ input UpdateCommentInput {
 
 type UpdateCommentPayload {
   status: String
-  commentEdge: CommentEdge
+  comment: Comment
   cookies: String
   clientMutationId: String
 }

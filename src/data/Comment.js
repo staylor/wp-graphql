@@ -25,7 +25,8 @@ class Comment {
     return data ? Object.assign(new Comment(), data) : null;
   }
 
-  static async collection(args = {}) {
+  static async collection(opts = {}) {
+    const args = { qs: opts };
     const { data: { body, headers } } = await fetchData(commentsEndpoint, args);
     return {
       total: headers['x-wp-total'],
