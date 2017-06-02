@@ -3,7 +3,6 @@ input AddCommentInput {
   author_name: String!
   content: String!
   post: ID!
-  author: ID
   author_url: String
   parent: ID
   clientMutationId: String
@@ -1535,7 +1534,6 @@ type TypeLinks {
 
 input UpdateCommentInput {
   id: ID!
-  author: ID
   content: String!
   clientMutationId: String
 }

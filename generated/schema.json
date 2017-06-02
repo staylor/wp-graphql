@@ -9081,16 +9081,6 @@
             "defaultValue": null
           },
           {
-            "name": "author",
-            "description": null,
-            "type": {
-              "kind": "SCALAR",
-              "name": "ID",
-              "ofType": null
-            },
-            "defaultValue": null
-          },
-          {
             "name": "author_url",
             "description": null,
             "type": {
@@ -9201,16 +9191,6 @@
                 "name": "ID",
                 "ofType": null
               }
-            },
-            "defaultValue": null
-          },
-          {
-            "name": "author",
-            "description": null,
-            "type": {
-              "kind": "SCALAR",
-              "name": "ID",
-              "ofType": null
             },
             "defaultValue": null
           },

@@ -53,9 +53,6 @@ export default {
     name: 'AddComment',
     inputFields: {
       ...requiredFields,
-      author: {
-        type: GraphQLID,
-      },
       author_url: {
         type: GraphQLString,
       },
@@ -70,9 +67,6 @@ export default {
     inputFields: {
       id: {
         type: new GraphQLNonNull(GraphQLID),
-      },
-      author: {
-        type: GraphQLID,
       },
       content: {
         type: new GraphQLNonNull(GraphQLString),
