@@ -115,6 +115,37 @@ class Comment {
       };
     }
   }
+
+  static async delete(input) {
+    if (!input.id) {
+      return Promise.reject('You must specify a comment ID to update.');
+    }
+
+    const { id } = fromGlobalId(input.id);
+    const deleteEndpoint = path.join(commentsEndpoint, id);
+    // eslint-disable-next-line no-param-reassign
+    delete input.id;
+
+    try {
+      const { data: { body: comment } } = await fetchData(deleteEndpoint, {
+        method: 'DELETE',
+      });
+
+      if (comment.deleted) {
+        return {
+          status: 'delete',
+        };
+      }
+
+      return {
+        status: 'delete',
+      };
+    } catch (e) {
+      return {
+        status: e.message,
+      };
+    }
+  }
 }
 
 export default Comment;

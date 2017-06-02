@@ -74,4 +74,18 @@ export default {
     },
     mutateAndGetPayload: input => Comment.update(input),
   }),
+  deleteComment: createCommentMutation({
+    name: 'DeleteComment',
+    inputFields: {
+      id: {
+        type: new GraphQLNonNull(GraphQLID),
+      },
+    },
+    outputFields: {
+      status: {
+        type: GraphQLString,
+      },
+    },
+    mutateAndGetPayload: input => Comment.delete(input),
+  }),
 };

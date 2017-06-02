@@ -262,6 +262,16 @@ type Content {
   protected: Boolean
 }
 
+input DeleteCommentInput {
+  id: ID!
+  clientMutationId: String
+}
+
+type DeleteCommentPayload {
+  status: String
+  clientMutationId: String
+}
+
 # The description for the object.
 type Description {
   # HTML for the object, transformed for display.
@@ -490,6 +500,7 @@ type Meta {
 type Mutation {
   addComment(input: AddCommentInput!): AddCommentPayload
   updateComment(input: UpdateCommentInput!): UpdateCommentPayload
+  deleteComment(input: DeleteCommentInput!): DeleteCommentPayload
 }
 
 # A nav menu.
