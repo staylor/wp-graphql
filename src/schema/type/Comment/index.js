@@ -42,6 +42,10 @@ const CommentType = new GraphQLObjectType({
       type: GraphQLString,
       description: 'URL for the object author.',
     },
+    author_hash: {
+      type: GraphQLString,
+      description: 'Hashed representation of the comment author.',
+    },
     status: {
       type: GraphQLString,
       description: 'State of the object.',

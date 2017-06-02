@@ -6122,6 +6122,18 @@
             "deprecationReason": null
           },
           {
+            "name": "author_hash",
+            "description": "Hashed representation of the comment author.",
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
             "name": "status",
             "description": "State of the object.",
             "args": [],

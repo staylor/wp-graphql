@@ -185,6 +185,9 @@ type Comment {
   # URL for the object author.
   author_url: String
 
+  # Hashed representation of the comment author.
+  author_hash: String
+
   # State of the object.
   status: String
 
