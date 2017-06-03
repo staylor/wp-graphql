@@ -4,7 +4,7 @@ import queries from 'query';
 
 const Query = new GraphQLObjectType({
   name: 'Query',
-  description: 'WordPress REST API read-only data',
+  description: 'WordPress API queries',
   fields: queries,
 });
 

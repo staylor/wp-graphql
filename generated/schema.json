@@ -11,7 +11,7 @@
       {
         "kind": "OBJECT",
         "name": "Query",
-        "description": "WordPress REST API read-only data",
+        "description": "WordPress API queries",
         "fields": [
           {
             "name": "node",
@@ -8968,7 +8968,7 @@
       {
         "kind": "OBJECT",
         "name": "Mutation",
-        "description": null,
+        "description": "WordPress API mutations",
         "fields": [
           {
             "name": "addComment",

@@ -497,6 +497,7 @@ type Meta {
   value: String
 }
 
+# WordPress API mutations
 type Mutation {
   addComment(input: AddCommentInput!): AddCommentPayload
   updateComment(input: UpdateCommentInput!): UpdateCommentPayload
@@ -880,7 +881,7 @@ type PostTypeLink {
   post_type: String
 }
 
-# WordPress REST API read-only data
+# WordPress API queries
 type Query {
   # Fetches an object given its ID
   node(
