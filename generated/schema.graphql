@@ -888,6 +888,7 @@ type Query {
     # The ID of an object
     id: ID!
   ): Node
+  viewer: Viewer
   posts(
     # Current page of the collection.
     page: Int
@@ -1683,6 +1684,25 @@ type Video implements MediaInterface {
 # The details for the media.
 type VideoDetails {
   title: String
+}
+
+type Viewer {
+  # The ID of an object
+  id: ID!
+  navMenu(
+    # Unique identifier for the object.
+    id: ID
+
+    # An alphanumeric identifier for the object unique to its type.
+    slug: String
+  ): NavMenu
+  sidebar(
+    # Unique identifier for the object.
+    id: ID
+
+    # An alphanumeric identifier for the object unique to its type.
+    slug: String
+  ): Sidebar
 }
 
 # A widget.

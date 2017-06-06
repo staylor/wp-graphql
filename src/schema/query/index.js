@@ -11,9 +11,16 @@ import sidebarQueries from 'query/Sidebar';
 import statusQueries from 'query/Status';
 import navMenuQueries from 'query/NavMenu';
 import { nodeField } from 'type/relayNode';
+import ViewerType from 'type/Viewer';
+
+const VIEWER_ID = 'me';
 
 export default {
   node: nodeField,
+  viewer: {
+    type: ViewerType,
+    resolve: () => ({ id: VIEWER_ID }),
+  },
   ...postQueries,
   ...userQueries,
   ...categoryQueries,

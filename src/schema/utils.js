@@ -66,16 +66,17 @@ export const loadEdges = DataType => (root, args) => {
     params.qs.offset = offset;
   }
 
-  return DataType.collection(params).then(({ items, total }) =>
-    connectionFromArraySlice(
+  return DataType.collection(params).then(({ items, total }) => {
+    const result = connectionFromArraySlice(
       items,
       {},
       {
-        arrayLength: parseInt(total, 10),
+        arrayLength: total ? parseInt(total, 10) : items.length,
         sliceStart: offset,
       },
-    ),
-  );
+    );
+    return result;
+  });
 };
 
 export const itemResolver = (dataType, loader) => ({
