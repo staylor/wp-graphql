@@ -1,5 +1,10 @@
 import { GraphQLObjectType, GraphQLString } from 'graphql';
-import { globalIdField, connectionArgs, connectionFromArraySlice } from 'graphql-relay';
+import {
+  globalIdField,
+  connectionArgs,
+  connectionFromArraySlice,
+  fromGlobalId,
+} from 'graphql-relay';
 import { itemResolver } from 'utils';
 import NavMenuType from 'type/NavMenu';
 import NavMenu from 'data/NavMenu';
@@ -43,6 +48,12 @@ const ViewerType = new GraphQLObjectType({
         } else {
           params.per_page = 10;
         }
+
+        ['categories', 'tags', 'author'].forEach((key) => {
+          if (params[key]) {
+            params[key] = params[key].split(',').map(value => fromGlobalId(value).id);
+          }
+        });
 
         delete params.first;
         delete params.last;
