@@ -20,4 +20,5 @@ const PostCollectionType = new GraphQLObjectType({
   },
 });
 
+export { PostConnection };
 export default PostCollectionType;

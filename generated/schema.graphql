@@ -1703,6 +1703,9 @@ type Viewer {
     # An alphanumeric identifier for the object unique to its type.
     slug: String
   ): Sidebar
+
+  # A list of results
+  posts(search: String, author: String, slug: String, orderby: POST_ORDERBY, order: ORDER, categories: String, tags: String, after: String, first: Int, before: String, last: Int): PostConnection
 }
 
 # A widget.
