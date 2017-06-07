@@ -1,4 +1,3 @@
-import { toGlobalId } from 'graphql-relay';
 import User from 'data/User';
 
 // https://highforthis.com/wp-json/wp/v2/users/1
@@ -11,7 +10,7 @@ describe('Test the fetching of User data', () => {
   });
 
   test('Dataloader should return a User', async () => {
-    const result = await User.load(toGlobalId('User', 1));
+    const result = await User.load(1);
     expect(result).toBeInstanceOf(User);
   });
 });

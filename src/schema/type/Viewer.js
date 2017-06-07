@@ -49,7 +49,7 @@ const ViewerType = new GraphQLObjectType({
           params.per_page = 10;
         }
 
-        ['categories', 'tags', 'author'].forEach((key) => {
+        ['categories', 'tags', 'author'].forEach(key => {
           if (params[key]) {
             params[key] = params[key].split(',').map(value => fromGlobalId(value).id);
           }
@@ -64,7 +64,7 @@ const ViewerType = new GraphQLObjectType({
           connectionFromArraySlice(items, connectionArguments, {
             arrayLength: total ? parseInt(total, 10) : items.length,
             sliceStart: params.offset || 0,
-          }),
+          })
         );
       },
     },

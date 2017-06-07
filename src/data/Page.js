@@ -1,16 +1,17 @@
 import { toGlobalId } from 'graphql-relay';
 import Dataloader from 'dataloader';
 import { fetchData } from 'data';
-import { decodeIDs } from 'utils';
+
+// Dataloader expects IDs that can be read by the REST API
 
 const path = process.env.WP_PAGES_ENDPOINT || 'wp/v2/pages';
-const pageLoader = new Dataloader(opaque =>
-  fetchData(path, { qs: { include: decodeIDs(opaque), orderby: 'include' } }).then(
-    ({ data: { body } }) => body,
-  ),
+const pageLoader = new Dataloader(ids =>
+  fetchData(path, {
+    qs: { include: ids, orderby: 'include' },
+  }).then(({ data: { body } }) => body)
 );
 const slugLoader = new Dataloader(slugs =>
-  fetchData(path, { qs: { slug: slugs } }).then(({ data: { body } }) => body),
+  fetchData(path, { qs: { slug: slugs } }).then(({ data: { body } }) => body)
 );
 
 class Page {

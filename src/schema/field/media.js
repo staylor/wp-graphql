@@ -1,5 +1,4 @@
 import { GraphQLString } from 'graphql';
-import { toGlobalId } from 'graphql-relay';
 
 import MEDIA_TYPE from 'enum/MediaType';
 
@@ -15,7 +14,7 @@ export const featuredMedia = () => ({
   description: 'The featured media for the object.',
   resolve: ({ featured_media }) => {
     if (featured_media > 0) {
-      return Media.load(toGlobalId('Media', featured_media));
+      return Media.load(featured_media);
     }
     return null;
   },

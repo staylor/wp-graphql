@@ -10,6 +10,7 @@ import TagType from 'type/Tag';
 import TaxonomyType from 'type/Taxonomy';
 import TypeType from 'type/Type';
 import UserType from 'type/User';
+import SidebarType from 'type/Sidebar';
 
 import Category from 'data/Category';
 import Comment from 'data/Comment';
@@ -21,37 +22,42 @@ import Tag from 'data/Tag';
 import Taxonomy from 'data/Taxonomy';
 import Type from 'data/Type';
 import User from 'data/User';
+import Sidebar from 'data/Sidebar';
 
 const { nodeInterface, nodeField } = nodeDefinitions(
-  (globalId) => {
-    const { type } = fromGlobalId(globalId);
+  globalId => {
+    const { id, type } = fromGlobalId(globalId);
 
     switch (type) {
       case 'Category':
-        return Category.load(globalId);
+        return Category.load(id);
       case 'Comment':
-        return Comment.load(globalId);
+        return Comment.load(id);
       case 'Media':
-        return Media.load(globalId);
+        return Media.load(id);
       case 'Page':
-        return Page.load(globalId);
+        return Page.load(id);
       case 'Post':
-        return Post.load(globalId);
+        return Post.load(id);
       case 'Status':
-        return Status.load(globalId);
+        return Status.load(id);
       case 'Tag':
-        return Tag.load(globalId);
+        return Tag.load(id);
       case 'Taxonomy':
-        return Taxonomy.load(globalId);
+        return Taxonomy.load(id);
       case 'Type':
-        return Type.load(globalId);
+        return Type.load(id);
       case 'User':
-        return User.load(globalId);
+        return User.load(id);
+      case 'Sidebar':
+        return Sidebar.load(id);
+      case 'Viewer':
+        return { id: 'me' };
       default:
         return null;
     }
   },
-  (obj) => {
+  obj => {
     switch (true) {
       case obj instanceof CategoryType:
         return Category;
@@ -73,10 +79,12 @@ const { nodeInterface, nodeField } = nodeDefinitions(
         return Type;
       case obj instanceof UserType:
         return User;
+      case obj instanceof SidebarType:
+        return Sidebar;
       default:
         return null;
     }
-  },
+  }
 );
 
 export { nodeInterface, nodeField };

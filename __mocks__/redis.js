@@ -1,13 +1,3 @@
-const cache = {};
+import redis from 'fakeredis';
 
-const client = {
-  createClient: () => client,
-  get: (key, cb) => cb(null, cache[key]),
-  set: (key, value) => {
-    cache[key] = value;
-  },
-  on: () => {},
-  expire: () => {},
-};
-
-export default client;
+export default redis;

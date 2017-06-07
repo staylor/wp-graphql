@@ -1,5 +1,4 @@
 import { GraphQLObjectType } from 'graphql';
-import { toGlobalId } from 'graphql-relay';
 
 import TermInterface from 'interface/Term';
 import CategoryLinks from 'type/Category/Links';
@@ -29,9 +28,7 @@ const CategoryType = new GraphQLObjectType({
     parent: {
       type: CategoryType,
       description: 'The parent term ID.',
-      // eslint-disable-next-line no-confusing-arrow
-      resolve: category =>
-        category.parent > 0 ? Category.load(toGlobalId('Category', category.parent)) : null,
+      resolve: category => (category.parent > 0 ? Category.load(category.parent) : null),
     },
   }),
 });

@@ -27,7 +27,7 @@ const CommentType = new GraphQLObjectType({
     post: {
       type: PostType,
       description: 'The ID of the associated post object.',
-      resolve: comment => (comment.post > 0 ? Post.load(toGlobalId('Post', comment.post)) : null),
+      resolve: comment => (comment.post > 0 ? Post.load(comment.post) : null),
     },
     parent: {
       type: GraphQLID,

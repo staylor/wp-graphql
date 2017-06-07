@@ -1,5 +1,5 @@
 import { GraphQLObjectType, GraphQLList } from 'graphql';
-import { toGlobalId, connectionFromArraySlice, connectionArgs } from 'graphql-relay';
+import { connectionFromArraySlice, connectionArgs } from 'graphql-relay';
 
 /* eslint-disable camelcase */
 
@@ -55,7 +55,7 @@ const PostType = new GraphQLObjectType({
       description: 'The terms assigned to the object in the category taxonomy.',
       resolve: ({ categories }) => {
         if (categories.length) {
-          return Promise.all(categories.map(cat => toGlobalId('Category', cat)).map(Category.load));
+          return Promise.all(categories.map(Category.load));
         }
         return null;
       },
@@ -65,7 +65,7 @@ const PostType = new GraphQLObjectType({
       description: 'The terms assigned to the object in the post_tag taxonomy.',
       resolve: ({ tags }) => {
         if (tags.length) {
-          return Promise.all(tags.map(tag => toGlobalId('Tag', tag)).map(Tag.load));
+          return Promise.all(tags.map(Tag.load));
         }
         return null;
       },
@@ -85,8 +85,8 @@ const PostType = new GraphQLObjectType({
             {
               arrayLength: parseInt(total, 10),
               sliceStart: 0,
-            },
-          ),
+            }
+          )
         ),
     },
   },

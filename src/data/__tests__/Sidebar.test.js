@@ -1,4 +1,3 @@
-import { toGlobalId } from 'graphql-relay';
 import Sidebar from 'data/Sidebar';
 
 // https://highforthis.com/wp-json/graphql/v1/sidebars/sidebar-1
@@ -11,7 +10,7 @@ describe('Test the fetching of Sidebar data', () => {
   });
 
   test('Dataloader should return a Sidebar', async () => {
-    const result = await Sidebar.load(toGlobalId('Sidebar', 'sidebar-1'));
+    const result = await Sidebar.load('sidebar-1');
     expect(result).toBeInstanceOf(Sidebar);
   });
 });

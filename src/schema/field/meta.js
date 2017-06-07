@@ -1,7 +1,7 @@
 import { GraphQLList } from 'graphql';
 import Meta from 'type/Meta';
 
-const metaResolver = (data) => {
+const metaResolver = data => {
   if (!data.meta || !Object.keys(data.meta).length) {
     return null;
   }

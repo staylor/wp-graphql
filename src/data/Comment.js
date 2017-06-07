@@ -2,13 +2,14 @@ import path from 'path';
 import { toGlobalId, fromGlobalId } from 'graphql-relay';
 import Dataloader from 'dataloader';
 import { fetchData } from 'data';
-import { decodeIDs } from 'utils';
+
+// Dataloader expects IDs that can be read by the REST API
 
 const commentsEndpoint = process.env.WP_COMMENTS_ENDPOINT || 'wp/v2/comments';
-const commentLoader = new Dataloader(opaque =>
-  fetchData(commentsEndpoint, { qs: { include: decodeIDs(opaque), orderby: 'include' } }).then(
-    ({ data: { body } }) => body,
-  ),
+const commentLoader = new Dataloader(ids =>
+  fetchData(commentsEndpoint, {
+    qs: { include: ids, orderby: 'include' },
+  }).then(({ data: { body } }) => body)
 );
 
 class Comment {
@@ -33,6 +34,8 @@ class Comment {
       items: body.map(item => Object.assign(new Comment(), item)),
     };
   }
+
+  // Mutations are responsible for deserializing IDs from the UI
 
   static async create(input) {
     if (!input.author && !(input.author_email && input.author_name)) {

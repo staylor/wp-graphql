@@ -44,8 +44,8 @@ const createCommentMutation = (opts = {}) =>
           cookies: '<FixMe>',
         }),
       },
-      opts,
-    ),
+      opts
+    )
   );
 
 export default {

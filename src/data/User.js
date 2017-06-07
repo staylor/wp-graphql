@@ -1,18 +1,20 @@
 import { toGlobalId } from 'graphql-relay';
 import Dataloader from 'dataloader';
 import { fetchData } from 'data';
-import { decodeIDs } from 'utils';
+
+// Dataloader expects IDs that can be read by the REST API
 
 const path = process.env.WP_USERS_ENDPOINT || 'wp/v2/users';
-const userLoader = new Dataloader(opaque =>
-  fetchData(path, { qs: { include: decodeIDs(opaque), orderby: 'include' } }).then(
-    ({ data: { body } }) => body,
-  ),
+const userLoader = new Dataloader(ids =>
+  fetchData(path, {
+    qs: { include: ids, orderby: 'include' },
+  }).then(({ data: { body } }) => body)
 );
 const slugLoader = new Dataloader(slugs =>
-  Promise.all(
-    slugs.map(slug => fetchData(path, { qs: { slug } }).then(({ data: { body } }) => body[0])),
-  ),
+  fetchData(path, { qs: { slug: slugs } })
+    .then(({ data: { body } }) => body)
+    // the REST API does not order by FIELD(slug, ....) yet
+    .then(users => slugs.map(slug => users.find(user => slug === user.slug)))
 );
 
 class User {

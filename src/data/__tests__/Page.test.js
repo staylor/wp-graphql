@@ -1,4 +1,3 @@
-import { toGlobalId } from 'graphql-relay';
 import Page from 'data/Page';
 
 // https://highforthis.com/wp-json/wp/v2/pages/215
@@ -11,7 +10,7 @@ describe('Test the fetching of Page data', () => {
   });
 
   test('Dataloader should return a Page by ID', async () => {
-    const result = await Page.load(toGlobalId('Page', 215));
+    const result = await Page.load(215);
     expect(result).toBeInstanceOf(Page);
   });
 

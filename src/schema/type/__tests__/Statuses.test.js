@@ -22,7 +22,7 @@ test('GraphQL should return a collection of statuses', async () => {
   const result = await graphql(schema, query, rootValue, context);
   const { data: { statuses } } = result;
 
-  statuses.forEach((node) => {
+  statuses.forEach(node => {
     expect(node.id).toBeDefined();
     expect(node.name).toBeDefined();
     expect(node.public).toBe(true);

@@ -26,7 +26,7 @@ app.use(
   responseTime((req, res, time) => {
     // eslint-disable-next-line no-console
     console.log(`Response time: ${Math.floor(time)}ms`);
-  }),
+  })
 );
 
 app.use(express.static('public'));

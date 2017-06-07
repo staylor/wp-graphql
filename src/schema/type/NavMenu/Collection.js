@@ -5,7 +5,9 @@ import NavMenuType from 'type/NavMenu';
 import { loadEdges } from 'utils';
 import NavMenu from 'data/NavMenu';
 
-const { connectionType: NavMenuConnection } = connectionDefinitions({ nodeType: NavMenuType });
+const { connectionType: NavMenuConnection } = connectionDefinitions({
+  nodeType: NavMenuType,
+});
 
 const NavMenuCollectionType = new GraphQLObjectType({
   name: 'NavMenuCollection',

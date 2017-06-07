@@ -1,4 +1,3 @@
-import { toGlobalId } from 'graphql-relay';
 import Comment from 'data/Comment';
 import { dateRegex } from 'jest/utils';
 
@@ -12,7 +11,7 @@ describe('Test the fetching of Comment data', () => {
   });
 
   test('Dataloader should return a Comment', async () => {
-    const result = await Comment.load(toGlobalId('Comment', 17));
+    const result = await Comment.load(17);
     expect(result).toBeInstanceOf(Comment);
     expect(result.id).toBe(17);
     expect(result.post).toBe(2696);

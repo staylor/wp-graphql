@@ -1,4 +1,3 @@
-import { toGlobalId } from 'graphql-relay';
 import Tag from 'data/Tag';
 
 // http://highforthis.com/wp-json/wp/v2/tags/282
@@ -11,7 +10,7 @@ describe('Test the fetching of Tag data', () => {
   });
 
   test('Dataloader should return a Tag', async () => {
-    const result = await Tag.load(toGlobalId('Tag', 282));
+    const result = await Tag.load(282);
     expect(result).toBeInstanceOf(Tag);
     expect(result.count).toBeGreaterThan(0);
     expect(result.description).toBeDefined();

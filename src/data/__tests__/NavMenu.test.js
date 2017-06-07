@@ -1,4 +1,3 @@
-import { toGlobalId } from 'graphql-relay';
 import NavMenu from 'data/NavMenu';
 
 // https://highforthis.com/wp-json/graphql/v1/nav-menus/2
@@ -11,7 +10,7 @@ describe('Test the fetching of NavMenu data', () => {
   });
 
   test('Dataloader should return a NavMenu', async () => {
-    const result = await NavMenu.load(toGlobalId('NavMenu', 2));
+    const result = await NavMenu.load(2);
     expect(result).toBeInstanceOf(NavMenu);
   });
 });

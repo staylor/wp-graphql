@@ -37,7 +37,6 @@ export default {
         description: 'Human-readable identifier for the object.',
       },
     },
-    // eslint-disable-next-line no-confusing-arrow
     resolve: (root, { id, slug: name }) => (name ? Page.loadBySlug(name) : Page.load(id)),
   },
 };

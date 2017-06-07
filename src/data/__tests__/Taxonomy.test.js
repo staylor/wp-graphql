@@ -1,4 +1,3 @@
-import { toGlobalId } from 'graphql-relay';
 import Taxonomy from 'data/Taxonomy';
 
 // https://highforthis.com/wp-json/wp/v2/taxonomies/category
@@ -11,7 +10,7 @@ describe('Test the fetching of Taxonomy data', () => {
   });
 
   test('Dataloader should return a Taxonomy', async () => {
-    const result = await Taxonomy.load(toGlobalId('Taxonomy', 'category'));
+    const result = await Taxonomy.load('category');
     expect(result).toBeInstanceOf(Taxonomy);
     expect(result.description).toBe('');
     expect(result.hierarchical).toBe(true);

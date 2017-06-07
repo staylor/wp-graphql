@@ -19,13 +19,13 @@ const rp = (path, opts = {}) => {
       simple: true,
       strictSSL: false,
     },
-    opts,
+    opts
   );
 
   return request(params);
 };
 
-export const fetchData = (path, opts = {}, expire = null) => {
+export const fetchData = (path, opts = {}) => {
   const client = getClient();
   const key = toBase64(`${JSON.stringify(opts)}`);
 
@@ -36,7 +36,7 @@ export const fetchData = (path, opts = {}, expire = null) => {
 
   return new Promise((resolve, reject) => {
     const makeRequest = () =>
-      rp(path, params).catch(error => reject(error)).then((response) => {
+      rp(path, params).catch(error => reject(error)).then(response => {
         if (response) {
           client.hset(path, key, JSON.stringify(response));
           resolve({

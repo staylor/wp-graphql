@@ -1,19 +1,20 @@
 import { toGlobalId } from 'graphql-relay';
 import Dataloader from 'dataloader';
 import { fetchData } from 'data';
-import { decodeIDs } from 'utils';
+
+// Dataloader expects IDs that can be read by the REST API
 
 const path = process.env.WP_NAV_MENUS_ENDPOINT || null;
 if (!path) {
   throw Error(
     'This endpoint does not exist in WordPress yet. ' +
-      'You must install the WordPres GraphQL Middleware plugin.',
+      'You must install the WordPres GraphQL Middleware plugin.'
   );
 }
-const navMenuLoader = new Dataloader(opaque =>
-  fetchData(path).then(({ data: { body } }) =>
-    decodeIDs(opaque).map(id => parseInt(id, 10)).map(id => body.find(item => item.id === id)),
-  ),
+const navMenuLoader = new Dataloader(ids =>
+  fetchData(path)
+    .then(({ data: { body } }) => body)
+    .then(menus => ids.map(id => menus.find(item => item.id === parseInt(id, 10))))
 );
 
 class NavMenu {

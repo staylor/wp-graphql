@@ -1,4 +1,3 @@
-import { toGlobalId } from 'graphql-relay';
 import Media from 'data/Media';
 import { dateRegex } from 'jest/utils';
 
@@ -12,7 +11,7 @@ describe('Test the fetching of Image data', () => {
   });
 
   test('Dataloader should return Image data', async () => {
-    const result = await Media.load(toGlobalId('Media', 2724));
+    const result = await Media.load(2724);
     expect(result).toBeInstanceOf(Media);
     expect(result.id).toBe(2724);
     expect(result.date).toMatch(dateRegex);

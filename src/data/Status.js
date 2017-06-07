@@ -1,13 +1,12 @@
 import { toGlobalId } from 'graphql-relay';
 import Dataloader from 'dataloader';
 import { fetchData } from 'data';
-import { decodeIDs } from 'utils';
+
+// Dataloader expects IDs that can be read by the REST API
 
 const path = process.env.WP_STATUSES_ENDPOINT || 'wp/v2/statuses';
-const statusLoader = new Dataloader(opaque =>
-  fetchData(path, {}, 1000 * 60 * 10).then(({ data: { body } }) =>
-    decodeIDs(opaque).map(slug => body[slug]),
-  ),
+const statusLoader = new Dataloader(slugs =>
+  fetchData(path, {}, 1000 * 60 * 10).then(({ data: { body } }) => slugs.map(slug => body[slug]))
 );
 
 class Status {

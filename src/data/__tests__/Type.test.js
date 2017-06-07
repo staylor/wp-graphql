@@ -1,4 +1,3 @@
-import { toGlobalId } from 'graphql-relay';
 import Type from 'data/Type';
 
 // https://highforthis.com/wp-json/wp/v2/types/post
@@ -11,7 +10,7 @@ describe('Test the fetching of Type data', () => {
   });
 
   test('Dataloader should return a Type', async () => {
-    const result = await Type.load(toGlobalId('Type', 'post'));
+    const result = await Type.load('post');
     expect(result).toBeInstanceOf(Type);
     expect(result.description).toBe('');
     expect(result.hierarchical).toBe(false);

@@ -28,7 +28,7 @@ export const loadEdges = DataType => (root, args) => {
   };
 
   if (Object.keys(root.args).length > 0) {
-    filterArgs.forEach((key) => {
+    filterArgs.forEach(key => {
       if (params.qs[key]) {
         filters[key] = params.qs[key];
         delete params.qs[key];
@@ -39,7 +39,7 @@ export const loadEdges = DataType => (root, args) => {
       params.qs.filter = filters;
     }
 
-    listArgs.forEach((key) => {
+    listArgs.forEach(key => {
       if (params.qs[key]) {
         params.qs[key] = params.qs[key].split(',');
         if (encodedArgs.indexOf(key) > -1) {
@@ -73,7 +73,7 @@ export const loadEdges = DataType => (root, args) => {
       {
         arrayLength: total ? parseInt(total, 10) : items.length,
         sliceStart: offset,
-      },
+      }
     );
     return result;
   });

@@ -24,7 +24,7 @@ test('GraphQL should return a collection of types', async () => {
   const result = await graphql(schema, query, rootValue, context);
   const { data: { types } } = result;
 
-  types.forEach((node) => {
+  types.forEach(node => {
     expect(node.id).toBeDefined();
     expect(node.name).toBeDefined();
     expect(node.description).toBeDefined();

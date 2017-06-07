@@ -8,7 +8,7 @@ export const getClient = () => {
   }
 
   client = redis.createClient({ prefix: 'wpgql:' });
-  client.on('error', (err) => {
+  client.on('error', err => {
     // eslint-disable-next-line no-console
     console.log(`Error ${err}`);
   });

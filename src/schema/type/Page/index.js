@@ -1,5 +1,4 @@
 import { GraphQLObjectType, GraphQLInt } from 'graphql';
-import { toGlobalId } from 'graphql-relay';
 
 /* eslint-disable camelcase */
 
@@ -45,7 +44,7 @@ const PageType = new GraphQLObjectType({
     parent: {
       type: PageType,
       description: 'The ID for the parent of the object.',
-      resolve: page => (page.parent ? Page.load(toGlobalId('Page', page.parent)) : null),
+      resolve: page => (page.parent ? Page.load(page.parent) : null),
     },
     menu_order: {
       type: GraphQLInt,

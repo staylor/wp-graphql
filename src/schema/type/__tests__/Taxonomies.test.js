@@ -24,7 +24,7 @@ test('GraphQL should return a collection of taxonomies', async () => {
   const result = await graphql(schema, query, rootValue, context);
   const { data: { taxonomies } } = result;
 
-  taxonomies.forEach((node) => {
+  taxonomies.forEach(node => {
     expect(node.id).toBeDefined();
     expect(node.name).toBeDefined();
     expect(node.description).toBeDefined();

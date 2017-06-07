@@ -31,7 +31,7 @@ const NavMenuItemType = new GraphQLObjectType({
     object_id: {
       type: GraphQLID,
       description: 'The id of the object.',
-      resolve: (item) => {
+      resolve: item => {
         if (!item.object_id) {
           return null;
         }
