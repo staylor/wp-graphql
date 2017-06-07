@@ -92,10 +92,11 @@ export const itemResolver = (dataType, loader) => ({
     },
   },
   // eslint-disable-next-line no-confusing-arrow
-  resolve: (root, { id, slug }) => {
+  resolve: (root, { id: globalId, slug }) => {
     if (slug && loader.loadBySlug) {
       return loader.loadBySlug(slug);
     }
+    const { id } = fromGlobalId(globalId);
     return loader.load(id);
   },
 });
