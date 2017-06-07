@@ -60,7 +60,7 @@ const ViewerType = new GraphQLObjectType({
         delete params.after;
         delete params.before;
 
-        return Post.collection(args).then(({ items, total }) =>
+        return Post.collection(params).then(({ items, total }) =>
           connectionFromArraySlice(items, connectionArguments, {
             arrayLength: total ? parseInt(total, 10) : items.length,
             sliceStart: params.offset || 0,
