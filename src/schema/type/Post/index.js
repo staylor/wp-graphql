@@ -1,5 +1,4 @@
 import { GraphQLObjectType, GraphQLList } from 'graphql';
-import { connectionFromArraySlice, connectionArgs } from 'graphql-relay';
 
 /* eslint-disable camelcase */
 
@@ -7,7 +6,7 @@ import PostInterface from 'interface/Post';
 import CategoryType from 'type/Category';
 import TagType from 'type/Tag';
 import PostLinks from 'type/Post/Links';
-import { CommentConnection } from 'type/Comment/Collection';
+import commentConnection from 'connection/Comment';
 
 import { globalIdField, slug, guid, link } from 'field/identifier';
 import { title, content, excerpt } from 'field/content';
@@ -18,7 +17,6 @@ import { featuredMedia } from 'field/media';
 import metaField from 'field/meta';
 import author from 'field/author';
 
-import Comment from 'data/Comment';
 import Category from 'data/Category';
 import Tag from 'data/Tag';
 
@@ -29,7 +27,7 @@ const PostType = new GraphQLObjectType({
   isTypeOf(post) {
     return post.type === 'post';
   },
-  fields: {
+  fields: () => ({
     id: globalIdField(),
     ...date,
     ...guid,
@@ -70,26 +68,8 @@ const PostType = new GraphQLObjectType({
         return null;
       },
     },
-    comments: {
-      type: CommentConnection,
-      args: connectionArgs,
-      description: 'The comments connected to this post.',
-      resolve: ({ id }) =>
-        Comment.collection({
-          post: id,
-          per_page: 100,
-        }).then(({ items, total }) =>
-          connectionFromArraySlice(
-            items,
-            {},
-            {
-              arrayLength: parseInt(total, 10),
-              sliceStart: 0,
-            }
-          )
-        ),
-    },
-  },
+    comments: commentConnection,
+  }),
 });
 
 export default PostType;

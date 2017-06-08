@@ -1,11 +1,19 @@
 import { GraphQLObjectType } from 'graphql';
+import { nodeField } from 'type/relayNode';
+import ViewerType from 'type/Viewer';
 
-import queries from 'query';
+const VIEWER_ID = 'me';
 
 const Query = new GraphQLObjectType({
   name: 'Query',
   description: 'WordPress API queries',
-  fields: queries,
+  fields: () => ({
+    node: nodeField,
+    viewer: {
+      type: ViewerType,
+      resolve: () => ({ id: VIEWER_ID }),
+    },
+  }),
 });
 
 export default Query;

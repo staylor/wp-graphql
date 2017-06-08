@@ -50,29 +50,34 @@ export const hierarchical = {
   // value or comma-separated values
   parent: {
     type: GraphQLString,
-    description: 'Limit result set to items of specific parent IDs (value or comma-separated values).',
+    description:
+      'Limit result set to items of specific parent IDs (value or comma-separated values).',
   },
   parent_exclude: {
     type: GraphQLString,
-    description: 'Ensure result set excludes specific parent IDs (value or comma-separated values).',
+    description:
+      'Ensure result set excludes specific parent IDs (value or comma-separated values).',
   },
 };
 
 export const author = {
   author: {
     type: GraphQLString,
-    description: 'Limit result set to items assigned to specific authors (value or comma-separated values).',
+    description:
+      'Limit result set to items assigned to specific authors (value or comma-separated values).',
   },
   author_exclude: {
     type: GraphQLString,
-    description: 'Ensure result set excludes items assigned to specific authors (value or comma-separated values).',
+    description:
+      'Ensure result set excludes items assigned to specific authors (value or comma-separated values).',
   },
 };
 
 export const slug = {
   slug: {
     type: GraphQLString,
-    description: 'Limit result set to items with one or more specific slugs (value or comma-separated values).',
+    description:
+      'Limit result set to items with one or more specific slugs (value or comma-separated values).',
   },
 };
 

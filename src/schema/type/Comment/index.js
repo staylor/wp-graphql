@@ -3,17 +3,13 @@ import { toGlobalId } from 'graphql-relay';
 
 /* eslint-disable camelcase */
 
-import PostType from 'type/Post';
 import Avatar from 'type/User/Avatar';
 import CommentLinks from 'type/Comment/Links';
-
 import { globalIdField, link } from 'field/identifier';
 import { content } from 'field/content';
 import { date } from 'field/date';
 import metaField from 'field/meta';
 import author from 'field/author';
-
-import Post from 'data/Post';
 
 const CommentType = new GraphQLObjectType({
   name: 'Comment',
@@ -25,9 +21,9 @@ const CommentType = new GraphQLObjectType({
     ...content,
     ...link,
     post: {
-      type: PostType,
+      type: GraphQLID,
       description: 'The ID of the associated post object.',
-      resolve: comment => (comment.post > 0 ? Post.load(comment.post) : null),
+      resolve: comment => toGlobalId('Comment', comment.post),
     },
     parent: {
       type: GraphQLID,

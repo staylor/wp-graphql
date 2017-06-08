@@ -120,30 +120,6 @@ type Category implements TermInterface {
   parent: Category
 }
 
-# Collection of categories based on cursors.
-type CategoryCollection {
-  # A list of results
-  results(after: String, first: Int, before: String, last: Int): CategoryConnection
-}
-
-# A connection to a list of items.
-type CategoryConnection {
-  # Information to aid in pagination.
-  pageInfo: PageInfo!
-
-  # A list of edges.
-  edges: [CategoryEdge]
-}
-
-# An edge in a connection.
-type CategoryEdge {
-  # The item at the end of the edge
-  node: Category
-
-  # A cursor for use in pagination
-  cursor: String!
-}
-
 # The links for a post.
 type CategoryLinks {
   self: [Link]
@@ -173,7 +149,7 @@ type Comment {
   link: String
 
   # The ID of the associated post object.
-  post: Post
+  post: ID
 
   # The ID for the parent of the object.
   parent: ID
@@ -216,12 +192,6 @@ enum COMMENT_ORDERBY {
 enum COMMENT_STATUS {
   OPEN
   CLOSED
-}
-
-# Collection of comments based on cursors.
-type CommentCollection {
-  # A list of results
-  results(after: String, first: Int, before: String, last: Int): CommentConnection
 }
 
 # A connection to a list of items.
@@ -394,30 +364,6 @@ enum MEDIA_TYPE {
   FILE
 }
 
-# Collection of media based on cursors.
-type MediaCollection {
-  # A list of results
-  results(after: String, first: Int, before: String, last: Int): MediaConnection
-}
-
-# A connection to a list of items.
-type MediaConnection {
-  # Information to aid in pagination.
-  pageInfo: PageInfo!
-
-  # A list of edges.
-  edges: [MediaEdge]
-}
-
-# An edge in a connection.
-type MediaEdge {
-  # The item at the end of the edge
-  node: Media
-
-  # A cursor for use in pagination
-  cursor: String!
-}
-
 interface MediaInterface {
   # Unique identifier for the object.
   id: ID!
@@ -518,30 +464,6 @@ type NavMenu {
   # Items associated with the menu.
   items: [NavMenuItem]
   _links: NavMenuLinks
-}
-
-# Collection of nav menus based on cursors.
-type NavMenuCollection {
-  # A list of results
-  results(after: String, first: Int, before: String, last: Int): NavMenuConnection
-}
-
-# A connection to a list of items.
-type NavMenuConnection {
-  # Information to aid in pagination.
-  pageInfo: PageInfo!
-
-  # A list of edges.
-  edges: [NavMenuEdge]
-}
-
-# An edge in a connection.
-type NavMenuEdge {
-  # The item at the end of the edge
-  node: NavMenu
-
-  # A cursor for use in pagination
-  cursor: String!
 }
 
 # A nav menu item.
@@ -660,41 +582,6 @@ type Page implements PostInterface {
   menu_order: Int
 }
 
-# Sort collection by object attribute.
-enum PAGE_ORDERBY {
-  DATE
-  RELEVANCE
-  ID
-  INCLUDE
-  TITLE
-  SLUG
-  MENU_ORDER
-}
-
-# Collection of pages based on cursors.
-type PageCollection {
-  # A list of results
-  results(after: String, first: Int, before: String, last: Int): PageConnection
-}
-
-# A connection to a list of items.
-type PageConnection {
-  # Information to aid in pagination.
-  pageInfo: PageInfo!
-
-  # A list of edges.
-  edges: [PageEdge]
-}
-
-# An edge in a connection.
-type PageEdge {
-  # The item at the end of the edge
-  node: Page
-
-  # A cursor for use in pagination
-  cursor: String!
-}
-
 # Information about pagination in a connection.
 type PageInfo {
   # When paginating forwards, are there more items?
@@ -785,8 +672,21 @@ type Post implements PostInterface {
   # The terms assigned to the object in the post_tag taxonomy.
   tags: [Tag]
 
-  # The comments connected to this post.
-  comments(after: String, first: Int, before: String, last: Int): CommentConnection
+  # A list of results
+  comments(
+    # Limit result set to resources assigned to a specific post id.
+    post: ID
+
+    # Sort collection by object attribute.
+    orderby: COMMENT_ORDERBY
+
+    # Order sort attribute ascending or descending.
+    order: ORDER
+    after: String
+    first: Int
+    before: String
+    last: Int
+  ): CommentConnection
 }
 
 # Sort collection by object attribute.
@@ -797,12 +697,6 @@ enum POST_ORDERBY {
   INCLUDE
   TITLE
   SLUG
-}
-
-# Collection of posts based on cursors.
-type PostCollection {
-  # A list of results
-  results(after: String, first: Int, before: String, last: Int): PostConnection
 }
 
 # A connection to a list of items.
@@ -889,402 +783,6 @@ type Query {
     id: ID!
   ): Node
   viewer: Viewer
-  posts(
-    # Current page of the collection.
-    page: Int
-
-    # Maximum number of items to be returned in result set.
-    per_page: Int
-
-    # Offset the result set by a specific number of items.
-    offset: Int
-    order: ORDER
-
-    # Limit results to those matching a string.
-    search: String
-
-    # Limit result set to specific IDs (value or comma-separated values).
-    include: String
-
-    # Ensure result set excludes specific IDs (value or comma-separated values).
-    exclude: String
-
-    # Limit response to items published after a given ISO8601 compliant date.
-    after: String
-
-    # Limit response to items published before a given ISO8601 compliant date.
-    before: String
-
-    # Limit result set to items assigned to specific authors (value or comma-separated values).
-    author: String
-
-    # Ensure result set excludes items assigned to specific authors (value or comma-separated values).
-    author_exclude: String
-
-    # Limit result set to items with one or more specific slugs (value or comma-separated values).
-    slug: String
-    orderby: POST_ORDERBY
-    categories: String
-    categories_exclude: String
-    tags: String
-    tags_exclude: String
-    year: Int
-  ): PostCollection
-  stickies(
-    # Current page of the collection.
-    page: Int
-
-    # Maximum number of items to be returned in result set.
-    per_page: Int
-
-    # Offset the result set by a specific number of items.
-    offset: Int
-    order: ORDER
-
-    # Limit results to those matching a string.
-    search: String
-
-    # Limit result set to specific IDs (value or comma-separated values).
-    include: String
-
-    # Ensure result set excludes specific IDs (value or comma-separated values).
-    exclude: String
-
-    # Limit response to items published after a given ISO8601 compliant date.
-    after: String
-
-    # Limit response to items published before a given ISO8601 compliant date.
-    before: String
-
-    # Limit result set to items assigned to specific authors (value or comma-separated values).
-    author: String
-
-    # Ensure result set excludes items assigned to specific authors (value or comma-separated values).
-    author_exclude: String
-
-    # Limit result set to items with one or more specific slugs (value or comma-separated values).
-    slug: String
-    orderby: POST_ORDERBY
-    categories: String
-    categories_exclude: String
-    tags: String
-    tags_exclude: String
-  ): PostCollection
-  post(
-    # Unique identifier for the object.
-    id: ID
-
-    # An alphanumeric identifier for the object unique to its type.
-    slug: String
-  ): Post
-  users(
-    # Current page of the collection.
-    page: Int
-
-    # Maximum number of items to be returned in result set.
-    per_page: Int
-
-    # Offset the result set by a specific number of items.
-    offset: Int
-    order: ORDER
-
-    # Limit results to those matching a string.
-    search: String
-
-    # Limit result set to specific IDs (value or comma-separated values).
-    include: String
-
-    # Ensure result set excludes specific IDs (value or comma-separated values).
-    exclude: String
-
-    # Limit result set to items with one or more specific slugs (value or comma-separated values).
-    slug: String
-    orderby: USER_ORDERBY
-
-    # Limit result set to users matching at least one specific role provided.
-    # Accepts csv list or single role (value or comma-separated values).
-    roles: String
-  ): UserCollection
-  user(
-    # Unique identifier for the object.
-    id: ID
-
-    # An alphanumeric identifier for the object unique to its type.
-    slug: String
-  ): User
-  categories(
-    # Current page of the collection.
-    page: Int
-
-    # Maximum number of items to be returned in result set.
-    per_page: Int
-
-    # Offset the result set by a specific number of items.
-    offset: Int
-    order: ORDER
-
-    # Limit results to those matching a string.
-    search: String
-
-    # Limit result set to specific IDs (value or comma-separated values).
-    include: String
-
-    # Ensure result set excludes specific IDs (value or comma-separated values).
-    exclude: String
-
-    # Limit result set to items with one or more specific slugs (value or comma-separated values).
-    slug: String
-    orderby: TAXONOMY_ORDERBY
-
-    # Whether to hide terms not assigned to any posts.
-    hide_empty: Boolean
-
-    # Limit result set to terms assigned to a specific post.
-    post: ID
-
-    # Limit result set to terms assigned to a specific parent.
-    parent: Int
-  ): CategoryCollection
-  category(
-    # Unique identifier for the object.
-    id: ID
-
-    # An alphanumeric identifier for the object unique to its type.
-    slug: String
-  ): Category
-  tags(
-    # Current page of the collection.
-    page: Int
-
-    # Maximum number of items to be returned in result set.
-    per_page: Int
-
-    # Offset the result set by a specific number of items.
-    offset: Int
-    order: ORDER
-
-    # Limit results to those matching a string.
-    search: String
-
-    # Limit result set to specific IDs (value or comma-separated values).
-    include: String
-
-    # Ensure result set excludes specific IDs (value or comma-separated values).
-    exclude: String
-
-    # Limit result set to items with one or more specific slugs (value or comma-separated values).
-    slug: String
-    orderby: TAXONOMY_ORDERBY
-
-    # Whether to hide terms not assigned to any posts.
-    hide_empty: Boolean
-
-    # Limit result set to terms assigned to a specific post.
-    post: ID
-  ): TagCollection
-  tag(
-    # Unique identifier for the object.
-    id: ID
-
-    # An alphanumeric identifier for the object unique to its type.
-    slug: String
-  ): Tag
-  pages(
-    # Current page of the collection.
-    page: Int
-
-    # Maximum number of items to be returned in result set.
-    per_page: Int
-
-    # Offset the result set by a specific number of items.
-    offset: Int
-    order: ORDER
-
-    # Limit results to those matching a string.
-    search: String
-
-    # Limit result set to specific IDs (value or comma-separated values).
-    include: String
-
-    # Ensure result set excludes specific IDs (value or comma-separated values).
-    exclude: String
-
-    # Limit response to items published after a given ISO8601 compliant date.
-    after: String
-
-    # Limit response to items published before a given ISO8601 compliant date.
-    before: String
-
-    # Limit result set to items of specific parent IDs (value or comma-separated values).
-    parent: String
-
-    # Ensure result set excludes specific parent IDs (value or comma-separated values).
-    parent_exclude: String
-
-    # Limit result set to items assigned to specific authors (value or comma-separated values).
-    author: String
-
-    # Ensure result set excludes items assigned to specific authors (value or comma-separated values).
-    author_exclude: String
-
-    # Limit result set to items with one or more specific slugs (value or comma-separated values).
-    slug: String
-
-    # Limit result set to posts with a specific menu_order value.
-    menu_order: Int
-    orderby: PAGE_ORDERBY
-  ): PageCollection
-  page(
-    # Unique identifier for the object.
-    id: ID
-
-    # Human-readable identifier for the object.
-    slug: String
-  ): Page
-  comments(
-    # Current page of the collection.
-    page: Int
-
-    # Maximum number of items to be returned in result set.
-    per_page: Int
-
-    # Offset the result set by a specific number of items.
-    offset: Int
-    order: ORDER
-
-    # Limit results to those matching a string.
-    search: String
-
-    # Limit result set to specific IDs (value or comma-separated values).
-    include: String
-
-    # Ensure result set excludes specific IDs (value or comma-separated values).
-    exclude: String
-
-    # Limit response to items published after a given ISO8601 compliant date.
-    after: String
-
-    # Limit response to items published before a given ISO8601 compliant date.
-    before: String
-
-    # Limit result set to items of specific parent IDs (value or comma-separated values).
-    parent: String
-
-    # Ensure result set excludes specific parent IDs (value or comma-separated values).
-    parent_exclude: String
-
-    # Limit result set to comments assigned to specific post IDs.
-    post: ID
-    orderby: COMMENT_ORDERBY
-  ): CommentCollection
-  comment(
-    # Unique identifier for the object.
-    id: ID
-
-    # An alphanumeric identifier for the object unique to its type.
-    slug: String
-  ): Comment
-
-  # List of types.
-  types: [Type]
-  type(
-    # Unique identifier for the object.
-    id: ID
-
-    # An alphanumeric identifier for the object unique to its type.
-    slug: String
-  ): Type
-
-  # List of taxonomies.
-  taxonomies: [Taxonomy]
-  taxonomy(
-    # Unique identifier for the object.
-    id: ID
-
-    # An alphanumeric identifier for the object unique to its type.
-    slug: String
-  ): Taxonomy
-  media(
-    # Current page of the collection.
-    page: Int
-
-    # Maximum number of items to be returned in result set.
-    per_page: Int
-
-    # Offset the result set by a specific number of items.
-    offset: Int
-    order: ORDER
-
-    # Limit results to those matching a string.
-    search: String
-
-    # Limit result set to specific IDs (value or comma-separated values).
-    include: String
-
-    # Ensure result set excludes specific IDs (value or comma-separated values).
-    exclude: String
-
-    # Limit response to items published after a given ISO8601 compliant date.
-    after: String
-
-    # Limit response to items published before a given ISO8601 compliant date.
-    before: String
-
-    # Limit result set to items of specific parent IDs (value or comma-separated values).
-    parent: String
-
-    # Ensure result set excludes specific parent IDs (value or comma-separated values).
-    parent_exclude: String
-
-    # Limit result set to items assigned to specific authors (value or comma-separated values).
-    author: String
-
-    # Ensure result set excludes items assigned to specific authors (value or comma-separated values).
-    author_exclude: String
-
-    # Limit result set to items with one or more specific slugs (value or comma-separated values).
-    slug: String
-    orderby: POST_ORDERBY
-
-    # Limit result set to attachments of a particular media type.
-    media_type: MEDIA_TYPE
-
-    # Limit result set to attachments of a particular MIME type.
-    mime_type: String
-  ): MediaCollection
-  medium(
-    # Unique identifier for the object.
-    id: ID
-
-    # An alphanumeric identifier for the object unique to its type.
-    slug: String
-  ): Media
-  sidebars: SidebarCollection
-  sidebar(
-    # Unique identifier for the object.
-    id: ID
-
-    # An alphanumeric identifier for the object unique to its type.
-    slug: String
-  ): Sidebar
-
-  # List of statuses.
-  statuses: [Status]
-  status(
-    # Unique identifier for the object.
-    id: ID
-
-    # An alphanumeric identifier for the object unique to its type.
-    slug: String
-  ): Status
-  navMenus: NavMenuCollection
-  navMenu(
-    # Unique identifier for the object.
-    id: ID
-
-    # An alphanumeric identifier for the object unique to its type.
-    slug: String
-  ): NavMenu
 }
 
 # A widget area.
@@ -1318,59 +816,11 @@ type Sidebar {
   _links: SidebarLinks
 }
 
-# Collection of sidebars based on cursors.
-type SidebarCollection {
-  # A list of results
-  results(after: String, first: Int, before: String, last: Int): SidebarConnection
-}
-
-# A connection to a list of items.
-type SidebarConnection {
-  # Information to aid in pagination.
-  pageInfo: PageInfo!
-
-  # A list of edges.
-  edges: [SidebarEdge]
-}
-
-# An edge in a connection.
-type SidebarEdge {
-  # The item at the end of the edge
-  node: Sidebar
-
-  # A cursor for use in pagination
-  cursor: String!
-}
-
 # The links for a sidebar.
 type SidebarLinks {
   collection: [Link]
   items: [Link]
   curies: [TemplatedLink]
-}
-
-# A post status.
-type Status {
-  # Unique identifier for the object.
-  id: ID!
-
-  # HTML title for the object.
-  name: String
-
-  # An alphanumeric identifier for the object unique to its type.
-  slug: String
-
-  # Whether posts of this status should be shown in the front end of the site.
-  public: Boolean
-
-  # Whether posts with this status should be publicly-queryable.
-  queryable: Boolean
-  _links: StatusLinks
-}
-
-# The links for a status.
-type StatusLinks {
-  archives: [Link]
 }
 
 # A unique identifier for a post.
@@ -1399,30 +849,6 @@ type Tag implements TermInterface {
   # Meta fields.
   meta: [Meta]
   _links: TagLinks
-}
-
-# Collection of tags based on cursors.
-type TagCollection {
-  # A list of results
-  results(after: String, first: Int, before: String, last: Int): TagConnection
-}
-
-# A connection to a list of items.
-type TagConnection {
-  # Information to aid in pagination.
-  pageInfo: PageInfo!
-
-  # A list of edges.
-  edges: [TagEdge]
-}
-
-# An edge in a connection.
-type TagEdge {
-  # The item at the end of the edge
-  node: Tag
-
-  # A cursor for use in pagination
-  cursor: String!
 }
 
 # The links for a post.
@@ -1457,17 +883,6 @@ type Taxonomy {
   # REST base route for the taxonomy.
   rest_base: String
   _links: TaxonomyLinks
-}
-
-# Sort collection by term attribute.
-enum TAXONOMY_ORDERBY {
-  ID
-  INCLUDE
-  NAME
-  SLUG
-  TERM_GROUP
-  DESCRIPTION
-  COUNT
 }
 
 # The links for a taxonomy.
@@ -1516,38 +931,6 @@ type Title {
   rendered: String
 }
 
-# A post type.
-type Type {
-  # Unique identifier for the object.
-  id: ID!
-
-  # The object description.
-  description: String
-
-  # HTML title for the object.
-  name: String
-
-  # An alphanumeric identifier for the object unique to its type.
-  slug: String
-
-  # Whether or not the post type should have children.
-  hierarchical: Boolean
-
-  # Taxonomies associated with post type.
-  taxonomies: [String]
-
-  # REST base route for the post type.
-  rest_base: String
-  _links: TypeLinks
-}
-
-# The links for a type.
-type TypeLinks {
-  collection: [Link]
-  items: [Link]
-  curies: [TemplatedLink]
-}
-
 input UpdateCommentInput {
   id: ID!
   content: String!
@@ -1581,41 +964,6 @@ type User {
   # Avatar URLs for the user.
   avatar_urls: [Avatar]
   _links: UserLinks
-}
-
-# Sort collection by object attribute.
-enum USER_ORDERBY {
-  ID
-  INCLUDE
-  NAME
-  REGISTERED_DATE
-  SLUG
-  EMAIL
-  URL
-}
-
-# Collection of users based on cursors.
-type UserCollection {
-  # A list of results
-  results(after: String, first: Int, before: String, last: Int): UserConnection
-}
-
-# A connection to a list of items.
-type UserConnection {
-  # Information to aid in pagination.
-  pageInfo: PageInfo!
-
-  # A list of edges.
-  edges: [UserEdge]
-}
-
-# An edge in a connection.
-type UserEdge {
-  # The item at the end of the edge
-  node: User
-
-  # A cursor for use in pagination
-  cursor: String!
 }
 
 # The links for a user.
@@ -1689,6 +1037,41 @@ type VideoDetails {
 type Viewer {
   # The ID of an object
   id: ID!
+  post(
+    # Unique identifier for the object.
+    id: ID
+
+    # An alphanumeric identifier for the object unique to its type.
+    slug: String
+  ): Post
+  page(
+    # Unique identifier for the object.
+    id: ID
+
+    # An alphanumeric identifier for the object unique to its type.
+    slug: String
+  ): Page
+  media(
+    # Unique identifier for the object.
+    id: ID
+
+    # An alphanumeric identifier for the object unique to its type.
+    slug: String
+  ): Media
+  category(
+    # Unique identifier for the object.
+    id: ID
+
+    # An alphanumeric identifier for the object unique to its type.
+    slug: String
+  ): Category
+  tag(
+    # Unique identifier for the object.
+    id: ID
+
+    # An alphanumeric identifier for the object unique to its type.
+    slug: String
+  ): Tag
   navMenu(
     # Unique identifier for the object.
     id: ID
@@ -1705,7 +1088,32 @@ type Viewer {
   ): Sidebar
 
   # A list of results
-  posts(search: String, author: String, slug: String, orderby: POST_ORDERBY, order: ORDER, categories: String, tags: String, after: String, first: Int, before: String, last: Int): PostConnection
+  posts(
+    # Limit results to those matching a string.
+    search: String
+
+    # Limit result set to items assigned to specific authors (value or comma-separated values).
+    author: String
+
+    # Limit result set to items with one or more specific slugs (value or comma-separated values).
+    slug: String
+
+    # Limit result set to all items that have the specified term assigned in the categories taxonomy.
+    categories: String
+
+    # Limit result set to all items that have the specified term assigned in the tags taxonomy.
+    tags: String
+
+    # Sort collection by object attribute.
+    orderby: POST_ORDERBY
+
+    # Order sort attribute ascending or descending.
+    order: ORDER
+    after: String
+    first: Int
+    before: String
+    last: Int
+  ): PostConnection
 }
 
 # A widget.
