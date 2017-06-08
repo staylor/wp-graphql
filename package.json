@@ -52,7 +52,7 @@
   },
   "scripts": {
     "build": "babel --ignore __tests__ src -d build",
-    "dev": "nodemon --exec babel-node src/server.js",
+    "dev": "nodemon --delay 2 --exec babel-node src/server.js",
     "start": "node build/server.js",
     "prod": "forever start build/server.js",
     "test": "nyc jest",
