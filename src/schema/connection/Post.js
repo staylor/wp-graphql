@@ -1,4 +1,4 @@
-import { GraphQLString } from 'graphql';
+import { GraphQLString, GraphQLID } from 'graphql';
 import {
   connectionArgs,
   connectionDefinitions,
@@ -34,15 +34,25 @@ export default {
         'Limit result set to items with one or more specific slugs (value or comma-separated values).',
     },
     // value or comma-separated values
+    category: {
+      type: GraphQLID,
+      description:
+        'Limit result set to all items that have the specified term assigned in the categories taxonomy.',
+    },
     categories: {
       type: GraphQLString,
       description:
-        'Limit result set to all items that have the specified term assigned in the categories taxonomy.',
+        'Limit result set to all items that have the specified terms assigned in the categories taxonomy.',
+    },
+    tag: {
+      type: GraphQLID,
+      description:
+        'Limit result set to all items that have the specified term assigned in the tags taxonomy.',
     },
     tags: {
       type: GraphQLString,
       description:
-        'Limit result set to all items that have the specified term assigned in the tags taxonomy.',
+        'Limit result set to all items that have the specified terms assigned in the tags taxonomy.',
     },
     orderby: {
       type: POST_ORDERBY,
@@ -67,6 +77,16 @@ export default {
       connectionArguments.last = params.last;
     } else {
       params.per_page = 10;
+    }
+
+    if (params.category) {
+      params.categories = params.category;
+      delete params.category;
+    }
+
+    if (params.tag) {
+      params.tags = params.tag;
+      delete params.tag;
     }
 
     ['categories', 'tags', 'author'].forEach(key => {

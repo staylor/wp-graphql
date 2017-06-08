@@ -382,8 +382,18 @@
                 "defaultValue": null
               },
               {
-                "name": "categories",
+                "name": "category",
                 "description": "Limit result set to all items that have the specified term assigned in the categories taxonomy.",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "ID",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "categories",
+                "description": "Limit result set to all items that have the specified terms assigned in the categories taxonomy.",
                 "type": {
                   "kind": "SCALAR",
                   "name": "String",
@@ -392,8 +402,18 @@
                 "defaultValue": null
               },
               {
-                "name": "tags",
+                "name": "tag",
                 "description": "Limit result set to all items that have the specified term assigned in the tags taxonomy.",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "ID",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "tags",
+                "description": "Limit result set to all items that have the specified terms assigned in the tags taxonomy.",
                 "type": {
                   "kind": "SCALAR",
                   "name": "String",
