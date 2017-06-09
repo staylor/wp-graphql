@@ -38,7 +38,7 @@ export default {
     if (params.first) {
       params.per_page = params.first;
       connectionArguments.first = params.first;
-      params.order = 'ASC';
+      params.order = 'asc';
     } else if (params.last) {
       params.per_page = params.last;
       connectionArguments.last = params.last;

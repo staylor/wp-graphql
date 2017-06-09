@@ -32,9 +32,10 @@ app.use(
 app.use(express.static('public'));
 
 app.use('/graphql', bodyParser.json(), async (req, res, next) => {
-  const fragment = req.body.query.substring(0, 3);
+  const fragment = req.body && req.body.query && req.body.query.substring(0, 3);
   if (fragment === 'id:') {
     const queryID = req.body.query.substring(3);
+    // eslint-disable-next-line no-console
     console.log(`Hydrating Query: ${queryID}`);
     const query = await client.hgetAsync(HASH_KEY, queryID);
     req.body.query = query;
