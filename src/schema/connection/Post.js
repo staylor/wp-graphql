@@ -24,9 +24,8 @@ export default {
       description: 'Limit results to those matching a string.',
     },
     author: {
-      type: GraphQLString,
-      description:
-        'Limit result set to items assigned to specific authors (value or comma-separated values).',
+      type: GraphQLID,
+      description: 'Limit result set to items assigned to specific author.',
     },
     slug: {
       type: GraphQLString,

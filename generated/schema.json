@@ -282,6 +282,39 @@
             "deprecationReason": null
           },
           {
+            "name": "author",
+            "description": null,
+            "args": [
+              {
+                "name": "id",
+                "description": "Unique identifier for the object.",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "ID",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "slug",
+                "description": "An alphanumeric identifier for the object unique to its type.",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                },
+                "defaultValue": null
+              }
+            ],
+            "type": {
+              "kind": "OBJECT",
+              "name": "User",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
             "name": "navMenu",
             "description": null,
             "args": [
@@ -363,10 +396,10 @@
               },
               {
                 "name": "author",
-                "description": "Limit result set to items assigned to specific authors (value or comma-separated values).",
+                "description": "Limit result set to items assigned to specific author.",
                 "type": {
                   "kind": "SCALAR",
-                  "name": "String",
+                  "name": "ID",
                   "ofType": null
                 },
                 "defaultValue": null

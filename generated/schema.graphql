@@ -1072,6 +1072,13 @@ type Viewer {
     # An alphanumeric identifier for the object unique to its type.
     slug: String
   ): Tag
+  author(
+    # Unique identifier for the object.
+    id: ID
+
+    # An alphanumeric identifier for the object unique to its type.
+    slug: String
+  ): User
   navMenu(
     # Unique identifier for the object.
     id: ID
@@ -1092,8 +1099,8 @@ type Viewer {
     # Limit results to those matching a string.
     search: String
 
-    # Limit result set to items assigned to specific authors (value or comma-separated values).
-    author: String
+    # Limit result set to items assigned to specific author.
+    author: ID
 
     # Limit result set to items with one or more specific slugs (value or comma-separated values).
     slug: String

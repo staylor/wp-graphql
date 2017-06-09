@@ -15,6 +15,8 @@ import NavMenuType from 'type/NavMenu';
 import NavMenu from 'data/NavMenu';
 import SidebarType from 'type/Sidebar';
 import Sidebar from 'data/Sidebar';
+import UserType from 'type/User';
+import User from 'data/User';
 import postConnection from 'connection/Post';
 
 const ViewerType = new GraphQLObjectType({
@@ -26,6 +28,7 @@ const ViewerType = new GraphQLObjectType({
     media: itemResolver(MediaType, Media),
     category: itemResolver(CategoryType, Category),
     tag: itemResolver(TagType, Tag),
+    author: itemResolver(UserType, User),
     navMenu: itemResolver(NavMenuType, NavMenu),
     sidebar: itemResolver(SidebarType, Sidebar),
     posts: postConnection,
