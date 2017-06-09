@@ -1,11 +1,11 @@
 import 'dotenv/config';
 import express from 'express';
 import graphQLHTTP from 'express-graphql';
-import { graphqlBatchHTTPWrapper } from 'react-relay-network-layer';
 import cookieParser from 'cookie-parser';
 import bodyParser from 'body-parser';
 import responseTime from 'response-time';
 import Schema from 'schema';
+import client, { HASH_KEY } from 'data/client';
 import queryLogger from './middleware/queryLogger';
 
 const app = express();
@@ -31,7 +31,16 @@ app.use(
 
 app.use(express.static('public'));
 
-app.use('/graphql/batch', bodyParser.json(), graphqlBatchHTTPWrapper(graphQLServer));
+app.use('/graphql', bodyParser.json(), async (req, res, next) => {
+  const fragment = req.body.query.substring(0, 3);
+  if (fragment === 'id:') {
+    const queryID = req.body.query.substring(3);
+    console.log(`Hydrating Query: ${queryID}`);
+    const query = await client.hgetAsync(HASH_KEY, queryID);
+    req.body.query = query;
+  }
+  next();
+});
 
 app.use('/graphql', graphQLServer);
 
