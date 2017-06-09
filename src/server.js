@@ -8,6 +8,8 @@ import Schema from 'schema';
 import client, { HASH_KEY } from 'data/client';
 import queryLogger from './middleware/queryLogger';
 
+process.env.TZ = 'America/New_York';
+
 const app = express();
 app.use(cookieParser());
 
