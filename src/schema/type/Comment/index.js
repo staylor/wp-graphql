@@ -23,7 +23,7 @@ const CommentType = new GraphQLObjectType({
     post: {
       type: GraphQLID,
       description: 'The ID of the associated post object.',
-      resolve: comment => toGlobalId('Comment', comment.post),
+      resolve: comment => toGlobalId('Post', comment.post),
     },
     parent: {
       type: GraphQLID,
