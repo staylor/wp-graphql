@@ -5,7 +5,7 @@ import cookieParser from 'cookie-parser';
 import bodyParser from 'body-parser';
 import responseTime from 'response-time';
 import Schema from 'schema';
-import client, { HASH_KEY } from 'data/client';
+import getClient, { HASH_KEY } from 'data/client';
 import queryLogger from './middleware/queryLogger';
 
 process.env.TZ = 'America/New_York';
@@ -39,6 +39,7 @@ app.use('/graphql', bodyParser.json(), async (req, res, next) => {
     const queryID = req.body.query.substring(3);
     // eslint-disable-next-line no-console
     console.log(`Hydrating Query: ${queryID}`);
+    const client = getClient();
     const query = await client.hgetAsync(HASH_KEY, queryID);
     req.body.query = query;
   }

@@ -1,6 +1,6 @@
 import url from 'url';
 import request from 'request-promise';
-import client from 'data/client';
+import getClient from 'data/client';
 
 export const toBase64 = str => new Buffer(str).toString('base64');
 
@@ -27,6 +27,7 @@ const rp = (path, opts = {}) => {
 
 export const fetchData = (path, opts = {}) => {
   const key = toBase64(`${JSON.stringify(opts)}`);
+  const client = getClient();
 
   const params = {
     ...opts,

@@ -8,22 +8,30 @@ bluebird.promisifyAll(redis.Multi.prototype);
 const REDIS_PREFIX = 'wpgql:';
 export const HASH_KEY = 'queries';
 
-const client = redis.createClient({ prefix: REDIS_PREFIX });
-// use this to debug Redis operations
-// client.monitor();
-client.on('error', err => {
-  // eslint-disable-next-line no-console
-  console.log(`Error ${err}`);
-});
+let client;
 
-client.on('connect', () => {
-  // eslint-disable-next-line no-console
-  console.log('Redis client connected');
-});
+export default function getClient() {
+  if (client) {
+    return client;
+  }
 
-client.on('monitor', (time, args) => {
-  // eslint-disable-next-line no-console
-  console.log('\n', args);
-});
+  client = redis.createClient({ prefix: REDIS_PREFIX });
+  // use this to debug Redis operations
+  // client.monitor();
+  client.on('error', err => {
+    // eslint-disable-next-line no-console
+    console.log(`Error ${err}`);
+  });
 
-export default client;
+  client.on('connect', () => {
+    // eslint-disable-next-line no-console
+    console.log('Redis client connected');
+  });
+
+  client.on('monitor', (time, args) => {
+    // eslint-disable-next-line no-console
+    console.log('\n', args);
+  });
+
+  return client;
+}
