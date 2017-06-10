@@ -1,5 +1,5 @@
 import { GraphQLObjectType, GraphQLList } from 'graphql';
-import NavMenuItemType from 'type/NavMenu/Item';
+import NavMenuItemType from 'type/NavMenuItem';
 import { globalIdField, name } from 'field/identifier';
 import description from 'field/description';
 

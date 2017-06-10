@@ -1,6 +1,6 @@
 import { GraphQLObjectType, GraphQLString, GraphQLInt } from 'graphql';
 
-const MediaSize = new GraphQLObjectType({
+const MediaSizeType = new GraphQLObjectType({
   name: 'MediaSize',
   description: 'The details for the media size.',
   fields: {
@@ -13,4 +13,4 @@ const MediaSize = new GraphQLObjectType({
   },
 });
 
-export default MediaSize;
+export default MediaSizeType;

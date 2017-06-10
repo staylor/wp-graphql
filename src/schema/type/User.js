@@ -1,6 +1,6 @@
 import { GraphQLObjectType, GraphQLList } from 'graphql';
 
-import Avatar from 'type/User/Avatar';
+import Avatar from 'type/Avatar';
 
 import { globalIdField, slug, name, link } from 'field/identifier';
 import description from 'field/description';

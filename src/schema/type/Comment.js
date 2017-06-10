@@ -3,7 +3,7 @@ import { toGlobalId } from 'graphql-relay';
 
 /* eslint-disable camelcase */
 
-import Avatar from 'type/User/Avatar';
+import Avatar from 'type/Avatar';
 import { globalIdField, link } from 'field/identifier';
 import { content } from 'field/content';
 import { date } from 'field/date';
