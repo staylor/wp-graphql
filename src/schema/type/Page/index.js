@@ -3,8 +3,6 @@ import { GraphQLObjectType, GraphQLInt } from 'graphql';
 /* eslint-disable camelcase */
 
 import PostInterface from 'interface/Post';
-import PageLinks from 'type/Page/Links';
-
 import { globalIdField, slug, guid, link } from 'field/identifier';
 import { title, content, excerpt } from 'field/content';
 import { date, modified } from 'field/date';
@@ -39,7 +37,6 @@ const PageType = new GraphQLObjectType({
     ...author,
     featured_media: featuredMedia(),
     meta: metaField(),
-    _links: { type: PageLinks },
     // extra page fields
     parent: {
       type: PageType,

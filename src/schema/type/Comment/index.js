@@ -4,7 +4,6 @@ import { toGlobalId } from 'graphql-relay';
 /* eslint-disable camelcase */
 
 import Avatar from 'type/User/Avatar';
-import CommentLinks from 'type/Comment/Links';
 import { globalIdField, link } from 'field/identifier';
 import { content } from 'field/content';
 import { date } from 'field/date';
@@ -60,7 +59,6 @@ const CommentType = new GraphQLObjectType({
         })),
     },
     meta: metaField(),
-    _links: { type: CommentLinks },
   }),
 });
 

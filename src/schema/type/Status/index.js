@@ -1,7 +1,5 @@
 import { GraphQLObjectType, GraphQLBoolean } from 'graphql';
 
-import StatusLinks from 'type/Status/Links';
-
 import { globalIdField, slug, name } from 'field/identifier';
 
 const StatusType = new GraphQLObjectType({
@@ -19,7 +17,6 @@ const StatusType = new GraphQLObjectType({
       type: GraphQLBoolean,
       description: 'Whether posts with this status should be publicly-queryable.',
     },
-    _links: { type: StatusLinks },
   },
 });
 

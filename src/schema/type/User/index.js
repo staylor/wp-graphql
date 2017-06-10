@@ -1,7 +1,6 @@
 import { GraphQLObjectType, GraphQLList } from 'graphql';
 
 import Avatar from 'type/User/Avatar';
-import UserLinks from 'type/User/Links';
 
 import { globalIdField, slug, name, link } from 'field/identifier';
 import description from 'field/description';
@@ -24,7 +23,6 @@ const UserType = new GraphQLObjectType({
           url: user.avatar_urls[key],
         })),
     },
-    _links: { type: UserLinks },
   },
 });
 

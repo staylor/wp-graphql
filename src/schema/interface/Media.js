@@ -4,8 +4,6 @@ import { GraphQLInterfaceType, GraphQLNonNull, GraphQLID, GraphQLList } from 'gr
 
 import UserType from 'type/User';
 import Meta from 'type/Meta';
-import MediaLinks from 'type/Media/Links';
-
 import { slug, guid, link } from 'field/identifier';
 import { date, modified } from 'field/date';
 import { comment_status, ping_status } from 'field/status';
@@ -32,7 +30,6 @@ const MediaInterface = new GraphQLInterfaceType({
     ...template,
     meta: { type: new GraphQLList(Meta) },
     author: { type: UserType },
-    _links: { type: MediaLinks },
     // featured_media (this field should exist for audio/video)
     // extra media fields
     ...description,

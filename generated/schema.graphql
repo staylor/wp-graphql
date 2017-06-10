@@ -53,7 +53,6 @@ type Audio implements MediaInterface {
 
   # Meta fields.
   meta: [Meta]
-  _links: MediaLinks
   description: Description
   caption: Caption
 
@@ -114,20 +113,9 @@ type Category implements TermInterface {
 
   # Meta fields.
   meta: [Meta]
-  _links: CategoryLinks
 
   # The parent term ID.
   parent: Category
-}
-
-# The links for a post.
-type CategoryLinks {
-  self: [Link]
-  collection: [Link]
-  about: [Link]
-  up: [EmbeddableLink]
-  post_type: [TermLink]
-  curies: [TemplatedLink]
 }
 
 # An object.
@@ -174,7 +162,6 @@ type Comment {
 
   # Meta fields.
   meta: [Meta]
-  _links: CommentLinks
 }
 
 # Sort collection by object attribute.
@@ -212,14 +199,6 @@ type CommentEdge {
   cursor: String!
 }
 
-# The links for a comment.
-type CommentLinks {
-  self: [Link]
-  collection: [Link]
-  author: [EmbeddableLink]
-  up: [PostTypeLink]
-}
-
 # The content for the object.
 type Content {
   # HTML for the object, transformed for display.
@@ -246,12 +225,6 @@ type DeleteCommentPayload {
 type Description {
   # HTML for the object, transformed for display.
   rendered: String
-}
-
-# An embeddable link for an entity.
-type EmbeddableLink {
-  href: String
-  embeddable: Boolean
 }
 
 # The excerpt for the object.
@@ -321,7 +294,6 @@ type Image implements MediaInterface {
 
   # Meta fields.
   meta: [Meta]
-  _links: MediaLinks
   description: Description
   caption: Caption
 
@@ -346,11 +318,6 @@ type ImageDetails {
   height: Int
   file: String
   sizes: [MediaSize]
-}
-
-# A link for a post.
-type Link {
-  href: String
 }
 
 union Media = Image | Audio | Video
@@ -397,7 +364,6 @@ interface MediaInterface {
   template: String
   meta: [Meta]
   author: User
-  _links: MediaLinks
   description: Description
   caption: Caption
 
@@ -413,15 +379,6 @@ interface MediaInterface {
 
   # The ID for the associated post of the attachment.
   post: ID!
-}
-
-# The links for the media.
-type MediaLinks {
-  self: [Link]
-  collection: [Link]
-  about: [Link]
-  author: [EmbeddableLink]
-  replies: [EmbeddableLink]
 }
 
 # The details for the media size.
@@ -463,7 +420,6 @@ type NavMenu {
 
   # Items associated with the menu.
   items: [NavMenuItem]
-  _links: NavMenuLinks
 }
 
 # A nav menu item.
@@ -509,13 +465,6 @@ type NavMenuItem {
 
   # Associated XFN value(s).
   xfn: String
-}
-
-# The links for a nav menu.
-type NavMenuLinks {
-  collection: [Link]
-  items: [Link]
-  curies: [TemplatedLink]
 }
 
 # An object with an ID
@@ -573,7 +522,6 @@ type Page implements PostInterface {
 
   # Meta fields.
   meta: [Meta]
-  _links: PageLinks
 
   # The ID for the parent of the object.
   parent: Page
@@ -595,20 +543,6 @@ type PageInfo {
 
   # When paginating forwards, the cursor to continue.
   endCursor: String
-}
-
-# The links for a page.
-type PageLinks {
-  self: [Link]
-  collection: [Link]
-  about: [Link]
-  author: [EmbeddableLink]
-  replies: [EmbeddableLink]
-  history: [Link]
-  attachment: [Link]
-  term: [TermLink]
-  curies: [TemplatedLink]
-  up: [EmbeddableLink]
 }
 
 # Whether or not the object can be pinged.
@@ -664,7 +598,6 @@ type Post implements PostInterface {
 
   # Whether or not the object should be treated as sticky.
   sticky: Boolean
-  _links: PostLinks
 
   # The terms assigned to the object in the category taxonomy.
   categories: [Category]
@@ -755,26 +688,6 @@ interface PostInterface {
   featured_media: Media
 }
 
-# The links for a post.
-type PostLinks {
-  self: [Link]
-  collection: [Link]
-  about: [Link]
-  author: [EmbeddableLink]
-  replies: [EmbeddableLink]
-  history: [Link]
-  attachment: [Link]
-  term: [TermLink]
-  curies: [TemplatedLink]
-}
-
-# An embeddable link for an entity.
-type PostTypeLink {
-  href: String
-  embeddable: Boolean
-  post_type: String
-}
-
 # WordPress API queries
 type Query {
   # Fetches an object given its ID
@@ -813,14 +726,6 @@ type Sidebar {
 
   # HTML widgets associated with the sidebar.
   widgets: [Widget]
-  _links: SidebarLinks
-}
-
-# The links for a sidebar.
-type SidebarLinks {
-  collection: [Link]
-  items: [Link]
-  curies: [TemplatedLink]
 }
 
 # A unique identifier for a post.
@@ -848,16 +753,6 @@ type Tag implements TermInterface {
 
   # Meta fields.
   meta: [Meta]
-  _links: TagLinks
-}
-
-# The links for a post.
-type TagLinks {
-  self: [Link]
-  collection: [Link]
-  about: [Link]
-  post_type: [TermLink]
-  curies: [TemplatedLink]
 }
 
 # A taxonomy type.
@@ -882,20 +777,6 @@ type Taxonomy {
 
   # REST base route for the taxonomy.
   rest_base: String
-  _links: TaxonomyLinks
-}
-
-# The links for a taxonomy.
-type TaxonomyLinks {
-  collection: [Link]
-  items: [Link]
-  curies: [TemplatedLink]
-}
-
-type TemplatedLink {
-  name: String
-  href: String
-  templated: Boolean
 }
 
 # Term fields.
@@ -917,12 +798,6 @@ interface TermInterface {
   count: Int
   taxonomy: Taxonomy
   meta: [Meta]
-}
-
-type TermLink {
-  taxonomy: String
-  href: String
-  embeddable: Boolean
 }
 
 # The title for an object.
@@ -963,13 +838,6 @@ type User {
 
   # Avatar URLs for the user.
   avatar_urls: [Avatar]
-  _links: UserLinks
-}
-
-# The links for a user.
-type UserLinks {
-  self: [Link]
-  collection: [Link]
 }
 
 # An object.
@@ -1010,7 +878,6 @@ type Video implements MediaInterface {
 
   # Meta fields.
   meta: [Meta]
-  _links: MediaLinks
   description: Description
   caption: Caption
 

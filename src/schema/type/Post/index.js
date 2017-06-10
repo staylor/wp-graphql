@@ -5,9 +5,7 @@ import { GraphQLObjectType, GraphQLList } from 'graphql';
 import PostInterface from 'interface/Post';
 import CategoryType from 'type/Category';
 import TagType from 'type/Tag';
-import PostLinks from 'type/Post/Links';
 import commentConnection from 'connection/Comment';
-
 import { globalIdField, slug, guid, link } from 'field/identifier';
 import { title, content, excerpt } from 'field/content';
 import { date, modified } from 'field/date';
@@ -47,7 +45,6 @@ const PostType = new GraphQLObjectType({
     meta: metaField(),
     // extra post fields
     ...sticky,
-    _links: { type: PostLinks },
     categories: {
       type: new GraphQLList(CategoryType),
       description: 'The terms assigned to the object in the category taxonomy.',

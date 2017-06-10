@@ -1,7 +1,5 @@
 import { GraphQLObjectType } from 'graphql';
-
 import TermInterface from 'interface/Term';
-import CategoryLinks from 'type/Category/Links';
 import description from 'field/description';
 import metaField from 'field/meta';
 import { globalIdField, slug, name, link } from 'field/identifier';
@@ -23,7 +21,6 @@ const CategoryType = new GraphQLObjectType({
     ...slug,
     ...taxonomy,
     meta: metaField(),
-    _links: { type: CategoryLinks },
     // extra category fields
     parent: {
       type: CategoryType,

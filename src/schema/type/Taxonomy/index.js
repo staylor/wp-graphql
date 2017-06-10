@@ -1,7 +1,5 @@
 import { GraphQLObjectType, GraphQLList, GraphQLString, GraphQLBoolean } from 'graphql';
 
-import TaxonomyLinks from 'type/Taxonomy/Links';
-
 import { globalIdField, slug, name } from 'field/identifier';
 import description from 'field/description';
 
@@ -25,7 +23,6 @@ const TaxonomyType = new GraphQLObjectType({
       type: GraphQLString,
       description: 'REST base route for the taxonomy.',
     },
-    _links: { type: TaxonomyLinks },
   },
 });
 

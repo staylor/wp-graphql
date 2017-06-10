@@ -1,10 +1,6 @@
 import { GraphQLNonNull, GraphQLID } from 'graphql';
 import { toGlobalId } from 'graphql-relay';
-
 /* eslint-disable camelcase */
-
-import MediaLinks from 'type/Media/Links';
-
 import { date, modified } from 'field/date';
 import metaField from 'field/meta';
 import { globalIdField, slug, guid, link } from 'field/identifier';
@@ -28,7 +24,6 @@ export default {
   ...template,
   ...author,
   meta: metaField(),
-  _links: { type: MediaLinks },
   // featured_media (this field should exist for audio/video)
   // extra media fields
   ...description,

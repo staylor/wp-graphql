@@ -4,6 +4,7 @@ import {
   connectionDefinitions,
   connectionFromArraySlice,
   fromGlobalId,
+  cursorToOffset,
 } from 'graphql-relay';
 import PostType from 'type/Post';
 import Post from 'data/Post';
@@ -70,12 +71,12 @@ export default {
     if (params.first) {
       params.per_page = params.first;
       connectionArguments.first = params.first;
-      params.order = 'ASC';
-    } else if (params.last) {
-      params.per_page = params.last;
-      connectionArguments.last = params.last;
     } else {
       params.per_page = 10;
+    }
+
+    if (params.after) {
+      params.offset = cursorToOffset(params.after) + 1;
     }
 
     if (params.category) {

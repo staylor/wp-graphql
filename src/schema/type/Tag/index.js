@@ -1,7 +1,6 @@
 import { GraphQLObjectType } from 'graphql';
 
 import TermInterface from 'interface/Term';
-import TagLinks from 'type/Tag/Links';
 
 import { globalIdField, slug, name, link } from 'field/identifier';
 import taxonomy from 'field/taxonomy';
@@ -23,7 +22,6 @@ const TagType = new GraphQLObjectType({
     ...slug,
     ...taxonomy,
     meta: metaField(),
-    _links: { type: TagLinks },
   },
 });
 

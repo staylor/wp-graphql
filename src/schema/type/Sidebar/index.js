@@ -1,6 +1,5 @@
 import { GraphQLObjectType, GraphQLList, GraphQLString } from 'graphql';
 
-import SidebarLinks from 'type/Sidebar/Links';
 import WidgetType from 'type/Widget';
 import { globalIdField, name } from 'field/identifier';
 import description from 'field/description';
@@ -19,11 +18,13 @@ const SidebarType = new GraphQLObjectType({
     },
     before_widget: {
       type: GraphQLString,
-      description: "HTML content to prepend to each widget's HTML output when assigned to this sidebar.",
+      description:
+        "HTML content to prepend to each widget's HTML output when assigned to this sidebar.",
     },
     after_widget: {
       type: GraphQLString,
-      description: "HTML content to append to each widget's HTML output when assigned to this sidebar.",
+      description:
+        "HTML content to append to each widget's HTML output when assigned to this sidebar.",
     },
     before_title: {
       type: GraphQLString,
@@ -37,7 +38,6 @@ const SidebarType = new GraphQLObjectType({
       type: new GraphQLList(WidgetType),
       description: 'HTML widgets associated with the sidebar.',
     },
-    _links: { type: SidebarLinks },
   },
 });
 

@@ -1,7 +1,5 @@
 import { GraphQLObjectType, GraphQLList, GraphQLString, GraphQLBoolean } from 'graphql';
 
-import TypeLinks from 'type/Type/Links';
-
 import { globalIdField, slug, name } from 'field/identifier';
 import description from 'field/description';
 
@@ -25,7 +23,6 @@ const TypeType = new GraphQLObjectType({
       type: GraphQLString,
       description: 'REST base route for the post type.',
     },
-    _links: { type: TypeLinks },
   },
 });
 
