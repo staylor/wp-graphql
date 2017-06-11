@@ -1,6 +1,5 @@
 import { GraphQLObjectType } from 'graphql';
-import { globalIdField } from 'graphql-relay';
-import { itemResolver } from 'utils';
+import { globalIdField, fromGlobalId } from 'graphql-relay';
 import PostType from 'type/Post';
 import Post from 'data/Post';
 import PageType from 'type/Page';
@@ -18,6 +17,21 @@ import Sidebar from 'data/Sidebar';
 import UserType from 'type/User';
 import User from 'data/User';
 import postConnection from 'connection/Post';
+import { id, slug } from 'field/identifier';
+
+const itemResolver = (dataType, loader) => ({
+  type: dataType,
+  args: {
+    ...id,
+    ...slug,
+  },
+  resolve: (root, { id: globalId, slug: slugParam }) => {
+    if (slugParam && loader.loadBySlug) {
+      return loader.loadBySlug(slugParam);
+    }
+    return loader.load(fromGlobalId(globalId).id);
+  },
+});
 
 const ViewerType = new GraphQLObjectType({
   name: 'Viewer',

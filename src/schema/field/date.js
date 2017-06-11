@@ -1,7 +1,5 @@
 import { GraphQLString } from 'graphql';
 
-/* eslint-disable camelcase */
-
 export const date = {
   date: {
     type: GraphQLString,

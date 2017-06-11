@@ -15,6 +15,13 @@ export const name = {
   },
 };
 
+export const id = {
+  id: {
+    type: GraphQLID,
+    description: 'Unique identifier for the object.',
+  },
+};
+
 export const slug = {
   slug: {
     type: GraphQLString,

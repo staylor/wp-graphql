@@ -1,15 +1,13 @@
 import COMMENT_STATUS from 'enum/CommentStatus';
 import PING_STATUS from 'enum/PingStatus';
 
-/* eslint-disable camelcase */
-
-export const comment_status = {
+export const commentStatus = {
   comment_status: {
     type: COMMENT_STATUS,
   },
 };
 
-export const ping_status = {
+export const pingStatus = {
   ping_status: {
     type: PING_STATUS,
   },

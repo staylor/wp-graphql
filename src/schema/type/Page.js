@@ -1,14 +1,11 @@
 import { GraphQLObjectType, GraphQLInt } from 'graphql';
-
-/* eslint-disable camelcase */
-
 import PostInterface from 'interface/Post';
 import { globalIdField, slug, guid, link } from 'field/identifier';
 import { title, content, excerpt } from 'field/content';
 import { date, modified } from 'field/date';
 import metaField from 'field/meta';
 import { type, template } from 'field/post';
-import { comment_status, ping_status } from 'field/status';
+import { commentStatus, pingStatus } from 'field/status';
 import { featuredMedia } from 'field/media';
 import author from 'field/author';
 import Page from 'data/Page';
@@ -31,8 +28,8 @@ const PageType = new GraphQLObjectType({
     ...title,
     ...content,
     ...excerpt,
-    ...comment_status,
-    ...ping_status,
+    ...commentStatus,
+    ...pingStatus,
     ...template,
     ...author,
     featured_media: featuredMedia(),
@@ -41,7 +38,7 @@ const PageType = new GraphQLObjectType({
     parent: {
       type: PageType,
       description: 'The ID for the parent of the object.',
-      resolve: page => (page.parent ? Page.load(page.parent) : null),
+      resolve: page => (page.parent > 0 ? Page.load(page.parent) : null),
     },
     menu_order: {
       type: GraphQLInt,

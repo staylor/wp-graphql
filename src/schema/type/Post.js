@@ -1,7 +1,4 @@
 import { GraphQLObjectType, GraphQLList } from 'graphql';
-
-/* eslint-disable camelcase */
-
 import PostInterface from 'interface/Post';
 import CategoryType from 'type/Category';
 import TagType from 'type/Tag';
@@ -9,12 +6,11 @@ import commentConnection from 'connection/Comment';
 import { globalIdField, slug, guid, link } from 'field/identifier';
 import { title, content, excerpt } from 'field/content';
 import { date, modified } from 'field/date';
-import { comment_status, ping_status } from 'field/status';
+import { commentStatus, pingStatus } from 'field/status';
 import { type, template, format, sticky } from 'field/post';
 import { featuredMedia } from 'field/media';
 import metaField from 'field/meta';
 import author from 'field/author';
-
 import Category from 'data/Category';
 import Tag from 'data/Tag';
 
@@ -36,8 +32,8 @@ const PostType = new GraphQLObjectType({
     ...title,
     ...content,
     ...excerpt,
-    ...comment_status,
-    ...ping_status,
+    ...commentStatus,
+    ...pingStatus,
     ...template,
     ...format,
     ...author,

@@ -1,15 +1,12 @@
 import { GraphQLInterfaceType, GraphQLNonNull, GraphQLID, GraphQLList } from 'graphql';
-
-/* eslint-disable camelcase */
-
 import UserType from 'type/User';
 import Meta from 'type/Meta';
 import { slug, guid, link } from 'field/identifier';
 import { date, modified } from 'field/date';
-import { comment_status, ping_status } from 'field/status';
+import { commentStatus, pingStatus } from 'field/status';
 import { title } from 'field/content';
 import { type, template } from 'field/post';
-import { description, caption, alt_text, media_type, mime_type, source_url } from 'field/media';
+import { description, caption, altText, mediaType, mimeType, sourceUrl } from 'field/media';
 
 const MediaInterface = new GraphQLInterfaceType({
   name: 'MediaInterface',
@@ -25,8 +22,8 @@ const MediaInterface = new GraphQLInterfaceType({
     ...type,
     ...link,
     ...title,
-    ...comment_status,
-    ...ping_status,
+    ...commentStatus,
+    ...pingStatus,
     ...template,
     meta: { type: new GraphQLList(Meta) },
     author: { type: UserType },
@@ -34,10 +31,10 @@ const MediaInterface = new GraphQLInterfaceType({
     // extra media fields
     ...description,
     ...caption,
-    ...alt_text,
-    ...media_type,
-    ...mime_type,
-    ...source_url,
+    ...altText,
+    ...mediaType,
+    ...mimeType,
+    ...sourceUrl,
     post: {
       type: new GraphQLNonNull(GraphQLID),
       description: 'The ID for the associated post of the attachment.',
