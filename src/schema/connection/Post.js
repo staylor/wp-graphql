@@ -72,6 +72,10 @@ export default {
   resolve: (root, args) => {
     const connectionArguments = {};
     const params = Object.assign({}, args);
+    if (typeof params.search !== 'undefined' && !params.search) {
+      return null;
+    }
+
     if (params.first) {
       params.per_page = params.first;
       connectionArguments.first = params.first;
