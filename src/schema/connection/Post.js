@@ -1,4 +1,4 @@
-import { GraphQLString, GraphQLID } from 'graphql';
+import { GraphQLString, GraphQLID, GraphQLBoolean } from 'graphql';
 import {
   connectionArgs,
   connectionDefinitions,
@@ -20,6 +20,10 @@ export { PostConnection };
 export default {
   type: PostConnection,
   args: {
+    sticky: {
+      type: GraphQLBoolean,
+      description: 'Limit result set to items that are sticky.',
+    },
     search: {
       type: GraphQLString,
       description: 'Limit results to those matching a string.',

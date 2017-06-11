@@ -963,6 +963,9 @@ type Viewer {
 
   # A list of results
   posts(
+    # Limit result set to items that are sticky.
+    sticky: Boolean
+
     # Limit results to those matching a string.
     search: String
 

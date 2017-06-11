@@ -385,6 +385,16 @@
             "description": "A list of results",
             "args": [
               {
+                "name": "sticky",
+                "description": "Limit result set to items that are sticky.",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Boolean",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
                 "name": "search",
                 "description": "Limit results to those matching a string.",
                 "type": {
