@@ -1,6 +1,8 @@
 import redis from 'redis';
 import bluebird from 'bluebird';
 
+/* eslint-disable no-console */
+
 bluebird.promisifyAll(redis.RedisClient.prototype);
 bluebird.promisifyAll(redis.Multi.prototype);
 
@@ -19,17 +21,14 @@ export default function getClient() {
   // use this to debug Redis operations
   // client.monitor();
   client.on('error', err => {
-    // eslint-disable-next-line no-console
     console.log(`Error ${err}`);
   });
 
   client.on('connect', () => {
-    // eslint-disable-next-line no-console
     console.log('Redis client connected');
   });
 
   client.on('monitor', (time, args) => {
-    // eslint-disable-next-line no-console
     console.log('\n', args);
   });
 

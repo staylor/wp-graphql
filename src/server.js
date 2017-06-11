@@ -8,6 +8,8 @@ import Schema from 'schema';
 import getClient, { HASH_KEY } from 'data/client';
 import queryLogger from './middleware/queryLogger';
 
+/* eslint-disable no-console */
+
 process.env.TZ = 'America/New_York';
 
 const app = express();
@@ -26,7 +28,6 @@ app.use(queryLogger());
 
 app.use(
   responseTime((req, res, time) => {
-    // eslint-disable-next-line no-console
     console.log(`Response time: ${Math.floor(time)}ms`);
   })
 );
@@ -37,7 +38,6 @@ app.use('/graphql', bodyParser.json(), async (req, res, next) => {
   const fragment = req.body && req.body.query && req.body.query.substring(0, 3);
   if (fragment === 'id:') {
     const queryID = req.body.query.substring(3);
-    // eslint-disable-next-line no-console
     console.log(`Hydrating Query: ${queryID}`);
     const client = getClient();
     const query = await client.hgetAsync(HASH_KEY, queryID);
@@ -50,6 +50,5 @@ app.use('/graphql', graphQLServer);
 
 const server = app.listen(process.env.GRAPHQL_PORT, () => {
   const { address, port } = server.address();
-  // eslint-disable-next-line no-console
   console.log(`GraphQL Server is now running on http://${address}:${port}`);
 });

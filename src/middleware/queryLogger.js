@@ -12,15 +12,15 @@ export default function queryLogger() {
     (req, res, next) => {
       const date = new Date();
       console.log(
-        `--- ${clc.bold.green(`${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`)} ---`,
+        `--- ${clc.bold.green(`${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`)} ---`
       );
       console.log(clc.bold.blackBright('query:\n') + req.body.query);
       console.log(
-        clc.bold.blackBright('variables:\n') + JSON.stringify(req.body.variables, null, 2),
+        clc.bold.blackBright('variables:\n') + JSON.stringify(req.body.variables, null, 2)
       );
       console.log('');
       Object.keys(req.headers).forEach(k =>
-        console.log(clc.bold.blackBright(`${k}:`), req.headers[k]),
+        console.log(clc.bold.blackBright(`${k}:`), req.headers[k])
       );
       next();
     },

@@ -46,17 +46,16 @@ class Comment {
       return Promise.reject('You must provide a post to assign the comment to.');
     }
 
-    // eslint-disable-next-line no-param-reassign
-    input.post = fromGlobalId(input.post).id;
+    const form = Object.create({}, input);
+    form.post = fromGlobalId(input.post).id;
     if (input.parent) {
-      // eslint-disable-next-line no-param-reassign
-      input.parent = fromGlobalId(input.parent).id;
+      form.parent = fromGlobalId(input.parent).id;
     }
 
     try {
       const { data: { body: comment, headers } } = await fetchData(commentsEndpoint, {
         method: 'POST',
-        form: input,
+        form,
       });
 
       if (comment) {
@@ -86,15 +85,15 @@ class Comment {
       return Promise.reject('You must specify a comment ID to update.');
     }
 
-    const { id } = fromGlobalId(input.id);
+    const form = Object.create({}, input);
+    const { id } = fromGlobalId(form.id);
     const updateEndpoint = path.join(commentsEndpoint, id);
-    // eslint-disable-next-line no-param-reassign
-    delete input.id;
+    delete form.id;
 
     try {
       const { data: { body: comment, headers } } = await fetchData(updateEndpoint, {
         method: 'POST',
-        form: input,
+        form,
       });
 
       if (comment) {
@@ -124,10 +123,10 @@ class Comment {
       return Promise.reject('You must specify a comment ID to update.');
     }
 
-    const { id } = fromGlobalId(input.id);
+    const form = Object.create({}, input);
+    const { id } = fromGlobalId(form.id);
     const deleteEndpoint = path.join(commentsEndpoint, id);
-    // eslint-disable-next-line no-param-reassign
-    delete input.id;
+    delete form.id;
 
     try {
       const { data: { body: comment } } = await fetchData(deleteEndpoint, {
