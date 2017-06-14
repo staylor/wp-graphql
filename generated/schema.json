@@ -429,7 +429,7 @@
                 "description": "Limit result set to all items that have the specified term assigned in the categories taxonomy.",
                 "type": {
                   "kind": "SCALAR",
-                  "name": "ID",
+                  "name": "String",
                   "ofType": null
                 },
                 "defaultValue": null
@@ -449,7 +449,7 @@
                 "description": "Limit result set to all items that have the specified term assigned in the tags taxonomy.",
                 "type": {
                   "kind": "SCALAR",
-                  "name": "ID",
+                  "name": "String",
                   "ofType": null
                 },
                 "defaultValue": null

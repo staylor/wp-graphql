@@ -976,13 +976,13 @@ type Viewer {
     slug: String
 
     # Limit result set to all items that have the specified term assigned in the categories taxonomy.
-    category: ID
+    category: String
 
     # Limit result set to all items that have the specified terms assigned in the categories taxonomy.
     categories: String
 
     # Limit result set to all items that have the specified term assigned in the tags taxonomy.
-    tag: ID
+    tag: String
 
     # Limit result set to all items that have the specified terms assigned in the tags taxonomy.
     tags: String

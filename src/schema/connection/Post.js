@@ -39,7 +39,7 @@ export default {
     },
     // value or comma-separated values
     category: {
-      type: GraphQLID,
+      type: GraphQLString,
       description:
         'Limit result set to all items that have the specified term assigned in the categories taxonomy.',
     },
@@ -49,7 +49,7 @@ export default {
         'Limit result set to all items that have the specified terms assigned in the categories taxonomy.',
     },
     tag: {
-      type: GraphQLID,
+      type: GraphQLString,
       description:
         'Limit result set to all items that have the specified term assigned in the tags taxonomy.',
     },
@@ -88,12 +88,20 @@ export default {
     }
 
     if (params.category) {
-      params.categories = params.category;
+      if (!params.filter) {
+        params.filter = {};
+      }
+      // query by category slug
+      params.filter.category_name = params.category;
       delete params.category;
     }
 
     if (params.tag) {
-      params.tags = params.tag;
+      if (!params.filter) {
+        params.filter = {};
+      }
+      // query by tag slug
+      params.filter.tag = params.tag;
       delete params.tag;
     }
 
