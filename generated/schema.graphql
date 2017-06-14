@@ -436,14 +436,17 @@ type NavMenuItem {
   # The classification of object.
   type: String
 
-  # The type of object.
-  object: String
+  # The type of object within a classification.
+  typeName: String
 
-  # The id of the object.
-  object_id: ID
+  # The rewrite slug for the object type.
+  typeSlug: String
 
-  # The object type label.
-  label: String
+  # An alphanumeric identifier for the object unique to its type.
+  dataSlug: String
+
+  # Unique identifier for the object.
+  dataID: ID
 
   # The item url.
   url: String
@@ -453,18 +456,6 @@ type NavMenuItem {
 
   # The target for the item.
   target: String
-
-  # The attribute title for the item.
-  attr_title: String
-
-  # A description of the item.
-  description: String
-
-  # CSS classes to use with the item.
-  classes: [String]
-
-  # Associated XFN value(s).
-  xfn: String
 }
 
 # An object with an ID

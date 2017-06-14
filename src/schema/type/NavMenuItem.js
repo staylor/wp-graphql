@@ -1,5 +1,4 @@
-import { GraphQLObjectType, GraphQLList, GraphQLInt, GraphQLString, GraphQLID } from 'graphql';
-
+import { GraphQLObjectType, GraphQLInt, GraphQLString, GraphQLID } from 'graphql';
 import { toGlobalId } from 'graphql-relay';
 
 const NavMenuItemType = new GraphQLObjectType({
@@ -24,33 +23,25 @@ const NavMenuItemType = new GraphQLObjectType({
       type: GraphQLString,
       description: 'The classification of object.',
     },
-    object: {
+    typeName: {
       type: GraphQLString,
-      description: 'The type of object.',
+      description: 'The type of object within a classification.',
+      resolve: item => item.type_name,
     },
-    object_id: {
+    typeSlug: {
+      type: GraphQLString,
+      description: 'The rewrite slug for the object type.',
+      resolve: item => item.type_slug,
+    },
+    dataSlug: {
+      type: GraphQLString,
+      description: 'An alphanumeric identifier for the object unique to its type.',
+      resolve: item => item.object_slug,
+    },
+    dataID: {
       type: GraphQLID,
-      description: 'The id of the object.',
-      resolve: item => {
-        if (!item.object_id) {
-          return null;
-        }
-
-        switch (item.object) {
-          case 'category':
-            return toGlobalId('Category', item.object_id);
-
-          case 'post':
-            return toGlobalId('Post', item.object_id);
-
-          default:
-            return null;
-        }
-      },
-    },
-    label: {
-      type: GraphQLString,
-      description: 'The object type label.',
+      description: 'Unique identifier for the object.',
+      resolve: item => (item.object_id > 0 ? toGlobalId('NavMenuItem', item.object_id) : null),
     },
     url: {
       type: GraphQLString,
@@ -63,22 +54,6 @@ const NavMenuItemType = new GraphQLObjectType({
     target: {
       type: GraphQLString,
       description: 'The target for the item.',
-    },
-    attr_title: {
-      type: GraphQLString,
-      description: 'The attribute title for the item.',
-    },
-    description: {
-      type: GraphQLString,
-      description: 'A description of the item.',
-    },
-    classes: {
-      type: new GraphQLList(GraphQLString),
-      description: 'CSS classes to use with the item.',
-    },
-    xfn: {
-      type: GraphQLString,
-      description: 'Associated XFN value(s).',
     },
   },
 });

@@ -4421,8 +4421,8 @@
             "deprecationReason": null
           },
           {
-            "name": "object",
-            "description": "The type of object.",
+            "name": "typeName",
+            "description": "The type of object within a classification.",
             "args": [],
             "type": {
               "kind": "SCALAR",
@@ -4433,24 +4433,36 @@
             "deprecationReason": null
           },
           {
-            "name": "object_id",
-            "description": "The id of the object.",
+            "name": "typeSlug",
+            "description": "The rewrite slug for the object type.",
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "dataSlug",
+            "description": "An alphanumeric identifier for the object unique to its type.",
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "dataID",
+            "description": "Unique identifier for the object.",
             "args": [],
             "type": {
               "kind": "SCALAR",
               "name": "ID",
-              "ofType": null
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "label",
-            "description": "The object type label.",
-            "args": [],
-            "type": {
-              "kind": "SCALAR",
-              "name": "String",
               "ofType": null
             },
             "isDeprecated": false,
@@ -4483,58 +4495,6 @@
           {
             "name": "target",
             "description": "The target for the item.",
-            "args": [],
-            "type": {
-              "kind": "SCALAR",
-              "name": "String",
-              "ofType": null
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "attr_title",
-            "description": "The attribute title for the item.",
-            "args": [],
-            "type": {
-              "kind": "SCALAR",
-              "name": "String",
-              "ofType": null
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "description",
-            "description": "A description of the item.",
-            "args": [],
-            "type": {
-              "kind": "SCALAR",
-              "name": "String",
-              "ofType": null
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "classes",
-            "description": "CSS classes to use with the item.",
-            "args": [],
-            "type": {
-              "kind": "LIST",
-              "name": null,
-              "ofType": {
-                "kind": "SCALAR",
-                "name": "String",
-                "ofType": null
-              }
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "xfn",
-            "description": "Associated XFN value(s).",
             "args": [],
             "type": {
               "kind": "SCALAR",
