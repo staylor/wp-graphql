@@ -14,11 +14,9 @@ describe('Test the fetching of Taxonomy data', () => {
     expect(result).toBeInstanceOf(Taxonomy);
     expect(result.description).toBe('');
     expect(result.hierarchical).toBe(true);
-    expect(result.name).toBe('Categories');
-    expect(result.slug).toBe('category');
+    expect(result.name).toBe('category');
 
     const expected = ['post'];
     expect(result.types).toEqual(expect.arrayContaining(expected));
-    expect(result.rest_base).toBe('categories');
   });
 });

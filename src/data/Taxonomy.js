@@ -5,7 +5,7 @@ import { fetchData } from 'data';
 // Dataloader expects IDs that can be read by the REST API
 
 // there is no batch mechanism on this endpoint
-const path = process.env.WP_TAXONOMIES_ENDPOINT || 'wp/v2/taxonomies';
+const path = process.env.WP_TAXONOMIES_ENDPOINT || 'graphql/v1/taxonomies';
 const taxonomyLoader = new Dataloader(slugs =>
   fetchData(path).then(({ data: { body } }) => slugs.map(slug => body[slug]))
 );

@@ -5,7 +5,7 @@ import { fetchData } from 'data';
 // Dataloader expects IDs that can be read by the REST API
 
 // there is no batch mechanism on this endpoint
-const path = process.env.WP_TYPES_ENDPOINT || 'wp/v2/types';
+const path = process.env.WP_TYPES_ENDPOINT || 'graphql/v1/types';
 const typeLoader = new Dataloader(slugs =>
   fetchData(path, {}).then(({ data: { body } }) => slugs.map(slug => body[slug]))
 );

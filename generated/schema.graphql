@@ -320,6 +320,11 @@ type ImageDetails {
   sizes: [MediaSize]
 }
 
+type Labels {
+  singular: String
+  plural: String
+}
+
 union Media = Image | Audio | Video
 
 # Attachment type.
@@ -689,6 +694,12 @@ type Query {
   viewer: Viewer
 }
 
+# Information that can be used to create pretty permalinks.
+type Rewrite {
+  # An alphanumeric identifier for the object unique to its type.
+  slug: String
+}
+
 # A widget area.
 type Sidebar {
   # Unique identifier for the object.
@@ -751,11 +762,8 @@ type Taxonomy {
   # Unique identifier for the object.
   id: ID!
 
-  # HTML title for the object.
+  # Identifier for the object.
   name: String
-
-  # An alphanumeric identifier for the object unique to its type.
-  slug: String
 
   # The object description.
   description: String
@@ -766,8 +774,9 @@ type Taxonomy {
   # Whether or not the taxonomy should have children.
   hierarchical: Boolean
 
-  # REST base route for the taxonomy.
-  rest_base: String
+  # Information that can be used to create pretty permalinks.
+  rewrite: Rewrite
+  labels: Labels
 }
 
 # Term fields.

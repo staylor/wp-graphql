@@ -14,11 +14,9 @@ describe('Test the fetching of Type data', () => {
     expect(result).toBeInstanceOf(Type);
     expect(result.description).toBe('');
     expect(result.hierarchical).toBe(false);
-    expect(result.name).toBe('Posts');
-    expect(result.slug).toBe('post');
+    expect(result.name).toBe('post');
 
     const expected = ['category', 'post_tag'];
     expect(result.taxonomies).toEqual(expect.arrayContaining(expected));
-    expect(result.rest_base).toBe('posts');
   });
 });

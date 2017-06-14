@@ -5,7 +5,7 @@ import { fetchData } from 'data';
 
 // Dataloader expects IDs that can be read by the REST API
 
-const commentsEndpoint = process.env.WP_COMMENTS_ENDPOINT || 'wp/v2/comments';
+const commentsEndpoint = process.env.WP_COMMENTS_ENDPOINT || 'graphql/v1/comments';
 const commentLoader = new Dataloader(ids =>
   fetchData(commentsEndpoint, {
     qs: { include: ids, orderby: 'include' },

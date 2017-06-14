@@ -13,9 +13,14 @@ it('GraphQL should return a known Taxonomy', async () => {
          name
          description
          hierarchical
-         slug
          types
-         rest_base
+         rewrite {
+           slug
+         }
+         labels {
+           singular
+           plural
+         }
        }
      }
   `;
@@ -24,16 +29,12 @@ it('GraphQL should return a known Taxonomy', async () => {
   const context = {};
 
   const result = await graphql(schema, query, rootValue, context);
-  const {
-    data: { taxonomy: { id, name, description, hierarchical, slug, types, rest_base } },
-  } = result;
+  const { data: { taxonomy: { id, name, description, hierarchical, types } } } = result;
 
   expect(id).toBe(globalId);
-  expect(name).toBe('Categories');
   expect(description).toBeDefined();
   expect(hierarchical).toBe(true);
-  expect(slug).toBe('category');
+  expect(name).toBe('category');
   const expected = ['post'];
   expect(types).toEqual(expect.arrayContaining(expected));
-  expect(rest_base).toBe('categories');
 });

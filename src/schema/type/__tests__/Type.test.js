@@ -13,9 +13,11 @@ it('GraphQL should return a known Type', async () => {
          name
          description
          hierarchical
-         slug
          taxonomies
-         rest_base
+         labels {
+           singular
+           plural
+         }
        }
      }
   `;
@@ -24,16 +26,12 @@ it('GraphQL should return a known Type', async () => {
   const context = {};
 
   const result = await graphql(schema, query, rootValue, context);
-  const {
-    data: { type: { id, name, description, hierarchical, slug, taxonomies, rest_base } },
-  } = result;
+  const { data: { type: { id, name, description, hierarchical, taxonomies } } } = result;
 
   expect(id).toBe(globalId);
-  expect(name).toBe('Posts');
   expect(description).toBeDefined();
   expect(hierarchical).toBe(false);
-  expect(slug).toBe('post');
+  expect(name).toBe('post');
   const expected = ['category', 'post_tag'];
   expect(taxonomies).toEqual(expect.arrayContaining(expected));
-  expect(rest_base).toBe('posts');
 });

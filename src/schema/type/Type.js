@@ -1,7 +1,7 @@
 import { GraphQLObjectType, GraphQLList, GraphQLString, GraphQLBoolean } from 'graphql';
-
-import { globalIdField, slug, name } from 'field/identifier';
+import { globalIdField } from 'field/identifier';
 import description from 'field/description';
+import LabelsType from 'type/Labels';
 
 const TypeType = new GraphQLObjectType({
   name: 'Type',
@@ -9,8 +9,11 @@ const TypeType = new GraphQLObjectType({
   fields: {
     id: globalIdField(),
     ...description,
-    ...name,
-    ...slug,
+    name: {
+      type: GraphQLString,
+      description: 'Identifier for the object.',
+      resolve: item => item.slug,
+    },
     hierarchical: {
       type: GraphQLBoolean,
       description: 'Whether or not the post type should have children.',
@@ -19,9 +22,8 @@ const TypeType = new GraphQLObjectType({
       type: new GraphQLList(GraphQLString),
       description: 'Taxonomies associated with post type.',
     },
-    rest_base: {
-      type: GraphQLString,
-      description: 'REST base route for the post type.',
+    labels: {
+      type: LabelsType,
     },
   },
 });

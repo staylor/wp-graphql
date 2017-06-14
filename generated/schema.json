@@ -3406,19 +3406,7 @@
           },
           {
             "name": "name",
-            "description": "HTML title for the object.",
-            "args": [],
-            "type": {
-              "kind": "SCALAR",
-              "name": "String",
-              "ofType": null
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "slug",
-            "description": "An alphanumeric identifier for the object unique to its type.",
+            "description": "Identifier for the object.",
             "args": [],
             "type": {
               "kind": "SCALAR",
@@ -3469,8 +3457,78 @@
             "deprecationReason": null
           },
           {
-            "name": "rest_base",
-            "description": "REST base route for the taxonomy.",
+            "name": "rewrite",
+            "description": "Information that can be used to create pretty permalinks.",
+            "args": [],
+            "type": {
+              "kind": "OBJECT",
+              "name": "Rewrite",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "labels",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "OBJECT",
+              "name": "Labels",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": null,
+        "interfaces": [],
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
+        "name": "Rewrite",
+        "description": "Information that can be used to create pretty permalinks.",
+        "fields": [
+          {
+            "name": "slug",
+            "description": "An alphanumeric identifier for the object unique to its type.",
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": null,
+        "interfaces": [],
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
+        "name": "Labels",
+        "description": null,
+        "fields": [
+          {
+            "name": "singular",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "plural",
+            "description": null,
             "args": [],
             "type": {
               "kind": "SCALAR",
