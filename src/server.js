@@ -23,9 +23,6 @@ const graphQLServer = graphQLHTTP(req => ({
   },
 }));
 
-// uncomment this to output incoming query and request headers
-app.use(queryLogger());
-
 app.use(
   responseTime((req, res, time) => {
     console.log(`Response time: ${Math.floor(time)}ms`);
@@ -45,6 +42,9 @@ app.use('/graphql', bodyParser.json(), async (req, res, next) => {
   }
   next();
 });
+
+// uncomment this to output incoming query and request headers
+app.use(queryLogger());
 
 app.use('/graphql', graphQLServer);
 

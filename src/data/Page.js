@@ -11,7 +11,10 @@ const pageLoader = new Dataloader(ids =>
   }).then(({ data: { body } }) => body)
 );
 const slugLoader = new Dataloader(slugs =>
-  fetchData(path, { qs: { slug: slugs } }).then(({ data: { body } }) => body)
+  fetchData(path, { qs: { slug: slugs } })
+    .then(({ data: { body } }) => body)
+    // the REST API does not order by FIELD(slug, ....) yet
+    .then(pages => slugs.map(slug => pages.find(page => slug === page.slug)))
 );
 
 class Page {
