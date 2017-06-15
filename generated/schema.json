@@ -395,6 +395,36 @@
                 "defaultValue": null
               },
               {
+                "name": "year",
+                "description": "Limit result set to items that are from a certain year.",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Int",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "month",
+                "description": "Limit result set to items that are from a certain month.",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Int",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "day",
+                "description": "Limit result set to items that are from a certain day.",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Int",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
                 "name": "search",
                 "description": "Limit results to those matching a string.",
                 "type": {

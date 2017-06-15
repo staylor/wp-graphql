@@ -1,4 +1,4 @@
-import { GraphQLString, GraphQLID, GraphQLBoolean } from 'graphql';
+import { GraphQLString, GraphQLID, GraphQLInt, GraphQLBoolean } from 'graphql';
 import {
   connectionArgs,
   connectionDefinitions,
@@ -23,6 +23,18 @@ export default {
     sticky: {
       type: GraphQLBoolean,
       description: 'Limit result set to items that are sticky.',
+    },
+    year: {
+      type: GraphQLInt,
+      description: 'Limit result set to items that are from a certain year.',
+    },
+    month: {
+      type: GraphQLInt,
+      description: 'Limit result set to items that are from a certain month.',
+    },
+    day: {
+      type: GraphQLInt,
+      description: 'Limit result set to items that are from a certain day.',
     },
     search: {
       type: GraphQLString,
@@ -87,23 +99,26 @@ export default {
       params.offset = cursorToOffset(params.after) + 1;
     }
 
-    if (params.category) {
-      if (!params.filter) {
-        params.filter = {};
+    const setFilter = (arg, restArg = null) => {
+      if (params[arg]) {
+        if (!params.filter) {
+          params.filter = {};
+        }
+        params.filter[restArg || arg] = params[arg];
+        delete params[arg];
       }
-      // query by category slug
-      params.filter.category_name = params.category;
-      delete params.category;
-    }
+    };
 
-    if (params.tag) {
-      if (!params.filter) {
-        params.filter = {};
-      }
-      // query by tag slug
-      params.filter.tag = params.tag;
-      delete params.tag;
-    }
+    // query by category slug
+    setFilter('category', 'category_name');
+    // query by tag slug
+    setFilter('tag');
+    // query by year
+    setFilter('year');
+    // query by month
+    setFilter('month', 'monthnum');
+    // query by day
+    setFilter('day');
 
     ['categories', 'tags', 'author'].forEach(key => {
       if (params[key]) {

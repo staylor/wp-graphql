@@ -966,6 +966,15 @@ type Viewer {
     # Limit result set to items that are sticky.
     sticky: Boolean
 
+    # Limit result set to items that are from a certain year.
+    year: Int
+
+    # Limit result set to items that are from a certain month.
+    month: Int
+
+    # Limit result set to items that are from a certain day.
+    day: Int
+
     # Limit results to those matching a string.
     search: String
 
