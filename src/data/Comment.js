@@ -46,7 +46,7 @@ class Comment {
       return Promise.reject('You must provide a post to assign the comment to.');
     }
 
-    const form = Object.create({}, input);
+    const form = Object.assign({}, input);
     form.post = fromGlobalId(input.post).id;
     if (input.parent) {
       form.parent = fromGlobalId(input.parent).id;
@@ -85,7 +85,7 @@ class Comment {
       return Promise.reject('You must specify a comment ID to update.');
     }
 
-    const form = Object.create({}, input);
+    const form = Object.assign({}, input);
     const { id } = fromGlobalId(form.id);
     const updateEndpoint = path.join(commentsEndpoint, id);
     delete form.id;
@@ -123,7 +123,7 @@ class Comment {
       return Promise.reject('You must specify a comment ID to update.');
     }
 
-    const form = Object.create({}, input);
+    const form = Object.assign({}, input);
     const { id } = fromGlobalId(form.id);
     const deleteEndpoint = path.join(commentsEndpoint, id);
     delete form.id;
