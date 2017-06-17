@@ -609,6 +609,9 @@ type Post implements PostInterface {
     # Limit result set to resources assigned to a specific post id.
     post: ID
 
+    # Limit result set to resources assigned to a specific post slug.
+    slug: String
+
     # Sort collection by object attribute.
     orderby: COMMENT_ORDERBY
 

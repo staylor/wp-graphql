@@ -952,6 +952,16 @@
                 "defaultValue": null
               },
               {
+                "name": "slug",
+                "description": "Limit result set to resources assigned to a specific post slug.",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
                 "name": "orderby",
                 "description": "Sort collection by object attribute.",
                 "type": {

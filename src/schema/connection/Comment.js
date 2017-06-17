@@ -1,10 +1,11 @@
-import { GraphQLID } from 'graphql';
+import { GraphQLID, GraphQLString } from 'graphql';
 import {
   connectionArgs,
   connectionFromArraySlice,
   fromGlobalId,
   connectionDefinitions,
 } from 'graphql-relay';
+import Post from 'data/Post';
 import Comment from 'data/Comment';
 import CommentType from 'type/Comment';
 import COMMENT_ORDERBY from 'enum/CommentOrderby';
@@ -21,6 +22,10 @@ export default {
       type: GraphQLID,
       description: 'Limit result set to resources assigned to a specific post id.',
     },
+    slug: {
+      type: GraphQLString,
+      description: 'Limit result set to resources assigned to a specific post slug.',
+    },
     orderby: {
       type: COMMENT_ORDERBY,
       description: 'Sort collection by object attribute.',
@@ -32,7 +37,7 @@ export default {
     ...connectionArgs,
   },
   description: 'A list of results',
-  resolve: (root, args) => {
+  resolve: async (root, args) => {
     const connectionArguments = {};
     const params = Object.assign({}, args);
     if (params.first) {
@@ -46,7 +51,12 @@ export default {
       params.per_page = 100;
     }
 
-    params.post = fromGlobalId(params.post).id;
+    if (params.post) {
+      params.post = fromGlobalId(params.post).id;
+    } else if (params.slug) {
+      params.post = await Post.loadBySlug(params.slug).then(post => post.id);
+      delete params.slug;
+    }
 
     delete params.first;
     delete params.last;
