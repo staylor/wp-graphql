@@ -536,6 +536,26 @@
                 "defaultValue": null
               },
               {
+                "name": "term",
+                "description": "Limit result set to all items that have the specified term assigned in the also-specified taxonomy.",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "taxonomy",
+                "description": "Limit result set to all items that have the also-specified term assigned in this taxonomy.",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
                 "name": "orderby",
                 "description": "Sort collection by object attribute.",
                 "type": {

@@ -70,6 +70,16 @@ export default {
       description:
         'Limit result set to all items that have the specified terms assigned in the tags taxonomy.',
     },
+    term: {
+      type: GraphQLString,
+      description:
+        'Limit result set to all items that have the specified term assigned in the also-specified taxonomy.',
+    },
+    taxonomy: {
+      type: GraphQLString,
+      description:
+        'Limit result set to all items that have the also-specified term assigned in this taxonomy.',
+    },
     orderby: {
       type: POST_ORDERBY,
       description: 'Sort collection by object attribute.',
@@ -109,10 +119,19 @@ export default {
       }
     };
 
-    // query by category slug
-    setFilter('category', 'category_name');
-    // query by tag slug
-    setFilter('tag');
+    if (params.taxonomy && params.term) {
+      if (params.taxonomy === 'category') {
+        setFilter('term', 'category_name');
+      } else if (params.taxonomy === 'tag') {
+        setFilter('term', 'tag');
+      }
+    } else {
+      // query by category slug
+      setFilter('category', 'category_name');
+      // query by tag slug
+      setFilter('tag');
+    }
+
     // query by year
     setFilter('year');
     // query by month

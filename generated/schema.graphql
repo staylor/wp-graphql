@@ -1015,6 +1015,12 @@ type Viewer {
     # Limit result set to all items that have the specified terms assigned in the tags taxonomy.
     tags: String
 
+    # Limit result set to all items that have the specified term assigned in the also-specified taxonomy.
+    term: String
+
+    # Limit result set to all items that have the also-specified term assigned in this taxonomy.
+    taxonomy: String
+
     # Sort collection by object attribute.
     orderby: POST_ORDERBY
 
