@@ -700,6 +700,21 @@ type Rewrite {
   slug: String
 }
 
+# .
+type Settings {
+  # Site title.
+  title: String
+
+  # Site tagline.
+  description: String
+
+  # A city in the same timezone as you.
+  timezone: String
+
+  # Site locale code.
+  language: String
+}
+
 # A widget area.
 type Sidebar {
   # Unique identifier for the object.
@@ -1006,6 +1021,7 @@ type Viewer {
     before: String
     last: Int
   ): PostConnection
+  settings: Settings
 }
 
 # A widget.

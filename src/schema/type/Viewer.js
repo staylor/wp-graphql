@@ -17,6 +17,8 @@ import Sidebar from 'data/Sidebar';
 import UserType from 'type/User';
 import User from 'data/User';
 import postConnection from 'connection/Post';
+import SettingsType from 'type/Settings';
+import Settings from 'data/Settings';
 import { id, slug } from 'field/identifier';
 
 const itemResolver = (dataType, loader) => ({
@@ -46,6 +48,10 @@ const ViewerType = new GraphQLObjectType({
     navMenu: itemResolver(NavMenuType, NavMenu),
     sidebar: itemResolver(SidebarType, Sidebar),
     posts: postConnection,
+    settings: {
+      type: SettingsType,
+      resolve: () => Settings.load(),
+    },
   }),
 });
 
