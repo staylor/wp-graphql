@@ -232,6 +232,9 @@ type Excerpt {
   # HTML for the object, transformed for display.
   rendered: String
 
+  # Content for the object, as it exists in the database.
+  raw: String
+
   # Whether the field is protected with a password.
   protected: Boolean
 }
