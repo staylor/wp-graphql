@@ -957,6 +957,7 @@ type Viewer {
     # An alphanumeric identifier for the object unique to its type.
     slug: String
   ): Tag
+  term(slug: String!, taxonomy: String!): TermInterface
   author(
     # Unique identifier for the object.
     id: ID

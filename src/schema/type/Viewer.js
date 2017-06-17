@@ -1,4 +1,4 @@
-import { GraphQLObjectType } from 'graphql';
+import { GraphQLObjectType, GraphQLString, GraphQLNonNull } from 'graphql';
 import { globalIdField, fromGlobalId } from 'graphql-relay';
 import PostType from 'type/Post';
 import Post from 'data/Post';
@@ -19,6 +19,7 @@ import User from 'data/User';
 import postConnection from 'connection/Post';
 import SettingsType from 'type/Settings';
 import Settings from 'data/Settings';
+import TermInterface from 'interface/Term';
 import { id, slug } from 'field/identifier';
 
 const itemResolver = (dataType, loader) => ({
@@ -44,6 +45,28 @@ const ViewerType = new GraphQLObjectType({
     media: itemResolver(MediaType, Media),
     category: itemResolver(CategoryType, Category),
     tag: itemResolver(TagType, Tag),
+    term: {
+      type: TermInterface,
+      args: {
+        slug: {
+          ...slug,
+          type: new GraphQLNonNull(GraphQLString),
+        },
+        taxonomy: {
+          type: new GraphQLNonNull(GraphQLString),
+        },
+      },
+      resolve: (root, { slug: slugParam, taxonomy }) => {
+        switch (taxonomy) {
+          case 'category':
+            return Category.loadBySlug(slugParam);
+          case 'tag':
+            return Tag.loadBySlug(slugParam);
+          default:
+            return null;
+        }
+      },
+    },
     author: itemResolver(UserType, User),
     navMenu: itemResolver(NavMenuType, NavMenu),
     sidebar: itemResolver(SidebarType, Sidebar),
