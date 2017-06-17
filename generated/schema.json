@@ -805,7 +805,7 @@
             "deprecationReason": null
           },
           {
-            "name": "featured_media",
+            "name": "featuredMedia",
             "description": "The featured media for the object.",
             "args": [],
             "type": {
@@ -1189,7 +1189,7 @@
             "deprecationReason": null
           },
           {
-            "name": "featured_media",
+            "name": "featuredMedia",
             "description": null,
             "args": [],
             "type": {
@@ -4337,7 +4337,7 @@
             "deprecationReason": null
           },
           {
-            "name": "featured_media",
+            "name": "featuredMedia",
             "description": "The featured media for the object.",
             "args": [],
             "type": {

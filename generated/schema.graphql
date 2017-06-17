@@ -514,7 +514,7 @@ type Page implements PostInterface {
   author: User
 
   # The featured media for the object.
-  featured_media: Media
+  featuredMedia: Media
 
   # Meta fields.
   meta: [Meta]
@@ -587,7 +587,7 @@ type Post implements PostInterface {
   author: User
 
   # The featured media for the object.
-  featured_media: Media
+  featuredMedia: Media
 
   # Meta fields.
   meta: [Meta]
@@ -681,7 +681,7 @@ interface PostInterface {
   template: String
   meta: [Meta]
   author: User
-  featured_media: Media
+  featuredMedia: Media
 }
 
 # WordPress API queries

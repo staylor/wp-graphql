@@ -37,7 +37,7 @@ const PostType = new GraphQLObjectType({
     ...template,
     ...format,
     ...author,
-    featured_media: featuredMedia(),
+    featuredMedia: featuredMedia(),
     meta: metaField(),
     // extra post fields
     ...sticky,

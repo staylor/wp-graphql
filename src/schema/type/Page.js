@@ -32,7 +32,7 @@ const PageType = new GraphQLObjectType({
     ...pingStatus,
     ...template,
     ...author,
-    featured_media: featuredMedia(),
+    featuredMedia: featuredMedia(),
     meta: metaField(),
     // extra page fields
     parent: {

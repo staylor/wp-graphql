@@ -29,7 +29,7 @@ const PostInterface = new GraphQLInterfaceType({
     ...template,
     meta: { type: new GraphQLList(Meta) },
     author: { type: UserType },
-    featured_media: { type: MediaType },
+    featuredMedia: { type: MediaType },
   },
 });
 
