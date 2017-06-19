@@ -19,6 +19,8 @@ import User from 'data/User';
 import postConnection from 'connection/Post';
 import SettingsType from 'type/Settings';
 import Settings from 'data/Settings';
+import ChartType from 'type/Chart';
+import Chart from 'data/Chart';
 import TermInterface from 'interface/Term';
 import { id, slug } from 'field/identifier';
 
@@ -74,6 +76,10 @@ const ViewerType = new GraphQLObjectType({
     settings: {
       type: SettingsType,
       resolve: () => Settings.load(),
+    },
+    chart: {
+      type: ChartType,
+      resolve: () => Chart.load(),
     },
   }),
 });

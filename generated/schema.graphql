@@ -118,6 +118,60 @@ type Category implements TermInterface {
   parent: Category
 }
 
+# iTunes chart data.
+type Chart {
+  # Chart title.
+  title: String
+
+  # Chart copyright notice.
+  copyright: String
+
+  # Last updated timestamp.
+  updated: String
+
+  # Chart author name.
+  authorName: String
+
+  # Chart author URI.
+  authorUri: String
+
+  # Chart items.
+  items: [ChartItem]
+}
+
+# An item in the iTunes chart.
+type ChartItem {
+  # Album title.
+  title: String
+
+  # Artist title.
+  artist: String
+
+  # Album release date, formatted for display.
+  releaseDate: String
+
+  # Album release date in ISO format.
+  releaseDateFormatted: String
+
+  # Album URL.
+  url: String
+
+  # Chart copyright notice.
+  copyright: String
+
+  # Item images.
+  images: [ChartItemImage]
+}
+
+# iTunes chart item image.
+type ChartItemImage {
+  # Image URL.
+  url: String
+
+  # Image height.
+  height: Int
+}
+
 # An object.
 type Comment {
   # Unique identifier for the object.
@@ -1035,6 +1089,7 @@ type Viewer {
     last: Int
   ): PostConnection
   settings: Settings
+  chart: Chart
 }
 
 # A widget.
