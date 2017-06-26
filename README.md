@@ -11,34 +11,36 @@ This is mega-alpha, but also an RFC. Browse the docs on the right to create a qu
 
 A single item:
 ```
-query {
-  post(id:"UG9zdDoyNjk2") {
-   id
-    title {
-      rendered
+{
+  viewer {
+    post(id: "UG9zdDoyNjk2") {
+      id
+      title {
+        rendered
+      }
+      content {
+        rendered
+      }
+      date
+      author {
+        name
+      }
+      categories {
+        name
+      }
     }
-    content {
-      rendered
-    }
-    date
-    author {
-      name
-    }
-    categories {
-      name
-    }         
   }
 }
 ```
 
 Collections:
 ```
-query {
-  posts {
-    results {
+{
+  viewer {
+    posts(category: "watch-this", first: 10) {
       edges {
         node {
-         id
+          id
           title {
             rendered
           }
@@ -46,9 +48,6 @@ query {
           author {
             name
           }
-          tags {
-            name
-          }         
         }
         cursor
       }
@@ -61,6 +60,7 @@ query {
     }
   }
 }
+
 ```
 
 ## What is this?
