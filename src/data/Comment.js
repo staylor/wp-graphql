@@ -8,7 +8,7 @@ import { fetchData } from 'data';
 const commentsEndpoint = process.env.WP_COMMENTS_ENDPOINT || 'graphql/v1/comments';
 const commentLoader = new Dataloader(ids =>
   fetchData(commentsEndpoint, {
-    qs: { include: ids, orderby: 'include' },
+    qs: { include: ids, orderby: 'include', per_page: 100 },
   }).then(({ data: { body } }) => body)
 );
 

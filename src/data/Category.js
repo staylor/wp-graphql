@@ -6,10 +6,12 @@ import { fetchData } from 'data';
 
 const path = process.env.WP_CATEGORIES_ENDPOINT || 'wp/v2/categories';
 const categoryLoader = new Dataloader(ids =>
-  fetchData(path, { qs: { include: ids, orderby: 'include' } }).then(({ data: { body } }) => body)
+  fetchData(path, {
+    qs: { include: ids, orderby: 'include', per_page: 100 },
+  }).then(({ data: { body } }) => body)
 );
 const slugLoader = new Dataloader(slugs =>
-  fetchData(path, { qs: { slug: slugs } })
+  fetchData(path, { qs: { slug: slugs, per_page: 100 } })
     .then(({ data: { body } }) => body)
     // the REST API does not order by FIELD(slug, ....) yet
     .then(categories => slugs.map(slug => categories.find(cat => slug === cat.slug)))

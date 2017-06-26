@@ -6,10 +6,14 @@ import { fetchData } from 'data';
 
 const path = process.env.WP_POSTS_ENDPOINT || 'wp/v2/posts';
 const postLoader = new Dataloader(ids =>
-  fetchData(path, { qs: { include: ids, orderby: 'include' } }).then(({ data: { body } }) => body)
+  fetchData(path, {
+    qs: { include: ids, orderby: 'include', per_page: 100 },
+  }).then(({ data: { body } }) => body)
 );
 const slugLoader = new Dataloader(slugs =>
-  fetchData(path, { qs: { slug: slugs, orderby: 'slug' } }).then(({ data: { body } }) => body)
+  fetchData(path, { qs: { slug: slugs, orderby: 'slug', per_page: 100 } }).then(
+    ({ data: { body } }) => body
+  )
 );
 
 class Post {

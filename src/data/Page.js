@@ -7,7 +7,7 @@ import { fetchData } from 'data';
 const path = process.env.WP_PAGES_ENDPOINT || 'wp/v2/pages';
 const pageLoader = new Dataloader(ids =>
   fetchData(path, {
-    qs: { include: ids, orderby: 'include' },
+    qs: { include: ids, orderby: 'include', per_page: 100 },
   }).then(({ data: { body } }) => body)
 );
 const slugLoader = new Dataloader(slugs =>
