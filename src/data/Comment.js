@@ -1,5 +1,5 @@
 import path from 'path';
-import { toGlobalId, fromGlobalId } from 'graphql-relay';
+import { toGlobalId } from 'graphql-relay';
 import Dataloader from 'dataloader';
 import { fetchData } from 'data';
 
@@ -35,23 +35,7 @@ class Comment {
     };
   }
 
-  // Mutations are responsible for deserializing IDs from the UI
-
-  static async create(input) {
-    if (!input.author && !(input.author_email && input.author_name)) {
-      return Promise.reject('You must provide author data to create a comment.');
-    }
-
-    if (!input.post) {
-      return Promise.reject('You must provide a post to assign the comment to.');
-    }
-
-    const form = Object.assign({}, input);
-    form.post = fromGlobalId(input.post).id;
-    if (input.parent) {
-      form.parent = fromGlobalId(input.parent).id;
-    }
-
+  static async create(form) {
     try {
       const { data: { body: comment, headers } } = await fetchData(commentsEndpoint, {
         method: 'POST',
@@ -81,13 +65,8 @@ class Comment {
   }
 
   static async update(input) {
-    if (!input.id) {
-      return Promise.reject('You must specify a comment ID to update.');
-    }
-
     const form = Object.assign({}, input);
-    const { id } = fromGlobalId(form.id);
-    const updateEndpoint = path.join(commentsEndpoint, id);
+    const updateEndpoint = path.join(commentsEndpoint, form.id);
     delete form.id;
 
     try {
@@ -119,14 +98,8 @@ class Comment {
   }
 
   static async delete(input) {
-    if (!input.id) {
-      return Promise.reject('You must specify a comment ID to update.');
-    }
-
     const form = Object.assign({}, input);
-    const { id } = fromGlobalId(form.id);
-    const deleteEndpoint = path.join(commentsEndpoint, id);
-    delete form.id;
+    const deleteEndpoint = path.join(commentsEndpoint, form.id);
 
     try {
       const { data: { body: comment } } = await fetchData(deleteEndpoint, {

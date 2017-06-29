@@ -1,5 +1,5 @@
 import { GraphQLID, GraphQLNonNull, GraphQLString } from 'graphql';
-import { mutationWithClientMutationId } from 'graphql-relay';
+import { mutationWithClientMutationId, fromGlobalId } from 'graphql-relay';
 import Comment from 'data/Comment';
 import CommentType from 'type/Comment';
 
@@ -60,7 +60,22 @@ export default {
         type: GraphQLID,
       },
     },
-    mutateAndGetPayload: input => Comment.create(input),
+    mutateAndGetPayload: input => {
+      if (!input.author && !(input.author_email && input.author_name)) {
+        return Promise.reject('You must provide author data to create a comment.');
+      }
+
+      if (!input.post) {
+        return Promise.reject('You must provide a post to assign the comment to.');
+      }
+
+      const form = Object.assign({}, input);
+      form.post = fromGlobalId(input.post).id;
+      if (input.parent) {
+        form.parent = fromGlobalId(input.parent).id;
+      }
+      return Comment.create(form);
+    },
   }),
   updateComment: createCommentMutation({
     name: 'UpdateComment',
@@ -72,7 +87,15 @@ export default {
         type: new GraphQLNonNull(GraphQLString),
       },
     },
-    mutateAndGetPayload: input => Comment.update(input),
+    mutateAndGetPayload: input => {
+      if (!input.id) {
+        return Promise.reject('You must specify a comment ID to update.');
+      }
+
+      const form = Object.assign({}, input);
+      form.id = fromGlobalId(form.id).id;
+      return Comment.update(form);
+    },
   }),
   deleteComment: createCommentMutation({
     name: 'DeleteComment',
@@ -86,6 +109,14 @@ export default {
         type: GraphQLString,
       },
     },
-    mutateAndGetPayload: input => Comment.delete(input),
+    mutateAndGetPayload: input => {
+      if (!input.id) {
+        return Promise.reject('You must specify a comment ID to update.');
+      }
+
+      const form = Object.assign({}, input);
+      form.id = fromGlobalId(form.id).id;
+      return Comment.delete(form);
+    },
   }),
 };
