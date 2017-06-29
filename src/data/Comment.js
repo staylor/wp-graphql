@@ -1,7 +1,8 @@
 import path from 'path';
 import { toGlobalId } from 'graphql-relay';
 import Dataloader from 'dataloader';
-import { fetchData } from 'data';
+import { fetchData, clearEndpointCache } from 'data';
+import Post from 'data/Post';
 
 // Dataloader expects IDs that can be read by the REST API
 
@@ -19,6 +20,11 @@ class Comment {
 
   static getEndpoint() {
     return commentsEndpoint;
+  }
+
+  static async clearPostCache(id) {
+    const endpoint = `${Post.getEndpoint()}/${id}`;
+    return Promise.all(clearEndpointCache(commentsEndpoint), clearEndpointCache(endpoint));
   }
 
   static async load(id) {
@@ -43,6 +49,12 @@ class Comment {
       });
 
       if (comment) {
+        try {
+          await Comment.clearPostCache(comment.post);
+        } catch (e) {
+          // eslint-disable-next-line no-console
+          console.log(`Post cache clearing failed for: ${comment.post}`);
+        }
         return {
           status: 'new',
           comment: Object.assign(new Comment(), comment),
@@ -76,6 +88,12 @@ class Comment {
       });
 
       if (comment) {
+        try {
+          await Comment.clearPostCache(comment.post);
+        } catch (e) {
+          // eslint-disable-next-line no-console
+          console.log(`Post cache clearing failed for: ${comment.post}`);
+        }
         return {
           status: 'update',
           comment: Object.assign(new Comment(), comment),
@@ -104,7 +122,15 @@ class Comment {
     try {
       const { data: { body: comment } } = await fetchData(deleteEndpoint, {
         method: 'DELETE',
+        form,
       });
+
+      try {
+        await Comment.clearPostCache(input.post);
+      } catch (e) {
+        // eslint-disable-next-line no-console
+        console.log(`Post cache clearing failed for: ${input.post}`);
+      }
 
       if (comment.deleted) {
         return {

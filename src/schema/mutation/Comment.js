@@ -109,6 +109,9 @@ export default {
       token: {
         type: new GraphQLNonNull(GraphQLString),
       },
+      post: {
+        type: new GraphQLNonNull(GraphQLString),
+      },
     },
     outputFields: {
       status: {
@@ -122,6 +125,7 @@ export default {
 
       const form = Object.assign({}, input);
       form.id = fromGlobalId(form.id).id;
+      form.post = fromGlobalId(form.post).id;
       return Comment.delete(form);
     },
   }),

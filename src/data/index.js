@@ -25,6 +25,20 @@ const rp = (path, opts = {}) => {
   return request(params);
 };
 
+export const clearEndpointCache = path => {
+  const client = getClient();
+  // eslint-disable-next-line no-console
+  console.log(`Clearing cache for: ${path}`);
+  return new Promise((resolve, reject) => {
+    client.hkeys(path, (err, keys) => {
+      if (err) {
+        return reject(err);
+      }
+      return resolve(keys.map(hashKey => client.hdelAsync(path, hashKey)));
+    });
+  });
+};
+
 export const fetchData = (path, opts = {}) => {
   const key = toBase64(`${JSON.stringify(opts)}`);
   const client = getClient();
@@ -49,9 +63,6 @@ export const fetchData = (path, opts = {}) => {
       });
 
     if (params.method && params.method !== 'GET') {
-      client.hkeys(path, (err, keys) => {
-        keys.map(hashKey => client.hdel(path, hashKey));
-      });
       makeRequest();
     } else {
       client.hget(path, key, (err, cached) => {
