@@ -267,6 +267,7 @@ type Content {
 
 input DeleteCommentInput {
   id: ID!
+  token: String!
   clientMutationId: String
 }
 
@@ -884,6 +885,7 @@ type Title {
 input UpdateCommentInput {
   id: ID!
   content: String!
+  token: String!
   clientMutationId: String
 }
 

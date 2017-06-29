@@ -86,6 +86,9 @@ export default {
       content: {
         type: new GraphQLNonNull(GraphQLString),
       },
+      token: {
+        type: new GraphQLNonNull(GraphQLString),
+      },
     },
     mutateAndGetPayload: input => {
       if (!input.id) {
@@ -102,6 +105,9 @@ export default {
     inputFields: {
       id: {
         type: new GraphQLNonNull(GraphQLID),
+      },
+      token: {
+        type: new GraphQLNonNull(GraphQLString),
       },
     },
     outputFields: {
