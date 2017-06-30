@@ -6,19 +6,15 @@
   "plugins": [
     "transform-runtime",
     ["module-resolver", {
-      "root": ["./"],
+      "root": ["./src"],
       "alias": {
-        "jest": "./jest",
-        "schema": "./src/schema",
         "type": "./src/schema/type",
         "connection": "./src/schema/connection",
         "enum": "./src/schema/enum",
         "interface": "./src/schema/interface",
         "query": "./src/schema/query",
         "mutation": "./src/schema/mutation",
-        "field": "./src/schema/field",
-        "data": "./src/data",
-        "utils": "./src/schema/utils"
+        "field": "./src/schema/field"
       }
     }]
   ],
