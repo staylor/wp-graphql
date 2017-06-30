@@ -6,8 +6,10 @@
   "plugins": [
     "transform-runtime",
     ["module-resolver", {
-      "root": ["./src"],
+      "root": ["./"],
       "alias": {
+        "jest": "./src/jest",
+        "data": "./src/data",
         "type": "./src/schema/type",
         "connection": "./src/schema/connection",
         "enum": "./src/schema/enum",

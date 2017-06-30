@@ -64,7 +64,7 @@
       "src/**/*.{js,jsx}"
     ],
     "coverageDirectory": "<rootDir>/public/coverage",
-    "setupTestFrameworkScriptFile": "<rootDir>/src/jest/setup.js",
+    "setupTestFrameworkScriptFile": "<rootDir>/jest/setup.js",
     "testEnvironment": "node",
     "testPathIgnorePatterns": [
       "/node_modules/",

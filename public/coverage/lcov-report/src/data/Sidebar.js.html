@@ -127,7 +127,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { toGl<span class="cstat-no" title="statement not covered" >obalId } from 'graphql-relay';<span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ></span></span></span></span></span></span></span></span></span></span></span></span>
 import Dataloader <span class="cstat-no" title="statement not covered" >from 'dataloader';<span class="cstat-no" title="statement not covered" ></span></span>
-import { fetc<span class="cstat-no" title="statement not covered" >hData } from 'data'</span>;<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" ></span></span>
+import {<span class="cstat-no" title="statement not covered" > fetchData } f</span>rom 'data<span class="fstat-no" title="function not covered" >';<span class="cstat-no" title="statement not covered" ></span></span>
 &nbsp;
 // Dataloader expects IDs that can be read by the REST API
 &nbsp;
@@ -139,7 +139,7 @@ const path <span class="cstat-no" title="statement not covered" >= process.env.W
   );
 }
 const sidebarLoader <span class="cstat-no" title="statement not covered" >= new Dataloader(slugs =&gt;<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" ></span></span></span>
-  fetchData(path).then(({ data: { bod<span class="fstat-no" title="function not covered" >y </span>} }) =&gt; slugs.map(id =&gt; bo<span class="cstat-no" title="statement not covered" >dy.find(item =&gt;<span class="cstat-no" title="statement not covered" ></span> item.id === id))<span class="fstat-no" title="function not covered" >)<span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" ></span></span></span></span></span>
+  fetchData(path).then(({ data: <span class="fstat-no" title="function not covered" >{ </span>body } }) =&gt; slugs.map(id <span class="cstat-no" title="statement not covered" >=&gt; body.find(it<span class="cstat-no" title="statement not covered" ></span>em =&gt; item.id ===<span class="fstat-no" title="function not covered" > i</span>d)))<span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" ></span></span></span></span>
 );
 &nbsp;
 class Side<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >ba</span>r {<span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" ><span class="fstat-no" title="function not covered" ></span></span></span></span></span>
@@ -157,7 +157,7 @@ class Side<span class="cstat-no" title="statement not covered" ><span class="fst
   }
 &nbsp;
   static async <span class="cstat-no" title="statement not covered" >collection(args = {}) {<span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" ></span></span></span></span></span></span></span>
-    const { data: { body, headers } } = await fetchData(path<span class="cstat-no" title="statement not covered" >, args);<span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ></span></span></span></span></span>
+    const { data: { body, headers } } = await fetchData<span class="cstat-no" title="statement not covered" >(path, args);<span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ></span></span></span></span></span>
     return {
       total: headers['x-wp-total'],
       items: body.map(item =&gt; Obje<span class="fstat-no" title="function not covered" >ct</span>.assign(new Sid<span class="cstat-no" title="statement not covered" >ebar(), item)),<span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" ></span></span></span></span></span></span></span>
@@ -172,7 +172,7 @@ export default Sidebar;
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Fri Jun 30 2017 18:24:08 GMT-0400 (EDT)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Fri Jun 30 2017 19:47:20 GMT-0400 (EDT)
 </div>
 </div>
 <script src="../../prettify.js"></script>

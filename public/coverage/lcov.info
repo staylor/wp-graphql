@@ -1,5 +1,5 @@
 TN:
-SF:/Users/205410/git/wp-graphql/src/server.js
+SF:/Users/scott/git/wp-graphql/src/server.js
 FN:9,_interopRequireDefault
 FN:18,(anonymous_1)
 FN:27,(anonymous_2)
@@ -68,7 +68,7 @@ BRF:14
 BRH:0
 end_of_record
 TN:
-SF:/Users/205410/git/wp-graphql/src/data/Category.js
+SF:/Users/scott/git/wp-graphql/src/data/Category.js
 FN:3,_interopRequireDefault
 FN:8,(anonymous_1)
 FN:11,(anonymous_2)
@@ -194,7 +194,7 @@ BRF:32
 BRH:0
 end_of_record
 TN:
-SF:/Users/205410/git/wp-graphql/src/data/Chart.js
+SF:/Users/scott/git/wp-graphql/src/data/Chart.js
 FN:4,_interopRequireDefault
 FN:11,(anonymous_1)
 FN:11,Chart
@@ -239,7 +239,7 @@ BRF:8
 BRH:0
 end_of_record
 TN:
-SF:/Users/205410/git/wp-graphql/src/data/Comment.js
+SF:/Users/scott/git/wp-graphql/src/data/Comment.js
 FN:5,_interopRequireDefault
 FN:10,(anonymous_1)
 FN:13,(anonymous_2)
@@ -421,7 +421,7 @@ BRF:58
 BRH:0
 end_of_record
 TN:
-SF:/Users/205410/git/wp-graphql/src/data/Media.js
+SF:/Users/scott/git/wp-graphql/src/data/Media.js
 FN:3,_interopRequireDefault
 FN:8,(anonymous_1)
 FN:11,(anonymous_2)
@@ -521,7 +521,7 @@ BRF:26
 BRH:0
 end_of_record
 TN:
-SF:/Users/205410/git/wp-graphql/src/data/NavMenu.js
+SF:/Users/scott/git/wp-graphql/src/data/NavMenu.js
 FN:3,_interopRequireDefault
 FN:14,(anonymous_1)
 FN:16,(anonymous_2)
@@ -609,7 +609,7 @@ BRF:22
 BRH:0
 end_of_record
 TN:
-SF:/Users/205410/git/wp-graphql/src/data/Page.js
+SF:/Users/scott/git/wp-graphql/src/data/Page.js
 FN:3,_interopRequireDefault
 FN:8,(anonymous_1)
 FN:11,(anonymous_2)
@@ -716,7 +716,7 @@ BRF:26
 BRH:0
 end_of_record
 TN:
-SF:/Users/205410/git/wp-graphql/src/data/Post.js
+SF:/Users/scott/git/wp-graphql/src/data/Post.js
 FN:3,_interopRequireDefault
 FN:8,(anonymous_1)
 FN:11,(anonymous_2)
@@ -816,7 +816,7 @@ BRF:26
 BRH:0
 end_of_record
 TN:
-SF:/Users/205410/git/wp-graphql/src/data/Settings.js
+SF:/Users/scott/git/wp-graphql/src/data/Settings.js
 FN:2,_interopRequireDefault
 FN:9,(anonymous_1)
 FN:9,Settings
@@ -862,7 +862,7 @@ BRF:10
 BRH:0
 end_of_record
 TN:
-SF:/Users/205410/git/wp-graphql/src/data/Sidebar.js
+SF:/Users/scott/git/wp-graphql/src/data/Sidebar.js
 FN:3,_interopRequireDefault
 FN:14,(anonymous_1)
 FN:15,(anonymous_2)
@@ -947,7 +947,7 @@ BRF:22
 BRH:0
 end_of_record
 TN:
-SF:/Users/205410/git/wp-graphql/src/data/Status.js
+SF:/Users/scott/git/wp-graphql/src/data/Status.js
 FN:3,_interopRequireDefault
 FN:8,(anonymous_1)
 FN:9,(anonymous_2)
@@ -1026,7 +1026,7 @@ BRF:20
 BRH:0
 end_of_record
 TN:
-SF:/Users/205410/git/wp-graphql/src/data/Tag.js
+SF:/Users/scott/git/wp-graphql/src/data/Tag.js
 FN:3,_interopRequireDefault
 FN:8,(anonymous_1)
 FN:11,(anonymous_2)
@@ -1152,7 +1152,7 @@ BRF:32
 BRH:0
 end_of_record
 TN:
-SF:/Users/205410/git/wp-graphql/src/data/Taxonomy.js
+SF:/Users/scott/git/wp-graphql/src/data/Taxonomy.js
 FN:3,_interopRequireDefault
 FN:9,(anonymous_1)
 FN:10,(anonymous_2)
@@ -1231,7 +1231,7 @@ BRF:20
 BRH:0
 end_of_record
 TN:
-SF:/Users/205410/git/wp-graphql/src/data/Type.js
+SF:/Users/scott/git/wp-graphql/src/data/Type.js
 FN:3,_interopRequireDefault
 FN:9,(anonymous_1)
 FN:10,(anonymous_2)
@@ -1310,7 +1310,7 @@ BRF:20
 BRH:0
 end_of_record
 TN:
-SF:/Users/205410/git/wp-graphql/src/data/User.js
+SF:/Users/scott/git/wp-graphql/src/data/User.js
 FN:3,_interopRequireDefault
 FN:8,(anonymous_1)
 FN:11,(anonymous_2)
@@ -1417,7 +1417,7 @@ BRF:26
 BRH:0
 end_of_record
 TN:
-SF:/Users/205410/git/wp-graphql/src/data/client.js
+SF:/Users/scott/git/wp-graphql/src/data/client.js
 FN:15,_interopRequireDefault
 FN:16,getClient
 FN:23,(anonymous_2)
@@ -1454,7 +1454,7 @@ BRF:6
 BRH:0
 end_of_record
 TN:
-SF:/Users/205410/git/wp-graphql/src/data/index.js
+SF:/Users/scott/git/wp-graphql/src/data/index.js
 FN:3,_interopRequireDefault
 FN:5,toBase64
 FN:7,rp
@@ -1554,36 +1554,7 @@ BRF:26
 BRH:0
 end_of_record
 TN:
-SF:/Users/205410/git/wp-graphql/src/jest/setup.js
-FNF:0
-FNH:0
-LF:0
-LH:0
-BRF:0
-BRH:0
-end_of_record
-TN:
-SF:/Users/205410/git/wp-graphql/src/jest/utils.js
-FN:7,(anonymous_0)
-FNF:1
-FNH:1
-FNDA:10,(anonymous_0)
-DA:5,9
-DA:7,9
-DA:8,10
-DA:9,10
-DA:11,10
-DA:12,10
-DA:15,9
-LF:7
-LH:7
-BRDA:7,0,0,0
-BRDA:7,1,0,10
-BRF:2
-BRH:1
-end_of_record
-TN:
-SF:/Users/205410/git/wp-graphql/src/middleware/queryLogger.js
+SF:/Users/scott/git/wp-graphql/src/middleware/queryLogger.js
 FN:9,_interopRequireDefault
 FN:10,queryLogger
 FN:12,(anonymous_2)
@@ -1614,7 +1585,7 @@ BRF:4
 BRH:0
 end_of_record
 TN:
-SF:/Users/205410/git/wp-graphql/src/schema/index.js
+SF:/Users/scott/git/wp-graphql/src/schema/index.js
 FN:3,_interopRequireDefault
 FNF:1
 FNH:0
@@ -1634,7 +1605,7 @@ BRF:4
 BRH:0
 end_of_record
 TN:
-SF:/Users/205410/git/wp-graphql/src/schema/connection/Comment.js
+SF:/Users/scott/git/wp-graphql/src/schema/connection/Comment.js
 FN:12,_interopRequireDefault
 FN:40,(anonymous_1)
 FN:40,_callee
@@ -1711,7 +1682,7 @@ BRF:22
 BRH:0
 end_of_record
 TN:
-SF:/Users/205410/git/wp-graphql/src/schema/connection/Post.js
+SF:/Users/scott/git/wp-graphql/src/schema/connection/Post.js
 FN:12,_interopRequireDefault
 FN:94,resolve
 FN:112,setFilter
@@ -1811,7 +1782,7 @@ BRF:36
 BRH:0
 end_of_record
 TN:
-SF:/Users/205410/git/wp-graphql/src/schema/enum/CommentOrderby.js
+SF:/Users/scott/git/wp-graphql/src/schema/enum/CommentOrderby.js
 FNF:0
 FNH:0
 DA:1,0
@@ -1823,7 +1794,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:/Users/205410/git/wp-graphql/src/schema/enum/CommentStatus.js
+SF:/Users/scott/git/wp-graphql/src/schema/enum/CommentStatus.js
 FNF:0
 FNH:0
 DA:1,0
@@ -1835,7 +1806,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:/Users/205410/git/wp-graphql/src/schema/enum/Format.js
+SF:/Users/scott/git/wp-graphql/src/schema/enum/Format.js
 FNF:0
 FNH:0
 DA:1,0
@@ -1847,7 +1818,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:/Users/205410/git/wp-graphql/src/schema/enum/MediaType.js
+SF:/Users/scott/git/wp-graphql/src/schema/enum/MediaType.js
 FNF:0
 FNH:0
 DA:1,0
@@ -1859,7 +1830,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:/Users/205410/git/wp-graphql/src/schema/enum/Order.js
+SF:/Users/scott/git/wp-graphql/src/schema/enum/Order.js
 FNF:0
 FNH:0
 DA:1,0
@@ -1871,7 +1842,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:/Users/205410/git/wp-graphql/src/schema/enum/PageOrderby.js
+SF:/Users/scott/git/wp-graphql/src/schema/enum/PageOrderby.js
 FNF:0
 FNH:0
 DA:1,0
@@ -1883,7 +1854,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:/Users/205410/git/wp-graphql/src/schema/enum/PingStatus.js
+SF:/Users/scott/git/wp-graphql/src/schema/enum/PingStatus.js
 FNF:0
 FNH:0
 DA:1,0
@@ -1895,7 +1866,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:/Users/205410/git/wp-graphql/src/schema/enum/PostOrderby.js
+SF:/Users/scott/git/wp-graphql/src/schema/enum/PostOrderby.js
 FNF:0
 FNH:0
 DA:1,0
@@ -1907,7 +1878,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:/Users/205410/git/wp-graphql/src/schema/enum/TaxonomyOrderby.js
+SF:/Users/scott/git/wp-graphql/src/schema/enum/TaxonomyOrderby.js
 FNF:0
 FNH:0
 DA:1,0
@@ -1919,7 +1890,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:/Users/205410/git/wp-graphql/src/schema/enum/UserOrderby.js
+SF:/Users/scott/git/wp-graphql/src/schema/enum/UserOrderby.js
 FNF:0
 FNH:0
 DA:1,0
@@ -1931,7 +1902,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:/Users/205410/git/wp-graphql/src/schema/field/author.js
+SF:/Users/scott/git/wp-graphql/src/schema/field/author.js
 FN:2,_interopRequireDefault
 FN:8,resolve
 FNF:2
@@ -1953,7 +1924,7 @@ BRF:6
 BRH:0
 end_of_record
 TN:
-SF:/Users/205410/git/wp-graphql/src/schema/field/content.js
+SF:/Users/scott/git/wp-graphql/src/schema/field/content.js
 FN:3,_interopRequireDefault
 FNF:1
 FNH:0
@@ -1974,7 +1945,7 @@ BRF:4
 BRH:0
 end_of_record
 TN:
-SF:/Users/205410/git/wp-graphql/src/schema/field/date.js
+SF:/Users/scott/git/wp-graphql/src/schema/field/date.js
 FNF:0
 FNH:0
 DA:1,0
@@ -1986,7 +1957,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:/Users/205410/git/wp-graphql/src/schema/field/description.js
+SF:/Users/scott/git/wp-graphql/src/schema/field/description.js
 FNF:0
 FNH:0
 DA:1,0
@@ -1996,7 +1967,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:/Users/205410/git/wp-graphql/src/schema/field/identifier.js
+SF:/Users/scott/git/wp-graphql/src/schema/field/identifier.js
 FN:3,_interopRequireDefault
 FN:5,globalIdField
 FN:8,resolve
@@ -2024,7 +1995,7 @@ BRF:4
 BRH:0
 end_of_record
 TN:
-SF:/Users/205410/git/wp-graphql/src/schema/field/media.js
+SF:/Users/scott/git/wp-graphql/src/schema/field/media.js
 FN:6,_interopRequireDefault
 FN:8,featuredMedia
 FN:11,resolve
@@ -2059,7 +2030,7 @@ BRF:6
 BRH:0
 end_of_record
 TN:
-SF:/Users/205410/git/wp-graphql/src/schema/field/meta.js
+SF:/Users/scott/git/wp-graphql/src/schema/field/meta.js
 FN:2,_interopRequireDefault
 FN:4,metaResolver
 FN:8,(anonymous_2)
@@ -2092,7 +2063,7 @@ BRF:8
 BRH:0
 end_of_record
 TN:
-SF:/Users/205410/git/wp-graphql/src/schema/field/post.js
+SF:/Users/scott/git/wp-graphql/src/schema/field/post.js
 FN:3,_interopRequireDefault
 FNF:1
 FNH:0
@@ -2113,7 +2084,7 @@ BRF:4
 BRH:0
 end_of_record
 TN:
-SF:/Users/205410/git/wp-graphql/src/schema/field/protected.js
+SF:/Users/scott/git/wp-graphql/src/schema/field/protected.js
 FNF:0
 FNH:0
 DA:1,0
@@ -2123,7 +2094,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:/Users/205410/git/wp-graphql/src/schema/field/raw.js
+SF:/Users/scott/git/wp-graphql/src/schema/field/raw.js
 FNF:0
 FNH:0
 DA:1,0
@@ -2133,7 +2104,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:/Users/205410/git/wp-graphql/src/schema/field/rendered.js
+SF:/Users/scott/git/wp-graphql/src/schema/field/rendered.js
 FNF:0
 FNH:0
 DA:1,0
@@ -2143,7 +2114,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:/Users/205410/git/wp-graphql/src/schema/field/status.js
+SF:/Users/scott/git/wp-graphql/src/schema/field/status.js
 FN:2,_interopRequireDefault
 FNF:1
 FNH:0
@@ -2162,7 +2133,7 @@ BRF:4
 BRH:0
 end_of_record
 TN:
-SF:/Users/205410/git/wp-graphql/src/schema/field/taxonomy.js
+SF:/Users/scott/git/wp-graphql/src/schema/field/taxonomy.js
 FN:4,_interopRequireDefault
 FN:10,resolve
 FNF:2
@@ -2183,7 +2154,7 @@ BRF:4
 BRH:0
 end_of_record
 TN:
-SF:/Users/205410/git/wp-graphql/src/schema/interface/Media.js
+SF:/Users/scott/git/wp-graphql/src/schema/interface/Media.js
 FN:9,_interopRequireDefault
 FNF:1
 FNH:0
@@ -2209,7 +2180,7 @@ BRF:4
 BRH:0
 end_of_record
 TN:
-SF:/Users/205410/git/wp-graphql/src/schema/interface/Post.js
+SF:/Users/scott/git/wp-graphql/src/schema/interface/Post.js
 FN:9,_interopRequireDefault
 FNF:1
 FNH:0
@@ -2235,7 +2206,7 @@ BRF:4
 BRH:0
 end_of_record
 TN:
-SF:/Users/205410/git/wp-graphql/src/schema/interface/Term.js
+SF:/Users/scott/git/wp-graphql/src/schema/interface/Term.js
 FN:6,_interopRequireDefault
 FNF:1
 FNH:0
@@ -2257,7 +2228,7 @@ BRF:4
 BRH:0
 end_of_record
 TN:
-SF:/Users/205410/git/wp-graphql/src/schema/mutation/Comment.js
+SF:/Users/scott/git/wp-graphql/src/schema/mutation/Comment.js
 FN:4,_interopRequireDefault
 FN:21,createCommentMutation
 FN:41,mutateAndGetPayload
@@ -2328,7 +2299,7 @@ BRF:22
 BRH:0
 end_of_record
 TN:
-SF:/Users/205410/git/wp-graphql/src/schema/type/Avatar.js
+SF:/Users/scott/git/wp-graphql/src/schema/type/Avatar.js
 FNF:0
 FNH:0
 DA:1,0
@@ -2340,7 +2311,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:/Users/205410/git/wp-graphql/src/schema/type/Caption.js
+SF:/Users/scott/git/wp-graphql/src/schema/type/Caption.js
 FN:3,_interopRequireDefault
 FNF:1
 FNH:0
@@ -2359,7 +2330,7 @@ BRF:4
 BRH:0
 end_of_record
 TN:
-SF:/Users/205410/git/wp-graphql/src/schema/type/Category.js
+SF:/Users/scott/git/wp-graphql/src/schema/type/Category.js
 FN:7,_interopRequireDefault
 FN:13,isTypeOf
 FN:16,fields
@@ -2393,7 +2364,7 @@ BRF:6
 BRH:0
 end_of_record
 TN:
-SF:/Users/205410/git/wp-graphql/src/schema/type/Comment.js
+SF:/Users/scott/git/wp-graphql/src/schema/type/Comment.js
 FN:8,_interopRequireDefault
 FN:13,fields
 FN:22,resolve
@@ -2435,7 +2406,7 @@ BRF:6
 BRH:0
 end_of_record
 TN:
-SF:/Users/205410/git/wp-graphql/src/schema/type/Content.js
+SF:/Users/scott/git/wp-graphql/src/schema/type/Content.js
 FN:6,_interopRequireDefault
 FNF:1
 FNH:0
@@ -2456,7 +2427,7 @@ BRF:4
 BRH:0
 end_of_record
 TN:
-SF:/Users/205410/git/wp-graphql/src/schema/type/Description.js
+SF:/Users/scott/git/wp-graphql/src/schema/type/Description.js
 FN:3,_interopRequireDefault
 FNF:1
 FNH:0
@@ -2475,7 +2446,7 @@ BRF:4
 BRH:0
 end_of_record
 TN:
-SF:/Users/205410/git/wp-graphql/src/schema/type/Excerpt.js
+SF:/Users/scott/git/wp-graphql/src/schema/type/Excerpt.js
 FN:6,_interopRequireDefault
 FNF:1
 FNH:0
@@ -2496,7 +2467,7 @@ BRF:4
 BRH:0
 end_of_record
 TN:
-SF:/Users/205410/git/wp-graphql/src/schema/type/Guid.js
+SF:/Users/scott/git/wp-graphql/src/schema/type/Guid.js
 FN:3,_interopRequireDefault
 FNF:1
 FNH:0
@@ -2515,7 +2486,7 @@ BRF:4
 BRH:0
 end_of_record
 TN:
-SF:/Users/205410/git/wp-graphql/src/schema/type/Labels.js
+SF:/Users/scott/git/wp-graphql/src/schema/type/Labels.js
 FNF:0
 FNH:0
 DA:1,0
@@ -2527,7 +2498,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:/Users/205410/git/wp-graphql/src/schema/type/Meta.js
+SF:/Users/scott/git/wp-graphql/src/schema/type/Meta.js
 FNF:0
 FNH:0
 DA:1,0
@@ -2539,7 +2510,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:/Users/205410/git/wp-graphql/src/schema/type/Mutation.js
+SF:/Users/scott/git/wp-graphql/src/schema/type/Mutation.js
 FN:2,_interopRequireDefault
 FN:7,fields
 FNF:2
@@ -2560,7 +2531,7 @@ BRF:4
 BRH:0
 end_of_record
 TN:
-SF:/Users/205410/git/wp-graphql/src/schema/type/NavMenu.js
+SF:/Users/scott/git/wp-graphql/src/schema/type/NavMenu.js
 FN:4,_interopRequireDefault
 FNF:1
 FNH:0
@@ -2581,7 +2552,7 @@ BRF:4
 BRH:0
 end_of_record
 TN:
-SF:/Users/205410/git/wp-graphql/src/schema/type/NavMenuItem.js
+SF:/Users/scott/git/wp-graphql/src/schema/type/NavMenuItem.js
 FN:11,resolve
 FN:16,resolve
 FN:29,resolve
@@ -2616,7 +2587,7 @@ BRF:4
 BRH:0
 end_of_record
 TN:
-SF:/Users/205410/git/wp-graphql/src/schema/type/Page.js
+SF:/Users/scott/git/wp-graphql/src/schema/type/Page.js
 FN:11,_interopRequireDefault
 FN:17,isTypeOf
 FN:20,fields
@@ -2655,7 +2626,7 @@ BRF:6
 BRH:0
 end_of_record
 TN:
-SF:/Users/205410/git/wp-graphql/src/schema/type/Post.js
+SF:/Users/scott/git/wp-graphql/src/schema/type/Post.js
 FN:15,_interopRequireDefault
 FN:21,isTypeOf
 FN:24,fields
@@ -2709,7 +2680,7 @@ BRF:8
 BRH:0
 end_of_record
 TN:
-SF:/Users/205410/git/wp-graphql/src/schema/type/Query.js
+SF:/Users/scott/git/wp-graphql/src/schema/type/Query.js
 FN:3,_interopRequireDefault
 FN:10,fields
 FN:14,resolve
@@ -2735,7 +2706,7 @@ BRF:4
 BRH:0
 end_of_record
 TN:
-SF:/Users/205410/git/wp-graphql/src/schema/type/Rewrite.js
+SF:/Users/scott/git/wp-graphql/src/schema/type/Rewrite.js
 FN:3,_interopRequireDefault
 FNF:1
 FNH:0
@@ -2754,7 +2725,7 @@ BRF:4
 BRH:0
 end_of_record
 TN:
-SF:/Users/205410/git/wp-graphql/src/schema/type/Settings.js
+SF:/Users/scott/git/wp-graphql/src/schema/type/Settings.js
 FNF:0
 FNH:0
 DA:1,0
@@ -2766,7 +2737,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:/Users/205410/git/wp-graphql/src/schema/type/Sidebar.js
+SF:/Users/scott/git/wp-graphql/src/schema/type/Sidebar.js
 FN:5,_interopRequireDefault
 FN:17,resolve
 FNF:2
@@ -2790,7 +2761,7 @@ BRF:4
 BRH:0
 end_of_record
 TN:
-SF:/Users/205410/git/wp-graphql/src/schema/type/Status.js
+SF:/Users/scott/git/wp-graphql/src/schema/type/Status.js
 FN:3,_interopRequireDefault
 FNF:1
 FNH:0
@@ -2809,7 +2780,7 @@ BRF:4
 BRH:0
 end_of_record
 TN:
-SF:/Users/205410/git/wp-graphql/src/schema/type/Tag.js
+SF:/Users/scott/git/wp-graphql/src/schema/type/Tag.js
 FN:8,_interopRequireDefault
 FN:14,isTypeOf
 FNF:2
@@ -2835,7 +2806,7 @@ BRF:4
 BRH:0
 end_of_record
 TN:
-SF:/Users/205410/git/wp-graphql/src/schema/type/Taxonomy.js
+SF:/Users/scott/git/wp-graphql/src/schema/type/Taxonomy.js
 FN:5,_interopRequireDefault
 FN:15,resolve
 FNF:2
@@ -2860,7 +2831,7 @@ BRF:4
 BRH:0
 end_of_record
 TN:
-SF:/Users/205410/git/wp-graphql/src/schema/type/Title.js
+SF:/Users/scott/git/wp-graphql/src/schema/type/Title.js
 FN:3,_interopRequireDefault
 FNF:1
 FNH:0
@@ -2879,7 +2850,7 @@ BRF:4
 BRH:0
 end_of_record
 TN:
-SF:/Users/205410/git/wp-graphql/src/schema/type/Type.js
+SF:/Users/scott/git/wp-graphql/src/schema/type/Type.js
 FN:4,_interopRequireDefault
 FN:15,resolve
 FNF:2
@@ -2903,7 +2874,7 @@ BRF:4
 BRH:0
 end_of_record
 TN:
-SF:/Users/205410/git/wp-graphql/src/schema/type/User.js
+SF:/Users/scott/git/wp-graphql/src/schema/type/User.js
 FN:6,_interopRequireDefault
 FN:20,resolve
 FN:21,(anonymous_2)
@@ -2930,7 +2901,7 @@ BRF:4
 BRH:0
 end_of_record
 TN:
-SF:/Users/205410/git/wp-graphql/src/schema/type/Viewer.js
+SF:/Users/scott/git/wp-graphql/src/schema/type/Viewer.js
 FN:25,_interopRequireDefault
 FN:27,itemResolver
 FN:33,resolve
@@ -3003,7 +2974,7 @@ BRF:11
 BRH:0
 end_of_record
 TN:
-SF:/Users/205410/git/wp-graphql/src/schema/type/Widget.js
+SF:/Users/scott/git/wp-graphql/src/schema/type/Widget.js
 FN:5,_interopRequireDefault
 FNF:1
 FNH:0
@@ -3024,7 +2995,7 @@ BRF:4
 BRH:0
 end_of_record
 TN:
-SF:/Users/205410/git/wp-graphql/src/schema/type/relayNode.js
+SF:/Users/scott/git/wp-graphql/src/schema/type/relayNode.js
 FN:25,_interopRequireDefault
 FN:28,(anonymous_1)
 FN:60,(anonymous_2)
@@ -3122,7 +3093,7 @@ BRF:29
 BRH:0
 end_of_record
 TN:
-SF:/Users/205410/git/wp-graphql/src/schema/type/Chart/Chart.js
+SF:/Users/scott/git/wp-graphql/src/schema/type/Chart/Chart.js
 FN:2,_interopRequireDefault
 FN:11,resolve
 FN:16,resolve
@@ -3158,7 +3129,7 @@ BRF:4
 BRH:0
 end_of_record
 TN:
-SF:/Users/205410/git/wp-graphql/src/schema/type/Chart/ChartItem.js
+SF:/Users/scott/git/wp-graphql/src/schema/type/Chart/ChartItem.js
 FN:2,_interopRequireDefault
 FN:11,resolve
 FN:16,resolve
@@ -3197,7 +3168,7 @@ BRF:4
 BRH:0
 end_of_record
 TN:
-SF:/Users/205410/git/wp-graphql/src/schema/type/Chart/ChartItemImage.js
+SF:/Users/scott/git/wp-graphql/src/schema/type/Chart/ChartItemImage.js
 FN:10,resolve
 FN:15,resolve
 FNF:2
@@ -3214,7 +3185,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:/Users/205410/git/wp-graphql/src/schema/type/Chart/index.js
+SF:/Users/scott/git/wp-graphql/src/schema/type/Chart/index.js
 FN:1,_interopRequireDefault
 FNF:1
 FNH:0
@@ -3230,7 +3201,7 @@ BRF:4
 BRH:0
 end_of_record
 TN:
-SF:/Users/205410/git/wp-graphql/src/schema/type/Media/Size.js
+SF:/Users/scott/git/wp-graphql/src/schema/type/Media/Size.js
 FNF:0
 FNH:0
 DA:1,0
@@ -3242,7 +3213,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:/Users/205410/git/wp-graphql/src/schema/type/Media/fields.js
+SF:/Users/scott/git/wp-graphql/src/schema/type/Media/fields.js
 FN:10,_interopRequireDefault
 FN:37,resolve
 FNF:2
@@ -3270,7 +3241,7 @@ BRF:4
 BRH:0
 end_of_record
 TN:
-SF:/Users/205410/git/wp-graphql/src/schema/type/Media/index.js
+SF:/Users/scott/git/wp-graphql/src/schema/type/Media/index.js
 FN:5,_interopRequireDefault
 FNF:1
 FNH:0
@@ -3291,7 +3262,7 @@ BRF:4
 BRH:0
 end_of_record
 TN:
-SF:/Users/205410/git/wp-graphql/src/schema/type/Media/Audio/Details.js
+SF:/Users/scott/git/wp-graphql/src/schema/type/Media/Audio/Details.js
 FNF:0
 FNH:0
 DA:1,0
@@ -3303,7 +3274,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:/Users/205410/git/wp-graphql/src/schema/type/Media/Audio/index.js
+SF:/Users/scott/git/wp-graphql/src/schema/type/Media/Audio/index.js
 FN:5,_interopRequireDefault
 FN:11,isTypeOf
 FNF:2
@@ -3327,7 +3298,7 @@ BRF:4
 BRH:0
 end_of_record
 TN:
-SF:/Users/205410/git/wp-graphql/src/schema/type/Media/Image/Details.js
+SF:/Users/scott/git/wp-graphql/src/schema/type/Media/Image/Details.js
 FN:3,_interopRequireDefault
 FN:14,resolve
 FN:15,(anonymous_2)
@@ -3352,7 +3323,7 @@ BRF:4
 BRH:0
 end_of_record
 TN:
-SF:/Users/205410/git/wp-graphql/src/schema/type/Media/Image/index.js
+SF:/Users/scott/git/wp-graphql/src/schema/type/Media/Image/index.js
 FN:5,_interopRequireDefault
 FN:11,isTypeOf
 FNF:2
@@ -3376,7 +3347,7 @@ BRF:4
 BRH:0
 end_of_record
 TN:
-SF:/Users/205410/git/wp-graphql/src/schema/type/Media/Video/Details.js
+SF:/Users/scott/git/wp-graphql/src/schema/type/Media/Video/Details.js
 FNF:0
 FNH:0
 DA:1,0
@@ -3388,7 +3359,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:/Users/205410/git/wp-graphql/src/schema/type/Media/Video/index.js
+SF:/Users/scott/git/wp-graphql/src/schema/type/Media/Video/index.js
 FN:5,_interopRequireDefault
 FN:11,isTypeOf
 FNF:2
