@@ -34,7 +34,6 @@
   },
   "devDependencies": {
     "babel-jest": "^20.0.3",
-    "babel-plugin-istanbul": "^4.1.4",
     "eslint": "^4.1.1",
     "eslint-config-airbnb": "^15.0.1",
     "eslint-config-airbnb-base": "^11.2.0",
@@ -47,7 +46,6 @@
     "eslint-plugin-react": "^7.1.0",
     "jest-cli": "^20.0.4",
     "nodemon": "^1.11.0",
-    "nyc": "^11.0.3",
     "prettier": "^1.5.2",
     "prettier-eslint": "^6.4.1"
   },
@@ -61,7 +59,16 @@
     "clear-cache": "redis-cli FLUSHALL"
   },
   "jest": {
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx}"
+    ],
+    "coverageDirectory": "<rootDir>/public/coverage",
+    "setupTestFrameworkScriptFile": "<rootDir>/src/jest/setup.js",
     "testEnvironment": "node",
-    "setupTestFrameworkScriptFile": "<rootDir>/src/jest/setup.js"
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "/build/"
+    ]
   }
 }

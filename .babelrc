@@ -17,10 +17,5 @@
         "field": "./src/schema/field"
       }
     }]
-  ],
-  "env": {
-    "test": {
-      "plugins": ["istanbul"]
-    }
-  }
+  ]
 }
