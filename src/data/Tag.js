@@ -31,6 +31,11 @@ class Tag {
     return data ? Object.assign(new Tag(), data) : null;
   }
 
+  static async loadMany(ids) {
+    const data = await tagLoader.loadMany(ids);
+    return data ? data.map(entry => Object.assign(new Tag(), entry)) : null;
+  }
+
   static async loadBySlug(slug) {
     const data = await slugLoader.load(slug);
     return data ? Object.assign(new Tag(), data) : null;

@@ -31,6 +31,11 @@ class Category {
     return data ? Object.assign(new Category(), data) : null;
   }
 
+  static async loadMany(ids) {
+    const data = await categoryLoader.loadMany(ids);
+    return data ? data.map(entry => Object.assign(new Category(), entry)) : null;
+  }
+
   static async loadBySlug(slug) {
     const data = await slugLoader.load(slug);
     return data ? Object.assign(new Category(), data) : null;
