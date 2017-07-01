@@ -1,44 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1498866441224" clover="3.2.0">
-  <project timestamp="1498866441224" name="All files">
-    <metrics statements="969" coveredstatements="0" conditionals="708" coveredconditionals="0" methods="453" coveredmethods="0" elements="2130" coveredelements="0" complexity="0" loc="969" ncloc="969" packages="15" files="89" classes="89">
-      <package name="src">
-        <metrics statements="30" coveredstatements="0" conditionals="14" coveredconditionals="0" methods="8" coveredmethods="0"/>
-        <file name="server.js" path="/Users/scott/git/wp-graphql/src/server.js">
-          <metrics statements="30" coveredstatements="0" conditionals="14" coveredconditionals="0" methods="8" coveredmethods="0"/>
-          <line num="1" count="0" type="stmt"/>
-          <line num="2" count="0" type="stmt"/>
-          <line num="3" count="0" type="stmt"/>
-          <line num="4" count="0" type="stmt"/>
-          <line num="5" count="0" type="stmt"/>
-          <line num="6" count="0" type="stmt"/>
-          <line num="7" count="0" type="stmt"/>
-          <line num="8" count="0" type="stmt"/>
-          <line num="9" count="0" type="cond" truecount="0" falsecount="4"/>
-          <line num="13" count="0" type="stmt"/>
-          <line num="15" count="0" type="stmt"/>
-          <line num="16" count="0" type="stmt"/>
-          <line num="18" count="0" type="stmt"/>
-          <line num="26" count="0" type="stmt"/>
-          <line num="28" count="0" type="stmt"/>
-          <line num="32" count="0" type="stmt"/>
-          <line num="34" count="0" type="cond" truecount="0" falsecount="5"/>
-          <line num="35" count="0" type="cond" truecount="0" falsecount="5"/>
-          <line num="36" count="0" type="stmt"/>
-          <line num="37" count="0" type="stmt"/>
-          <line num="38" count="0" type="stmt"/>
-          <line num="39" count="0" type="stmt"/>
-          <line num="40" count="0" type="stmt"/>
-          <line num="41" count="0" type="stmt"/>
-          <line num="43" count="0" type="stmt"/>
-          <line num="47" count="0" type="stmt"/>
-          <line num="49" count="0" type="stmt"/>
-          <line num="51" count="0" type="stmt"/>
-          <line num="52" count="0" type="stmt"/>
-          <line num="53" count="0" type="stmt"/>
-        </file>
-      </package>
-      <package name="src.data">
+<coverage generated="1498868437909" clover="3.2.0">
+  <project timestamp="1498868437910" name="All files">
+    <metrics statements="909" coveredstatements="10" conditionals="690" coveredconditionals="0" methods="441" coveredmethods="0" elements="2040" coveredelements="10" complexity="0" loc="909" ncloc="909" packages="13" files="87" classes="87">
+      <package name="data">
         <metrics statements="342" coveredstatements="0" conditionals="380" coveredconditionals="0" methods="310" coveredmethods="0"/>
         <file name="Category.js" path="/Users/scott/git/wp-graphql/src/data/Category.js">
           <metrics statements="25" coveredstatements="0" conditionals="32" coveredconditionals="0" methods="30" coveredmethods="0"/>
@@ -431,23 +395,7 @@
           <line num="82" count="0" type="stmt"/>
         </file>
       </package>
-      <package name="src.middleware">
-        <metrics statements="10" coveredstatements="0" conditionals="4" coveredconditionals="0" methods="4" coveredmethods="0"/>
-        <file name="queryLogger.js" path="/Users/scott/git/wp-graphql/src/middleware/queryLogger.js">
-          <metrics statements="10" coveredstatements="0" conditionals="4" coveredconditionals="0" methods="4" coveredmethods="0"/>
-          <line num="1" count="0" type="stmt"/>
-          <line num="9" count="0" type="cond" truecount="0" falsecount="4"/>
-          <line num="10" count="0" type="stmt"/>
-          <line num="13" count="0" type="stmt"/>
-          <line num="14" count="0" type="stmt"/>
-          <line num="17" count="0" type="stmt"/>
-          <line num="18" count="0" type="stmt"/>
-          <line num="21" count="0" type="stmt"/>
-          <line num="22" count="0" type="stmt"/>
-          <line num="25" count="0" type="stmt"/>
-        </file>
-      </package>
-      <package name="src.schema">
+      <package name="schema">
         <metrics statements="5" coveredstatements="0" conditionals="4" coveredconditionals="0" methods="1" coveredmethods="0"/>
         <file name="index.js" path="/Users/scott/git/wp-graphql/src/schema/index.js">
           <metrics statements="5" coveredstatements="0" conditionals="4" coveredconditionals="0" methods="1" coveredmethods="0"/>
@@ -458,7 +406,7 @@
           <line num="7" count="0" type="stmt"/>
         </file>
       </package>
-      <package name="src.schema.connection">
+      <package name="schema.connection">
         <metrics statements="75" coveredstatements="0" conditionals="58" coveredconditionals="0" methods="13" coveredmethods="0"/>
         <file name="Comment.js" path="/Users/scott/git/wp-graphql/src/schema/connection/Comment.js">
           <metrics statements="32" coveredstatements="0" conditionals="22" coveredconditionals="0" methods="7" coveredmethods="0"/>
@@ -542,70 +490,50 @@
           <line num="153" count="0" type="stmt"/>
         </file>
       </package>
-      <package name="src.schema.enum">
-        <metrics statements="30" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <package name="schema.enum">
+        <metrics statements="10" coveredstatements="10" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <file name="CommentOrderby.js" path="/Users/scott/git/wp-graphql/src/schema/enum/CommentOrderby.js">
-          <metrics statements="3" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-          <line num="1" count="0" type="stmt"/>
-          <line num="3" count="0" type="stmt"/>
-          <line num="13" count="0" type="stmt"/>
+          <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+          <line num="3" count="1" type="stmt"/>
         </file>
         <file name="CommentStatus.js" path="/Users/scott/git/wp-graphql/src/schema/enum/CommentStatus.js">
-          <metrics statements="3" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-          <line num="1" count="0" type="stmt"/>
-          <line num="3" count="0" type="stmt"/>
-          <line num="8" count="0" type="stmt"/>
+          <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+          <line num="3" count="1" type="stmt"/>
         </file>
         <file name="Format.js" path="/Users/scott/git/wp-graphql/src/schema/enum/Format.js">
-          <metrics statements="3" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-          <line num="1" count="0" type="stmt"/>
-          <line num="3" count="0" type="stmt"/>
-          <line num="16" count="0" type="stmt"/>
+          <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+          <line num="3" count="1" type="stmt"/>
         </file>
         <file name="MediaType.js" path="/Users/scott/git/wp-graphql/src/schema/enum/MediaType.js">
-          <metrics statements="3" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-          <line num="1" count="0" type="stmt"/>
-          <line num="3" count="0" type="stmt"/>
-          <line num="11" count="0" type="stmt"/>
+          <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+          <line num="3" count="1" type="stmt"/>
         </file>
         <file name="Order.js" path="/Users/scott/git/wp-graphql/src/schema/enum/Order.js">
-          <metrics statements="3" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-          <line num="1" count="0" type="stmt"/>
-          <line num="3" count="0" type="stmt"/>
-          <line num="8" count="0" type="stmt"/>
+          <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+          <line num="3" count="1" type="stmt"/>
         </file>
         <file name="PageOrderby.js" path="/Users/scott/git/wp-graphql/src/schema/enum/PageOrderby.js">
-          <metrics statements="3" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-          <line num="1" count="0" type="stmt"/>
-          <line num="3" count="0" type="stmt"/>
-          <line num="13" count="0" type="stmt"/>
+          <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+          <line num="3" count="1" type="stmt"/>
         </file>
         <file name="PingStatus.js" path="/Users/scott/git/wp-graphql/src/schema/enum/PingStatus.js">
-          <metrics statements="3" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-          <line num="1" count="0" type="stmt"/>
-          <line num="3" count="0" type="stmt"/>
-          <line num="8" count="0" type="stmt"/>
+          <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+          <line num="3" count="1" type="stmt"/>
         </file>
         <file name="PostOrderby.js" path="/Users/scott/git/wp-graphql/src/schema/enum/PostOrderby.js">
-          <metrics statements="3" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-          <line num="1" count="0" type="stmt"/>
-          <line num="3" count="0" type="stmt"/>
-          <line num="12" count="0" type="stmt"/>
+          <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+          <line num="3" count="1" type="stmt"/>
         </file>
         <file name="TaxonomyOrderby.js" path="/Users/scott/git/wp-graphql/src/schema/enum/TaxonomyOrderby.js">
-          <metrics statements="3" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-          <line num="1" count="0" type="stmt"/>
-          <line num="3" count="0" type="stmt"/>
-          <line num="13" count="0" type="stmt"/>
+          <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+          <line num="3" count="1" type="stmt"/>
         </file>
         <file name="UserOrderby.js" path="/Users/scott/git/wp-graphql/src/schema/enum/UserOrderby.js">
-          <metrics statements="3" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-          <line num="1" count="0" type="stmt"/>
-          <line num="3" count="0" type="stmt"/>
-          <line num="13" count="0" type="stmt"/>
+          <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+          <line num="3" count="1" type="stmt"/>
         </file>
       </package>
-      <package name="src.schema.field">
+      <package name="schema.field">
         <metrics statements="61" coveredstatements="0" conditionals="40" coveredconditionals="0" methods="17" coveredmethods="0"/>
         <file name="author.js" path="/Users/scott/git/wp-graphql/src/schema/field/author.js">
           <metrics statements="3" coveredstatements="0" conditionals="6" coveredconditionals="0" methods="2" coveredmethods="0"/>
@@ -708,7 +636,7 @@
           <line num="10" count="0" type="stmt"/>
         </file>
       </package>
-      <package name="src.schema.interface">
+      <package name="schema.interface">
         <metrics statements="29" coveredstatements="0" conditionals="12" coveredconditionals="0" methods="3" coveredmethods="0"/>
         <file name="Media.js" path="/Users/scott/git/wp-graphql/src/schema/interface/Media.js">
           <metrics statements="11" coveredstatements="0" conditionals="4" coveredconditionals="0" methods="1" coveredmethods="0"/>
@@ -749,7 +677,7 @@
           <line num="22" count="0" type="stmt"/>
         </file>
       </package>
-      <package name="src.schema.mutation">
+      <package name="schema.mutation">
         <metrics statements="28" coveredstatements="0" conditionals="22" coveredconditionals="0" methods="6" coveredmethods="0"/>
         <file name="Comment.js" path="/Users/scott/git/wp-graphql/src/schema/mutation/Comment.js">
           <metrics statements="28" coveredstatements="0" conditionals="22" coveredconditionals="0" methods="6" coveredmethods="0"/>
@@ -783,7 +711,7 @@
           <line num="129" count="0" type="stmt"/>
         </file>
       </package>
-      <package name="src.schema.type">
+      <package name="schema.type">
         <metrics statements="282" coveredstatements="0" conditionals="138" coveredconditionals="0" methods="61" coveredmethods="0"/>
         <file name="Avatar.js" path="/Users/scott/git/wp-graphql/src/schema/type/Avatar.js">
           <metrics statements="3" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
@@ -1152,7 +1080,7 @@
           <line num="90" count="0" type="stmt"/>
         </file>
       </package>
-      <package name="src.schema.type.Chart">
+      <package name="schema.type.Chart">
         <metrics statements="24" coveredstatements="0" conditionals="12" coveredconditionals="0" methods="18" coveredmethods="0"/>
         <file name="Chart.js" path="/Users/scott/git/wp-graphql/src/schema/type/Chart/Chart.js">
           <metrics statements="9" coveredstatements="0" conditionals="4" coveredconditionals="0" methods="7" coveredmethods="0"/>
@@ -1191,7 +1119,7 @@
           <line num="1" count="0" type="cond" truecount="0" falsecount="4"/>
         </file>
       </package>
-      <package name="src.schema.type.Media">
+      <package name="schema.type.Media">
         <metrics statements="20" coveredstatements="0" conditionals="8" coveredconditionals="0" methods="3" coveredmethods="0"/>
         <file name="Size.js" path="/Users/scott/git/wp-graphql/src/schema/type/Media/Size.js">
           <metrics statements="3" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
@@ -1223,7 +1151,7 @@
           <line num="9" count="0" type="stmt"/>
         </file>
       </package>
-      <package name="src.schema.type.Media.Audio">
+      <package name="schema.type.Media.Audio">
         <metrics statements="10" coveredstatements="0" conditionals="4" coveredconditionals="0" methods="2" coveredmethods="0"/>
         <file name="Details.js" path="/Users/scott/git/wp-graphql/src/schema/type/Media/Audio/Details.js">
           <metrics statements="3" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
@@ -1242,7 +1170,7 @@
           <line num="16" count="0" type="stmt"/>
         </file>
       </package>
-      <package name="src.schema.type.Media.Image">
+      <package name="schema.type.Media.Image">
         <metrics statements="13" coveredstatements="0" conditionals="8" coveredconditionals="0" methods="5" coveredmethods="0"/>
         <file name="Details.js" path="/Users/scott/git/wp-graphql/src/schema/type/Media/Image/Details.js">
           <metrics statements="6" coveredstatements="0" conditionals="4" coveredconditionals="0" methods="3" coveredmethods="0"/>
@@ -1264,7 +1192,7 @@
           <line num="16" count="0" type="stmt"/>
         </file>
       </package>
-      <package name="src.schema.type.Media.Video">
+      <package name="schema.type.Media.Video">
         <metrics statements="10" coveredstatements="0" conditionals="4" coveredconditionals="0" methods="2" coveredmethods="0"/>
         <file name="Details.js" path="/Users/scott/git/wp-graphql/src/schema/type/Media/Video/Details.js">
           <metrics statements="3" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>

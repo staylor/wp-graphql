@@ -48,7 +48,6 @@ app.use(queryLogger());
 
 app.use('/graphql', graphQLServer);
 
-const server = app.listen(process.env.GRAPHQL_PORT, () => {
-  const { address, port } = server.address();
-  console.log(`GraphQL Server is now running on http://${address}:${port}`);
+app.listen(process.env.GRAPHQL_PORT, () => {
+  console.log(`GraphQL Server is now running on port ${process.env.GRAPHQL_PORT}`);
 });
