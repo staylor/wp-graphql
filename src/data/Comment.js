@@ -1,7 +1,7 @@
 import path from 'path';
 import { toGlobalId } from 'graphql-relay';
 import Dataloader from 'dataloader';
-import { fetchData, clearEndpointCache } from 'data';
+import fetchData, { clearEndpointCache } from 'data/utils';
 import Post from 'data/Post';
 
 // Dataloader expects IDs that can be read by the REST API
@@ -24,7 +24,10 @@ class Comment {
 
   static async clearPostCache(id) {
     const endpoint = `${Post.getEndpoint()}/${id}`;
-    return Promise.all(clearEndpointCache(commentsEndpoint), clearEndpointCache(endpoint));
+    return Promise.all(
+      clearEndpointCache(commentsEndpoint),
+      clearEndpointCache(endpoint)
+    );
   }
 
   static async load(id) {

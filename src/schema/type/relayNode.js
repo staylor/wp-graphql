@@ -17,10 +17,8 @@ import Comment from 'data/Comment';
 import Media from 'data/Media';
 import Page from 'data/Page';
 import Post from 'data/Post';
-import Status from 'data/Status';
 import Tag from 'data/Tag';
 import Taxonomy from 'data/Taxonomy';
-import Type from 'data/Type';
 import User from 'data/User';
 import Sidebar from 'data/Sidebar';
 
@@ -39,14 +37,10 @@ const { nodeInterface, nodeField } = nodeDefinitions(
         return Page.load(id);
       case 'Post':
         return Post.load(id);
-      case 'Status':
-        return Status.load(id);
       case 'Tag':
         return Tag.load(id);
       case 'Taxonomy':
         return Taxonomy.load(id);
-      case 'Type':
-        return Type.load(id);
       case 'User':
         return User.load(id);
       case 'Sidebar':
@@ -69,14 +63,10 @@ const { nodeInterface, nodeField } = nodeDefinitions(
         return Page;
       case obj instanceof PostType:
         return Post;
-      case obj instanceof StatusType:
-        return Status;
       case obj instanceof TagType:
         return Tag;
       case obj instanceof TaxonomyType:
         return Taxonomy;
-      case obj instanceof TypeType:
-        return Type;
       case obj instanceof UserType:
         return User;
       case obj instanceof SidebarType:

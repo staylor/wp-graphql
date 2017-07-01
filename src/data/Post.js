@@ -1,10 +1,10 @@
 import { toGlobalId } from 'graphql-relay';
 import Dataloader from 'dataloader';
-import { fetchData } from 'data';
+import fetchData from 'data/utils';
 
 // Dataloader expects IDs that can be read by the REST API
 
-const path = process.env.WP_POSTS_ENDPOINT || 'wp/v2/posts';
+const path = process.env.WP_POSTS_ENDPOINT || 'graphql/v1/posts';
 const postLoader = new Dataloader(ids =>
   fetchData(path, {
     qs: { include: ids, orderby: 'include', per_page: 100 },

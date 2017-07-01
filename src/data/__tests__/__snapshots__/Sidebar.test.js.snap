@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test Sidebar data access Get endpoint 1`] = `"graphql/v1/sidebars"`;
+
+exports[`Test Sidebar data access Load a Sidebar 1`] = `"U2lkZWJhcjo="`;
+
+exports[`Test Sidebar data access Load a Sidebar 2`] = `
+Sidebar {
+  "slug": "main-nav",
+}
+`;

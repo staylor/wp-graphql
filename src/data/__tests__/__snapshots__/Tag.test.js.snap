@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test Tag data access Get endpoint 1`] = `"wp/v2/tags"`;
+
+exports[`Test Tag data access Load a tag 1`] = `"VGFnOjEz"`;
+
+exports[`Test Tag data access Load a tag 2`] = `
+Tag {
+  "id": 13,
+}
+`;
+
+exports[`Test Tag data access Load a tag by slug 1`] = `
+Tag {
+  "slug": "dirty-projectors",
+}
+`;
+
+exports[`Test Tag data access Load tags 1`] = `
+Array [
+  Tag {
+    "id": 13,
+  },
+  Tag {
+    "id": 17,
+  },
+]
+`;

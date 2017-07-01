@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test NavMenu data access Get endpoint 1`] = `"graphql/v1/nav-menus"`;
+
+exports[`Test NavMenu data access Load a NavMenu 1`] = `"TmF2TWVudTo="`;
+
+exports[`Test NavMenu data access Load a NavMenu 2`] = `
+NavMenu {
+  "slug": "main-nav",
+}
+`;

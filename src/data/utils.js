@@ -39,7 +39,7 @@ export const clearEndpointCache = path => {
   });
 };
 
-export const fetchData = (path, opts = {}) => {
+const fetchData = (path, opts = {}) => {
   const key = toBase64(`${JSON.stringify(opts)}`);
   const client = getClient();
 
@@ -81,4 +81,4 @@ export const fetchData = (path, opts = {}) => {
   });
 };
 
-export default rp;
+export default fetchData;

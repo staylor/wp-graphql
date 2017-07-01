@@ -1,0 +1,29 @@
+import Comment from 'data/Comment';
+
+jest.mock('../utils', () =>
+  jest.fn(() => ({
+    data: {
+      body: [{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }, { id: 5 }],
+      headers: {
+        'x-wp-total': 5,
+      },
+    },
+  }))
+);
+
+describe('Test Comment data access', () => {
+  test('Get endpoint', () => {
+    expect(Comment.getEndpoint()).toMatchSnapshot();
+  });
+
+  test('Load a comment', async () => {
+    const comment = await Comment.load(13);
+    expect(comment.getID()).toMatchSnapshot();
+    expect(comment).toMatchSnapshot();
+  });
+
+  test('Load Comment collection', async () => {
+    const collection = await Comment.collection();
+    expect(collection).toMatchSnapshot();
+  });
+});

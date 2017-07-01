@@ -1,6 +1,6 @@
 import { toGlobalId } from 'graphql-relay';
 import Dataloader from 'dataloader';
-import { fetchData } from 'data';
+import fetchData from 'data/utils';
 
 // Dataloader expects IDs that can be read by the REST API
 
@@ -29,14 +29,6 @@ class NavMenu {
   static async load(id) {
     const data = await navMenuLoader.load(id);
     return data ? Object.assign(new NavMenu(), data) : null;
-  }
-
-  static async collection(args = {}) {
-    const { data: { body, headers } } = await fetchData(path, args);
-    return {
-      total: headers['x-wp-total'],
-      items: body.map(item => Object.assign(new NavMenu(), item)),
-    };
   }
 }
 

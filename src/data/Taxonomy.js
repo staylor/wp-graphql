@@ -1,6 +1,6 @@
 import { toGlobalId } from 'graphql-relay';
 import Dataloader from 'dataloader';
-import { fetchData } from 'data';
+import fetchData from 'data/utils';
 
 // Dataloader expects IDs that can be read by the REST API
 
@@ -22,11 +22,6 @@ class Taxonomy {
   static async load(id) {
     const data = await taxonomyLoader.load(id);
     return data ? Object.assign(new Taxonomy(), data) : null;
-  }
-
-  static async collection(args = {}) {
-    const { data: { body } } = await fetchData(path, args);
-    return Object.keys(body).map(key => Object.assign(new Taxonomy(), body[key]));
   }
 }
 
