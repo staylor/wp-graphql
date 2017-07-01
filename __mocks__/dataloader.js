@@ -7,10 +7,11 @@ class DataloaderMock extends Dataloader {
     this._batchLoadFn = ids =>
       Promise.resolve(
         ids.map(id => {
-          if (typeof id === 'string') {
+          const isNumber = String(id).match(/^[0-9]+$/);
+          if (typeof id === 'string' && !isNumber) {
             return { slug: id };
           }
-          return { id };
+          return { id: parseInt(id, 10) };
         })
       );
   }

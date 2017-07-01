@@ -24,6 +24,7 @@ const graphQLServer = graphQLHTTP(req => ({
 }));
 
 app.use(
+  '/graphql',
   responseTime((req, res, time) => {
     console.log(`Response time: ${Math.floor(time)}ms`);
   })

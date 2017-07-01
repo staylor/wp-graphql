@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test Query type Test fields 1`] = `
+Array [
+  "node",
+  "viewer",
+]
+`;
+
+exports[`Test Query type Test name 1`] = `"Query"`;

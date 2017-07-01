@@ -63,7 +63,7 @@
   "jest": {
     "collectCoverage": true,
     "collectCoverageFrom": [
-      "src/**/*.{js,jsx}"
+      "src/**/*.js"
     ],
     "coverageDirectory": "<rootDir>/public/coverage",
     "coveragePathIgnorePatterns": [

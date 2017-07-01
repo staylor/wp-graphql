@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test Page type Test fields 1`] = `
+Array [
+  "id",
+  "date",
+  "date_gmt",
+  "guid",
+  "modified",
+  "modified_gmt",
+  "slug",
+  "type",
+  "link",
+  "title",
+  "content",
+  "excerpt",
+  "comment_status",
+  "ping_status",
+  "template",
+  "author",
+  "featuredMedia",
+  "meta",
+  "parent",
+  "menu_order",
+]
+`;
+
+exports[`Test Page type Test name 1`] = `"Page"`;
+
+exports[`Test Page type Test resolve parent 1`] = `
+Page {
+  "id": 69,
+}
+`;

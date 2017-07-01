@@ -5,10 +5,8 @@ import CommentType from 'type/Comment';
 import MediaType from 'type/Media';
 import PageType from 'type/Page';
 import PostType from 'type/Post';
-import StatusType from 'type/Status';
 import TagType from 'type/Tag';
 import TaxonomyType from 'type/Taxonomy';
-import TypeType from 'type/Type';
 import UserType from 'type/User';
 import SidebarType from 'type/Sidebar';
 

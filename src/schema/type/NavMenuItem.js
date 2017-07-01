@@ -41,7 +41,8 @@ const NavMenuItemType = new GraphQLObjectType({
     dataID: {
       type: GraphQLID,
       description: 'Unique identifier for the object.',
-      resolve: item => (item.object_id > 0 ? toGlobalId('NavMenuItem', item.object_id) : null),
+      resolve: item =>
+        item.object_id > 0 ? toGlobalId('NavMenuItem', item.object_id) : null,
     },
     url: {
       type: GraphQLString,

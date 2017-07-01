@@ -24,7 +24,8 @@ const CommentType = new GraphQLObjectType({
     parent: {
       type: GraphQLID,
       description: 'The ID for the parent of the object.',
-      resolve: comment => (comment.parent > 0 ? toGlobalId('Comment', comment.parent) : null),
+      resolve: comment =>
+        comment.parent > 0 ? toGlobalId('Comment', comment.parent) : null,
     },
     author_name: {
       type: GraphQLString,
