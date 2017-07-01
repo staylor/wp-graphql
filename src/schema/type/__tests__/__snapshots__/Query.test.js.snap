@@ -8,3 +8,9 @@ Array [
 `;
 
 exports[`Test Query type Test name 1`] = `"Query"`;
+
+exports[`Test Query type Test resolve viewer 1`] = `
+Object {
+  "id": "me",
+}
+`;

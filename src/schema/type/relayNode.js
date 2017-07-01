@@ -8,6 +8,7 @@ import PostType from 'type/Post';
 import TagType from 'type/Tag';
 import TaxonomyType from 'type/Taxonomy';
 import UserType from 'type/User';
+import NavMenuType from 'type/NavMenu';
 import SidebarType from 'type/Sidebar';
 
 import Category from 'data/Category';
@@ -18,6 +19,7 @@ import Post from 'data/Post';
 import Tag from 'data/Tag';
 import Taxonomy from 'data/Taxonomy';
 import User from 'data/User';
+import NavMenu from 'data/NavMenu';
 import Sidebar from 'data/Sidebar';
 
 const { nodeInterface, nodeField } = nodeDefinitions(
@@ -41,6 +43,8 @@ const { nodeInterface, nodeField } = nodeDefinitions(
         return Taxonomy.load(id);
       case 'User':
         return User.load(id);
+      case 'NavMenu':
+        return NavMenu.load(id);
       case 'Sidebar':
         return Sidebar.load(id);
       case 'Viewer':
@@ -67,6 +71,8 @@ const { nodeInterface, nodeField } = nodeDefinitions(
         return Taxonomy;
       case obj instanceof UserType:
         return User;
+      case obj instanceof NavMenuType:
+        return NavMenu;
       case obj instanceof SidebarType:
         return Sidebar;
       default:

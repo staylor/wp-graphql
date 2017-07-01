@@ -15,3 +15,5 @@ Array [
 `;
 
 exports[`Test Sidebar type Test name 1`] = `"Sidebar"`;
+
+exports[`Test Sidebar type Test resolve name 1`] = `"cool-widget"`;

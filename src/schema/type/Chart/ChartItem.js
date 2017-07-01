@@ -17,12 +17,12 @@ const ChartItemType = new GraphQLObjectType({
     },
     releaseDate: {
       type: GraphQLString,
-      description: 'Album release date, formatted for display.',
+      description: 'Album release date in ISO format.',
       resolve: item => item['im:releaseDate'].label,
     },
     releaseDateFormatted: {
       type: GraphQLString,
-      description: 'Album release date in ISO format.',
+      description: 'Album release date, formatted for display.',
       resolve: item => item['im:releaseDate'].attributes.label,
     },
     url: {

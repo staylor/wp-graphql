@@ -6,7 +6,7 @@ const VIEWER_ID = 'me';
 
 const Query = new GraphQLObjectType({
   name: 'Query',
-  description: 'WordPress API queries',
+  description: 'WordPress Relay App queries',
   fields: () => ({
     node: nodeField,
     viewer: {

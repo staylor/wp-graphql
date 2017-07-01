@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test Media fields Test fields 1`] = `
+Array [
+  "id",
+  "date",
+  "date_gmt",
+  "guid",
+  "modified",
+  "modified_gmt",
+  "slug",
+  "type",
+  "link",
+  "title",
+  "comment_status",
+  "ping_status",
+  "template",
+  "author",
+  "meta",
+  "description",
+  "caption",
+  "alt_text",
+  "media_type",
+  "mime_type",
+  "source_url",
+  "post",
+]
+`;
+
+exports[`Test Media fields Test resolve post 1`] = `"UG9zdDoxMw=="`;
