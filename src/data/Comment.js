@@ -16,6 +16,10 @@ class Comment {
   }
 
   static async clearPostCache(id) {
+    if (typeof global.it === 'function') {
+      return Promise.resolve();
+    }
+
     const endpoint = `${postEndpoint}/${id}`;
     return Promise.all(
       clearEndpointCache(commentsEndpoint),
@@ -33,6 +37,14 @@ class Comment {
   }
 
   static async create(form) {
+    if (!form.author && !(form.author_email && form.author_name)) {
+      return Promise.reject('You must provide author data to create a comment.');
+    }
+
+    if (!form.post) {
+      return Promise.reject('You must provide a post to assign the comment to.');
+    }
+
     try {
       const { data: { body: comment, headers } } = await fetchData(commentsEndpoint, {
         method: 'POST',

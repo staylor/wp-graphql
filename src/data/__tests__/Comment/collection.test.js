@@ -1,6 +1,6 @@
 import Comment from 'data/Comment';
 
-jest.mock('../utils', () =>
+jest.mock('../../utils', () =>
   jest.fn(() => ({
     data: {
       body: [{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }, { id: 5 }],
