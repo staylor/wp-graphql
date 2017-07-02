@@ -1,17 +1,3 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Test User data access Get endpoint 1`] = `"wp/v2/users"`;
-
-exports[`Test User data access Load a user 1`] = `"VXNlcjox"`;
-
-exports[`Test User data access Load a user 2`] = `
-User {
-  "id": 1,
-}
-`;
-
-exports[`Test User data access Load a user by slug 1`] = `
-User {
-  "slug": "admin",
-}
-`;

@@ -1,6 +1,12 @@
 import { graphql } from 'graphql';
 import { toGlobalId } from 'graphql-relay';
 import { getMockSchema } from 'jest/utils';
+import getLoaders from 'data/loaders';
+
+const context = {};
+const rootValue = {
+  loaders: getLoaders(),
+};
 
 const fields = `
   widgets {
@@ -24,9 +30,6 @@ const queryByID = `
 // https://highforthis.com/wp-json/graphql/v1/sidebars/sidebar-1
 
 describe('Test NavMenu queries', () => {
-  const rootValue = {};
-  const context = {};
-
   const schema = getMockSchema({
     Widget: () => ({
       classname: 'cool-widget',

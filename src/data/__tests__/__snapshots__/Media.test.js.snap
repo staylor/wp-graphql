@@ -1,11 +1,3 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Test Media data access Get endpoint 1`] = `"wp/v2/media"`;
-
-exports[`Test Media data access Load a media item 1`] = `"TWVkaWE6MTM="`;
-
-exports[`Test Media data access Load a media item 2`] = `
-Media {
-  "id": 13,
-}
-`;

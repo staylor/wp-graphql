@@ -11,7 +11,7 @@
       {
         "kind": "OBJECT",
         "name": "Query",
-        "description": "WordPress API queries",
+        "description": "WordPress Relay App queries",
         "fields": [
           {
             "name": "node",
@@ -93,7 +93,43 @@
         "inputFields": null,
         "interfaces": null,
         "enumValues": null,
-        "possibleTypes": null
+        "possibleTypes": [
+          {
+            "kind": "OBJECT",
+            "name": "Post",
+            "ofType": null
+          },
+          {
+            "kind": "OBJECT",
+            "name": "User",
+            "ofType": null
+          },
+          {
+            "kind": "OBJECT",
+            "name": "Category",
+            "ofType": null
+          },
+          {
+            "kind": "OBJECT",
+            "name": "Tag",
+            "ofType": null
+          },
+          {
+            "kind": "OBJECT",
+            "name": "Page",
+            "ofType": null
+          },
+          {
+            "kind": "OBJECT",
+            "name": "NavMenu",
+            "ofType": null
+          },
+          {
+            "kind": "OBJECT",
+            "name": "Sidebar",
+            "ofType": null
+          }
+        ]
       },
       {
         "kind": "OBJECT",
@@ -282,47 +318,6 @@
             "deprecationReason": null
           },
           {
-            "name": "term",
-            "description": null,
-            "args": [
-              {
-                "name": "slug",
-                "description": null,
-                "type": {
-                  "kind": "NON_NULL",
-                  "name": null,
-                  "ofType": {
-                    "kind": "SCALAR",
-                    "name": "String",
-                    "ofType": null
-                  }
-                },
-                "defaultValue": null
-              },
-              {
-                "name": "taxonomy",
-                "description": null,
-                "type": {
-                  "kind": "NON_NULL",
-                  "name": null,
-                  "ofType": {
-                    "kind": "SCALAR",
-                    "name": "String",
-                    "ofType": null
-                  }
-                },
-                "defaultValue": null
-              }
-            ],
-            "type": {
-              "kind": "INTERFACE",
-              "name": "TermInterface",
-              "ofType": null
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
             "name": "author",
             "description": null,
             "args": [
@@ -416,6 +411,47 @@
             "type": {
               "kind": "OBJECT",
               "name": "Sidebar",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "term",
+            "description": null,
+            "args": [
+              {
+                "name": "slug",
+                "description": null,
+                "type": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  }
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "taxonomy",
+                "description": null,
+                "type": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  }
+                },
+                "defaultValue": null
+              }
+            ],
+            "type": {
+              "kind": "INTERFACE",
+              "name": "TermInterface",
               "ofType": null
             },
             "isDeprecated": false,
@@ -1049,6 +1085,11 @@
             "kind": "INTERFACE",
             "name": "PostInterface",
             "ofType": null
+          },
+          {
+            "kind": "INTERFACE",
+            "name": "Node",
+            "ofType": null
           }
         ],
         "enumValues": null,
@@ -1618,7 +1659,13 @@
           }
         ],
         "inputFields": null,
-        "interfaces": [],
+        "interfaces": [
+          {
+            "kind": "INTERFACE",
+            "name": "Node",
+            "ofType": null
+          }
+        ],
         "enumValues": null,
         "possibleTypes": null
       },
@@ -3389,6 +3436,11 @@
             "kind": "INTERFACE",
             "name": "TermInterface",
             "ofType": null
+          },
+          {
+            "kind": "INTERFACE",
+            "name": "Node",
+            "ofType": null
           }
         ],
         "enumValues": null,
@@ -3796,6 +3848,11 @@
           {
             "kind": "INTERFACE",
             "name": "TermInterface",
+            "ofType": null
+          },
+          {
+            "kind": "INTERFACE",
+            "name": "Node",
             "ofType": null
           }
         ],
@@ -4490,6 +4547,11 @@
             "kind": "INTERFACE",
             "name": "PostInterface",
             "ofType": null
+          },
+          {
+            "kind": "INTERFACE",
+            "name": "Node",
+            "ofType": null
           }
         ],
         "enumValues": null,
@@ -4558,7 +4620,13 @@
           }
         ],
         "inputFields": null,
-        "interfaces": [],
+        "interfaces": [
+          {
+            "kind": "INTERFACE",
+            "name": "Node",
+            "ofType": null
+          }
+        ],
         "enumValues": null,
         "possibleTypes": null
       },
@@ -4828,7 +4896,13 @@
           }
         ],
         "inputFields": null,
-        "interfaces": [],
+        "interfaces": [
+          {
+            "kind": "INTERFACE",
+            "name": "Node",
+            "ofType": null
+          }
+        ],
         "enumValues": null,
         "possibleTypes": null
       },
@@ -5209,7 +5283,7 @@
           },
           {
             "name": "releaseDate",
-            "description": "Album release date, formatted for display.",
+            "description": "Album release date in ISO format.",
             "args": [],
             "type": {
               "kind": "SCALAR",
@@ -5221,7 +5295,7 @@
           },
           {
             "name": "releaseDateFormatted",
-            "description": "Album release date in ISO format.",
+            "description": "Album release date, formatted for display.",
             "args": [],
             "type": {
               "kind": "SCALAR",

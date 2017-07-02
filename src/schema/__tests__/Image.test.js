@@ -1,6 +1,12 @@
 import { graphql } from 'graphql';
 import { toGlobalId } from 'graphql-relay';
 import { getMockSchema } from 'jest/utils';
+import getLoaders from 'data/loaders';
+
+const context = {};
+const rootValue = {
+  loaders: getLoaders(),
+};
 
 const fields = `
   ... on Image {
@@ -38,9 +44,6 @@ const queryBySlug = `
 // https://highforthis.com/wp-json/wp/v2/media/2724
 
 describe('Test Media queries', () => {
-  const rootValue = {};
-  const context = {};
-
   const schema = getMockSchema({
     Media: () => ({
       __typename: 'Image',

@@ -1,13 +1,13 @@
 import { GraphQLObjectType, GraphQLList } from 'graphql';
-
 import Avatar from 'type/Avatar';
-
 import { globalIdField, slug, name, link } from 'field/identifier';
 import description from 'field/description';
+import { registerNodeType, NodeInterface } from 'type/relayNode';
 
 const UserType = new GraphQLObjectType({
   name: 'User',
   description: 'An object.',
+  interfaces: [NodeInterface],
   fields: {
     id: globalIdField(),
     ...name,
@@ -25,5 +25,7 @@ const UserType = new GraphQLObjectType({
     },
   },
 });
+
+registerNodeType(UserType);
 
 export default UserType;

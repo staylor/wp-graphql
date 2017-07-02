@@ -1,6 +1,12 @@
 import { graphql } from 'graphql';
 import { toGlobalId } from 'graphql-relay';
 import { getMockSchema } from 'jest/utils';
+import getLoaders from 'data/loaders';
+
+const context = {};
+const rootValue = {
+  loaders: getLoaders(),
+};
 
 const fields = `
   slug
@@ -35,9 +41,6 @@ const queryBySlug = `
 // https://highforthis.com/wp-json/wp/v2/pages/215
 
 describe('Test Post queries', () => {
-  const rootValue = {};
-  const context = {};
-
   const schema = getMockSchema({
     Page: () => ({
       date: '2017-01-05T11:55:08',

@@ -1,8 +1,4 @@
 import { toGlobalId } from 'graphql-relay';
-import Dataloader from 'dataloader';
-import fetchData from 'data/utils';
-
-// Dataloader expects IDs that can be read by the REST API
 
 const path = process.env.WP_SIDEBARS_ENDPOINT || null;
 if (!path) {
@@ -11,11 +7,6 @@ if (!path) {
       'You must install the WordPres GraphQL Middleware plugin.'
   );
 }
-const sidebarLoader = new Dataloader(slugs =>
-  fetchData(path).then(({ data: { body } }) =>
-    slugs.map(id => body.find(item => item.id === id))
-  )
-);
 
 class Sidebar {
   getID() {
@@ -24,11 +15,6 @@ class Sidebar {
 
   static getEndpoint() {
     return path;
-  }
-
-  static async load(id) {
-    const data = await sidebarLoader.load(id);
-    return data ? Object.assign(new Sidebar(), data) : null;
   }
 }
 

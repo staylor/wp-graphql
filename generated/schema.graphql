@@ -89,7 +89,7 @@ type Caption {
 }
 
 # A unique identifier for a post.
-type Category implements TermInterface {
+type Category implements TermInterface, Node {
   # Unique identifier for the object.
   id: ID!
 
@@ -147,10 +147,10 @@ type ChartItem {
   # Artist title.
   artist: String
 
-  # Album release date, formatted for display.
+  # Album release date in ISO format.
   releaseDate: String
 
-  # Album release date in ISO format.
+  # Album release date, formatted for display.
   releaseDateFormatted: String
 
   # Album URL.
@@ -472,7 +472,7 @@ type Mutation {
 }
 
 # A nav menu.
-type NavMenu {
+type NavMenu implements Node {
   # Unique identifier for the object.
   id: ID!
 
@@ -535,7 +535,7 @@ enum ORDER {
 }
 
 # An object.
-type Page implements PostInterface {
+type Page implements PostInterface, Node {
   # Unique identifier for the object.
   id: ID!
 
@@ -607,7 +607,7 @@ enum PING_STATUS {
 }
 
 # A read-only post object.
-type Post implements PostInterface {
+type Post implements PostInterface, Node {
   # Unique identifier for the object.
   id: ID!
 
@@ -746,7 +746,7 @@ interface PostInterface {
   featuredMedia: Media
 }
 
-# WordPress API queries
+# WordPress Relay App queries
 type Query {
   # Fetches an object given its ID
   node(
@@ -778,7 +778,7 @@ type Settings {
 }
 
 # A widget area.
-type Sidebar {
+type Sidebar implements Node {
   # Unique identifier for the object.
   id: ID!
 
@@ -808,7 +808,7 @@ type Sidebar {
 }
 
 # A unique identifier for a post.
-type Tag implements TermInterface {
+type Tag implements TermInterface, Node {
   # Unique identifier for the object.
   id: ID!
 
@@ -898,7 +898,7 @@ type UpdateCommentPayload {
 }
 
 # An object.
-type User {
+type User implements Node {
   # Unique identifier for the object.
   id: ID!
 
@@ -1017,7 +1017,6 @@ type Viewer {
     # An alphanumeric identifier for the object unique to its type.
     slug: String
   ): Tag
-  term(slug: String!, taxonomy: String!): TermInterface
   author(
     # Unique identifier for the object.
     id: ID
@@ -1039,6 +1038,7 @@ type Viewer {
     # An alphanumeric identifier for the object unique to its type.
     slug: String
   ): Sidebar
+  term(slug: String!, taxonomy: String!): TermInterface
 
   # A list of results
   posts(

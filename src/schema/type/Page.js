@@ -8,12 +8,12 @@ import { type, template } from 'field/post';
 import { commentStatus, pingStatus } from 'field/status';
 import { featuredMedia } from 'field/media';
 import author from 'field/author';
-import Page from 'data/Page';
+import { registerNodeType, NodeInterface } from 'type/relayNode';
 
 const PageType = new GraphQLObjectType({
   name: 'Page',
   description: 'An object.',
-  interfaces: [PostInterface],
+  interfaces: [PostInterface, NodeInterface],
   isTypeOf(page) {
     return page.type === 'page';
   },
@@ -38,7 +38,8 @@ const PageType = new GraphQLObjectType({
     parent: {
       type: PageType,
       description: 'The ID for the parent of the object.',
-      resolve: page => (page.parent > 0 ? Page.load(page.parent) : null),
+      resolve: (page, args, context, { rootValue: { loaders: { Page } } }) =>
+        page.parent > 0 ? Page.load(page.parent) : null,
     },
     menu_order: {
       type: GraphQLInt,
@@ -46,5 +47,7 @@ const PageType = new GraphQLObjectType({
     },
   }),
 });
+
+registerNodeType(PageType);
 
 export default PageType;

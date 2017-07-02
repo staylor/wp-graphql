@@ -16,12 +16,6 @@ describe('Test Comment data access', () => {
     expect(Comment.getEndpoint()).toMatchSnapshot();
   });
 
-  test('Load a comment', async () => {
-    const comment = await Comment.load(13);
-    expect(comment.getID()).toMatchSnapshot();
-    expect(comment).toMatchSnapshot();
-  });
-
   test('Load Comment collection', async () => {
     const collection = await Comment.collection();
     expect(collection).toMatchSnapshot();

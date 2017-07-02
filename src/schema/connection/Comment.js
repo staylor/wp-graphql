@@ -5,7 +5,6 @@ import {
   fromGlobalId,
   connectionDefinitions,
 } from 'graphql-relay';
-import Post from 'data/Post';
 import Comment from 'data/Comment';
 import CommentType from 'type/Comment';
 import COMMENT_ORDERBY from 'enum/CommentOrderby';
@@ -37,7 +36,7 @@ export default {
     ...connectionArgs,
   },
   description: 'A list of results',
-  resolve: async (root, args) => {
+  resolve: async (root, args, context, { rootValue: { loaders: { Post } } }) => {
     const connectionArguments = {};
     const params = Object.assign({}, args);
     if (params.first) {

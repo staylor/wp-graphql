@@ -1,6 +1,12 @@
 import { graphql } from 'graphql';
 import { toGlobalId } from 'graphql-relay';
 import { getMockSchema } from 'jest/utils';
+import getLoaders from 'data/loaders';
+
+const context = {};
+const rootValue = {
+  loaders: getLoaders(),
+};
 
 // https://highforthis.com/wp-json/wp/v2/tags/282
 
@@ -41,9 +47,6 @@ const queryBySlug = `
 `;
 
 describe('Test Tag queries', () => {
-  const rootValue = {};
-  const context = {};
-
   const schema = getMockSchema({
     Tag: () => ({
       count: 3,

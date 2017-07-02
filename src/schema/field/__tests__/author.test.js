@@ -1,4 +1,13 @@
 import fields from 'field/author';
+import getLoaders from 'data/loaders';
+
+const args = {};
+const context = {};
+const info = {
+  rootValue: {
+    loaders: getLoaders(),
+  },
+};
 
 describe('Test schema type field definition', () => {
   test('Test author field', () => {
@@ -6,11 +15,11 @@ describe('Test schema type field definition', () => {
   });
 
   test('Test resolve author field', async () => {
-    expect.assertions(1);
-    return expect(fields.author.resolve({ author: 1 })).resolves.toMatchSnapshot();
+    const author = await fields.author.resolve({ author: 1 }, args, context, info);
+    return expect(author).toMatchSnapshot();
   });
 
   test('Test resolve author field null', () => {
-    expect(fields.author.resolve({ author: 0 })).toBeNull();
+    expect(fields.author.resolve({ author: 0 }, args, context, info)).toBeNull();
   });
 });

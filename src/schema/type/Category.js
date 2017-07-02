@@ -4,12 +4,12 @@ import description from 'field/description';
 import metaField from 'field/meta';
 import { globalIdField, slug, name, link } from 'field/identifier';
 import taxonomy from 'field/taxonomy';
-import Category from 'data/Category';
+import { registerNodeType, NodeInterface } from 'type/relayNode';
 
 const CategoryType = new GraphQLObjectType({
   name: 'Category',
   description: 'A unique identifier for a post.',
-  interfaces: [TermInterface],
+  interfaces: [TermInterface, NodeInterface],
   isTypeOf(term) {
     return term.taxonomy === 'category';
   },
@@ -25,9 +25,12 @@ const CategoryType = new GraphQLObjectType({
     parent: {
       type: CategoryType,
       description: 'The parent term ID.',
-      resolve: category => (category.parent > 0 ? Category.load(category.parent) : null),
+      resolve: (category, args, context, { rootValue: { loaders: { Category } } }) =>
+        category.parent > 0 ? Category.load(category.parent) : null,
     },
   }),
 });
+
+registerNodeType(CategoryType);
 
 export default CategoryType;

@@ -1,13 +1,13 @@
 import { GraphQLInt } from 'graphql';
 
 import TaxonomyType from 'type/Taxonomy';
-import Taxonomy from 'data/Taxonomy';
 
 export default {
   taxonomy: {
     type: TaxonomyType,
     description: 'Type attribution for the term.',
-    resolve: obj => Taxonomy.load(obj.taxonomy),
+    resolve: (term, args, context, { rootValue: { loaders: { Taxonomy } } }) =>
+      Taxonomy.load(term.taxonomy),
   },
   count: {
     type: GraphQLInt,

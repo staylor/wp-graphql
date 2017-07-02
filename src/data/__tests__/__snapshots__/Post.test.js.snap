@@ -24,17 +24,3 @@ Object {
   "total": 5,
 }
 `;
-
-exports[`Test Post data access Load a post 1`] = `"UG9zdDoxMw=="`;
-
-exports[`Test Post data access Load a post 2`] = `
-Post {
-  "id": 13,
-}
-`;
-
-exports[`Test Post data access Load a post by slug 1`] = `
-Post {
-  "slug": "whatever",
-}
-`;

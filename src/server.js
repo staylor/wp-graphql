@@ -6,6 +6,7 @@ import bodyParser from 'body-parser';
 import responseTime from 'response-time';
 import Schema from 'schema';
 import getClient, { HASH_KEY } from 'data/client';
+import getLoaders from 'data/loaders';
 import queryLogger from './middleware/queryLogger';
 
 /* eslint-disable no-console */
@@ -14,14 +15,6 @@ process.env.TZ = 'America/New_York';
 
 const app = express();
 app.use(cookieParser());
-
-const graphQLServer = graphQLHTTP(req => ({
-  graphiql: true,
-  schema: Schema,
-  rootValue: {
-    cookies: req.cookies,
-  },
-}));
 
 app.use(
   '/graphql',
@@ -47,7 +40,16 @@ app.use('/graphql', bodyParser.json(), async (req, res, next) => {
 // uncomment this to output incoming query and request headers
 app.use(queryLogger());
 
-app.use('/graphql', graphQLServer);
+app.use('/graphql', (req, res, next) =>
+  graphQLHTTP(request => ({
+    graphiql: true,
+    schema: Schema,
+    rootValue: {
+      cookies: request.cookies,
+      loaders: getLoaders(),
+    },
+  }))(req, res, next)
+);
 
 app.listen(process.env.GRAPHQL_PORT, () => {
   console.log(`GraphQL Server is now running on port ${process.env.GRAPHQL_PORT}`);

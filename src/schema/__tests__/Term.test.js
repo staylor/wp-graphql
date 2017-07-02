@@ -1,5 +1,11 @@
 import { graphql } from 'graphql';
 import { getMockSchema } from 'jest/utils';
+import getLoaders from 'data/loaders';
+
+const context = {};
+const rootValue = {
+  loaders: getLoaders(),
+};
 
 const fields = `
   name
@@ -24,9 +30,6 @@ const queryTerm = `
 `;
 
 describe('Test Term queries', () => {
-  const rootValue = {};
-  const context = {};
-
   test('GraphQL should return a category by slug and taxonomy', async () => {
     const schema = getMockSchema({
       TermInterface: () => ({

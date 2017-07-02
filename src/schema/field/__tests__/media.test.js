@@ -7,6 +7,15 @@ import {
   mimeType,
   sourceUrl,
 } from 'field/media';
+import getLoaders from 'data/loaders';
+
+const args = {};
+const context = {};
+const info = {
+  rootValue: {
+    loaders: getLoaders(),
+  },
+};
 
 describe('Test schema type field definition', () => {
   test('Test featuredMedia field', () => {
@@ -16,13 +25,13 @@ describe('Test schema type field definition', () => {
 
   test('Test featuredMedia field resolver', async () => {
     const field = featuredMedia();
-    expect.assertions(1);
-    return expect(field.resolve({ featured_media: 69 })).resolves.toMatchSnapshot();
+    const media = await field.resolve({ featured_media: 69 }, args, context, info);
+    expect(media).toMatchSnapshot();
   });
 
   test('Test featuredMedia field resolver null', () => {
     const field = featuredMedia();
-    expect(field.resolve({ featured_media: 0 })).toBeNull();
+    expect(field.resolve({ featured_media: 0 }, args, context, info)).toBeNull();
   });
 
   test('Test description field', () => {

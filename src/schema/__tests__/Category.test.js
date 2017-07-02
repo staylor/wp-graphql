@@ -1,6 +1,12 @@
 import { graphql } from 'graphql';
 import { toGlobalId } from 'graphql-relay';
 import { getMockSchema } from 'jest/utils';
+import getLoaders from 'data/loaders';
+
+const context = {};
+const rootValue = {
+  loaders: getLoaders(),
+};
 
 const fields = `
   name
@@ -43,9 +49,6 @@ const queryBySlug = `
 `;
 
 describe('Test Category queries', () => {
-  const rootValue = {};
-  const context = {};
-
   const schema = getMockSchema({
     Category: () => ({
       count: 200,

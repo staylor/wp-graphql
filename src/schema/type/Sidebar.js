@@ -1,12 +1,13 @@
 import { GraphQLObjectType, GraphQLList, GraphQLString } from 'graphql';
-
 import WidgetType from 'type/Widget';
 import { globalIdField, name } from 'field/identifier';
 import description from 'field/description';
+import { registerNodeType, NodeInterface } from 'type/relayNode';
 
 const SidebarType = new GraphQLObjectType({
   name: 'Sidebar',
   description: 'A widget area.',
+  interfaces: [NodeInterface],
   fields: {
     id: globalIdField(),
     ...name,
@@ -40,5 +41,7 @@ const SidebarType = new GraphQLObjectType({
     },
   },
 });
+
+registerNodeType(SidebarType);
 
 export default SidebarType;

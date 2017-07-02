@@ -1,17 +1,10 @@
 import path from 'path';
 import { toGlobalId } from 'graphql-relay';
-import Dataloader from 'dataloader';
 import fetchData, { clearEndpointCache } from 'data/utils';
 import Post from 'data/Post';
 
-// Dataloader expects IDs that can be read by the REST API
-
 const commentsEndpoint = process.env.WP_COMMENTS_ENDPOINT || 'graphql/v1/comments';
-const commentLoader = new Dataloader(ids =>
-  fetchData(commentsEndpoint, {
-    qs: { include: ids, orderby: 'include', per_page: 100 },
-  }).then(({ data: { body } }) => body)
-);
+const postEndpoint = Post.getEndpoint();
 
 class Comment {
   getID() {
@@ -23,16 +16,11 @@ class Comment {
   }
 
   static async clearPostCache(id) {
-    const endpoint = `${Post.getEndpoint()}/${id}`;
+    const endpoint = `${postEndpoint}/${id}`;
     return Promise.all(
       clearEndpointCache(commentsEndpoint),
       clearEndpointCache(endpoint)
     );
-  }
-
-  static async load(id) {
-    const data = await commentLoader.load(id);
-    return data ? Object.assign(new Comment(), data) : null;
   }
 
   static async collection(opts = {}) {

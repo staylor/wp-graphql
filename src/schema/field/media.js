@@ -3,12 +3,16 @@ import MEDIA_TYPE from 'enum/MediaType';
 import Description from 'type/Description';
 import Caption from 'type/Caption';
 import MediaType from 'type/Media';
-import Media from 'data/Media';
 
 export const featuredMedia = () => ({
   type: MediaType,
   description: 'The featured media for the object.',
-  resolve: ({ featured_media: featured }) => (featured > 0 ? Media.load(featured) : null),
+  resolve: (
+    { featured_media: featured },
+    args,
+    context,
+    { rootValue: { loaders: { Media } } }
+  ) => (featured > 0 ? Media.load(featured) : null),
 });
 
 export const description = {

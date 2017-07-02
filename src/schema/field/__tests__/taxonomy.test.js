@@ -1,4 +1,13 @@
 import fields from 'field/taxonomy';
+import getLoaders from 'data/loaders';
+
+const args = {};
+const context = {};
+const info = {
+  rootValue: {
+    loaders: getLoaders(),
+  },
+};
 
 describe('Test schema type field definition', () => {
   test('Test taxonomy field', () => {
@@ -6,10 +15,13 @@ describe('Test schema type field definition', () => {
   });
 
   test('Test taxonomy field resolver', async () => {
-    expect.assertions(1);
-    return expect(
-      fields.taxonomy.resolve({ taxonomy: 'tag' })
-    ).resolves.toMatchSnapshot();
+    const taxonomy = await fields.taxonomy.resolve(
+      { taxonomy: 'tag' },
+      args,
+      context,
+      info
+    );
+    expect(taxonomy).toMatchSnapshot();
   });
 
   test('Test count field', () => {

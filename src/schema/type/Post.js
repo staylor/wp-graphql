@@ -11,13 +11,12 @@ import { type, template, format, sticky } from 'field/post';
 import { featuredMedia } from 'field/media';
 import metaField from 'field/meta';
 import author from 'field/author';
-import Category from 'data/Category';
-import Tag from 'data/Tag';
+import { registerNodeType, NodeInterface } from 'type/relayNode';
 
 const PostType = new GraphQLObjectType({
   name: 'Post',
   description: 'A read-only post object.',
-  interfaces: [PostInterface],
+  interfaces: [PostInterface, NodeInterface],
   isTypeOf(post) {
     return post.type === 'post';
   },
@@ -44,7 +43,12 @@ const PostType = new GraphQLObjectType({
     categories: {
       type: new GraphQLList(CategoryType),
       description: 'The terms assigned to the object in the category taxonomy.',
-      resolve: ({ categories }) => {
+      resolve: (
+        { categories },
+        args,
+        context,
+        { rootValue: { loaders: { Category } } }
+      ) => {
         if (categories.length) {
           return Category.loadMany(categories);
         }
@@ -54,7 +58,7 @@ const PostType = new GraphQLObjectType({
     tags: {
       type: new GraphQLList(TagType),
       description: 'The terms assigned to the object in the post_tag taxonomy.',
-      resolve: ({ tags }) => {
+      resolve: ({ tags }, args, context, { rootValue: { loaders: { Tag } } }) => {
         if (tags.length) {
           return Tag.loadMany(tags);
         }
@@ -64,5 +68,7 @@ const PostType = new GraphQLObjectType({
     comments: commentConnection,
   }),
 });
+
+registerNodeType(PostType);
 
 export default PostType;

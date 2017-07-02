@@ -1,0 +1,71 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test Node queries GraphQL should return a node by NavMenu ID 1`] = `
+Object {
+  "data": Object {
+    "node": Object {
+      "__typename": "Tag",
+    },
+  },
+}
+`;
+
+exports[`Test Node queries GraphQL should return a node by category ID 1`] = `
+Object {
+  "data": Object {
+    "node": Object {
+      "__typename": "Sidebar",
+    },
+  },
+}
+`;
+
+exports[`Test Node queries GraphQL should return a node by page ID 1`] = `
+Object {
+  "data": Object {
+    "node": Object {
+      "__typename": "Tag",
+    },
+  },
+}
+`;
+
+exports[`Test Node queries GraphQL should return a node by post ID 1`] = `
+Object {
+  "data": Object {
+    "node": Object {
+      "__typename": "Category",
+    },
+  },
+}
+`;
+
+exports[`Test Node queries GraphQL should return a node by sidebar ID 1`] = `
+Object {
+  "data": Object {
+    "node": Object {
+      "__typename": "Sidebar",
+    },
+  },
+}
+`;
+
+exports[`Test Node queries GraphQL should return a node by tag ID 1`] = `
+Object {
+  "data": Object {
+    "node": Object {
+      "__typename": "Tag",
+    },
+  },
+}
+`;
+
+exports[`Test Node queries GraphQL should return a node by user ID 1`] = `
+Object {
+  "data": Object {
+    "node": Object {
+      "__typename": "Category",
+    },
+  },
+}
+`;
