@@ -7,10 +7,10 @@ export function registerNodeType(type) {
   return type;
 }
 
-export const { nodeInterface: NodeInterface, nodeField } = nodeDefinitions(globalId => {
+export const {
+  nodeInterface: NodeInterface,
+  nodeField,
+} = nodeDefinitions((globalId, context, { rootValue: { loaders } }) => {
   const { id, type } = fromGlobalId(globalId);
-  switch (type) {
-    default:
-      return null;
-  }
+  return loaders[type] ? loaders[type].load(id) : null;
 }, obj => registeredTypes[obj.constructor.name] || null);
