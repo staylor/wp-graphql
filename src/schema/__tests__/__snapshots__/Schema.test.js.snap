@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Test Schema Schema fields 1`] = `
+exports[`Test Schema Types 1`] = `
 Object {
   "AddCommentInput": "AddCommentInput",
   "AddCommentPayload": "AddCommentPayload",
