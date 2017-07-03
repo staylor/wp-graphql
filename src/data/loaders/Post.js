@@ -2,11 +2,11 @@ import Dataloader from 'dataloader';
 import fetchData from 'data/utils';
 import Post from 'data/Post';
 
-const endpoint = Post.getEndpoint();
-
 // Dataloader expects IDs that can be read by the REST API
 
 export default function getPostLoaders() {
+  const endpoint = Post.getEndpoint();
+
   let slugLoader;
   const postLoader = new Dataloader(ids =>
     fetchData(endpoint, {

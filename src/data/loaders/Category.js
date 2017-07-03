@@ -2,11 +2,11 @@ import Dataloader from 'dataloader';
 import fetchData from 'data/utils';
 import Category from 'data/Category';
 
-const endpoint = Category.getEndpoint();
-
 // Dataloader expects IDs that can be read by the REST API
 
 export default function getCategoryLoaders() {
+  const endpoint = Category.getEndpoint();
+
   let slugLoader;
   const categoryLoader = new Dataloader(ids =>
     fetchData(endpoint, {

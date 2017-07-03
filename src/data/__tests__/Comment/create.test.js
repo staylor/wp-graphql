@@ -14,7 +14,7 @@ jest.mock('../../utils', () =>
   }))
 );
 
-describe('Test Comment mutation: create', () => {
+describe('Test Comment CRUD: create', () => {
   test('Test create', async () => {
     const input = {
       content: 'Cool comment!',

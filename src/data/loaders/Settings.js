@@ -2,12 +2,12 @@ import Dataloader from 'dataloader';
 import fetchData from 'data/utils';
 import Settings from 'data/Settings';
 
-// there is no batch mechanism on this endpoint
-const endpoint = Settings.getEndpoint();
-
 // Dataloader expects IDs that can be read by the REST API
 
 export default function getSettingsLoaders() {
+  // there is no batch mechanism on this endpoint
+  const endpoint = Settings.getEndpoint();
+
   const settingsLoader = new Dataloader(settingsPaths =>
     Promise.all(
       settingsPaths.map(settingsPath =>

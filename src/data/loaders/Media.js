@@ -2,11 +2,11 @@ import Dataloader from 'dataloader';
 import fetchData from 'data/utils';
 import Media from 'data/Media';
 
-const endpoint = Media.getEndpoint();
-
 // Dataloader expects IDs that can be read by the REST API
 
 export default function getMediaLoaders() {
+  const endpoint = Media.getEndpoint();
+
   const mediaLoader = new Dataloader(ids =>
     fetchData(endpoint, {
       qs: { include: ids, orderby: 'include', per_page: 100 },

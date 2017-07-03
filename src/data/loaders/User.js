@@ -2,11 +2,11 @@ import Dataloader from 'dataloader';
 import fetchData from 'data/utils';
 import User from 'data/User';
 
-const endpoint = User.getEndpoint();
-
 // Dataloader expects IDs that can be read by the REST API
 
 export default function getUserLoaders() {
+  const endpoint = User.getEndpoint();
+
   let slugLoader;
   const userLoader = new Dataloader(ids =>
     fetchData(endpoint, {

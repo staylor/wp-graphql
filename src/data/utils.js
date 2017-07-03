@@ -49,9 +49,12 @@ const fetchData = (path, opts = {}) => {
   };
 
   return new Promise((resolve, reject) => {
-    const makeRequest = () =>
-      rp(path, params).catch(error => reject(error)).then(response => {
+    const makeRequest = (mutation = false) =>
+      rp(path, params).catch(error => reject(error)).then(async response => {
         if (response) {
+          if (mutation) {
+            await clearEndpointCache(path);
+          }
           client.hset(path, key, JSON.stringify(response));
           resolve({
             cache: 'miss',
@@ -63,7 +66,7 @@ const fetchData = (path, opts = {}) => {
       });
 
     if (params.method && params.method !== 'GET') {
-      makeRequest();
+      makeRequest(true);
     } else {
       client.hget(path, key, (err, cached) => {
         if (err) {

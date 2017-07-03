@@ -2,11 +2,11 @@ import Dataloader from 'dataloader';
 import fetchData from 'data/utils';
 import Tag from 'data/Tag';
 
-const endpoint = Tag.getEndpoint();
-
 // Dataloader expects IDs that can be read by the REST API
 
 export default function getTagLoaders() {
+  const endpoint = Tag.getEndpoint();
+
   const tagLoader = new Dataloader(ids =>
     fetchData(endpoint, {
       qs: { include: ids, per_page: 100, orderby: 'include' },
