@@ -2,6 +2,8 @@ import url from 'url';
 import request from 'request-promise';
 import getClient from 'data/client';
 
+/* eslint-disable no-console */
+
 export const toBase64 = str => new Buffer(str).toString('base64');
 
 const rp = (path, opts = {}) => {
@@ -32,6 +34,7 @@ export const clearEndpointCache = path => {
   return new Promise((resolve, reject) => {
     client.hkeys(path, (err, keys) => {
       if (err) {
+        console.log(`Cache lookup failed for: ${path}`);
         return reject(err);
       }
       return resolve(keys.map(hashKey => client.hdelAsync(path, hashKey)));
@@ -49,22 +52,29 @@ const fetchData = (path, opts = {}) => {
   };
 
   return new Promise((resolve, reject) => {
+    const method = params.method || 'GET';
     const makeRequest = (mutation = false) =>
-      rp(path, params).catch(error => reject(error)).then(async response => {
-        if (response) {
-          console.log(`Made ${params.method || 'GET'} request for: ${path}`);
-          if (mutation) {
-            await clearEndpointCache(path);
+      rp(path, params)
+        .catch(error => {
+          console.log(`${method} Request failed for: ${path}`);
+          console.log(error);
+          reject(error);
+        })
+        .then(async response => {
+          if (response) {
+            console.log(`Made ${method} request for: ${path}`);
+            if (mutation) {
+              await clearEndpointCache(path);
+            }
+            client.hset(path, key, JSON.stringify(response));
+            resolve({
+              cache: 'miss',
+              data: response,
+            });
+          } else {
+            reject();
           }
-          client.hset(path, key, JSON.stringify(response));
-          resolve({
-            cache: 'miss',
-            data: response,
-          });
-        } else {
-          reject();
-        }
-      });
+        });
 
     if (params.method && params.method !== 'GET') {
       makeRequest(true);

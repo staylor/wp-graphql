@@ -14,10 +14,10 @@ class Comment {
 
   static clearCaches() {
     // Dataloader API calls are non-deterministic
-    return Promise.all(
+    return Promise.all([
       clearEndpointCache(Post.getEndpoint()),
-      clearEndpointCache(Comment.getEndpoint())
-    );
+      clearEndpointCache(Comment.getEndpoint()),
+    ]);
   }
 
   static async collection(opts = {}) {
