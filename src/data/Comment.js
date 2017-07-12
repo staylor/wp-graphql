@@ -113,7 +113,7 @@ class Comment {
         form,
       });
 
-      if (comment && comment.deleted) {
+      if (comment && comment.status === 'trash') {
         await Comment.clearCaches();
         return {
           status: 'delete',
