@@ -7,6 +7,7 @@ import responseTime from 'response-time';
 import Schema from 'schema';
 import getClient, { HASH_KEY } from 'data/client';
 import getLoaders from 'data/loaders';
+import persistedQueries from '../generated/queries.json';
 import queryLogger from './middleware/queryLogger';
 
 /* eslint-disable no-console */
@@ -26,6 +27,18 @@ app.use(
 app.use(express.static('public'));
 
 app.use('/graphql', bodyParser.json(), async (req, res, next) => {
+  // Apollo
+  if (req.body.id) {
+    const queries = Object.keys(persistedQueries).reduce(
+      (memo, key) => Object.assign({}, memo, { [persistedQueries[key]]: key }),
+      {}
+    );
+    req.body.query = queries[req.body.id];
+    next();
+    return;
+  }
+
+  // Relay Modern
   const fragment = req.body && req.body.query && req.body.query.substring(0, 3);
   if (fragment === 'id:') {
     const queryID = req.body.query.substring(3);
