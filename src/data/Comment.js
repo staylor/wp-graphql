@@ -1,6 +1,7 @@
 import path from 'path';
 import { toGlobalId } from 'graphql-relay';
-import fetchData from 'data/utils';
+import fetchData, { clearEndpointCache } from 'data/utils';
+import Post from 'data/Post';
 
 class Comment {
   getID() {
@@ -9,6 +10,14 @@ class Comment {
 
   static getEndpoint() {
     return process.env.WP_COMMENTS_ENDPOINT || 'graphql/v1/comments';
+  }
+
+  static clearCaches() {
+    // Dataloader API calls are non-deterministic
+    return Promise.all(
+      clearEndpointCache(Post.getEndpoint()),
+      clearEndpointCache(Comment.getEndpoint())
+    );
   }
 
   static async collection(opts = {}) {
@@ -38,6 +47,7 @@ class Comment {
       });
 
       if (comment) {
+        await Comment.clearCaches();
         return {
           status: 'new',
           comment: Object.assign(new Comment(), comment),
@@ -71,6 +81,7 @@ class Comment {
       });
 
       if (comment) {
+        await Comment.clearCaches();
         return {
           status: 'update',
           comment: Object.assign(new Comment(), comment),
@@ -103,6 +114,7 @@ class Comment {
       });
 
       if (comment && comment.deleted) {
+        await Comment.clearCaches();
         return {
           status: 'delete',
         };

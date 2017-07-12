@@ -52,6 +52,7 @@ const fetchData = (path, opts = {}) => {
     const makeRequest = (mutation = false) =>
       rp(path, params).catch(error => reject(error)).then(async response => {
         if (response) {
+          console.log(`Made ${params.method || 'GET'} request for: ${path}`);
           if (mutation) {
             await clearEndpointCache(path);
           }
@@ -72,6 +73,7 @@ const fetchData = (path, opts = {}) => {
         if (err) {
           reject(err);
         } else if (cached) {
+          console.log(`Resolving from cache: ${path}`);
           resolve({
             cache: 'hit',
             data: JSON.parse(cached),
