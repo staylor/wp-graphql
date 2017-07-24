@@ -263,6 +263,15 @@ type Content {
 
   # Whether the field is protected with a password.
   protected: Boolean
+  data: [ContentNode]
+}
+
+# A content node.
+type ContentNode {
+  text: String
+  tagName: String
+  attributes: [Meta]
+  children: [ContentNode]
 }
 
 input DeleteCommentInput {
