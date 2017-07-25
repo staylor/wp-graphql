@@ -1370,6 +1370,18 @@
         "description": "The title for an object.",
         "fields": [
           {
+            "name": "raw",
+            "description": "Content for the object, as it exists in the database.",
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
             "name": "rendered",
             "description": "HTML for the object, transformed for display.",
             "args": [],

@@ -889,6 +889,9 @@ interface TermInterface {
 
 # The title for an object.
 type Title {
+  # Content for the object, as it exists in the database.
+  raw: String
+
   # HTML for the object, transformed for display.
   rendered: String
   data: [ContentNode]
