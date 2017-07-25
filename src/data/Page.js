@@ -6,7 +6,7 @@ class Page {
   }
 
   static getEndpoint() {
-    return process.env.WP_PAGES_ENDPOINT || 'wp/v2/pages';
+    return process.env.WP_PAGES_ENDPOINT || 'graphql/v1/pages';
   }
 }
 
