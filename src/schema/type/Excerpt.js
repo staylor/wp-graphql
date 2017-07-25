@@ -1,9 +1,10 @@
-import { GraphQLObjectType } from 'graphql';
+import { GraphQLObjectType, GraphQLList } from 'graphql';
 
 import rendered from 'field/rendered';
 import raw from 'field/raw';
 // 'protected' is a reserved word in JS
 import protectedField from 'field/protected';
+import ContentNode from 'type/ContentNode';
 
 const Excerpt = new GraphQLObjectType({
   name: 'Excerpt',
@@ -12,6 +13,9 @@ const Excerpt = new GraphQLObjectType({
     ...rendered,
     ...raw,
     ...protectedField,
+    data: {
+      type: new GraphQLList(ContentNode),
+    },
   },
 });
 
