@@ -266,7 +266,7 @@ type Content {
   data: [ContentNode]
 }
 
-union ContentNode = Element | Text
+union ContentNode = Element | Text | Embed
 
 input DeleteCommentInput {
   id: ID!
@@ -291,6 +291,22 @@ type Element {
   tagName: String
   attributes: [Meta]
   children: [ContentNode]
+}
+
+# An embed node.
+type Embed {
+  version: String
+  title: String
+  html: String
+  providerUrl: String
+  providerName: String
+  authorName: String
+  authorUrl: String
+  thumbnailUrl: String
+  thumbnailWidth: Int
+  thumbnailHeight: Int
+  width: Int
+  height: Int
 }
 
 # The excerpt for the object.

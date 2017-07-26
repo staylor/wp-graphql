@@ -51,7 +51,7 @@
     "prettier-eslint-cli": "^4.1.1"
   },
   "scripts": {
-    "build": "babel --ignore __tests__ src -d build",
+    "build": "rm -rf build && babel --ignore __tests__,__mocks__ src -d build",
     "dev": "nodemon --delay 2 --exec babel-node src/server.js",
     "start": "node build/server.js",
     "prod": "npm run build && forever start build/server.js",

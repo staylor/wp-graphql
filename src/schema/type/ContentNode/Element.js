@@ -6,7 +6,7 @@ const ElementType = new GraphQLObjectType({
   name: 'Element',
   description: 'An element node.',
   isTypeOf(node) {
-    return typeof node.text === 'undefined';
+    return node.type === 'element';
   },
   fields: () => ({
     tagName: {

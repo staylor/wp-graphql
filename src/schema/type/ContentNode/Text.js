@@ -4,7 +4,7 @@ const TextType = new GraphQLObjectType({
   name: 'Text',
   description: 'A text node.',
   isTypeOf(node) {
-    return typeof node.text !== 'undefined';
+    return node.type !== 'text';
   },
   fields: () => ({
     text: {
