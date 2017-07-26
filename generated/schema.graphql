@@ -266,13 +266,7 @@ type Content {
   data: [ContentNode]
 }
 
-# A content node.
-type ContentNode {
-  text: String
-  tagName: String
-  attributes: [Meta]
-  children: [ContentNode]
-}
+union ContentNode = Element | Text
 
 input DeleteCommentInput {
   id: ID!
@@ -290,6 +284,13 @@ type DeleteCommentPayload {
 type Description {
   # HTML for the object, transformed for display.
   rendered: String
+}
+
+# An element node.
+type Element {
+  tagName: String
+  attributes: [Meta]
+  children: [ContentNode]
 }
 
 # The excerpt for the object.
@@ -885,6 +886,11 @@ interface TermInterface {
   count: Int
   taxonomy: Taxonomy
   meta: [Meta]
+}
+
+# A text node.
+type Text {
+  text: String
 }
 
 # The title for an object.

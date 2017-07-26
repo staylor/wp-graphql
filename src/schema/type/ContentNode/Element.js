@@ -1,13 +1,14 @@
 import { GraphQLObjectType, GraphQLString, GraphQLList } from 'graphql';
+import ContentNode from 'type/ContentNode';
 import Meta from 'type/Meta';
 
-const ContentNode = new GraphQLObjectType({
-  name: 'ContentNode',
-  description: 'A content node.',
+const ElementType = new GraphQLObjectType({
+  name: 'Element',
+  description: 'An element node.',
+  isTypeOf(node) {
+    return typeof node.text === 'undefined';
+  },
   fields: () => ({
-    text: {
-      type: GraphQLString,
-    },
     tagName: {
       type: GraphQLString,
     },
@@ -20,4 +21,4 @@ const ContentNode = new GraphQLObjectType({
   }),
 });
 
-export default ContentNode;
+export default ElementType;

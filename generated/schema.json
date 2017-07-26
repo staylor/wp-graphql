@@ -1401,7 +1401,7 @@
               "kind": "LIST",
               "name": null,
               "ofType": {
-                "kind": "OBJECT",
+                "kind": "UNION",
                 "name": "ContentNode",
                 "ofType": null
               }
@@ -1416,22 +1416,31 @@
         "possibleTypes": null
       },
       {
-        "kind": "OBJECT",
+        "kind": "UNION",
         "name": "ContentNode",
-        "description": "A content node.",
-        "fields": [
+        "description": null,
+        "fields": null,
+        "inputFields": null,
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": [
           {
-            "name": "text",
-            "description": null,
-            "args": [],
-            "type": {
-              "kind": "SCALAR",
-              "name": "String",
-              "ofType": null
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
+            "kind": "OBJECT",
+            "name": "Element",
+            "ofType": null
           },
+          {
+            "kind": "OBJECT",
+            "name": "Text",
+            "ofType": null
+          }
+        ]
+      },
+      {
+        "kind": "OBJECT",
+        "name": "Element",
+        "description": "An element node.",
+        "fields": [
           {
             "name": "tagName",
             "description": null,
@@ -1468,7 +1477,7 @@
               "kind": "LIST",
               "name": null,
               "ofType": {
-                "kind": "OBJECT",
+                "kind": "UNION",
                 "name": "ContentNode",
                 "ofType": null
               }
@@ -1502,6 +1511,29 @@
           {
             "name": "value",
             "description": "Value for the metadata field.",
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": null,
+        "interfaces": [],
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
+        "name": "Text",
+        "description": "A text node.",
+        "fields": [
+          {
+            "name": "text",
+            "description": null,
             "args": [],
             "type": {
               "kind": "SCALAR",
@@ -1566,7 +1598,7 @@
               "kind": "LIST",
               "name": null,
               "ofType": {
-                "kind": "OBJECT",
+                "kind": "UNION",
                 "name": "ContentNode",
                 "ofType": null
               }
@@ -1639,7 +1671,7 @@
               "kind": "LIST",
               "name": null,
               "ofType": {
-                "kind": "OBJECT",
+                "kind": "UNION",
                 "name": "ContentNode",
                 "ofType": null
               }
