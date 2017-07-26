@@ -54,9 +54,9 @@
     "build": "babel --ignore __tests__ src -d build",
     "dev": "nodemon --delay 2 --exec babel-node src/server.js",
     "start": "node build/server.js",
-    "prod": "forever start build/server.js",
+    "prod": "npm run build && forever start build/server.js",
     "test": "jest",
-    "updateSchema": "babel-node updateSchema.js",
+    "update-schema": "babel-node updateSchema.js",
     "clear-cache": "redis-cli FLUSHALL",
     "prettier": "prettier-eslint \"src/**/*.js\""
   },
