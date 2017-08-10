@@ -11,11 +11,11 @@ const rootValue = {
 const fields = `
   ... on Image {
     post
-    source_url
-    media_details {
+    sourceUrl
+    mediaDetails {
       sizes {
         name
-        source_url
+        sourceUrl
       }
     }
   }
@@ -50,11 +50,11 @@ describe('Test Media queries', () => {
     }),
     Image: () => ({
       post: toGlobalId('Post', 2723),
-      source_url: 'https://scott.com/image.jpg',
+      sourceUrl: 'https://scott.com/image.jpg',
     }),
     MediaSize: () => ({
       name: 'thumbnail',
-      source_url: 'https://scott.com/image.jpg',
+      sourceUrl: 'https://scott.com/image.jpg',
     }),
   });
 

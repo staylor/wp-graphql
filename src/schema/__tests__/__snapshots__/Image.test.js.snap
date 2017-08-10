@@ -5,20 +5,20 @@ Object {
   "data": Object {
     "viewer": Object {
       "media": Object {
-        "media_details": Object {
+        "mediaDetails": Object {
           "sizes": Array [
             Object {
               "name": "thumbnail",
-              "source_url": "https://scott.com/image.jpg",
+              "sourceUrl": "https://scott.com/image.jpg",
             },
             Object {
               "name": "thumbnail",
-              "source_url": "https://scott.com/image.jpg",
+              "sourceUrl": "https://scott.com/image.jpg",
             },
           ],
         },
         "post": "UG9zdDoyNzIz",
-        "source_url": "https://scott.com/image.jpg",
+        "sourceUrl": "https://scott.com/image.jpg",
       },
     },
   },
@@ -30,20 +30,20 @@ Object {
   "data": Object {
     "viewer": Object {
       "media": Object {
-        "media_details": Object {
+        "mediaDetails": Object {
           "sizes": Array [
             Object {
               "name": "thumbnail",
-              "source_url": "https://scott.com/image.jpg",
+              "sourceUrl": "https://scott.com/image.jpg",
             },
             Object {
               "name": "thumbnail",
-              "source_url": "https://scott.com/image.jpg",
+              "sourceUrl": "https://scott.com/image.jpg",
             },
           ],
         },
         "post": "UG9zdDoyNzIz",
-        "source_url": "https://scott.com/image.jpg",
+        "sourceUrl": "https://scott.com/image.jpg",
       },
     },
   },

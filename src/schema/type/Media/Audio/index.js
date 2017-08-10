@@ -13,7 +13,7 @@ const AudioType = new GraphQLObjectType({
   },
   fields: {
     ...mediaFields,
-    media_details: { type: AudioDetails },
+    mediaDetails: { type: AudioDetails },
   },
 });
 

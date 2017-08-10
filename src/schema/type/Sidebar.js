@@ -17,21 +17,21 @@ const SidebarType = new GraphQLObjectType({
       description: 'Extra CSS class to assign to the sidebar in the Widgets interface.',
       resolve: sidebar => sidebar.class,
     },
-    before_widget: {
+    beforeWidget: {
       type: GraphQLString,
       description:
         "HTML content to prepend to each widget's HTML output when assigned to this sidebar.",
     },
-    after_widget: {
+    afterWidget: {
       type: GraphQLString,
       description:
         "HTML content to append to each widget's HTML output when assigned to this sidebar.",
     },
-    before_title: {
+    beforeTitle: {
       type: GraphQLString,
       description: 'HTML content to prepend to the sidebar title when displayed.',
     },
-    after_title: {
+    afterTitle: {
       type: GraphQLString,
       description: 'HTML content to append to the sidebar title when displayed.',
     },

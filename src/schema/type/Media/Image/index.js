@@ -13,7 +13,7 @@ const ImageType = new GraphQLObjectType({
   },
   fields: {
     ...mediaFields,
-    media_details: { type: ImageDetails },
+    mediaDetails: { type: ImageDetails },
   },
 });
 

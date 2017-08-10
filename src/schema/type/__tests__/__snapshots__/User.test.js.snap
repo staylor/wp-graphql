@@ -7,7 +7,7 @@ Array [
   "description",
   "link",
   "slug",
-  "avatar_urls",
+  "avatarUrls",
 ]
 `;
 

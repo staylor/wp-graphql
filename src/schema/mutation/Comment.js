@@ -4,10 +4,10 @@ import Comment from 'data/Comment';
 import CommentType from 'type/Comment';
 
 const requiredFields = {
-  author_email: {
+  authorEmail: {
     type: new GraphQLNonNull(GraphQLString),
   },
-  author_name: {
+  authorName: {
     type: new GraphQLNonNull(GraphQLString),
   },
   content: {
@@ -53,7 +53,7 @@ export default {
     name: 'AddComment',
     inputFields: {
       ...requiredFields,
-      author_url: {
+      authorUrl: {
         type: GraphQLString,
       },
       parent: {
@@ -61,7 +61,7 @@ export default {
       },
     },
     mutateAndGetPayload: input => {
-      if (!input.author && !(input.author_email && input.author_name)) {
+      if (!input.author && !(input.authorEmail && input.authorName)) {
         return Promise.reject('You must provide author data to create a comment.');
       }
 

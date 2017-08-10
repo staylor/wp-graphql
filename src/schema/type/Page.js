@@ -41,7 +41,7 @@ const PageType = new GraphQLObjectType({
       resolve: (page, args, context, { rootValue: { loaders: { Page } } }) =>
         page.parent > 0 ? Page.load(page.parent) : null,
     },
-    menu_order: {
+    menuOrder: {
       type: GraphQLInt,
       description: 'The order of the object in relation to other object of its type.',
     },

@@ -13,7 +13,7 @@ const fields = `
   description
   link
   slug
-  avatar_urls {
+  avatarUrls {
     size
     url
   }

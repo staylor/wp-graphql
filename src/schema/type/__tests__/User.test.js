@@ -13,7 +13,7 @@ describe('Test User type', () => {
   });
 
   test('Test resolve avatars', () => {
-    const avatars = fields.avatar_urls.resolve({
+    const avatars = fields.avatarUrls.resolve({
       avatar_urls: {
         thumbnail: 'https://scott.com/avi.jpg',
       },

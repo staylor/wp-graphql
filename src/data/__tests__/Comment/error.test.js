@@ -1,17 +1,18 @@
 import Comment from 'data/Comment';
+import * as utils from 'data/utils';
 
-jest.mock('../../utils', () =>
-  jest.fn(() => {
-    throw Error('Error testing comment CRUD.');
-  })
-);
+utils.default = jest.fn(() => {
+  throw Error('Error testing comment CRUD.');
+});
+
+utils.clearEndpointCache = jest.fn(() => Promise.resolve());
 
 describe('Test Comment CRUD Errors', () => {
   test('Test create error', async () => {
     const input = {
       content: 'Cool comment!',
-      author_email: 'scott.c.taylor@mac.com',
-      author_name: 'Scott Taylor',
+      authorEmail: 'scott.c.taylor@mac.com',
+      authorName: 'Scott Taylor',
       post: 'UG9zdDoyNzEw',
     };
     const create = await Comment.create(input);

@@ -30,7 +30,7 @@ class Comment {
   }
 
   static async create(form) {
-    if (!form.author && !(form.author_email && form.author_name)) {
+    if (!form.author && !(form.authorEmail && form.authorName)) {
       return Promise.reject('You must provide author data to create a comment.');
     }
 

@@ -27,15 +27,15 @@ const CommentType = new GraphQLObjectType({
       resolve: comment =>
         comment.parent > 0 ? toGlobalId('Comment', comment.parent) : null,
     },
-    author_name: {
+    authorName: {
       type: GraphQLString,
       description: 'Display name for the object author.',
     },
-    author_url: {
+    authorUrl: {
       type: GraphQLString,
       description: 'URL for the object author.',
     },
-    author_hash: {
+    authorHash: {
       type: GraphQLString,
       description: 'Hashed representation of the comment author.',
     },
@@ -47,7 +47,7 @@ const CommentType = new GraphQLObjectType({
       type: GraphQLString,
       description: 'Type of Comment for the object.',
     },
-    author_avatar_urls: {
+    authorAvatarUrls: {
       type: new GraphQLList(Avatar),
       description: 'Avatar URLs for the object author.',
       resolve: comment =>

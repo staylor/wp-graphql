@@ -6,10 +6,10 @@ Array [
   "name",
   "description",
   "classname",
-  "before_widget",
-  "after_widget",
-  "before_title",
-  "after_title",
+  "beforeWidget",
+  "afterWidget",
+  "beforeTitle",
+  "afterTitle",
   "widgets",
 ]
 `;

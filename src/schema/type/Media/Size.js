@@ -8,8 +8,8 @@ const MediaSizeType = new GraphQLObjectType({
     width: { type: GraphQLInt },
     height: { type: GraphQLInt },
     file: { type: GraphQLString },
-    mime_type: { type: GraphQLString },
-    source_url: { type: GraphQLString },
+    mimeType: { type: GraphQLString },
+    sourceUrl: { type: GraphQLString },
   },
 });
 

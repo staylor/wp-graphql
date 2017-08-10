@@ -28,27 +28,27 @@ export const caption = {
 };
 
 export const altText = {
-  alt_text: {
+  altText: {
     type: GraphQLString,
     description: 'Alternative text to display when attachment is not displayed.',
   },
 };
 
 export const mediaType = {
-  media_type: {
+  mediaType: {
     type: MEDIA_TYPE,
   },
 };
 
 export const mimeType = {
-  mime_type: {
+  mimeType: {
     type: GraphQLString,
     description: 'The attachment MIME type.',
   },
 };
 
 export const sourceUrl = {
-  source_url: {
+  sourceUrl: {
     type: GraphQLString,
     description: 'URL to the original attachment file.',
   },

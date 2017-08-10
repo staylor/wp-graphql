@@ -45,22 +45,22 @@ describe('Test schema type field definition', () => {
   });
 
   test('Test altText field', () => {
-    const { alt_text: field } = altText;
+    const { altText: field } = altText;
     expect(field.type).toMatchSnapshot();
   });
 
   test('Test mediaType field', () => {
-    const { media_type: field } = mediaType;
+    const { mediaType: field } = mediaType;
     expect(field.type.name).toMatchSnapshot();
   });
 
   test('Test mimeType field', () => {
-    const { mime_type: field } = mimeType;
+    const { mimeType: field } = mimeType;
     expect(field.type).toMatchSnapshot();
   });
 
   test('Test sourceUrl field', () => {
-    const { source_url: field } = sourceUrl;
+    const { sourceUrl: field } = sourceUrl;
     expect(field.type).toMatchSnapshot();
   });
 });

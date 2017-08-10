@@ -1,15 +1,16 @@
 import Comment from 'data/Comment';
+import * as utils from 'data/utils';
 
-jest.mock('../../utils', () =>
-  jest.fn(() => ({
-    data: {
-      body: {
-        id: 13,
-        deleted: 1,
-      },
+utils.default = jest.fn(() => ({
+  data: {
+    body: {
+      id: 13,
+      status: 'trash',
     },
-  }))
-);
+  },
+}));
+
+utils.clearEndpointCache = jest.fn(() => Promise.resolve());
 
 describe('Test Comment CRUD: delete', () => {
   test('Test delete', async () => {

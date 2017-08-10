@@ -14,7 +14,7 @@ const UserType = new GraphQLObjectType({
     ...description,
     ...link,
     ...slug,
-    avatar_urls: {
+    avatarUrls: {
       type: new GraphQLList(Avatar),
       description: 'Avatar URLs for the user.',
       resolve: user =>

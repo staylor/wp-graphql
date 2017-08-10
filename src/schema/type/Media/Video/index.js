@@ -13,7 +13,7 @@ const VideoType = new GraphQLObjectType({
   },
   fields: {
     ...mediaFields,
-    media_details: { type: VideoDetails },
+    mediaDetails: { type: VideoDetails },
   },
 });
 

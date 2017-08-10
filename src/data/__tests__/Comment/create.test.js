@@ -1,25 +1,26 @@
 import Comment from 'data/Comment';
+import * as utils from 'data/utils';
 
-jest.mock('../../utils', () =>
-  jest.fn(() => ({
-    data: {
-      body: {
-        id: 13,
-        post: 1,
-      },
-      headers: {
-        'set-cookie': 'foo=bar',
-      },
+utils.default = jest.fn(() => ({
+  data: {
+    body: {
+      id: 13,
+      post: 1,
     },
-  }))
-);
+    headers: {
+      'set-cookie': 'foo=bar',
+    },
+  },
+}));
+
+utils.clearEndpointCache = jest.fn(() => Promise.resolve());
 
 describe('Test Comment CRUD: create', () => {
   test('Test create', async () => {
     const input = {
       content: 'Cool comment!',
-      author_email: 'scott.c.taylor@mac.com',
-      author_name: 'Scott Taylor',
+      authorEmail: 'scott.c.taylor@mac.com',
+      authorName: 'Scott Taylor',
       post: 'UG9zdDoyNzEw',
     };
     const create = await Comment.create(input);
@@ -37,8 +38,8 @@ describe('Test Comment CRUD: create', () => {
 
   test('Test create error: no post', async () => {
     const input = {
-      author_email: 'scott.c.taylor@mac.com',
-      author_name: 'Scott Taylor',
+      authorEmail: 'scott.c.taylor@mac.com',
+      authorName: 'Scott Taylor',
     };
     try {
       await Comment.create(input);

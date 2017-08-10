@@ -5,7 +5,7 @@ Object {
   "data": Object {
     "viewer": Object {
       "author": Object {
-        "avatar_urls": Array [
+        "avatarUrls": Array [
           Object {
             "size": 48,
             "url": "https://scott.com/avatar",
@@ -30,7 +30,7 @@ Object {
   "data": Object {
     "viewer": Object {
       "author": Object {
-        "avatar_urls": Array [
+        "avatarUrls": Array [
           Object {
             "size": 48,
             "url": "https://scott.com/avatar",

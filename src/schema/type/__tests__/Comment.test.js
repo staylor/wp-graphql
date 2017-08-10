@@ -36,7 +36,7 @@ describe('Test Comment type', () => {
   });
 
   test('Test resolve avatars', () => {
-    const avatars = fields.author_avatar_urls.resolve({
+    const avatars = fields.authorAvatarUrls.resolve({
       author_avatar_urls: {
         thumbnail: 'https://scott.com/avi.jpg',
       },

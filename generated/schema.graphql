@@ -1,9 +1,9 @@
 input AddCommentInput {
-  author_email: String!
-  author_name: String!
+  authorEmail: String!
+  authorName: String!
   content: String!
   post: ID!
-  author_url: String
+  authorUrl: String
   parent: ID
   clientMutationId: String
 }
@@ -24,14 +24,14 @@ type Audio implements MediaInterface {
   date: String
 
   # The date the object was published, as GMT.
-  date_gmt: String
+  dateGMT: String
   guid: Guid
 
   # The date the object was modified, in the timezone of the site.
   modified: String
 
   # The date the object was modified, as GMT.
-  modified_gmt: String
+  modifiedGMT: String
 
   # An alphanumeric identifier for the object unique to its type.
   slug: String
@@ -42,8 +42,8 @@ type Audio implements MediaInterface {
   # URL to the object.
   link: String
   title: Title
-  comment_status: COMMENT_STATUS
-  ping_status: PING_STATUS
+  commentStatus: COMMENT_STATUS
+  pingStatus: PING_STATUS
 
   # The theme file to use to display the object.
   template: String
@@ -57,18 +57,18 @@ type Audio implements MediaInterface {
   caption: Caption
 
   # Alternative text to display when attachment is not displayed.
-  alt_text: String
-  media_type: MEDIA_TYPE
+  altText: String
+  mediaType: MEDIA_TYPE
 
   # The attachment MIME type.
-  mime_type: String
+  mimeType: String
 
   # URL to the original attachment file.
-  source_url: String
+  sourceUrl: String
 
   # The ID for the associated post of the attachment.
   post: ID!
-  media_details: AudioDetails
+  mediaDetails: AudioDetails
 }
 
 # The details for the media.
@@ -184,7 +184,7 @@ type Comment {
   date: String
 
   # The date the object was published, as GMT.
-  date_gmt: String
+  dateGMT: String
   content: Content
 
   # URL to the object.
@@ -197,13 +197,13 @@ type Comment {
   parent: ID
 
   # Display name for the object author.
-  author_name: String
+  authorName: String
 
   # URL for the object author.
-  author_url: String
+  authorUrl: String
 
   # Hashed representation of the comment author.
-  author_hash: String
+  authorHash: String
 
   # State of the object.
   status: String
@@ -212,7 +212,7 @@ type Comment {
   type: String
 
   # Avatar URLs for the object author.
-  author_avatar_urls: [Avatar]
+  authorAvatarUrls: [Avatar]
 
   # Meta fields.
   meta: [Meta]
@@ -351,14 +351,14 @@ type Image implements MediaInterface {
   date: String
 
   # The date the object was published, as GMT.
-  date_gmt: String
+  dateGMT: String
   guid: Guid
 
   # The date the object was modified, in the timezone of the site.
   modified: String
 
   # The date the object was modified, as GMT.
-  modified_gmt: String
+  modifiedGMT: String
 
   # An alphanumeric identifier for the object unique to its type.
   slug: String
@@ -369,8 +369,8 @@ type Image implements MediaInterface {
   # URL to the object.
   link: String
   title: Title
-  comment_status: COMMENT_STATUS
-  ping_status: PING_STATUS
+  commentStatus: COMMENT_STATUS
+  pingStatus: PING_STATUS
 
   # The theme file to use to display the object.
   template: String
@@ -384,18 +384,18 @@ type Image implements MediaInterface {
   caption: Caption
 
   # Alternative text to display when attachment is not displayed.
-  alt_text: String
-  media_type: MEDIA_TYPE
+  altText: String
+  mediaType: MEDIA_TYPE
 
   # The attachment MIME type.
-  mime_type: String
+  mimeType: String
 
   # URL to the original attachment file.
-  source_url: String
+  sourceUrl: String
 
   # The ID for the associated post of the attachment.
   post: ID!
-  media_details: ImageDetails
+  mediaDetails: ImageDetails
 }
 
 # The details for the media.
@@ -430,14 +430,14 @@ interface MediaInterface {
   date: String
 
   # The date the object was published, as GMT.
-  date_gmt: String
+  dateGMT: String
   guid: Guid
 
   # The date the object was modified, in the timezone of the site.
   modified: String
 
   # The date the object was modified, as GMT.
-  modified_gmt: String
+  modifiedGMT: String
 
   # An alphanumeric identifier for the object unique to its type.
   slug: String
@@ -448,8 +448,8 @@ interface MediaInterface {
   # URL to the object.
   link: String
   title: Title
-  comment_status: COMMENT_STATUS
-  ping_status: PING_STATUS
+  commentStatus: COMMENT_STATUS
+  pingStatus: PING_STATUS
 
   # The theme file to use to display the object.
   template: String
@@ -459,14 +459,14 @@ interface MediaInterface {
   caption: Caption
 
   # Alternative text to display when attachment is not displayed.
-  alt_text: String
-  media_type: MEDIA_TYPE
+  altText: String
+  mediaType: MEDIA_TYPE
 
   # The attachment MIME type.
-  mime_type: String
+  mimeType: String
 
   # URL to the original attachment file.
-  source_url: String
+  sourceUrl: String
 
   # The ID for the associated post of the attachment.
   post: ID!
@@ -478,8 +478,8 @@ type MediaSize {
   width: Int
   height: Int
   file: String
-  mime_type: String
-  source_url: String
+  mimeType: String
+  sourceUrl: String
 }
 
 # A metadata field for an object.
@@ -570,14 +570,14 @@ type Page implements PostInterface, Node {
   date: String
 
   # The date the object was published, as GMT.
-  date_gmt: String
+  dateGMT: String
   guid: Guid
 
   # The date the object was modified, in the timezone of the site.
   modified: String
 
   # The date the object was modified, as GMT.
-  modified_gmt: String
+  modifiedGMT: String
 
   # An alphanumeric identifier for the object unique to its type.
   slug: String
@@ -590,8 +590,8 @@ type Page implements PostInterface, Node {
   title: Title
   content: Content
   excerpt: Excerpt
-  comment_status: COMMENT_STATUS
-  ping_status: PING_STATUS
+  commentStatus: COMMENT_STATUS
+  pingStatus: PING_STATUS
 
   # The theme file to use to display the object.
   template: String
@@ -609,7 +609,7 @@ type Page implements PostInterface, Node {
   parent: Page
 
   # The order of the object in relation to other object of its type.
-  menu_order: Int
+  menuOrder: Int
 }
 
 # Information about pagination in a connection.
@@ -642,14 +642,14 @@ type Post implements PostInterface, Node {
   date: String
 
   # The date the object was published, as GMT.
-  date_gmt: String
+  dateGMT: String
   guid: Guid
 
   # The date the object was modified, in the timezone of the site.
   modified: String
 
   # The date the object was modified, as GMT.
-  modified_gmt: String
+  modifiedGMT: String
 
   # An alphanumeric identifier for the object unique to its type.
   slug: String
@@ -662,8 +662,8 @@ type Post implements PostInterface, Node {
   title: Title
   content: Content
   excerpt: Excerpt
-  comment_status: COMMENT_STATUS
-  ping_status: PING_STATUS
+  commentStatus: COMMENT_STATUS
+  pingStatus: PING_STATUS
 
   # The theme file to use to display the object.
   template: String
@@ -743,14 +743,14 @@ interface PostInterface {
   date: String
 
   # The date the object was published, as GMT.
-  date_gmt: String
+  dateGMT: String
   guid: Guid
 
   # The date the object was modified, in the timezone of the site.
   modified: String
 
   # The date the object was modified, as GMT.
-  modified_gmt: String
+  modifiedGMT: String
 
   # An alphanumeric identifier for the object unique to its type.
   slug: String
@@ -763,8 +763,8 @@ interface PostInterface {
   title: Title
   content: Content
   excerpt: Excerpt
-  comment_status: COMMENT_STATUS
-  ping_status: PING_STATUS
+  commentStatus: COMMENT_STATUS
+  pingStatus: PING_STATUS
 
   # The theme file to use to display the object.
   template: String
@@ -819,16 +819,16 @@ type Sidebar implements Node {
   classname: String
 
   # HTML content to prepend to each widget's HTML output when assigned to this sidebar.
-  before_widget: String
+  beforeWidget: String
 
   # HTML content to append to each widget's HTML output when assigned to this sidebar.
-  after_widget: String
+  afterWidget: String
 
   # HTML content to prepend to the sidebar title when displayed.
-  before_title: String
+  beforeTitle: String
 
   # HTML content to append to the sidebar title when displayed.
-  after_title: String
+  afterTitle: String
 
   # HTML widgets associated with the sidebar.
   widgets: [Widget]
@@ -951,7 +951,7 @@ type User implements Node {
   slug: String
 
   # Avatar URLs for the user.
-  avatar_urls: [Avatar]
+  avatarUrls: [Avatar]
 }
 
 # An object.
@@ -963,14 +963,14 @@ type Video implements MediaInterface {
   date: String
 
   # The date the object was published, as GMT.
-  date_gmt: String
+  dateGMT: String
   guid: Guid
 
   # The date the object was modified, in the timezone of the site.
   modified: String
 
   # The date the object was modified, as GMT.
-  modified_gmt: String
+  modifiedGMT: String
 
   # An alphanumeric identifier for the object unique to its type.
   slug: String
@@ -981,8 +981,8 @@ type Video implements MediaInterface {
   # URL to the object.
   link: String
   title: Title
-  comment_status: COMMENT_STATUS
-  ping_status: PING_STATUS
+  commentStatus: COMMENT_STATUS
+  pingStatus: PING_STATUS
 
   # The theme file to use to display the object.
   template: String
@@ -996,18 +996,18 @@ type Video implements MediaInterface {
   caption: Caption
 
   # Alternative text to display when attachment is not displayed.
-  alt_text: String
-  media_type: MEDIA_TYPE
+  altText: String
+  mediaType: MEDIA_TYPE
 
   # The attachment MIME type.
-  mime_type: String
+  mimeType: String
 
   # URL to the original attachment file.
-  source_url: String
+  sourceUrl: String
 
   # The ID for the associated post of the attachment.
   post: ID!
-  media_details: VideoDetails
+  mediaDetails: VideoDetails
 }
 
 # The details for the media.
