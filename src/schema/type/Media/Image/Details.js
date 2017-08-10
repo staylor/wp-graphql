@@ -14,6 +14,7 @@ const ImageDetails = new GraphQLObjectType({
       resolve: media =>
         Object.keys(media.sizes).map(size => ({
           ...media.sizes[size],
+          sourceUrl: media.sizes[size].source_url,
           name: size,
         })),
     },
