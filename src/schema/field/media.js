@@ -31,12 +31,14 @@ export const altText = {
   altText: {
     type: GraphQLString,
     description: 'Alternative text to display when attachment is not displayed.',
+    resolve: media => media.alt_text,
   },
 };
 
 export const mediaType = {
   mediaType: {
     type: MEDIA_TYPE,
+    resolve: media => media.media_type,
   },
 };
 
@@ -44,6 +46,7 @@ export const mimeType = {
   mimeType: {
     type: GraphQLString,
     description: 'The attachment MIME type.',
+    resolve: media => media.mime_type,
   },
 };
 
@@ -51,5 +54,6 @@ export const sourceUrl = {
   sourceUrl: {
     type: GraphQLString,
     description: 'URL to the original attachment file.',
+    resolve: media => media.source_url,
   },
 };

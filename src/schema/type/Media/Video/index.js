@@ -14,6 +14,7 @@ const VideoType = new GraphQLObjectType({
   fields: {
     ...mediaFields,
     mediaDetails: { type: VideoDetails },
+    resolve: media => media.media_details,
   },
 });
 
