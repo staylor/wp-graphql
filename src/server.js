@@ -7,7 +7,7 @@ import responseTime from 'response-time';
 import Schema from 'schema';
 import getClient, { HASH_KEY } from 'data/client';
 import getLoaders from 'data/loaders';
-import persistedQueries from '../generated/queries.json';
+// import persistedQueries from '../generated/queries.json';
 import queryLogger from './middleware/queryLogger';
 
 /* eslint-disable no-console */
@@ -28,15 +28,15 @@ app.use(express.static('public'));
 
 app.use('/graphql', bodyParser.json(), async (req, res, next) => {
   // Apollo
-  if (req.body.id && req.get('x-app-name') === 'wp-apollo-app') {
-    const queries = Object.keys(persistedQueries).reduce(
-      (memo, key) => Object.assign({}, memo, { [persistedQueries[key]]: key }),
-      {}
-    );
-    req.body.query = queries[req.body.id];
-    next();
-    return;
-  }
+  // if (req.body.id && req.get('x-app-name') === 'wp-apollo-app') {
+  //   const queries = Object.keys(persistedQueries).reduce(
+  //     (memo, key) => Object.assign({}, memo, { [persistedQueries[key]]: key }),
+  //     {}
+  //   );
+  //   req.body.query = queries[req.body.id];
+  //   next();
+  //   return;
+  // }
 
   // Relay Modern
   if (req.body.id && req.get('x-app-name') === 'wp-relay-app') {
