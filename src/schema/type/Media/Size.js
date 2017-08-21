@@ -1,12 +1,12 @@
-import { GraphQLObjectType, GraphQLString, GraphQLInt } from 'graphql';
+import { GraphQLObjectType, GraphQLString } from 'graphql';
+import { dimensions } from 'field/media';
 
 const MediaSizeType = new GraphQLObjectType({
   name: 'MediaSize',
   description: 'The details for the media size.',
   fields: {
     name: { type: GraphQLString },
-    width: { type: GraphQLInt },
-    height: { type: GraphQLInt },
+    ...dimensions,
     file: { type: GraphQLString },
     mimeType: { type: GraphQLString },
     sourceUrl: { type: GraphQLString },

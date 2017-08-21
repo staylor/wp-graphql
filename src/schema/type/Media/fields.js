@@ -30,7 +30,6 @@ export default {
   ...template,
   ...author,
   meta: metaField(),
-  // featured_media (this field should exist for audio/video)
   // extra media fields
   ...description,
   ...caption,

@@ -1,10 +1,14 @@
-import { GraphQLObjectType, GraphQLString } from 'graphql';
+import { GraphQLObjectType } from 'graphql';
+import { lengthFields, fileFields, dimensions, dataFormat } from 'field/media';
 
 const VideoDetails = new GraphQLObjectType({
   name: 'VideoDetails',
-  description: 'The details for the media.',
+  description: 'Details of the video file.',
   fields: {
-    title: { type: GraphQLString },
+    ...lengthFields,
+    ...fileFields,
+    ...dimensions,
+    ...dataFormat,
   },
 });
 

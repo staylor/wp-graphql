@@ -69,11 +69,39 @@ type Audio implements MediaInterface {
   # The ID for the associated post of the attachment.
   post: ID!
   mediaDetails: AudioDetails
+
+  # The featured media for the object.
+  featuredMedia: Media
 }
 
-# The details for the media.
+# Details of the audio file.
 type AudioDetails {
   title: String
+  artist: String
+  album: String
+  band: String
+  composer: String
+
+  # The length of the media, in seconds.
+  length: Int
+
+  # The length of the media, in a readable time format. Example: "3:45"
+  lengthFormatted: String
+
+  # The size of the file, in bytes.
+  fileSize: Int
+
+  # The file format, perhaps different than mime-type.
+  fileFormat: String
+
+  # The media format, perhaps a subtype of mime. Example: "quicktime" < "video/quicktime" < "video/mp4"
+  dataFormat: String
+  sampleRate: Int
+  bitrate: Int
+  bitrateMode: String
+  encoderOptions: String
+  channels: Int
+  channelMode: String
 }
 
 # Avatar info.
@@ -400,7 +428,10 @@ type Image implements MediaInterface {
 
 # The details for the media.
 type ImageDetails {
+  # The width of the media, in pixels.
   width: Int
+
+  # The height of the media, in pixels.
   height: Int
   file: String
   sizes: [MediaSize]
@@ -475,7 +506,11 @@ interface MediaInterface {
 # The details for the media size.
 type MediaSize {
   name: String
+
+  # The width of the media, in pixels.
   width: Int
+
+  # The height of the media, in pixels.
   height: Int
   file: String
   mimeType: String
@@ -1008,11 +1043,33 @@ type Video implements MediaInterface {
   # The ID for the associated post of the attachment.
   post: ID!
   mediaDetails: VideoDetails
+
+  # The featured media for the object.
+  featuredMedia: Media
 }
 
-# The details for the media.
+# Details of the video file.
 type VideoDetails {
-  title: String
+  # The length of the media, in seconds.
+  length: Int
+
+  # The length of the media, in a readable time format. Example: "3:45"
+  lengthFormatted: String
+
+  # The size of the file, in bytes.
+  fileSize: Int
+
+  # The file format, perhaps different than mime-type.
+  fileFormat: String
+
+  # The width of the media, in pixels.
+  width: Int
+
+  # The height of the media, in pixels.
+  height: Int
+
+  # The media format, perhaps a subtype of mime. Example: "quicktime" < "video/quicktime" < "video/mp4"
+  dataFormat: String
 }
 
 type Viewer {
