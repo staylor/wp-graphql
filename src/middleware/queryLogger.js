@@ -12,7 +12,9 @@ export default function queryLogger() {
     (req, res, next) => {
       const date = new Date();
       console.log(
-        `--- ${clc.bold.green(`${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`)} ---`
+        `--- ${clc.bold.green(
+          `${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`
+        )} ---`
       );
       console.log(clc.bold.blackBright('query:\n') + req.body.query);
       console.log(
