@@ -13,9 +13,7 @@ describe('Test ChartItem type', () => {
   });
 
   test('Test resolve url', () => {
-    expect(
-      fields.url.resolve({ label: 'https://scott.com/image.jpg' })
-    ).toMatchSnapshot();
+    expect(fields.url.resolve({ label: 'https://scott.com/image.jpg' })).toMatchSnapshot();
   });
 
   test('Test resolve height', () => {

@@ -43,12 +43,7 @@ const PostType = new GraphQLObjectType({
     categories: {
       type: new GraphQLList(CategoryType),
       description: 'The terms assigned to the object in the category taxonomy.',
-      resolve: (
-        { categories },
-        args,
-        context,
-        { rootValue: { loaders: { Category } } }
-      ) => {
+      resolve: ({ categories }, args, context, { rootValue: { loaders: { Category } } }) => {
         if (categories.length) {
           return Category.loadMany(categories);
         }

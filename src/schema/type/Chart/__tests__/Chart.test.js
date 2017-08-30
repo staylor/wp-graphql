@@ -17,21 +17,15 @@ describe('Test Chart type', () => {
   });
 
   test('Test resolve copyright', () => {
-    expect(
-      fields.copyright.resolve({ rights: { label: 'Whatever ©' } })
-    ).toMatchSnapshot();
+    expect(fields.copyright.resolve({ rights: { label: 'Whatever ©' } })).toMatchSnapshot();
   });
 
   test('Test resolve updated', () => {
-    expect(
-      fields.updated.resolve({ updated: { label: '2017-04-20T04:20:00' } })
-    ).toMatchSnapshot();
+    expect(fields.updated.resolve({ updated: { label: '2017-04-20T04:20:00' } })).toMatchSnapshot();
   });
 
   test('Test resolve authorName', () => {
-    expect(
-      fields.authorName.resolve({ author: { name: { label: 'iTunes' } } })
-    ).toMatchSnapshot();
+    expect(fields.authorName.resolve({ author: { name: { label: 'iTunes' } } })).toMatchSnapshot();
   });
 
   test('Test resolve authorUri', () => {
@@ -43,8 +37,6 @@ describe('Test Chart type', () => {
   });
 
   test('Test resolve items', () => {
-    expect(
-      fields.items.resolve({ entry: [{ title: 'Melodrama by Lorde' }] })
-    ).toMatchSnapshot();
+    expect(fields.items.resolve({ entry: [{ title: 'Melodrama by Lorde' }] })).toMatchSnapshot();
   });
 });

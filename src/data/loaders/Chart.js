@@ -8,9 +8,7 @@ export default function getChartLoaders() {
 
   const chartLoader = new Dataloader(chartPaths =>
     Promise.all(
-      chartPaths.map(chartPath =>
-        fetchData(chartPath).then(({ data: { body } }) => body.feed)
-      )
+      chartPaths.map(chartPath => fetchData(chartPath).then(({ data: { body } }) => body.feed))
     )
   );
 

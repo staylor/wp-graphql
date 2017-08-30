@@ -15,12 +15,7 @@ describe('Test schema type field definition', () => {
   });
 
   test('Test taxonomy field resolver', async () => {
-    const taxonomy = await fields.taxonomy.resolve(
-      { taxonomy: 'tag' },
-      args,
-      context,
-      info
-    );
+    const taxonomy = await fields.taxonomy.resolve({ taxonomy: 'tag' }, args, context, info);
     expect(taxonomy).toMatchSnapshot();
   });
 

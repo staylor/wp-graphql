@@ -7,12 +7,8 @@ import MediaType from 'type/Media';
 export const featuredMedia = () => ({
   type: MediaType,
   description: 'The featured media for the object.',
-  resolve: (
-    { featured_media: featured },
-    args,
-    context,
-    { rootValue: { loaders: { Media } } }
-  ) => (featured > 0 ? Media.load(featured) : null),
+  resolve: ({ featured_media: featured }, args, context, { rootValue: { loaders: { Media } } }) =>
+    featured > 0 ? Media.load(featured) : null,
 });
 
 export const description = {

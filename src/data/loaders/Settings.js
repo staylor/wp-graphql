@@ -10,9 +10,7 @@ export default function getSettingsLoaders() {
 
   const settingsLoader = new Dataloader(settingsPaths =>
     Promise.all(
-      settingsPaths.map(settingsPath =>
-        fetchData(settingsPath).then(({ data: { body } }) => body)
-      )
+      settingsPaths.map(settingsPath => fetchData(settingsPath).then(({ data: { body } }) => body))
     )
   );
 

@@ -45,9 +45,7 @@ describe('Test ChartItem type', () => {
   });
 
   test('Test resolve copyright', () => {
-    expect(
-      fields.copyright.resolve({ rights: { label: 'Big Boy Records' } })
-    ).toMatchSnapshot();
+    expect(fields.copyright.resolve({ rights: { label: 'Big Boy Records' } })).toMatchSnapshot();
   });
 
   test('Test resolve images', () => {

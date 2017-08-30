@@ -1,11 +1,9 @@
 {
   "extends": [
-    "airbnb-base",
-    "prettier"
+    "eslint-config-kyt"
   ],
   "plugins": [
     "prettier",
-    "react",
     "jsx-a11y",
     "import",
     "jest"
@@ -16,12 +14,8 @@
     }
   },
   "rules": {
-    "prettier/prettier": ["error", {
-      "trailingComma": "es5",
-      "semi": true,
-      "singleQuote": true,
-      "printWidth": 90
-    }]
+    "jsx-a11y/href-no-hash": "off",
+    "jsx-a11y/anchor-is-valid": ["warn", { "aspects": ["invalidHref"] }]
   },
   "env": {
     "jasmine": true,

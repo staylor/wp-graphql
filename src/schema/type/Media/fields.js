@@ -6,14 +6,7 @@ import { globalIdField, slug, guid, link } from 'field/identifier';
 import { title } from 'field/content';
 import { type, template } from 'field/post';
 import { commentStatus, pingStatus } from 'field/status';
-import {
-  description,
-  caption,
-  altText,
-  mediaType,
-  mimeType,
-  sourceUrl,
-} from 'field/media';
+import { description, caption, altText, mediaType, mimeType, sourceUrl } from 'field/media';
 import author from 'field/author';
 
 export default {

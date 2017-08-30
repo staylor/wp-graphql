@@ -39,9 +39,7 @@ class Comment {
     }
 
     try {
-      const {
-        data: { body: comment, headers },
-      } = await fetchData(Comment.getEndpoint(), {
+      const { data: { body: comment, headers } } = await fetchData(Comment.getEndpoint(), {
         method: 'POST',
         form,
       });

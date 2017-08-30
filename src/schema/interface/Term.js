@@ -1,10 +1,4 @@
-import {
-  GraphQLInterfaceType,
-  GraphQLNonNull,
-  GraphQLID,
-  GraphQLInt,
-  GraphQLList,
-} from 'graphql';
+import { GraphQLInterfaceType, GraphQLNonNull, GraphQLID, GraphQLInt, GraphQLList } from 'graphql';
 
 import Meta from 'type/Meta';
 import TaxonomyType from 'type/Taxonomy';

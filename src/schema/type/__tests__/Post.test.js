@@ -26,12 +26,7 @@ describe('Test Post type', () => {
   });
 
   test('Test resolve categories', async () => {
-    const categories = await fields.categories.resolve(
-      { categories: [69] },
-      args,
-      context,
-      info
-    );
+    const categories = await fields.categories.resolve({ categories: [69] }, args, context, info);
     expect(categories).toMatchSnapshot();
   });
 

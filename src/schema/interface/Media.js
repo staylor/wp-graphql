@@ -6,14 +6,7 @@ import { date, modified } from 'field/date';
 import { commentStatus, pingStatus } from 'field/status';
 import { title } from 'field/content';
 import { type, template } from 'field/post';
-import {
-  description,
-  caption,
-  altText,
-  mediaType,
-  mimeType,
-  sourceUrl,
-} from 'field/media';
+import { description, caption, altText, mediaType, mimeType, sourceUrl } from 'field/media';
 
 const MediaInterface = new GraphQLInterfaceType({
   name: 'MediaInterface',

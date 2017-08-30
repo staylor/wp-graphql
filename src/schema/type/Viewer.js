@@ -20,12 +20,7 @@ const itemResolver = (dataType, loader) => ({
     ...id,
     ...slug,
   },
-  resolve: (
-    root,
-    { id: globalId, slug: slugParam },
-    context,
-    { rootValue: { loaders } }
-  ) => {
+  resolve: (root, { id: globalId, slug: slugParam }, context, { rootValue: { loaders } }) => {
     if (slugParam && loaders[loader].loadBySlug) {
       return loaders[loader].loadBySlug(slugParam);
     }
@@ -76,13 +71,11 @@ const ViewerType = new GraphQLObjectType({
       posts: postConnection,
       settings: {
         type: SettingsType,
-        resolve: (root, args, context, { rootValue: { loaders: { Settings } } }) =>
-          Settings.load(),
+        resolve: (root, args, context, { rootValue: { loaders: { Settings } } }) => Settings.load(),
       },
       chart: {
         type: ChartType,
-        resolve: (root, args, context, { rootValue: { loaders: { Chart } } }) =>
-          Chart.load(),
+        resolve: (root, args, context, { rootValue: { loaders: { Chart } } }) => Chart.load(),
       },
     };
 
