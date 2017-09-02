@@ -34,7 +34,7 @@
   },
   "devDependencies": {
     "babel-jest": "^20.0.3",
-    "eslint": "^4.5.0",
+    "eslint": "^4.6.0",
     "eslint-config-airbnb": "^15.1.0",
     "eslint-config-kyt": "^0.4.0",
     "eslint-config-prettier": "^2.3.0",
@@ -48,7 +48,7 @@
     "jest-cli": "^20.0.4",
     "nodemon": "^1.11.0",
     "prettier": "^1.6.1",
-    "prettier-eslint": "^7.0.0",
+    "prettier-eslint": "^7.1.0",
     "prettier-eslint-cli": "^4.3.0"
   },
   "scripts": {
