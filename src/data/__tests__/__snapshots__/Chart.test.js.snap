@@ -1,3 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`Test Chart data access Get endpoint 1`] = `"https://itunes.apple.com/us/rss/topalbums/limit=25/explicit=true/json"`;
